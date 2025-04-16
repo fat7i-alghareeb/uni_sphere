@@ -15,7 +15,7 @@ class MaterialsRepoImp implements MaterialsRepo {
   }) : _remote = remote;
 
   @override
-  Future<Either<String, MaterialsEntity>> getAllMaterials() {
+  Future<Either<String, MaterialEntity>> getAllMaterials() {
     return throwAppException(
       () async {
         return await _remote.getAllMaterials();

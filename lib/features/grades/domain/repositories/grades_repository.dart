@@ -8,5 +8,5 @@ abstract class GradesRepo {
   GradesRepo();
 
   //* Get All Grades
-  Future<Either<String, GradesEntity>> getAllGrades();
+  Future<Either<String, GradeEntity>> getAllGrades();
 }

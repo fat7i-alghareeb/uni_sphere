@@ -13,6 +13,6 @@ class SubjectsUsecase {
   }) : _repo = repo;
 
   //* Get All Subjects
-  Future<Either<String, SubjectsEntity>> getAllSubjects() =>
+  Future<Either<String, SubjectEntity>> getAllSubjects() =>
       _repo.getAllSubjects();
 }
