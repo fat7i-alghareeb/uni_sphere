@@ -1,6 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../../domain/entities/addouncements_entity.dart';
+import '../../domain/entities/announcement_entity.dart';
 import '../datasources/addouncements_remote_data_source.dart';
 import '../../domain/repositories/addouncements_repository.dart';
 import '../../../../shared/services/exception/error_handler.dart';
@@ -15,7 +15,7 @@ class AddouncementsRepoImp implements AddouncementsRepo {
   }) : _remote = remote;
 
   @override
-  Future<Either<String, AddouncementsEntity>> getAllAddouncements() {
+  Future<Either<String, AnnouncementEntity>> getAllAddouncements() {
     return throwAppException(
       () async {
         return await _remote.getAllAddouncements();

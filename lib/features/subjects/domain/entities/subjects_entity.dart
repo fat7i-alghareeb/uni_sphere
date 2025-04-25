@@ -6,6 +6,11 @@ class SubjectEntity {
   final String semester;
   final bool isPassed;
   final bool canEnroll;
+  final int? midTermGrade;
+  final int? finalGrade;
+  final bool isMultipleChoice;
+  final bool doesHaveALab;
+  final String imageUrl;
   SubjectEntity({
     required this.id,
     required this.title,
@@ -14,5 +19,10 @@ class SubjectEntity {
     required this.semester,
     required this.isPassed,
     required this.canEnroll,
+    this.midTermGrade,
+    this.finalGrade,
+    required this.isMultipleChoice,
+    required this.doesHaveALab,
+    required this.imageUrl,
   });
 }
