@@ -44,9 +44,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
+      value: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.white.withOpacity(0.9),
+        systemNavigationBarColor: Color(0xFF26242A),
       ),
       child: ScreenUtilInit(
         designSize: designSize,
@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                     localizationsDelegates: context.localizationDelegates,
                     supportedLocales: context.supportedLocales,
                     locale: context.locale,
-                    theme: themeProvider.isDarkMode
+                    theme: themeProvider.isDarkMode || true
                         ? AppThemes.darkThemeData()
                         : AppThemes.lightThemeData(),
                     routeInformationParser: BeamerParser(),

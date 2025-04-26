@@ -42,7 +42,8 @@ class AppThemes {
       scaffoldBackgroundColor: Colors.white,
       tabBarTheme: TabBarTheme(
         labelColor: primaryColor ?? AppColors.lightPrimary,
-        unselectedLabelColor: (primaryColor ?? AppColors.lightPrimary).withOpacity(0.4),
+        unselectedLabelColor:
+            (primaryColor ?? AppColors.lightPrimary).withOpacity(0.4),
       ),
       datePickerTheme: const DatePickerThemeData(
         backgroundColor: Colors.white,
@@ -76,7 +77,6 @@ class AppThemes {
         iconTheme: IconThemeData(color: AppColors.white, size: 22.r),
         color: Colors.transparent,
       ),
-
     );
   }
 
@@ -95,12 +95,12 @@ class AppThemes {
         iconTheme: IconThemeData(color: AppColors.white),
         systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
-
       textTheme: AppTextTheme.textTheme,
-      scaffoldBackgroundColor: const Color(0xff25293c),
+      scaffoldBackgroundColor: const Color(0xFF26242A),
       colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.dark,
-        surface: const Color(0xff25293c),
+        surface: const Color(0xFF26242A),
+        onSurface: Colors.white,
         seedColor: primaryColor ?? AppColors.darkPrimary,
         primary: primaryColor ?? AppColors.darkPrimary,
         secondary: AppColors.lightPrimary,

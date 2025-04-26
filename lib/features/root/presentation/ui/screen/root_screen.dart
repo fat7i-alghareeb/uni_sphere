@@ -46,47 +46,64 @@ class _RootScreenState extends State<RootScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       endDrawer: const CustomEndDrawer(),
-      body: Builder(builder: (context) {
-        bool isClosingDrawer = false; // Track manual drawer close
-        return PopScope(
-          canPop: false,
-          onPopInvokedWithResult: (didPop, result) {
-            final scaffoldState = Scaffold.maybeOf(context);
+      body: Builder(
+        builder: (context) {
+          bool isClosingDrawer = false; // Track manual drawer close
+          return PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (didPop, result) {
+              final scaffoldState = Scaffold.maybeOf(context);
 
-            // If we manually closed the drawer, ignore this pop event
-            if (isClosingDrawer) {
-              isClosingDrawer = false; // Reset flag
-              return;
-            }
+              // If we manually closed the drawer, ignore this pop event
+              if (isClosingDrawer) {
+                isClosingDrawer = false; // Reset flag
+                return;
+              }
 
-            if (scaffoldState != null && scaffoldState.isEndDrawerOpen) {
-              log("Closing end drawer...");
-              isClosingDrawer = true; // Mark that we're manually closing
-              Navigator.pop(context); // Close the drawer
-              return;
-            }
+              if (scaffoldState != null && scaffoldState.isEndDrawerOpen) {
+                log("Closing end drawer...");
+                isClosingDrawer = true; // Mark that we're manually closing
+                Navigator.pop(context); // Close the drawer
+                return;
+              }
 
-            // Proceed with normal logic if the drawer is not open
-            if (navProvider.selectedIndex == 0) {
-            } else {
-              navProvider.changeSelected(0);
-            }
-          },
-          child: Column(
-            children: [
-              const RootHeader(),
-              Expanded(
-                child: PageView(
-                  controller: context.read<NavBarProvider>().pageController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const [],
+              // Proceed with normal logic if the drawer is not open
+              if (navProvider.selectedIndex == 0) {
+              } else {
+                navProvider.changeSelected(0);
+              }
+            },
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.asset(
+                  Assets.images.test2.keyName,
+                  fit: BoxFit.cover,
                 ),
-              ),
-            ],
-          ),
-        );
-      }),
-      bottomNavigationBar: const RootNavbar(),
+                Column(
+                  children: [
+                    const RootHeader(),
+                    Expanded(
+                      child: PageView(
+                        controller:
+                            context.read<NavBarProvider>().pageController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: const [],
+                      ),
+                    ),
+                  ],
+                ),
+                const Positioned(
+                  bottom: 25,
+                  left: 0,
+                  right: 0,
+                  child: RootNavbar(),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
