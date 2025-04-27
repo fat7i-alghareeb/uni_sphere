@@ -1,24 +1,26 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
-// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
-// 🌎 Project imports:
-
 class NavBarProvider extends ChangeNotifier {
-  late PageController pageController;
-  int selectedIndex = 0;
-  NavBarProvider() {
-    pageController = PageController();
-  }
+  final PageController pageController = PageController();
+  int _selectedIndex = 0;
+
+  int get selectedIndex => _selectedIndex;
 
   void changeSelected(int index) {
-    selectedIndex = index;
+    if (_selectedIndex == index) return;
+
+    _selectedIndex = index;
     pageController.animateToPage(
       index,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 }

@@ -1,17 +1,17 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
-import '../models/addouncements_model.dart';
+import '../models/announcements_model.dart';
 import '../../../../shared/services/exception/error_handler.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 
-class AddouncementsRemote {
+class AnnouncementsRemote {
   final Dio _dio;
 
-  const AddouncementsRemote(Dio dio) : _dio = dio;
+  const AnnouncementsRemote(Dio dio) : _dio = dio;
 
-  //* Get All Addouncements
-  Future<AddouncementsModel> getAllAddouncements() {
+  //* Get All Announcements
+  Future<AnnouncementsModel> getAllAnnouncements() {
     return throwDioException(
       () async {
         final response = await _dio.get(

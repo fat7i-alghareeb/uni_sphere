@@ -4,9 +4,9 @@ import '../entities/announcement_entity.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 
-abstract class AddouncementsRepo {
-  AddouncementsRepo();
+abstract class AnnouncementsRepo {
+  AnnouncementsRepo();
 
-  //* Get All Addouncements
-  Future<Either<String, AnnouncementEntity>> getAllAddouncements();
+  //* Get All Announcements
+  Future<Either<String, AnnouncementEntity>> getAllAnnouncements();
 }

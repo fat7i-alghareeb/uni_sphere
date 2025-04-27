@@ -1,24 +1,24 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
 import '../../domain/entities/announcement_entity.dart';
-import '../datasources/addouncements_remote_data_source.dart';
-import '../../domain/repositories/addouncements_repository.dart';
+import '../datasources/announcements_remote_data_source.dart';
+import '../../domain/repositories/announcements_repository.dart';
 import '../../../../shared/services/exception/error_handler.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 
-class AddouncementsRepoImp implements AddouncementsRepo {
-  final AddouncementsRemote _remote;
+class AnnouncementsRepoImp implements AnnouncementsRepo {
+  final AnnouncementsRemote _remote;
 
-  AddouncementsRepoImp({
-    required AddouncementsRemote remote,
+  AnnouncementsRepoImp({
+    required AnnouncementsRemote remote,
   }) : _remote = remote;
 
   @override
-  Future<Either<String, AnnouncementEntity>> getAllAddouncements() {
+  Future<Either<String, AnnouncementEntity>> getAllAnnouncements() {
     return throwAppException(
       () async {
-        return await _remote.getAllAddouncements();
+        return await _remote.getAllAnnouncements();
       },
     );
   }
