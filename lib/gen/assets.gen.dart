@@ -15,6 +15,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/announcement.svg
   String get announcement => 'assets/icons/announcement.svg';
 
+  /// File path: assets/icons/drawer.svg
+  String get drawer => 'assets/icons/drawer.svg';
+
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
@@ -25,7 +28,7 @@ class $AssetsIconsGen {
   String get timeTable => 'assets/icons/timeTable.svg';
 
   /// List of all assets
-  List<String> get values => [announcement, home, subjects, timeTable];
+  List<String> get values => [announcement, drawer, home, subjects, timeTable];
 }
 
 class $AssetsImagesGen {

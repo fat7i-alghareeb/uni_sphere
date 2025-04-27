@@ -7,6 +7,10 @@ import 'package:provider/provider.dart';
 import '../../../../../router/router_config.dart';
 
 import '../../../../../shared/imports/imports.dart';
+import '../../../../announcements/presentation/ui/screens/announcement_screen.dart';
+import '../../../../home/presentation/ui/screens/home_screen.dart';
+import '../../../../subjects/presentation/ui/screens/subjects_screen.dart';
+import '../../../../timetable/presentation/ui/screens/timetable_screen.dart';
 import '../../state/provider/nav_bar_provider.dart';
 import '../widget/app_drawer.dart';
 import '../widget/root_header.dart';
@@ -76,10 +80,10 @@ class _RootScreenState extends State<RootScreen> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset(
-                  Assets.images.test2.keyName,
-                  fit: BoxFit.cover,
-                ),
+                // Image.asset(
+                //   Assets.images.test2.keyName,
+                //   fit: BoxFit.cover,
+                // ),
                 Column(
                   children: [
                     const RootHeader(),
@@ -88,12 +92,17 @@ class _RootScreenState extends State<RootScreen> {
                         controller:
                             context.read<NavBarProvider>().pageController,
                         physics: const NeverScrollableScrollPhysics(),
-                        children: const [],
+                        children: const [
+                          HomeScreen(),
+                          SubjectsScreen(),
+                          AnnouncementScreen(),
+                          TimetableScreen(),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                const Positioned(
+                Positioned(
                   bottom: 25,
                   left: 0,
                   right: 0,

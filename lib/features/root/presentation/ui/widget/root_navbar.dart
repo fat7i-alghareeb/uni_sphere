@@ -76,10 +76,10 @@ class RootNavbar extends StatelessWidget {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 300),
               width: 50.h,
               height: 50.w,
-              padding: REdgeInsets.all(12),
+              padding: REdgeInsets.all(13),
               decoration: BoxDecoration(
                 color: context.onBackgroundColor
                     .withOpacity(isSelected ? 1 : 0.08),
