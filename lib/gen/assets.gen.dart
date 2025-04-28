@@ -21,6 +21,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
+  /// File path: assets/icons/notification.svg
+  String get notification => 'assets/icons/notification.svg';
+
   /// File path: assets/icons/subjects.svg
   String get subjects => 'assets/icons/subjects.svg';
 
@@ -28,11 +31,18 @@ class $AssetsIconsGen {
   String get timeTable => 'assets/icons/timeTable.svg';
 
   /// List of all assets
-  List<String> get values => [announcement, drawer, home, subjects, timeTable];
+  List<String> get values =>
+      [announcement, drawer, home, notification, subjects, timeTable];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/avatar-boy.svg
+  String get avatarBoy => 'assets/images/avatar-boy.svg';
+
+  /// File path: assets/images/avatar-girl.svg
+  String get avatarGirl => 'assets/images/avatar-girl.svg';
 
   /// File path: assets/images/test.png
   AssetGenImage get test => const AssetGenImage('assets/images/test.png');
@@ -41,7 +51,7 @@ class $AssetsImagesGen {
   AssetGenImage get test2 => const AssetGenImage('assets/images/test2.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [test, test2];
+  List<dynamic> get values => [avatarBoy, avatarGirl, test, test2];
 }
 
 class $AssetsL10nGen {

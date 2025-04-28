@@ -36,10 +36,11 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreenState extends State<RootScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     // getIt<NotificationsAndCartsUpdater>().openConnection();
-
     super.initState();
   }
 
@@ -48,8 +49,10 @@ class _RootScreenState extends State<RootScreen> {
     final navProvider = Provider.of<NavBarProvider>(context);
 
     return Scaffold(
+      key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
       endDrawer: const CustomEndDrawer(),
+      endDrawerEnableOpenDragGesture: true,
       body: Builder(
         builder: (context) {
           bool isClosingDrawer = false; // Track manual drawer close
@@ -80,13 +83,9 @@ class _RootScreenState extends State<RootScreen> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                // Image.asset(
-                //   Assets.images.test2.keyName,
-                //   fit: BoxFit.cover,
-                // ),
                 Column(
                   children: [
-                    const RootHeader(),
+                    RootHeader(scaffoldKey: _scaffoldKey),
                     Expanded(
                       child: PageView(
                         controller:

@@ -1,61 +1,171 @@
 import '../../shared/imports/imports.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// A collection of text styles used throughout the app.
+/// Follows Material Design 3 text style guidelines with customizations.
 class AppTextTheme {
+  AppTextTheme._();
+
+  /// Base font family for the app
+  static const String _fontFamily = 'Almarai';
+
+  /// Base text theme with custom font family and sizes
   static TextTheme get textTheme => TextTheme(
-        displayLarge: GoogleFonts.almarai(
-          fontSize: 26.sp,
-          fontWeight: FontWeight.w700,
-        ),
-        displayMedium: GoogleFonts.almarai(
-          fontSize: 22.sp,
-          fontWeight: FontWeight.w500,
-        ),
-        displaySmall: GoogleFonts.almarai(
-          fontSize: 20.sp,
-          fontWeight: FontWeight.w500,
-        ),
-        headlineLarge: GoogleFonts.almarai(
-          fontSize: 22.sp,
-          fontWeight: FontWeight.w500,
-        ),
-        headlineMedium: GoogleFonts.almarai(
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w500,
-        ),
-        headlineSmall: GoogleFonts.almarai(
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w700,
-        ),
-        bodyLarge: GoogleFonts.almarai(
-          fontSize: 15.sp,
-        ),
-        bodyMedium: GoogleFonts.almarai(
-          fontSize: 15.sp,
-        ),
-        bodySmall: GoogleFonts.almarai(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w500,
-        ),
-        titleLarge: GoogleFonts.almarai(
-          fontSize: 22.sp,
-          fontWeight: FontWeight.w700,
-        ),
-        titleMedium: GoogleFonts.almarai(
-          fontSize: 18.sp,
-        ),
-        titleSmall: GoogleFonts.almarai(
-          fontSize: 15.sp,
-        ),
-        labelLarge: GoogleFonts.almarai(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w700,
-        ),
-        labelMedium: GoogleFonts.almarai(
-          fontSize: 13.sp,
-        ),
-        labelSmall: GoogleFonts.almarai(
-          fontSize: 11.sp,
-        ),
+        // Display styles - Large text, typically used for hero sections
+        displayLarge: _displayLarge,
+        displayMedium: _displayMedium,
+        displaySmall: _displaySmall,
+
+        // Headline styles - Used for major headings
+        headlineLarge: _headlineLarge,
+        headlineMedium: _headlineMedium,
+        headlineSmall: _headlineSmall,
+
+        // Title styles - Used for section headings
+        titleLarge: _titleLarge,
+        titleMedium: _titleMedium,
+        titleSmall: _titleSmall,
+
+        // Body styles - Used for regular text content
+        bodyLarge: _bodyLarge,
+        bodyMedium: _bodyMedium,
+        bodySmall: _bodySmall,
+
+        // Label styles - Used for labels, buttons, and small text
+        labelLarge: _labelLarge,
+        labelMedium: _labelMedium,
+        labelSmall: _labelSmall,
       );
+
+  // Display styles
+  static TextStyle get _displayLarge => GoogleFonts.almarai(
+        fontSize: 57.sp,
+        fontWeight: FontWeight.w700,
+        height: 1.12,
+      );
+
+  static TextStyle get _displayMedium => GoogleFonts.almarai(
+        fontSize: 45.sp,
+        fontWeight: FontWeight.w500,
+        height: 1.16,
+      );
+
+  static TextStyle get _displaySmall => GoogleFonts.almarai(
+        fontSize: 36.sp,
+        fontWeight: FontWeight.w500,
+        height: 1.22,
+      );
+
+  // Headline styles
+  static TextStyle get _headlineLarge => GoogleFonts.almarai(
+        fontSize: 32.sp,
+        fontWeight: FontWeight.w600,
+        height: 1.25,
+      );
+
+  static TextStyle get _headlineMedium => GoogleFonts.almarai(
+        fontSize: 28.sp,
+        fontWeight: FontWeight.w600,
+        height: 1.29,
+      );
+
+  static TextStyle get _headlineSmall => GoogleFonts.almarai(
+        fontSize: 24.sp,
+        fontWeight: FontWeight.w600,
+        height: 1.33,
+      );
+
+  // Title styles
+  static TextStyle get _titleLarge => GoogleFonts.almarai(
+        fontSize: 22.sp,
+        fontWeight: FontWeight.w700,
+        height: 1.27,
+      );
+
+  static TextStyle get _titleMedium => GoogleFonts.almarai(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w600,
+        height: 1.5,
+      );
+
+  static TextStyle get _titleSmall => GoogleFonts.almarai(
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w600,
+        height: 1.43,
+      );
+
+  // Body styles
+  static TextStyle get _bodyLarge => GoogleFonts.almarai(
+        fontSize: 16.sp,
+        height: 1.5,
+      );
+
+  static TextStyle get _bodyMedium => GoogleFonts.almarai(
+        fontSize: 14.sp,
+        height: 1.43,
+      );
+
+  static TextStyle get _bodySmall => GoogleFonts.almarai(
+        fontSize: 12.sp,
+        height: 1.33,
+      );
+
+  // Label styles
+  static TextStyle get _labelLarge => GoogleFonts.almarai(
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w700,
+        height: 1.43,
+      );
+
+  static TextStyle get _labelMedium => GoogleFonts.almarai(
+        fontSize: 12.sp,
+        height: 1.33,
+      );
+
+  static TextStyle get _labelSmall => GoogleFonts.almarai(
+        fontSize: 11.sp,
+        height: 1.45,
+      );
+}
+
+/// Extension methods for [TextStyle] to make it easier to modify styles
+extension TextStyleExtension on TextStyle {
+  /// Returns a copy of this [TextStyle] with the given color
+  TextStyle withColor(Color color) => copyWith(color: color);
+
+  /// Returns a copy of this [TextStyle] with the given font weight
+  TextStyle withWeight(FontWeight weight) => copyWith(fontWeight: weight);
+
+  /// Returns a copy of this [TextStyle] with the given font size
+  TextStyle withSize(double size) => copyWith(fontSize: size);
+
+  /// Returns a copy of this [TextStyle] with the given height
+  TextStyle withHeight(double height) => copyWith(height: height);
+
+  /// Returns a copy of this [TextStyle] with the given letter spacing
+  TextStyle withLetterSpacing(double spacing) =>
+      copyWith(letterSpacing: spacing);
+}
+
+/// Extension methods for [BuildContext] to easily access text styles
+extension TextThemeExtension on BuildContext {
+  /// Returns the text theme from the current theme
+  TextTheme get textTheme => Theme.of(this).textTheme;
+
+  /// Creates a text style with the given parameters
+  TextStyle createTextStyle({
+    double? fontSize,
+    FontWeight? fontWeight,
+    Color? color,
+    double? height,
+    double? letterSpacing,
+  }) {
+    return GoogleFonts.almarai(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      height: height,
+      letterSpacing: letterSpacing,
+    );
+  }
 }
