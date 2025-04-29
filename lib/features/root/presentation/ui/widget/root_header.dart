@@ -20,9 +20,10 @@ class RootHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: REdgeInsets.symmetric(
-        horizontal: AppConstants.screensPadding,
-        vertical: AppConstants.headerPadding,
+      padding: REdgeInsets.only(
+        left: AppConstants.screensPadding / 2,
+        right: AppConstants.screensPadding / 2,
+        top: AppConstants.headerPadding,
       ),
       decoration: BoxDecoration(
         color: context.backgroundColor,
