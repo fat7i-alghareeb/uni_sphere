@@ -6,9 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTextTheme {
   AppTextTheme._();
 
-  /// Base font family for the app
-  static const String _fontFamily = 'Almarai';
-
   /// Base text theme with custom font family and sizes
   static TextTheme get textTheme => TextTheme(
         // Display styles - Large text, typically used for hero sections
