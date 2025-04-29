@@ -24,7 +24,7 @@ class CustomShimmerWidget extends StatelessWidget {
         width: width?.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius?.r ?? 0),
-          color: color ?? Colors.grey.shade600.withOpacity(0.7),
+          color: color ?? context.shimmerColor,
         ),
       ),
     );

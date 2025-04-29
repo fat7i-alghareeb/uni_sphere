@@ -116,6 +116,7 @@ class AppThemes {
       secondary: isDark ? AppColors.lightPrimary : AppColors.darkPrimary,
       tertiary: isDark ? Colors.white : const Color(0xff4B465C),
       onPrimary: isDark ? const Color(0xff25293c) : Colors.white,
+      onTertiary: isDark ? AppColors.darkShimmerColor : AppColors.lightShimmerColor,
     );
   }
 }

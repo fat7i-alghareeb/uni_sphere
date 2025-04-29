@@ -1,11 +1,7 @@
 // 🌎 Project imports:
 import 'dart:developer';
-
-import 'package:beamer/beamer.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../router/router_config.dart';
-
 import '../../../../../shared/imports/imports.dart';
 import '../../../../announcements/presentation/ui/screens/announcement_screen.dart';
 import '../../../../home/presentation/ui/screens/home_screen.dart';
@@ -22,21 +18,18 @@ class RootScreen extends StatefulWidget {
   static const String pagePath = '/root';
 
   static BeamerBuilder pageBuilder = (context, state, data) {
-    String id = DateTime.now().millisecondsSinceEpoch.toString();
-
-    return BeamPage(
-      key: ValueKey('lesson_words $id'),
-      child: const RootScreen(),
-      type: BeamPageType.fadeTransition,
-    );
+    return const RootScreen();
   };
 
   @override
   State<RootScreen> createState() => _RootScreenState();
 }
 
-class _RootScreenState extends State<RootScreen> {
+class _RootScreenState extends State<RootScreen>
+    with AutomaticKeepAliveClientMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -46,6 +39,7 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final navProvider = Provider.of<NavBarProvider>(context);
 
     return Scaffold(

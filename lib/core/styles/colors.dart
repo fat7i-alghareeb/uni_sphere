@@ -29,7 +29,8 @@ class AppColors {
   static const Color lightBackground = Color(0xFFF6F6FD);
   static const Color darkBackground = Color(0xFF26242A);
   static const Color sugar = Color(0xFFF8F7F7);
-
+  static const Color lightShimmerColor = Color.fromARGB(255, 152, 152, 152);
+  static const Color darkShimmerColor = Color.fromARGB(255, 111, 111, 111);
   // Text Colors
   static const Color textPrimary = Color(0xFF4B465C);
   static const Color textSecondary = Color(0xFF8B8B8B);
