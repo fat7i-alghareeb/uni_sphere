@@ -38,90 +38,75 @@ class AppTextTheme {
   static TextStyle get _displayLarge => GoogleFonts.almarai(
         fontSize: 57.sp,
         fontWeight: FontWeight.w700,
-        height: 1.12,
       );
 
   static TextStyle get _displayMedium => GoogleFonts.almarai(
         fontSize: 45.sp,
         fontWeight: FontWeight.w500,
-        height: 1.16,
       );
 
   static TextStyle get _displaySmall => GoogleFonts.almarai(
         fontSize: 36.sp,
         fontWeight: FontWeight.w500,
-        height: 1.22,
       );
 
   // Headline styles
   static TextStyle get _headlineLarge => GoogleFonts.almarai(
         fontSize: 32.sp,
         fontWeight: FontWeight.w600,
-        height: 1.25,
       );
 
   static TextStyle get _headlineMedium => GoogleFonts.almarai(
         fontSize: 28.sp,
         fontWeight: FontWeight.w600,
-        height: 1.29,
       );
 
   static TextStyle get _headlineSmall => GoogleFonts.almarai(
         fontSize: 24.sp,
         fontWeight: FontWeight.w600,
-        height: 1.33,
       );
 
   // Title styles
   static TextStyle get _titleLarge => GoogleFonts.almarai(
         fontSize: 22.sp,
         fontWeight: FontWeight.w700,
-        height: 1.27,
       );
 
   static TextStyle get _titleMedium => GoogleFonts.almarai(
         fontSize: 16.sp,
         fontWeight: FontWeight.w600,
-        height: 1.5,
       );
 
   static TextStyle get _titleSmall => GoogleFonts.almarai(
         fontSize: 14.sp,
         fontWeight: FontWeight.w600,
-        height: 1.43,
       );
 
   // Body styles
   static TextStyle get _bodyLarge => GoogleFonts.almarai(
         fontSize: 16.sp,
-        height: 1.5,
       );
 
   static TextStyle get _bodyMedium => GoogleFonts.almarai(
         fontSize: 14.sp,
-        height: 1.43,
       );
 
   static TextStyle get _bodySmall => GoogleFonts.almarai(
-        fontSize: 12.sp,
-        height: 1.33,
+        fontSize: 13.sp,
       );
 
   // Label styles
   static TextStyle get _labelLarge => GoogleFonts.almarai(
         fontSize: 14.sp,
         fontWeight: FontWeight.w700,
-        height: 1.43,
       );
 
   static TextStyle get _labelMedium => GoogleFonts.almarai(
         fontSize: 12.sp,
-        height: 1.33,
       );
 
   static TextStyle get _labelSmall => GoogleFonts.almarai(
         fontSize: 11.sp,
-        height: 1.45,
       );
 }
 

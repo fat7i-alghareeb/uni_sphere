@@ -1,1 +1,6 @@
-{}
+{
+    "numberOfAttendanceHours": "Attendance hours",
+    "numberOfAttendanceLectures": "Attendance lectures",
+    "numberOfDaysToTheFinals": "Days to the finals",
+    "numberOfDownloadedMaterials": "Downloaded materials"
+}

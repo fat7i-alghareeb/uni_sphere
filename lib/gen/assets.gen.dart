@@ -15,6 +15,15 @@ class $AssetsIconsGen {
   /// File path: assets/icons/announcement.svg
   String get announcement => 'assets/icons/announcement.svg';
 
+  /// File path: assets/icons/callender.svg
+  String get callender => 'assets/icons/callender.svg';
+
+  /// File path: assets/icons/clock.svg
+  String get clock => 'assets/icons/clock.svg';
+
+  /// File path: assets/icons/downloadedFile.svg
+  String get downloadedFile => 'assets/icons/downloadedFile.svg';
+
   /// File path: assets/icons/drawer.svg
   String get drawer => 'assets/icons/drawer.svg';
 
@@ -31,8 +40,17 @@ class $AssetsIconsGen {
   String get timeTable => 'assets/icons/timeTable.svg';
 
   /// List of all assets
-  List<String> get values =>
-      [announcement, drawer, home, notification, subjects, timeTable];
+  List<String> get values => [
+        announcement,
+        callender,
+        clock,
+        downloadedFile,
+        drawer,
+        home,
+        notification,
+        subjects,
+        timeTable
+      ];
 }
 
 class $AssetsImagesGen {
@@ -44,6 +62,20 @@ class $AssetsImagesGen {
   /// File path: assets/images/avatar-girl.svg
   String get avatarGirl => 'assets/images/avatar-girl.svg';
 
+  /// File path: assets/images/pattern1.png
+  AssetGenImage get pattern1 =>
+      const AssetGenImage('assets/images/pattern1.png');
+
+  /// File path: assets/images/pattern2.png
+  AssetGenImage get pattern2 =>
+      const AssetGenImage('assets/images/pattern2.png');
+
+  /// File path: assets/images/svgPattern1.svg
+  String get svgPattern1 => 'assets/images/svgPattern1.svg';
+
+  /// File path: assets/images/svgPattern2.svg
+  String get svgPattern2 => 'assets/images/svgPattern2.svg';
+
   /// File path: assets/images/test.png
   AssetGenImage get test => const AssetGenImage('assets/images/test.png');
 
@@ -51,7 +83,16 @@ class $AssetsImagesGen {
   AssetGenImage get test2 => const AssetGenImage('assets/images/test2.png');
 
   /// List of all assets
-  List<dynamic> get values => [avatarBoy, avatarGirl, test, test2];
+  List<dynamic> get values => [
+        avatarBoy,
+        avatarGirl,
+        pattern1,
+        pattern2,
+        svgPattern1,
+        svgPattern2,
+        test,
+        test2
+      ];
 }
 
 class $AssetsL10nGen {

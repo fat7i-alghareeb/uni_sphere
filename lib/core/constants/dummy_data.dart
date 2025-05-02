@@ -34,6 +34,7 @@ final StatisticsEntity mockedStatistics = StatisticsEntity(
   numberOfAttendanceHours: 142.5,
   numberOfAttendanceLectures: 57,
   numberOfDaysToTheFinals: 23,
+  numberOfDownloadedMaterials: 13,
 );
 
 // Mocked Materials Data

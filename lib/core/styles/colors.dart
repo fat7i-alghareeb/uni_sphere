@@ -134,4 +134,13 @@ class AppColors {
       color: Color(0x334B465C),
     ),
   ];
+  static List<BoxShadow> coloredShadow(Color color) {
+    return [
+      BoxShadow(
+        offset: const Offset(0, 2),
+        blurRadius: 3,
+        color: color,
+      )
+    ];
+  }
 }

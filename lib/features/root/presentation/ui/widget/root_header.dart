@@ -1,6 +1,8 @@
 // 🐦 Flutter imports:
 
 // 🌎 Project imports:
+import 'package:test/core/styles/app_text_theme.dart';
+
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/extensions/context_extension.dart';
 import '../../../../../shared/utils/helper/get_colored_svg_picture.dart';
@@ -21,12 +23,9 @@ class RootHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: REdgeInsets.only(
-        left: AppConstants.screensPadding / 2,
-        right: AppConstants.screensPadding / 2,
+        left: AppConstants.horizontalScreensPadding / 2,
+        right: AppConstants.horizontalScreensPadding / 2,
         top: AppConstants.headerPadding,
-      ),
-      decoration: BoxDecoration(
-        color: context.backgroundColor,
       ),
       child: Row(
         children: [

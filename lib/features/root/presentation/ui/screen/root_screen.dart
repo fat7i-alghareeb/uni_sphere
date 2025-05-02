@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:provider/provider.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/widgets/custom_scaffold_body.dart';
 import '../../../../announcements/presentation/ui/screens/announcement_screen.dart';
 import '../../../../home/presentation/ui/screens/home_screen.dart';
 import '../../../../subjects/presentation/ui/screens/subjects_screen.dart';
@@ -74,34 +75,36 @@ class _RootScreenState extends State<RootScreen>
                 navProvider.changeSelected(0);
               }
             },
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Column(
-                  children: [
-                    RootHeader(scaffoldKey: _scaffoldKey),
-                    Expanded(
-                      child: PageView(
-                        controller:
-                            context.read<NavBarProvider>().pageController,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: const [
-                          HomeScreen(),
-                          SubjectsScreen(),
-                          AnnouncementScreen(),
-                          TimetableScreen(),
-                        ],
+            child: CustomScaffoldBody(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Column(
+                    children: [
+                      RootHeader(scaffoldKey: _scaffoldKey),
+                      Expanded(
+                        child: PageView(
+                          controller:
+                              context.read<NavBarProvider>().pageController,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: const [
+                            HomeScreen(),
+                            SubjectsScreen(),
+                            AnnouncementScreen(),
+                            TimetableScreen(),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Positioned(
-                  bottom: 25,
-                  left: 0,
-                  right: 0,
-                  child: RootNavbar(),
-                ),
-              ],
+                    ],
+                  ),
+                  Positioned(
+                    bottom: 25,
+                    left: 0,
+                    right: 0,
+                    child: RootNavbar(),
+                  ),
+                ],
+              ),
             ),
           );
         },

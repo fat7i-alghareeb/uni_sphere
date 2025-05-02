@@ -35,7 +35,7 @@ extension Context on BuildContext {
   double get screenHeight => _getHeight();
 
   /// Current text theme
-  TextTheme get textTheme => _getStyle();
+  // TextTheme get textTheme => _getStyle();
 
   /// Whether the current locale is English
   bool get isEnglish => _isEnglish();

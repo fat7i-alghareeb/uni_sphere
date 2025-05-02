@@ -1,1 +1,7 @@
-{}
+{
+    "numberOfAttendanceHours": "ساعات الحضور",
+    "numberOfAttendanceLectures": "محاضرات قمت بحضورها",
+    "numberOfDaysToTheFinals": "أيام حتى الأمتحان النهائي",
+    "numberOfDownloadedMaterials": "ملفات محملة"
+
+}

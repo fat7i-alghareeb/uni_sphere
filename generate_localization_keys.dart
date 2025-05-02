@@ -5,7 +5,7 @@ import 'dart:io';
 
 void main() {
   const jsonFilePath = 'assets/l10n/ar.json'; // Change if needed
-  const serviceFilePath = 'lib/common/helper/localization_service.dart';
+  const serviceFilePath = 'lib/shared/helper/localization_service.dart';
   const keysFilePath = 'lib/common/constant/app_strings.dart';
 
   final jsonFile = File(jsonFilePath);

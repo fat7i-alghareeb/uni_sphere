@@ -29,9 +29,7 @@ class _HomeScreenState extends State<HomeScreen>
     super.build(context);
     return BlocProvider.value(
       value: getIt<HomeBloc>(),
-      child: const Scaffold(
-        body: HomeBody(),
-      ),
+      child: const HomeBody(),
     );
   }
 }

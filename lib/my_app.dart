@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                     localizationsDelegates: context.localizationDelegates,
                     supportedLocales: context.supportedLocales,
                     locale: context.locale,
-                    theme: themeProvider.isDarkMode || true
+                    theme: (themeProvider.isDarkMode || true)
                         ? AppThemes.darkThemeData()
                         : AppThemes.lightThemeData(),
                     routeInformationParser: BeamerParser(),

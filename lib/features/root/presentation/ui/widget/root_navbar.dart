@@ -38,7 +38,7 @@ class RootNavbar extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
             child: Container(
               padding: REdgeInsets.symmetric(horizontal: 5, vertical: 4),
               decoration: BoxDecoration(
