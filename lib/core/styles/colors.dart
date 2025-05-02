@@ -1,7 +1,8 @@
 // 🐦 Flutter imports:
-import '../../shared/extensions/context_extension.dart';
+import 'package:flutter/material.dart';
+import 'package:test/shared/extensions/context_extension.dart';
+
 import '../../shared/extensions/string_extension.dart';
-import '../../shared/imports/imports.dart';
 
 /// A comprehensive color system for the application.
 /// Follows a systematic approach to color organization and naming.
@@ -14,7 +15,7 @@ class AppColors {
   static const Color black = Colors.black;
 
   // Primary Colors
-  static const Color lightPrimary = Color(0xff4A487B);
+  static const Color lightPrimary = Color(0xFF4A487B);
   static const Color darkPrimary = Color(0xff4A487B);
   static const Color onPrimaryLight = Color(0xFF25293C);
   static const Color onPrimaryDark = Color(0xFFF6F6FD);
