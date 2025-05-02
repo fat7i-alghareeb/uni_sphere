@@ -28,7 +28,7 @@ class AppColors {
 
   // Background Colors
   static const Color lightBackground = Color(0xFFF6F6FD);
-  static const Color darkBackground = Color(0xFF26242A);
+  static const Color darkBackground = Color.fromARGB(255, 31, 30, 33);
   static const Color sugar = Color(0xFFF8F7F7);
   static const Color lightShimmerColor = Color.fromARGB(255, 152, 152, 152);
   static const Color darkShimmerColor = Color.fromARGB(255, 111, 111, 111);
@@ -137,8 +137,9 @@ class AppColors {
   static List<BoxShadow> coloredShadow(Color color) {
     return [
       BoxShadow(
-        offset: const Offset(0, 2),
-        blurRadius: 3,
+        offset: const Offset(0, 4),
+        blurRadius: 16,
+        spreadRadius: 0,
         color: color,
       )
     ];

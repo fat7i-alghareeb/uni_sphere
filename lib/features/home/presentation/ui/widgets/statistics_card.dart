@@ -1,4 +1,5 @@
 import 'package:test/core/result_builder/result.dart';
+import 'package:test/core/styles/colors.dart';
 
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../shared/imports/imports.dart';
@@ -103,6 +104,7 @@ class _StatisticsCardContent extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
+        boxShadow: AppColors.coloredShadow(color.withOpacity(0.25)),
       ),
       child: Stack(
         clipBehavior: Clip.hardEdge,

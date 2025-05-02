@@ -47,7 +47,7 @@ class LocalizationService {
   final keysBuffer = StringBuffer();
   keysBuffer.writeln('''
 import 'package:get_it/get_it.dart';
-import '../helper/localization_service.dart';
+import '../../shared/helper/localization_service.dart';
 // dart run generate_localization_keys.dart  
 // AUTO-GENERATED FILE, DO NOT EDIT
 class AppStrings {

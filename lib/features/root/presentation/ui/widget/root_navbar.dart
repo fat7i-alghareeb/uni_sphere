@@ -36,13 +36,13 @@ class RootNavbar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ClipRRect(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30.r),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
             child: Container(
               padding: REdgeInsets.symmetric(horizontal: 5, vertical: 4),
               decoration: BoxDecoration(
-                color: context.onBackgroundColor.withOpacity(0.06),
+                color: context.onBackgroundColor.withOpacity(0.15),
                 borderRadius: BorderRadius.circular(30.r),
               ),
               child: Row(
@@ -74,7 +74,7 @@ class RootNavbar extends StatelessWidget {
         padding: REdgeInsets.symmetric(horizontal: 1.2),
         child: ClipOval(
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               width: 50.h,
@@ -82,7 +82,7 @@ class RootNavbar extends StatelessWidget {
               padding: REdgeInsets.all(13),
               decoration: BoxDecoration(
                 color: context.onBackgroundColor
-                    .withOpacity(isSelected ? 1 : 0.08),
+                    .withOpacity(isSelected ? 1 : 0.15),
                 shape: BoxShape.circle,
               ),
               child: getColoredSvgPicture(

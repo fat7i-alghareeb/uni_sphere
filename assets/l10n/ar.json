@@ -2,6 +2,11 @@
     "numberOfAttendanceHours": "ساعات الحضور",
     "numberOfAttendanceLectures": "محاضرات قمت بحضورها",
     "numberOfDaysToTheFinals": "أيام حتى الأمتحان النهائي",
-    "numberOfDownloadedMaterials": "ملفات محملة"
+    "numberOfDownloadedMaterials": "ملفات محملة",
+    "days": "أيام",
+    "hours": "ساعات",
+    "minutes": "دقائق",
+    "seconds": "ثواني",
+    "theFinalsStartAfter": "الأمتحان النهائي يبدأ بعد"
 
 }

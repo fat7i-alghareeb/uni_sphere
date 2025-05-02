@@ -23,7 +23,7 @@ class AppThemes {
       textTheme: AppTextTheme.textTheme,
       fontFamily: GoogleFonts.almarai().fontFamily,
       brightness: Brightness.light,
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: AppColors.lightBackground,
       cardColor: colorScheme.primary.withOpacity(0.08),
       dialogBackgroundColor: Colors.white,
       indicatorColor: colorScheme.primary,
@@ -90,7 +90,7 @@ class AppThemes {
       textTheme: AppTextTheme.textTheme,
       fontFamily: GoogleFonts.almarai().fontFamily,
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: const Color(0xFF26242A),
+      scaffoldBackgroundColor: AppColors.darkBackground,
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: colorScheme.primary,
       ),
@@ -109,14 +109,15 @@ class AppThemes {
   }) {
     return ColorScheme.fromSeed(
       brightness: isDark ? Brightness.dark : Brightness.light,
-      surface: isDark ? const Color(0xFF26242A) : Colors.white,
-      onSurface: isDark ? Colors.white : AppColors.black,
+      surface: isDark ? AppColors.darkBackground: AppColors.lightBackground,
+      onSurface: isDark ? AppColors.lightBackground : AppColors.darkBackground ,
       seedColor: primaryColor,
       primary: primaryColor,
       secondary: isDark ? AppColors.lightPrimary : AppColors.darkPrimary,
-      tertiary: isDark ? Colors.white : const Color(0xff4B465C),
+      tertiary: isDark ? const Color(0xff4B465C) : const Color(0xff4B465C),
       onPrimary: isDark ? const Color(0xff25293c) : Colors.white,
-      onTertiary: isDark ? AppColors.darkShimmerColor : AppColors.lightShimmerColor,
+      onTertiary:
+          isDark ? AppColors.darkShimmerColor : AppColors.lightShimmerColor,
     );
   }
 }

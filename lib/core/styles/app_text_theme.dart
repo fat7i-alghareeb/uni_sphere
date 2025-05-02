@@ -41,7 +41,7 @@ class AppTextTheme {
       );
 
   static TextStyle get _displayMedium => GoogleFonts.almarai(
-        fontSize: 45.sp,
+        fontSize: 48.sp,
         fontWeight: FontWeight.w500,
       );
 

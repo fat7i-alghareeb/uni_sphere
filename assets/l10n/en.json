@@ -2,5 +2,10 @@
     "numberOfAttendanceHours": "Attendance hours",
     "numberOfAttendanceLectures": "Attendance lectures",
     "numberOfDaysToTheFinals": "Days to the finals",
-    "numberOfDownloadedMaterials": "Downloaded materials"
+    "numberOfDownloadedMaterials": "Downloaded materials",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "theFinalsStartAfter": "The finals start after"
 }

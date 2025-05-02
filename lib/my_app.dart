@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:test/core/styles/colors.dart';
 import 'core/styles/themes.dart';
 
 import 'core/injection/injection.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Color(0xFF26242A),
+        systemNavigationBarColor: AppColors.darkBackground,
       ),
       child: ScreenUtilInit(
         designSize: designSize,
