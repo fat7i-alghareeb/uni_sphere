@@ -8,3 +8,4 @@ export 'package:flutter_bloc/flutter_bloc.dart'
 
 export '../../core/constants/app_constants.dart';
 export 'package:test/shared/extensions/context_extension.dart';
+export 'package:test/core/styles/app_text_theme.dart';

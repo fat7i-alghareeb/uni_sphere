@@ -25,6 +25,7 @@ class AdsWidget extends StatelessWidget {
           result: state.result,
           success: (data) => _buildAdsSlider(context, data.ads),
           loading: () => const AdsLoadingSkeleton(),
+          init: () => const AdsLoadingSkeleton(),
         );
       },
     );
