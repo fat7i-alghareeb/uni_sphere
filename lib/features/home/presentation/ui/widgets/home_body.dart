@@ -1,6 +1,6 @@
 import '../../../../../shared/imports/imports.dart';
 import 'ads_widget.dart';
-import 'lecture_remaining_time_widget.dart';
+import 'days_to_the_finals_widget.dart';
 import 'materials_widget.dart';
 import 'statistics_widget.dart';
 
@@ -14,7 +14,7 @@ class HomeBody extends StatelessWidget {
           35.verticalSpace,
           const AdsWidget(),
           28.verticalSpace,
-          const LectureRemainingTimeWidget(),
+          const DaysToTheFinalsWidget(),
           28.verticalSpace,
           const StatisticsWidget(),
           28.verticalSpace,

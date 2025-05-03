@@ -4,7 +4,7 @@ class HomeState {
   Result<HomeEntity> result;
 
   HomeState({
-    this.result = const Result.init(),
+    this.result = const Result.loading(),
   });
 
   HomeState copyWith({

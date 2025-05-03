@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "callender"
-    ]
+    ],
+    "editor.tabCompletion": "on"
 }

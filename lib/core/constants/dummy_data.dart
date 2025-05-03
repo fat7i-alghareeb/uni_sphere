@@ -2,7 +2,7 @@ import 'dart:math';
 
 import '../../features/home/domain/entities/ads_entity.dart';
 import '../../features/home/domain/entities/home_entity.dart';
-import '../../features/home/domain/entities/lecture_remaining_time.dart';
+import '../../features/home/domain/entities/days_to_the_final.dart';
 import '../../features/home/domain/entities/statistics_entity.dart';
 import '../../features/subjects/domain/entities/materials_entity.dart';
 
@@ -70,9 +70,8 @@ final List<MaterialEntity> mockedMaterials = [
 ];
 
 // Mocked Lecture Remaining Time
-final LectureRemainingTime mockedLectureTime = LectureRemainingTime(
+final DaysToTheFinals mockedLectureTime = DaysToTheFinals(
   remainingTime: _generateRandomFutureDateTime().toIso8601String(),
-  lectureName: "Operating Systems - Room 304",
 );
 
 DateTime _generateRandomFutureDateTime() {
@@ -83,9 +82,11 @@ DateTime _generateRandomFutureDateTime() {
   final minutes = random.nextInt(60);
   // Generate random seconds between 0 and 59
   final seconds = random.nextInt(60);
-
+  // Generate random days between 0 and 30
+  final days = random.nextInt(30);
   // Get current time and add the random duration
   return DateTime.now().add(Duration(
+    days: days,
     hours: hours,
     minutes: minutes,
     seconds: seconds,
@@ -97,5 +98,5 @@ final HomeEntity mockedHomeData = HomeEntity(
   ads: mockedAds,
   statistics: mockedStatistics,
   materials: mockedMaterials,
-  lectureRemainingTime: mockedLectureTime,
+  daysToTheFinals: mockedLectureTime,
 );

@@ -1,17 +1,17 @@
 import '../../../subjects/domain/entities/materials_entity.dart';
 import 'ads_entity.dart';
-import 'lecture_remaining_time.dart';
+import 'days_to_the_final.dart';
 import 'statistics_entity.dart';
 
 class HomeEntity {
   final List<AdsEntity> ads;
   final StatisticsEntity statistics;
   final List<MaterialEntity> materials;
-  final LectureRemainingTime lectureRemainingTime;
+  final DaysToTheFinals daysToTheFinals;
   HomeEntity({
     required this.ads,
     required this.statistics,
     required this.materials,
-    required this.lectureRemainingTime,
+    required this.daysToTheFinals,
   });
 }
