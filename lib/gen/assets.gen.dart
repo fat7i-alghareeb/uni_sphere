@@ -66,9 +66,21 @@ class $AssetsImagesGen {
   AssetGenImage get pattern1 =>
       const AssetGenImage('assets/images/pattern1.png');
 
+  /// File path: assets/images/pattern1_white.png
+  AssetGenImage get pattern1White =>
+      const AssetGenImage('assets/images/pattern1_white.png');
+
   /// File path: assets/images/pattern2.png
   AssetGenImage get pattern2 =>
       const AssetGenImage('assets/images/pattern2.png');
+
+  /// File path: assets/images/pattern2_white.png
+  AssetGenImage get pattern2White =>
+      const AssetGenImage('assets/images/pattern2_white.png');
+
+  /// File path: assets/images/pattern_new.png
+  AssetGenImage get patternNew =>
+      const AssetGenImage('assets/images/pattern_new.png');
 
   /// File path: assets/images/svgPattern1.svg
   String get svgPattern1 => 'assets/images/svgPattern1.svg';
@@ -87,7 +99,10 @@ class $AssetsImagesGen {
         avatarBoy,
         avatarGirl,
         pattern1,
+        pattern1White,
         pattern2,
+        pattern2White,
+        patternNew,
         svgPattern1,
         svgPattern2,
         test,

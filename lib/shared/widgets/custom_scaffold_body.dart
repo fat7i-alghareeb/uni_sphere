@@ -11,10 +11,10 @@ class CustomScaffoldBody extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.images.pattern2.keyName),
+          image: AssetImage(Assets.images.patternNew.keyName),
           repeat: ImageRepeat.repeat,
           colorFilter: ColorFilter.mode(
-            context.primaryColor.withOpacity(0.3),
+            context.onBackgroundColor.withOpacity(0.05),
             BlendMode.srcIn,
           ),
         ),
