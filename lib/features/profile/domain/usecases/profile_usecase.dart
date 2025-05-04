@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
+
 import '../entities/profile_entity.dart';
 import '../repositories/profile_repository.dart';
 

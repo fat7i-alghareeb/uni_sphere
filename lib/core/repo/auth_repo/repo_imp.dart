@@ -3,7 +3,6 @@ import 'package:dio_refresh_bot/dio_refresh_bot.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../auth_repo/auth_repo.dart';
 
 import '../../../shared/entities/login_param.dart';
 import '../../../shared/entities/user.dart';
@@ -13,6 +12,7 @@ import '../../auth_data_source/local/reactive_token_storage.dart';
 import '../../auth_data_source/remote/auth_remote.dart';
 import '../../injection/injection.dart';
 import '../../models/auth_token_dio.dart';
+import '../auth_repo/auth_repo.dart';
 
 // 🌎 Project imports:
 

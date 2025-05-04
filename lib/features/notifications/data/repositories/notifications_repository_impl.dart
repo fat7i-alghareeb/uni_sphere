@@ -1,9 +1,10 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../../domain/entities/notifications_entity.dart';
-import '../datasources/notifications_remote_data_source.dart';
-import '../../domain/repositories/notifications_repository.dart';
+
 import '../../../../shared/services/exception/error_handler.dart';
+import '../../domain/entities/notifications_entity.dart';
+import '../../domain/repositories/notifications_repository.dart';
+import '../datasources/notifications_remote_data_source.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

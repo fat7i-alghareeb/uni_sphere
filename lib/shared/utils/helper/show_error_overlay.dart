@@ -2,7 +2,7 @@
 
 
 
-import 'package:test/core/styles/app_text_theme.dart';
+import '../../../core/styles/app_text_theme.dart';
 
 import '../../imports/imports.dart';
 import 'colored_print.dart';

@@ -3,7 +3,7 @@
 // 🌎 Project imports:
 
 import 'package:package_info_plus/package_info_plus.dart';
-import "../../../../../shared/extensions/context_extension.dart";
+
 import '../../../../../shared/imports/imports.dart';
 
 class CustomEndDrawer extends StatelessWidget {

@@ -1,7 +1,8 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
-import '../models/saved_items_model.dart';
+
 import '../../../../shared/services/exception/error_handler.dart';
+import '../models/saved_items_model.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

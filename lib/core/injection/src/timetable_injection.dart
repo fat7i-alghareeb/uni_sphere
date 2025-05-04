@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
+
 import '../../../features/timetable/data/datasources/timetable_remote_data_source.dart';
 import '../../../features/timetable/data/repositories/timetable_repository_impl.dart';
 import '../../../features/timetable/domain/repositories/timetable_repository.dart';

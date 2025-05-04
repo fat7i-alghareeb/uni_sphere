@@ -1,7 +1,8 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
-import '../models/announcements_model.dart';
+
 import '../../../../shared/services/exception/error_handler.dart';
+import '../models/announcements_model.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

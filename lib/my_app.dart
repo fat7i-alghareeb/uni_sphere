@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:test/core/styles/colors.dart';
+import 'core/styles/colors.dart';
 import 'core/styles/themes.dart';
 
 import 'core/injection/injection.dart';

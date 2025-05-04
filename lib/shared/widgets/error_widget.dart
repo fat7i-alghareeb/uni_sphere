@@ -1,6 +1,5 @@
 // 📦 Package imports:
 import 'package:lottie/lottie.dart';
-import 'package:test/shared/extensions/context_extension.dart';
 
 // 🌎 Project imports:
 import '../../core/styles/colors.dart';

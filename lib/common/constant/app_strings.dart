@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+
 import '../../shared/helper/localization_service.dart';
 // dart run generate_localization_keys.dart  
 // AUTO-GENERATED FILE, DO NOT EDIT

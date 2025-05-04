@@ -1,9 +1,10 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../../domain/entities/announcement_entity.dart';
-import '../datasources/announcements_remote_data_source.dart';
-import '../../domain/repositories/announcements_repository.dart';
+
 import '../../../../shared/services/exception/error_handler.dart';
+import '../../domain/entities/announcement_entity.dart';
+import '../../domain/repositories/announcements_repository.dart';
+import '../datasources/announcements_remote_data_source.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

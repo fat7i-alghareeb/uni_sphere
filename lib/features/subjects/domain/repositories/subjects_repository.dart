@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
+
 import '../entities/subjects_entity.dart';
 
 //!----------------------------  The Class  -------------------------------------!//

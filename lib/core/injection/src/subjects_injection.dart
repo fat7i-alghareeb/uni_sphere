@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
+
 import '../../../features/subjects/data/datasources/subjects_remote_data_source.dart';
 import '../../../features/subjects/data/repositories/subjects_repository_impl.dart';
 import '../../../features/subjects/domain/repositories/subjects_repository.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test/shared/extensions/context_extension.dart';
+import '../extensions/context_extension.dart';
 
 import '../../gen/assets.gen.dart';
 

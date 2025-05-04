@@ -1,6 +1,6 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/features/home/domain/entities/home_entity.dart';
+import '../../../domain/entities/home_entity.dart';
 import '../../../../../core/result_builder/result.dart';
 import '../../../domain/usecases/home_usecase.dart';
 

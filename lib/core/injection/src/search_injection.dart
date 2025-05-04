@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
+
 import '../../../features/search/data/datasources/search_remote_data_source.dart';
 import '../../../features/search/data/repositories/search_repository_impl.dart';
 import '../../../features/search/domain/repositories/search_repository.dart';

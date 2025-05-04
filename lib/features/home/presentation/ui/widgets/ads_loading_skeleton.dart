@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
+
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../constants/ads_constants.dart';

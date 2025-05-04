@@ -3,10 +3,10 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
+import '../../shared/utils/helper/show_error_overlay.dart';
+import '../../shared/widgets/failed_widget.dart';
 // 🌎 Project imports:
 import '../../shared/widgets/loading_progress.dart';
-import '../../shared/widgets/failed_widget.dart';
-import '../../shared/utils/helper/show_error_overlay.dart';
 import 'result.dart';
 
 class ResultBuilder<T> extends StatelessWidget {

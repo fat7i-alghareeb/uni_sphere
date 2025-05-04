@@ -1,5 +1,5 @@
-import 'package:test/core/result_builder/result.dart';
-import 'package:test/core/styles/colors.dart';
+import '../../../../../core/result_builder/result.dart';
+import '../../../../../core/styles/colors.dart';
 
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../shared/imports/imports.dart';

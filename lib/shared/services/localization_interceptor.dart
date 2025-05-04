@@ -1,7 +1,7 @@
 // 📦 Package imports:
 import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/constants/key_constants.dart';
 import '../../core/injection/injection.dart';
