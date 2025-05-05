@@ -9,5 +9,5 @@ abstract class SubjectsRepo {
   SubjectsRepo();
 
   //* Get All Subjects
-  Future<Either<String, SubjectEntity>> getAllSubjects();
+  Future<Either<String, List<SubjectEntity>>> getAllSubjects();
 }

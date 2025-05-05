@@ -50,7 +50,7 @@ extension ColorSchemeColors on BuildContext {
   Color _secondaryColor() => Theme.of(this).colorScheme.secondary;
 
   /// Returns the tertiary color from the current theme
-  Color _greyColor() => Theme.of(this).colorScheme.tertiary;
+  Color _cardColor() => Theme.of(this).colorScheme.tertiary;
 
   /// Returns the surface color from the current theme
   Color _backgroundColor() => Theme.of(this).colorScheme.surface;
@@ -74,7 +74,7 @@ extension ColorSchemeColors on BuildContext {
   Color get secondaryColor => _secondaryColor();
 
   /// Tertiary color from the current theme
-  Color get greyColor => _greyColor();
+  Color get cardColor => _cardColor();
 
   /// Shimmer color from the current theme
   Color get shimmerColor => _shimmerColor();

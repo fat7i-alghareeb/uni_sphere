@@ -12,7 +12,7 @@ class SubjectsRemote {
   const SubjectsRemote(Dio dio) : _dio = dio;
 
   //* Get All Subjects
-  Future<SubjectsModel> getAllSubjects() {
+  Future<List<SubjectsModel>> getAllSubjects() {
     return throwDioException(
       () async {
         final response = await _dio.get(

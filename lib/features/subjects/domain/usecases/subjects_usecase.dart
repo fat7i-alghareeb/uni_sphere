@@ -1,6 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
 
+import '../../../../core/constants/dummy_data.dart';
 import '../entities/subjects_entity.dart';
 import '../repositories/subjects_repository.dart';
 
@@ -14,6 +15,9 @@ class SubjectsUsecase {
   }) : _repo = repo;
 
   //* Get All Subjects
-  Future<Either<String, SubjectEntity>> getAllSubjects() =>
-      _repo.getAllSubjects();
+  Future<Either<String, List<SubjectEntity>>> getAllSubjects() =>
+      Future.delayed(
+        const Duration(milliseconds: 1250),
+        () => Right(computerEngineeringSubjects),
+      );
 }

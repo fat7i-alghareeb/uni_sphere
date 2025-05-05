@@ -1,8 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../shared/imports/imports.dart';
-import 'app_text_theme.dart';
 import 'colors.dart';
 
 /// A collection of theme configurations for the app.
@@ -109,12 +107,12 @@ class AppThemes {
   }) {
     return ColorScheme.fromSeed(
       brightness: isDark ? Brightness.dark : Brightness.light,
-      surface: isDark ? AppColors.darkBackground: AppColors.lightBackground,
-      onSurface: isDark ? AppColors.lightBackground : AppColors.darkBackground ,
+      surface: isDark ? AppColors.darkBackground : AppColors.lightBackground,
+      onSurface: isDark ? AppColors.lightBackground : AppColors.darkBackground,
       seedColor: primaryColor,
       primary: primaryColor,
       secondary: isDark ? AppColors.lightPrimary : AppColors.darkPrimary,
-      tertiary: isDark ? const Color(0xff4B465C) : const Color(0xff4B465C),
+      tertiary: isDark ? AppColors.darkCardColor : AppColors.lightCardColor,
       onPrimary: isDark ? const Color(0xff25293c) : Colors.white,
       onTertiary:
           isDark ? AppColors.darkShimmerColor : AppColors.lightShimmerColor,

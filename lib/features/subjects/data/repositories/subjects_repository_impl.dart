@@ -16,7 +16,7 @@ class SubjectsRepoImp implements SubjectsRepo {
   }) : _remote = remote;
 
   @override
-  Future<Either<String, SubjectEntity>> getAllSubjects() {
+  Future<Either<String, List<SubjectEntity>>> getAllSubjects() {
     return throwAppException(
       () async {
         return await _remote.getAllSubjects();

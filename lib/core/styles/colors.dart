@@ -1,7 +1,5 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:test/shared/extensions/context_extension.dart';
-
 import '../../shared/extensions/string_extension.dart';
 
 /// A comprehensive color system for the application.
@@ -27,12 +25,15 @@ class AppColors {
   static const Color info = Color(0xFF6A9B72);
 
   // Background Colors
-  static const Color lightBackground = Color(0xFFF6F6FD);
-  static const Color darkBackground = Color.fromARGB(255, 31, 30, 33);
+  static const Color lightBackground = Color(0xFFF0F0F8);
+  static const Color darkBackground = Color(0xFF1F1E21);
   static const Color sugar = Color(0xFFF8F7F7);
   static const Color lightShimmerColor = Color.fromARGB(255, 152, 152, 152);
   static const Color darkShimmerColor = Color.fromARGB(255, 111, 111, 111);
+  static const Color darkCardColor = Color.fromARGB(255, 35, 34, 37);
+  static const Color lightCardColor = Color.fromARGB(255, 247, 247, 252);
   // Text Colors
+
   static const Color textPrimary = Color(0xFF4B465C);
   static const Color textSecondary = Color(0xFF8B8B8B);
 
@@ -91,11 +92,10 @@ class AppColors {
   // Shadows
   static List<BoxShadow> primaryShadow(BuildContext context) => [
         BoxShadow(
-          offset: const Offset(0, 4),
-          blurRadius: 16,
+          offset: const Offset(0, 2),
+          blurRadius: 8,
           spreadRadius: 0,
-          color:
-              "#331105".toColor().withOpacity(context.isDarkMode ? .45 : .15),
+          color: Colors.black.withOpacity(0.17),
         ),
       ];
 

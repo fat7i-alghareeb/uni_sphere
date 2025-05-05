@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'src/auth_injection.dart';
 import 'src/general_injection.dart';
 import 'src/home_injection.dart';
+import 'src/subjects_injection.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -12,4 +13,5 @@ Future<void> initInjection() async {
   await generalInjection();
   await authInjection();
   await homeInjection();
+  await subjectsInjection();
 }

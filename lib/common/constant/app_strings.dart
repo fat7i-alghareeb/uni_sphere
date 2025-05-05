@@ -1,5 +1,4 @@
 import 'package:get_it/get_it.dart';
-
 import '../../shared/helper/localization_service.dart';
 // dart run generate_localization_keys.dart  
 // AUTO-GENERATED FILE, DO NOT EDIT
@@ -15,4 +14,5 @@ class AppStrings {
   static String get minutes => _localization.tr('minutes');
   static String get seconds => _localization.tr('seconds');
   static String get theFinalsStartAfter => _localization.tr('theFinalsStartAfter');
+  static String get yourSubjects => _localization.tr('yourSubjects');
 }
