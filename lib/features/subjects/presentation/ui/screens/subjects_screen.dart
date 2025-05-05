@@ -1,4 +1,5 @@
 import 'package:test/core/styles/colors.dart';
+import 'package:test/shared/widgets/custom_network_image.dart';
 
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
@@ -57,12 +58,13 @@ class SubjectsScreenBody extends StatelessWidget {
             horizontal: AppConstants.horizontalScreensPadding,
           ),
           child: DecoratedContainer(
-            circleSize: 80,
+            circleSize: 100,
             child: Padding(
               padding: REdgeInsets.all(18.0),
               child: Text(
                 AppStrings.yourSubjects,
-                style: context.textTheme.titleLarge,
+                style: context.textTheme.headlineLarge!
+                    .withColor(context.primaryColor),
               ),
             ),
           ),
@@ -71,6 +73,7 @@ class SubjectsScreenBody extends StatelessWidget {
         Divider(
           height: 1.h,
           thickness: 2.h,
+          color: context.primaryColor.withOpacity(0.5),
         ),
         Expanded(
           child: ListView.builder(
@@ -99,18 +102,42 @@ class SubjectItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: REdgeInsets.symmetric(vertical: 10.h),
-      child: Container(
-        height: 100.h,
-        decoration: BoxDecoration(
-          color: context.cardColor,
-          borderRadius: BorderRadius.circular(16.r),
-          boxShadow: AppColors.primaryShadow(context),
-        ),
-        child: const Column(
-          children: [],
-        ),
+    return Container(
+      height: 100.h,
+      margin: REdgeInsets.symmetric(vertical: 6),
+      padding: REdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      decoration: BoxDecoration(
+        color: context.cardColor,
+        borderRadius: BorderRadius.circular(20.r),
+        boxShadow: AppColors.primaryShadow(context),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          AspectRatio(
+            aspectRatio: 1,
+            child: CustomNetworkImage(
+              imageUrl: subject.imageUrl,
+              borderRadius: 20,
+              fit: BoxFit.cover,
+            ),
+          ),
+          10.horizontalSpace,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  subject.title,
+                  style: context.textTheme.titleMedium!
+                      .withColor(context.onBackgroundColor),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

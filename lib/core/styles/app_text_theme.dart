@@ -74,7 +74,7 @@ class AppTextTheme {
 
   static TextStyle get _titleMedium => GoogleFonts.almarai(
         fontSize: 16.sp,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
       );
 
   static TextStyle get _titleSmall => GoogleFonts.almarai(

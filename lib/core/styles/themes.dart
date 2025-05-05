@@ -112,7 +112,9 @@ class AppThemes {
       seedColor: primaryColor,
       primary: primaryColor,
       secondary: isDark ? AppColors.lightPrimary : AppColors.darkPrimary,
-      tertiary: isDark ? AppColors.darkCardColor : AppColors.lightCardColor,
+      secondaryContainer:
+          isDark ? AppColors.darkCardColor : AppColors.lightCardColor,
+      tertiary: isDark ? AppColors.darkGreyColor : AppColors.lightGreyColor,
       onPrimary: isDark ? const Color(0xff25293c) : Colors.white,
       onTertiary:
           isDark ? AppColors.darkShimmerColor : AppColors.lightShimmerColor,

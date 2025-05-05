@@ -100,7 +100,7 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
       return image;
     } else {
       return ClipRRect(
-        borderRadius: BorderRadius.circular(widget.borderRadius!),
+        borderRadius: BorderRadius.circular(widget.borderRadius!.r),
         child: image,
       );
     }
