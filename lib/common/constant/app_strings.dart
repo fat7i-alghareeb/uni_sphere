@@ -15,4 +15,14 @@ class AppStrings {
   static String get seconds => _localization.tr('seconds');
   static String get theFinalsStartAfter => _localization.tr('theFinalsStartAfter');
   static String get yourSubjects => _localization.tr('yourSubjects');
+  static String get theYear => _localization.tr('theYear');
+  static String get lab => _localization.tr('lab');
+  static String get isMultipleChoice => _localization.tr('isMultipleChoice');
+  static String get midTermGrade => _localization.tr('midTermGrade');
+  static String get finalGrade => _localization.tr('finalGrade');
+  static String get canEnroll => _localization.tr('canEnroll');
+  static String get yes => _localization.tr('yes');
+  static String get no => _localization.tr('no');
+  static String get isPassed => _localization.tr('isPassed');
+  static String get theGrade => _localization.tr('theGrade');
 }

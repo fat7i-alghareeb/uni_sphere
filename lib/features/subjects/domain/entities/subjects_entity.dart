@@ -1,15 +1,15 @@
 class SubjectEntity {
   final String id;
-  final String title;
-  final String professorName;
-  final String year;
-  final String semester;
-  final bool isPassed;
-  final bool canEnroll;
-  final int? midTermGrade;
-  final int? finalGrade;
-  final bool isMultipleChoice;
-  final bool doesHaveALab;
+  final String title; //
+  final String professorName; //
+  final int year; // 1
+  final String semester; // 2
+  final bool isPassed; //
+  final bool canEnroll; //
+  final int? midTermGrade;//
+  final int? finalGrade;//
+  final bool isMultipleChoice;// 3
+  final bool doesHaveALab;// 4 
   final String imageUrl;
   SubjectEntity({
     required this.id,
@@ -25,4 +25,8 @@ class SubjectEntity {
     required this.doesHaveALab,
     required this.imageUrl,
   });
+
+  get totalGrade {
+    return (midTermGrade ?? 0) + (finalGrade ?? 0);
+  }
 }

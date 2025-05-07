@@ -6,33 +6,27 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTextTheme {
   AppTextTheme._();
 
-  /// Base text theme with custom font family and sizes
-  static TextTheme get textTheme => TextTheme(
-        // Display styles - Large text, typically used for hero sections
-        displayLarge: _displayLarge,
-        displayMedium: _displayMedium,
-        displaySmall: _displaySmall,
+  static TextTheme get textTheme {
+    final base = GoogleFonts.almaraiTextTheme();
 
-        // Headline styles - Used for major headings
-        headlineLarge: _headlineLarge,
-        headlineMedium: _headlineMedium,
-        headlineSmall: _headlineSmall,
-
-        // Title styles - Used for section headings
-        titleLarge: _titleLarge,
-        titleMedium: _titleMedium,
-        titleSmall: _titleSmall,
-
-        // Body styles - Used for regular text content
-        bodyLarge: _bodyLarge,
-        bodyMedium: _bodyMedium,
-        bodySmall: _bodySmall,
-
-        // Label styles - Used for labels, buttons, and small text
-        labelLarge: _labelLarge,
-        labelMedium: _labelMedium,
-        labelSmall: _labelSmall,
-      );
+    return base.copyWith(
+      displayLarge: _displayLarge,
+      displayMedium: _displayMedium,
+      displaySmall: _displaySmall,
+      headlineLarge: _headlineLarge,
+      headlineMedium: _headlineMedium,
+      headlineSmall: _headlineSmall,
+      titleLarge: _titleLarge,
+      titleMedium: _titleMedium,
+      titleSmall: _titleSmall,
+      bodyLarge: _bodyLarge,
+      bodyMedium: _bodyMedium,
+      bodySmall: _bodySmall,
+      labelLarge: _labelLarge,
+      labelMedium: _labelMedium,
+      labelSmall: _labelSmall,
+    );
+  }
 
   // Display styles
   static TextStyle get _displayLarge => GoogleFonts.almarai(

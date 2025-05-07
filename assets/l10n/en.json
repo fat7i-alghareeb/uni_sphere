@@ -8,5 +8,15 @@
     "minutes": "Minutes",
     "seconds": "Seconds",
     "theFinalsStartAfter": "The finals start after",
-    "yourSubjects": "Your Subjects"
+    "yourSubjects": "Your Subjects",
+    "theYear": "Year:",
+    "lab": "Lab:",
+    "isMultipleChoice":"MultipleChoice:",
+    "midTermGrade": "MidTerm Grade:",
+    "finalGrade":"Final Grade:",
+    "canEnroll": "Can Enroll:",
+    "yes":"Yes",
+    "no": "No",
+    "isPassed": "Passed:",
+    "theGrade": "The Grade:"
 }

@@ -8,6 +8,15 @@
     "minutes": "دقائق",
     "seconds": "ثواني",
     "theFinalsStartAfter": "الأمتحان النهائي يبدأ بعد",
-    "yourSubjects": "موادك"
-
+    "yourSubjects": "موادك",
+    "theYear": "السنة:",
+    "lab": "المخبر:",
+    "isMultipleChoice":"مؤتمتة:",
+    "midTermGrade": "علامة العملي:",
+    "finalGrade":"علامة النظري:",
+    "canEnroll": "يمكنك التقديم:",
+    "yes":"نعم",
+    "no": "لا",
+    "isPassed": "ناجح:",
+    "theGrade": "العلامة:"
 }
