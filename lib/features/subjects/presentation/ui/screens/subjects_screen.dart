@@ -9,6 +9,7 @@ import '../../../../home/presentation/ui/widgets/decorated_container.dart';
 import '../../../domain/entities/subjects_entity.dart';
 import '../../state/bloc/subjects_bloc.dart';
 
+/// A screen that displays a list of subjects.
 class SubjectsScreen extends StatefulWidget {
   const SubjectsScreen({super.key});
 
@@ -17,16 +18,19 @@ class SubjectsScreen extends StatefulWidget {
 }
 
 class _SubjectsScreenState extends State<SubjectsScreen> {
+  late final SubjectsBloc _subjectsBloc;
+
   @override
   void initState() {
     super.initState();
-    getIt<SubjectsBloc>().add(GetSubjectsEvent());
+    _subjectsBloc = getIt<SubjectsBloc>();
+    _subjectsBloc.add(GetSubjectsEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: getIt<SubjectsBloc>(),
+      value: _subjectsBloc,
       child: BlocBuilder<SubjectsBloc, SubjectsState>(
         builder: (context, state) {
           return ResultBuilder<List<SubjectEntity>>(
@@ -39,6 +43,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
   }
 }
 
+/// The body of the subjects screen that displays the list of subjects.
 class SubjectsScreenBody extends StatelessWidget {
   const SubjectsScreenBody({
     super.key,
@@ -51,6 +56,18 @@ class SubjectsScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _buildHeader(context),
+        _buildDivider(context),
+        Expanded(
+          child: _buildSubjectsList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHeader(BuildContext context) {
+    return Column(
       children: [
         20.verticalSpace,
         Padding(
@@ -69,138 +86,175 @@ class SubjectsScreenBody extends StatelessWidget {
             ),
           ),
         ),
-        20.verticalSpace,
-        Padding(
-          padding: REdgeInsets.symmetric(
-            horizontal: AppConstants.horizontalScreensPadding,
-          ),
-          child: Divider(
-            height: 1.h,
-            thickness: 1.h,
-            color: context.primaryColor.withOpacity(0.5),
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            padding: REdgeInsets.only(
-              top: 10.h,
-              right: AppConstants.horizontalScreensPadding,
-              left: AppConstants.horizontalScreensPadding,
-            ),
-            itemBuilder: (context, index) =>
-                SubjectItemCard(subject: subjects[index]),
-            itemCount: subjects.length,
-          ),
-        ),
       ],
+    );
+  }
+
+  Widget _buildDivider(BuildContext context) {
+    return Padding(
+      padding: REdgeInsets.symmetric(
+        horizontal: AppConstants.horizontalScreensPadding,
+      ),
+      child: Divider(
+        height: 1.h,
+        thickness: 1.h,
+        color: context.primaryColor.withOpacity(0.5),
+      ),
+    );
+  }
+
+  Widget _buildSubjectsList() {
+    return ListView.builder(
+      padding: REdgeInsets.only(
+        top: 10.h,
+        right: AppConstants.horizontalScreensPadding,
+        left: AppConstants.horizontalScreensPadding,
+      ),
+      itemBuilder: (context, index) =>
+          SubjectItemCard(subject: subjects[index]),
+      itemCount: subjects.length,
     );
   }
 }
 
+/// A card widget that displays information about a subject.
 class SubjectItemCard extends StatelessWidget {
   const SubjectItemCard({
     super.key,
     required this.subject,
-    this.height = 140,
     this.haveFullInfo = false,
   });
+
   final bool haveFullInfo;
   final SubjectEntity subject;
-  final double height;
+
+  static const double _containerHorizontalPadding = 12;
+  static const double _containerVerticalPadding = 14;
+  static const double _borderRadius = 22;
+  static const double _spacing = 10;
+  static const double _imageSize = 112;
+
   @override
   Widget build(BuildContext context) {
-    final containerHorizontalPadding = 12.w;
-    final containerVerticalPadding = 14.h;
     return Container(
       clipBehavior: Clip.hardEdge,
-      height: height.h,
       margin: REdgeInsets.symmetric(vertical: 6),
       padding: REdgeInsets.symmetric(
-        horizontal: containerHorizontalPadding,
-        vertical: containerVerticalPadding,
+        horizontal: _containerHorizontalPadding.w,
+        vertical: _containerVerticalPadding.h,
       ),
       decoration: BoxDecoration(
         color: context.cardColor,
-        borderRadius: BorderRadius.circular(22.r),
+        borderRadius: BorderRadius.circular(_borderRadius.r),
         boxShadow: AppColors.primaryShadow(context),
       ),
       child: Row(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AspectRatio(
-            aspectRatio: 1,
-            child: CustomNetworkImage(
-              imageUrl: subject.imageUrl,
-              borderRadius: 22,
-              fit: BoxFit.cover,
-            ),
+          SizedBox(
+            width: _imageSize.w,
+            height: _imageSize.h,
+            child: _buildSubjectImage(),
           ),
-          10.horizontalSpace,
+          _spacing.horizontalSpace,
           Expanded(
-            child: _subjectInfo(
-              context: context,
-              haveFullInfo: haveFullInfo,
-            ),
+            child: _buildSubjectInfo(context),
           )
         ],
       ),
     );
   }
 
-  Column _subjectInfo(
-      {required BuildContext context, bool haveFullInfo = false}) {
+  Widget _buildSubjectImage() {
+    return CustomNetworkImage(
+      imageUrl: subject.imageUrl,
+      borderRadius: _borderRadius,
+      fit: BoxFit.cover,
+    );
+  }
+
+  Widget _buildSubjectInfo(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Flexible(
-          child: Text(
-            subject.title,
-            style: context.textTheme.titleMedium!
-                .withColor(context.onBackgroundColor),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        Flexible(
-          child: Text(
-            subject.professorName,
-            style: context.textTheme.labelMedium!.withColor(context.greyColor),
-            maxLines: 1,
-          ),
-        ),
-        10.verticalSpace,
-        Flexible(
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: _getSubInfoContainer(
-              context: context,
-              haveFullInfo: haveFullInfo,
-            ),
-          ),
-        )
+        _buildTitle(context),
+        _buildProfessorName(context),
+        _spacing.verticalSpace,
+        _buildSubInfoTags(context),
       ],
     );
   }
 
-  List<Container> _getSubInfoContainer(
-      {required BuildContext context, bool haveFullInfo = false}) {
-    final subInfo = _getNeededSubInfo(fullInfo: haveFullInfo);
-    return List.generate(
-      subInfo.length,
-      (index) => Container(
-        decoration: BoxDecoration(
-          color: subInfo[index].color.withOpacity(0.15),
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        padding: REdgeInsets.symmetric(horizontal: 4, vertical: 4),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            subInfo[index].title,
-            style:
-                context.textTheme.labelSmall!.withColor(subInfo[index].color),
+  Widget _buildTitle(BuildContext context) {
+    return Text(
+      subject.title,
+      style:
+          context.textTheme.titleMedium!.withColor(context.onBackgroundColor),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget _buildProfessorName(BuildContext context) {
+    return Text(
+      subject.professorName,
+      style: context.textTheme.labelMedium!.withColor(context.greyColor),
+      maxLines: 1,
+    );
+  }
+
+  Widget _buildSubInfoTags(BuildContext context) {
+    final tags = _buildSubInfoContainers(context);
+    final halfLength = (tags.length / 2).ceil();
+
+    return SizedBox(
+      height: 60.h, // Height for two rows
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: tags.sublist(0, halfLength),
+              ),
+            ),
           ),
+          // 5.verticalSpace,
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: tags.sublist(halfLength),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _buildSubInfoContainers(BuildContext context) {
+    return _getNeededSubInfo(fullInfo: haveFullInfo)
+        .map((info) => Padding(
+              padding: REdgeInsets.only(right: 8),
+              child: _buildSubInfoContainer(context, info),
+            ))
+        .toList();
+  }
+
+  Widget _buildSubInfoContainer(BuildContext context, SubInfo info) {
+    return Container(
+      decoration: BoxDecoration(
+        color: info.color.withOpacity(0.15),
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      padding: REdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          info.title,
+          style: context.textTheme.labelSmall!.withColor(info.color),
         ),
       ),
     );
@@ -242,14 +296,16 @@ class SubjectItemCard extends StatelessWidget {
     ];
   }
 
-  String _getAnswer(bool state) {
-    return state ? AppStrings.yes : AppStrings.no;
-  }
+  String _getAnswer(bool state) => state ? AppStrings.yes : AppStrings.no;
 }
 
+/// A class that holds information about a subject's sub-info tag.
 class SubInfo {
   final String title;
   final Color color;
 
-  SubInfo({required this.title, required this.color});
+  const SubInfo({
+    required this.title,
+    required this.color,
+  });
 }
