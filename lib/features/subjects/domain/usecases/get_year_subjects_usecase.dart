@@ -1,0 +1,24 @@
+//!----------------------------  Imports  -------------------------------------!//
+import 'package:fpdart/fpdart.dart';
+
+import '../../../../core/constants/dummy_data.dart';
+import '../entities/subjects_entity.dart';
+import '../repositories/subjects_repository.dart';
+
+//!----------------------------  The Class  -------------------------------------!//
+
+class GetYearSubjectsUsecase {
+  final SubjectsRepo _repo;
+
+  GetYearSubjectsUsecase({
+    required SubjectsRepo repo,
+  }) : _repo = repo;
+
+  //* Get All Subjects
+  Future<Either<String, List<SubjectEntity>>> getYearSubjects(int year) async {
+    return Future.delayed(
+      const Duration(milliseconds: 1250),
+      () => Right(computerEngineeringSubjects),
+    );
+  }
+}

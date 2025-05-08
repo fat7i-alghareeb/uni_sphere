@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
+import 'package:test/features/subjects/domain/usecases/get_year_subjects_usecase.dart';
 
 import '../../../features/subjects/data/datasources/subjects_remote_data_source.dart';
 import '../../../features/subjects/data/repositories/subjects_repository_impl.dart';
@@ -29,9 +30,16 @@ Future<void> subjectsInjection() async {
     ),
   );
 
+  getIt.registerLazySingleton<GetYearSubjectsUsecase>(
+    () => GetYearSubjectsUsecase(
+      repo: getIt<SubjectsRepo>(),
+    ),
+  );
+
   getIt.registerFactory<SubjectsBloc>(
     () => SubjectsBloc(
       usecase: getIt<SubjectsUsecase>(),
+      getYearSubjectsUsecase: getIt<GetYearSubjectsUsecase>(),
     ),
   );
 }

@@ -57,7 +57,7 @@ class BRouterConfig {
           '/root': RootScreen.pageBuilder,
           //! -------------- Subjects ---------------- !//
           "/root/choose_years_screen": ChooseYearsScreen.pageBuilder,
-          "/root/year_subjects": YearSubjects.pageBuilder,
+          "/root/choose_years_screen/year_subjects": YearSubjects.pageBuilder,
         },
       ).call,
     );
