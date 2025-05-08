@@ -9,7 +9,7 @@ import '../../../../../shared/imports/imports.dart';
 import '../../../../home/presentation/ui/widgets/decorated_container.dart';
 
 //!---------------------------- The Widget -------------------------------------!//
-class ChooseYearsScreen extends StatelessWidget {
+class ChooseYearsScreen extends StatefulWidget {
   const ChooseYearsScreen({super.key});
 
   static const String pagePath = 'choose_years_screen';
@@ -25,6 +25,12 @@ class ChooseYearsScreen extends StatelessWidget {
   };
 
   @override
+  State<ChooseYearsScreen> createState() => _ChooseYearsScreenState();
+}
+
+class _ChooseYearsScreenState extends State<ChooseYearsScreen> {
+  bool l = false;
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<SubjectsBloc>(),
@@ -39,7 +45,12 @@ class ChooseYearsScreen extends StatelessWidget {
               bottom: 50,
             ),
             itemBuilder: (context, index) => DecoratedContainer(
+              onTap: () {
+                l = !l;
+                setState(() {});
+              },
               padding: REdgeInsets.symmetric(vertical: 8),
+              animate: l,
               circleSize: 130,
               child: Padding(
                 padding: REdgeInsets.all(12.0),
