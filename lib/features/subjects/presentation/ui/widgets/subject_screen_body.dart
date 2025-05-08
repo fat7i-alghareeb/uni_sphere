@@ -1,4 +1,3 @@
-
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/subjects_entity.dart';
@@ -9,10 +8,13 @@ class SubjectsScreenBody extends StatefulWidget {
   const SubjectsScreenBody({
     super.key,
     required this.subjects,
+    this.fullInfo = false,
+    this.onRefresh,
   });
 
   final List<SubjectEntity> subjects;
-
+  final bool fullInfo;
+  final Future<void> Function()? onRefresh;
   @override
   State<SubjectsScreenBody> createState() => _SubjectsScreenBodyState();
 }
@@ -150,32 +152,39 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
 
   Widget _buildAnimatedSubjectsList() {
     try {
-      return ListView.builder(
-        padding: REdgeInsets.only(
-          top: 10.h,
-          right: AppConstants.horizontalScreensPadding,
-          left: AppConstants.horizontalScreensPadding,
-          bottom: 150.h,
+      return RefreshIndicator(
+        onRefresh: widget.onRefresh ?? () async {},
+        child: ListView.builder(
+          padding: REdgeInsets.only(
+            top: 10.h,
+            right: AppConstants.horizontalScreensPadding,
+            left: AppConstants.horizontalScreensPadding,
+            bottom: 150.h,
+          ),
+          itemBuilder: (context, index) {
+            if (index >= widget.subjects.length ||
+                index >= _animations.length) {
+              return const SizedBox.shrink();
+            }
+            return AnimatedBuilder(
+              animation: _animations[index],
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(0, -20 * (1 - _animations[index].value)),
+                  child: Opacity(
+                    opacity: _animations[index].value,
+                    child: child,
+                  ),
+                );
+              },
+              child: SubjectItemCard(
+                subject: widget.subjects[index],
+                haveFullInfo: widget.fullInfo,
+              ),
+            );
+          },
+          itemCount: widget.subjects.length,
         ),
-        itemBuilder: (context, index) {
-          if (index >= widget.subjects.length || index >= _animations.length) {
-            return const SizedBox.shrink();
-          }
-          return AnimatedBuilder(
-            animation: _animations[index],
-            builder: (context, child) {
-              return Transform.translate(
-                offset: Offset(0, -20 * (1 - _animations[index].value)),
-                child: Opacity(
-                  opacity: _animations[index].value,
-                  child: child,
-                ),
-              );
-            },
-            child: SubjectItemCard(subject: widget.subjects[index]),
-          );
-        },
-        itemCount: widget.subjects.length,
       );
     } catch (e) {
       debugPrint('Error building animated subjects list: $e');

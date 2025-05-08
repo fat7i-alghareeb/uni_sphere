@@ -25,4 +25,5 @@ class AppStrings {
   static String get no => _localization.tr('no');
   static String get isPassed => _localization.tr('isPassed');
   static String get theGrade => _localization.tr('theGrade');
+  static String get chooseYearToShowItsSubjects => _localization.tr('chooseYearToShowItsSubjects');
 }

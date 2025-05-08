@@ -29,7 +29,7 @@ Future<void> subjectsInjection() async {
     ),
   );
 
-  getIt.registerLazySingleton<SubjectsBloc>(
+  getIt.registerFactory<SubjectsBloc>(
     () => SubjectsBloc(
       usecase: getIt<SubjectsUsecase>(),
     ),

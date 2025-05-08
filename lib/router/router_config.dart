@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:beamer/beamer.dart';
 import '../features/root/presentation/ui/screen/root_screen.dart';
+import '../features/subjects/presentation/ui/screens/choose_years_screen.dart';
+import '../features/subjects/presentation/ui/screens/year_subjects.dart';
 import '../shared/imports/imports.dart';
 import '../shared/states/app_manager_bloc/app_manager_bloc.dart';
 import '../shared/utils/helper/colored_print.dart';
@@ -53,6 +55,9 @@ class BRouterConfig {
       locationBuilder: RoutesLocationBuilder(
         routes: {
           '/root': RootScreen.pageBuilder,
+          //! -------------- Subjects ---------------- !//
+          "/root/choose_years_screen": ChooseYearsScreen.pageBuilder,
+          "/root/year_subjects": YearSubjects.pageBuilder,
         },
       ).call,
     );

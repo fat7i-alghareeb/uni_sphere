@@ -18,5 +18,6 @@
     "yes":"Yes",
     "no": "No",
     "isPassed": "Passed:",
-    "theGrade": "The Grade:"
+    "theGrade": "The Grade:",
+    "chooseYearToShowItsSubjects": "Choose the year to show its subjects"
 }
