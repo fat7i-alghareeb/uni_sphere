@@ -1,10 +1,7 @@
 // 🐦 Flutter imports:
 
 // 🌎 Project imports:
-import 'package:test/core/styles/app_text_theme.dart';
-
 import '../../../../../shared/imports/imports.dart';
-import '../../../../../shared/extensions/context_extension.dart';
 import '../../../../../shared/utils/helper/get_colored_svg_picture.dart';
 
 class RootHeader extends StatelessWidget {
@@ -26,6 +23,7 @@ class RootHeader extends StatelessWidget {
         left: AppConstants.horizontalScreensPadding / 2,
         right: AppConstants.horizontalScreensPadding / 2,
         top: AppConstants.headerPadding,
+        bottom: 10,
       ),
       child: Row(
         children: [

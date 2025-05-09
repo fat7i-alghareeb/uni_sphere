@@ -11,7 +11,7 @@ class HomeBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          35.verticalSpace,
+          25.verticalSpace,
           const AdsWidget(),
           28.verticalSpace,
           const DaysToTheFinalsWidget(),

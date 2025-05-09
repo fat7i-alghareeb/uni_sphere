@@ -44,8 +44,8 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
           CurvedAnimation(
             parent: _controller,
             curve: Interval(
-              index * 0.1,
-              (index * 0.1) + 0.5,
+              index * (0.5 / widget.subjects.length),
+              (index * (0.5 / widget.subjects.length)) + 0.5,
               curve: Curves.easeOut,
             ),
           ),

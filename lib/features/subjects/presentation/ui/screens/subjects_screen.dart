@@ -69,7 +69,7 @@ class _SubjectsScreenState extends State<SubjectsScreen>
     return Padding(
       padding: REdgeInsets.symmetric(
         horizontal: AppConstants.horizontalScreensPadding,
-        vertical: 20,
+        vertical: 15,
       ),
       child: DecoratedContainer(
         onTap: () => context.beamToNamed(ChooseYearsScreen.pagePath),

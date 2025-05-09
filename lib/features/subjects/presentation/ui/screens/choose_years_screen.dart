@@ -1,11 +1,11 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/common/constant/app_strings.dart';
 import 'package:test/core/injection/injection.dart';
 import 'package:test/core/result_builder/result.dart';
 import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
 import 'package:test/features/subjects/presentation/ui/screens/year_subjects.dart';
+import 'package:test/shared/utils/helper/year_helper.dart';
 import 'package:test/shared/widgets/custom_scaffold_body.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
@@ -70,10 +70,14 @@ class _ChooseYearsView extends StatelessWidget {
 
   void _handleYearResult(BuildContext context, SubjectsState state) {
     if (state.yearResult.isLoaded()) {
-      final subjects = state.yearResult.getDataWhenSuccess();
+      final subjects = state.yearResult.getDataWhenSuccess() ?? [];
+      final selectedYear = state.selectedYear;
       context.beamToNamed(
         YearSubjects.pagePath,
-        data: subjects,
+        data: YearSubjectsData(
+          subjects: subjects,
+          year: selectedYear,
+        ),
       );
     }
   }
@@ -89,7 +93,7 @@ class _YearsListView extends StatelessWidget {
       padding: REdgeInsets.only(
         left: AppConstants.horizontalScreensPadding,
         right: AppConstants.horizontalScreensPadding,
-        top: 30,
+        top: 10,
         bottom: 50,
       ),
       itemCount: _ChooseYearsScreenConstants.maxYear,
@@ -126,7 +130,7 @@ class _YearCard extends StatelessWidget {
           child: Padding(
             padding: REdgeInsets.all(_ChooseYearsScreenConstants.cardPadding),
             child: Text(
-              "${AppStrings.theYear} $year",
+              YearHelper.getYearString(year),
               style: context.textTheme.headlineLarge!.withColor(
                 context.primaryColor,
               ),

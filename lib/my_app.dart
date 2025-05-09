@@ -44,62 +44,61 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: AppColors.darkBackground,
-      ),
-      child: ScreenUtilInit(
-        designSize: designSize,
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return MultiProvider(
-            providers: [
-              BlocProvider.value(value: _bloc),
-              ChangeNotifierProvider(
-                create: (context) => NavBarProvider(),
-              ),
-              ChangeNotifierProvider(
-                create: (context) => ThemeProvider(),
-              ),
-            ],
-            child: BeamerProvider(
+    return ScreenUtilInit(
+      designSize: designSize,
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MultiProvider(
+          providers: [
+            BlocProvider.value(value: _bloc),
+            ChangeNotifierProvider(
+              create: (context) => NavBarProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (context) => ThemeProvider(),
+            ),
+          ],
+          child: BeamerProvider(
+            routerDelegate: router.router,
+            child: Consumer<ThemeProvider>(
+              builder: (context, themeProvider, child) => MaterialApp.router(
+                debugShowCheckedModeBanner: false,
                 routerDelegate: router.router,
-                child: Consumer<ThemeProvider>(
-                  builder: (context, themeProvider, child) =>
-                      MaterialApp.router(
-                    debugShowCheckedModeBanner: false,
-                    routerDelegate: router.router,
-                    localizationsDelegates: context.localizationDelegates,
-                    supportedLocales: context.supportedLocales,
-                    locale: context.locale,
-                    theme: !(themeProvider.isDarkMode || true)
-                        ? AppThemes.darkThemeData()
-                        : AppThemes.lightThemeData(),
-                    routeInformationParser: BeamerParser(),
-                    builder: (context, child) {
-                      if (kReleaseMode) {
-                        if (!getIt.isRegistered<LocalizationService>()) {
-                          getIt.registerSingleton<LocalizationService>(
-                            LocalizationService(context),
-                          );
-                        }
-                      } else {
-                        if (!getIt.isRegistered<LocalizationService>()) {
-                          getIt.registerSingleton<LocalizationService>(
-                            LocalizationService(context),
-                          );
-                        }
-                        child = DevicePreview.appBuilder(context, child);
-                      }
-                      return child!;
-                    },
-                  ),
-                )),
-          );
-        },
-      ),
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
+                theme: !(themeProvider.isDarkMode || true)
+                    ? AppThemes.darkThemeData()
+                    : AppThemes.lightThemeData(),
+                routeInformationParser: BeamerParser(),
+                builder: (context, child) {
+                  if (kReleaseMode) {
+                    if (!getIt.isRegistered<LocalizationService>()) {
+                      getIt.registerSingleton<LocalizationService>(
+                        LocalizationService(context),
+                      );
+                    }
+                  } else {
+                    if (!getIt.isRegistered<LocalizationService>()) {
+                      getIt.registerSingleton<LocalizationService>(
+                        LocalizationService(context),
+                      );
+                    }
+                    child = DevicePreview.appBuilder(context, child);
+                  }
+                  return AnnotatedRegion<SystemUiOverlayStyle>(
+                    value: SystemUiOverlayStyle(
+                        statusBarColor: Colors.transparent,
+                        systemNavigationBarColor: context.backgroundColor),
+                    child: child!,
+                  );
+                },
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 

@@ -25,11 +25,12 @@ class CustomScaffoldBody extends StatelessWidget {
       ),
       child: Column(
         children: [
-          if (title != null) 60.verticalSpace,
+          if (title != null) 55.verticalSpace,
           if (title != null)
             Padding(
                 padding: REdgeInsets.symmetric(
                   horizontal: AppConstants.horizontalScreensPadding,
+                  vertical: 5,
                 ),
                 child: CustomPageHeader(title: title!)),
           Expanded(child: child),
