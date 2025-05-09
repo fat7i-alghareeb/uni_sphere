@@ -4,16 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/common/constant/app_strings.dart';
 import 'package:test/core/injection/injection.dart';
 import 'package:test/core/result_builder/result.dart';
-import 'package:test/features/subjects/presentation/state/bloc/subjects_bloc.dart';
+import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
 import 'package:test/features/subjects/presentation/ui/screens/year_subjects.dart';
 import 'package:test/shared/widgets/custom_scaffold_body.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../home/presentation/ui/widgets/decorated_container.dart';
+//!----------------------------  Implements  -------------------------------------!//
 
 /// Constants for the ChooseYearsScreen
 class _ChooseYearsScreenConstants {
-  static const int minYear = 1;
   static const int maxYear = 4;
   static const double cardPadding = 12.0;
   static const double circleSize = 130.0;
@@ -40,7 +40,6 @@ class ChooseYearsScreen extends StatefulWidget {
 }
 
 class _ChooseYearsScreenState extends State<ChooseYearsScreen> {
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

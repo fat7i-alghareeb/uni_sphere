@@ -6,7 +6,7 @@ import '../../../features/subjects/data/datasources/subjects_remote_data_source.
 import '../../../features/subjects/data/repositories/subjects_repository_impl.dart';
 import '../../../features/subjects/domain/repositories/subjects_repository.dart';
 import '../../../features/subjects/domain/usecases/subjects_usecase.dart';
-import '../../../features/subjects/presentation/state/bloc/subjects_bloc.dart';
+import '../../../features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
 import '../injection.dart';
 
 //!----------------------------  The Class  -------------------------------------!//

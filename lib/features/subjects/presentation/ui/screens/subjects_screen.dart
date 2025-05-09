@@ -5,7 +5,7 @@ import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../home/presentation/ui/widgets/decorated_container.dart';
-import '../../state/bloc/subjects_bloc.dart';
+import '../../state/subjects_bloc/subjects_bloc.dart';
 import '../widgets/subjects_builder_widget.dart';
 import 'choose_years_screen.dart';
 
