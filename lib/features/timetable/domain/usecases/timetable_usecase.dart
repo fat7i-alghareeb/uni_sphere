@@ -1,6 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../entities/timetable_entity.dart';
+import '../../../../core/constants/time_dummy_data.dart';
+import '../entities/month_schedule_entity.dart';
 import '../repositories/timetable_repository.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
@@ -13,6 +14,13 @@ class TimetableUsecase {
   }) : _repo = repo;
 
   //* Get All Timetable
-  Future<Either<String, TimetableEntity>> getAllTimetable() =>
-      _repo.getAllTimetable();
+  Future<Either<String, MonthScheduleEntity>> getTimeTable(
+      {required int month}) {
+    return Future.delayed(
+      const Duration(milliseconds: 1250),
+      () => Right(generateDummyData[0]),
+    );
+
+// return _repo.getAllTimetable();
+  }
 }

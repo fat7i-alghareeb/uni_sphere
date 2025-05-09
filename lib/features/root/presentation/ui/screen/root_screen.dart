@@ -90,8 +90,9 @@ class _RootScreenState extends State<RootScreen>
                           children: const [
                             HomeScreen(),
                             SubjectsScreen(),
+                                                        TimetableScreen(),
+
                             AnnouncementScreen(),
-                            TimetableScreen(),
                           ],
                         ),
                       ),
