@@ -30,6 +30,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
+  /// File path: assets/icons/lecture_hall_icon.svg
+  String get lectureHallIcon => 'assets/icons/lecture_hall_icon.svg';
+
   /// File path: assets/icons/notification.svg
   String get notification => 'assets/icons/notification.svg';
 
@@ -47,6 +50,7 @@ class $AssetsIconsGen {
         downloadedFile,
         drawer,
         home,
+        lectureHallIcon,
         notification,
         subjects,
         timeTable
