@@ -1,6 +1,8 @@
 // 🎯 Dart imports:
 import 'dart:ui';
 
+import '../../common/constant/app_strings.dart';
+
 extension HexColor on String {
   Color toColor() {
     String hex = replaceAll("#", "");
@@ -8,5 +10,20 @@ extension HexColor on String {
       hex = "FF$hex";
     }
     return Color(int.parse(hex, radix: 16));
+  }
+}
+
+extension WeekdayShort on int {
+  String get weekdayShort {
+    List<String> days = [
+      AppStrings.sun,
+      AppStrings.mon,
+      AppStrings.tue,
+      AppStrings.wed,
+      AppStrings.thu,
+      AppStrings.fri,
+      AppStrings.sat
+    ];
+    return days[this % 7];
   }
 }

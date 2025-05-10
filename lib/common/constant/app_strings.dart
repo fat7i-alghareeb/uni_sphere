@@ -54,4 +54,11 @@ class AppStrings {
   static String get twelfth => _localization.tr('twelfth');
   static String get thirteenth => _localization.tr('thirteenth');
   static String get subjects => _localization.tr('subjects');
+  static String get sun => _localization.tr('sun');
+  static String get mon => _localization.tr('mon');
+  static String get tue => _localization.tr('tue');
+  static String get wed => _localization.tr('wed');
+  static String get thu => _localization.tr('thu');
+  static String get fri => _localization.tr('fri');
+  static String get sat => _localization.tr('sat');
 }

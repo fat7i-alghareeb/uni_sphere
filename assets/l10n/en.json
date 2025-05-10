@@ -47,5 +47,12 @@
     "eleventh": "Eleventh",
     "twelfth": "Twelfth",        
     "thirteenth": "Thirteenth",
-    "subjects": "Subjects"
+    "subjects": "Subjects",
+    "sun": "Sun",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat"
 }

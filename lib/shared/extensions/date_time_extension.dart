@@ -57,3 +57,9 @@ extension DateTimeExt on DateTime {
     return DateFormat('yyyy-MM-dd', 'en-us').format(this);
   }
 }
+
+extension DateTimeFormatter on DateTime {
+  String get formatTime {
+    return DateFormat('HH:mm a', 'en-us').format(this);
+  }
+}

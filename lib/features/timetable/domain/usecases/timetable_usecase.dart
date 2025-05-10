@@ -18,7 +18,7 @@ class TimetableUsecase {
       {required int month}) {
     return Future.delayed(
       const Duration(milliseconds: 1250),
-      () => Right(generateDummyData[0]),
+      () => Right(generateMonthScheduleDummyData[0]),
     );
 
 // return _repo.getAllTimetable();

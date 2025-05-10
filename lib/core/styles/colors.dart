@@ -32,8 +32,8 @@ class AppColors {
   static const Color darkShimmerColor = Color.fromARGB(255, 111, 111, 111);
   static const Color darkCardColor = Color.fromARGB(255, 35, 34, 37);
   static const Color lightCardColor = Color.fromARGB(255, 247, 247, 252);
-  static const Color lightGreyColor = Color.fromARGB(255, 173, 172, 172);
-  static const Color darkGreyColor = Color.fromARGB(255, 111, 111, 111);
+  static const Color lightGreyColor = Color.fromARGB(255, 146, 146, 146);
+  static const Color darkGreyColor = Color.fromARGB(255, 95, 95, 95);
   // Text Colors
 
   static const Color textPrimary = Color(0xFF4B465C);
