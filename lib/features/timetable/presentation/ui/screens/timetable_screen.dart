@@ -1,10 +1,11 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:test/core/injection/injection.dart';
+import 'package:test/core/result_builder/result.dart';
 import 'package:test/core/result_builder/result_builder.dart';
 import 'package:test/features/timetable/presentation/state/time_table/time_table_bloc.dart';
 import 'package:test/shared/extensions/date_time_extension.dart';
 import 'package:test/shared/extensions/string_extension.dart';
-import 'package:test/shared/utils/helper/colored_print.dart';
+import 'package:test/shared/widgets/loading_progress.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/dashed_line.dart';
 import '../../../domain/entities/month_schedule_entity.dart';
@@ -53,6 +54,8 @@ class TimetableBody extends StatefulWidget {
 
 class _TimetableBodyState extends State<TimetableBody> {
   int selectedDayIndex = 0;
+  bool isLeftLoading = false;
+  bool isRightLoading = false;
 
   @override
   void initState() {
@@ -60,6 +63,12 @@ class _TimetableBodyState extends State<TimetableBody> {
   }
 
   void _changeMonth(int offset) {
+    if (offset < 0) {
+      setState(() => isLeftLoading = true);
+    } else {
+      setState(() => isRightLoading = true);
+    }
+
     final selectedMonth = DateTime(
       TimeTableBloc.selectedDateTime.year,
       TimeTableBloc.selectedDateTime.month + offset,
@@ -76,7 +85,14 @@ class _TimetableBodyState extends State<TimetableBody> {
     // Only use the original days from the schedule entity
 
     return BlocConsumer<TimeTableBloc, TimeTableState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.loadMonthResult.isLoaded()) {
+          setState(() {
+            isLeftLoading = false;
+            isRightLoading = false;
+          });
+        }
+      },
       builder: (context, state) {
         return Column(
           children: [
@@ -85,23 +101,45 @@ class _TimetableBodyState extends State<TimetableBody> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      FontAwesomeIcons.chevronLeft,
-                    ),
-                    onPressed: () => _changeMonth(-1),
-                  ),
+                  isLeftLoading
+                      ? Padding(
+                          padding: REdgeInsets.all(8.0),
+                          child: const LoadingProgress(
+                            size: 25,
+                          ),
+                        )
+                      : Padding(
+                          padding: REdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            child: Icon(
+                              FontAwesomeIcons.chevronLeft,
+                              size: 25.r,
+                            ),
+                            onTap: () => _changeMonth(-1),
+                          ),
+                        ),
                   Text(
                     '${TimeTableBloc.selectedDateTime.month.monthName} ${TimeTableBloc.selectedDateTime.year}',
                     style: const TextStyle(
                         fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  IconButton(
-                    icon: const Icon(
-                      FontAwesomeIcons.chevronRight,
-                    ),
-                    onPressed: () => _changeMonth(1),
-                  ),
+                  isRightLoading
+                      ? Padding(
+                          padding: REdgeInsets.all(8.0),
+                          child: const LoadingProgress(
+                            size: 25,
+                          ),
+                        )
+                      : Padding(
+                          padding: REdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            child: Icon(
+                              FontAwesomeIcons.chevronRight,
+                              size: 25.r,
+                            ),
+                            onTap: () => _changeMonth(1),
+                          ),
+                        ),
                 ],
               ),
             ),
