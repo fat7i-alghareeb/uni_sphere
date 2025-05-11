@@ -19,31 +19,29 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
 
   _getTimeTable(GetTimeTableEvent event, Emitter emit) async {
     emit(
-      state.copyWith(
-        result: const Result.loading(),
-        monthsSchedules: [],
-      ),
+      state.copyWith(result: const Result.loading(), monthsSchedules: []),
     );
     final response = await _usecase.getTimeTable(month: event.month);
     response.fold(
-        (l) => emit(
-              state.copyWith(
-                result: Result.error(
-                  error: l,
-                ),
-              ),
-            ), (r) {
-      final updatedSchedules =
-          List<MonthScheduleEntity>.from(state.monthsSchedules)..add(r);
-      selectedDateTime = event.month;
-
-      return emit(
+      (l) => emit(
         state.copyWith(
-          result: Result.loaded(data: r),
-          monthsSchedules: updatedSchedules,
+          result: Result.error(
+            error: l,
+          ),
         ),
-      );
-    });
+      ),
+      (r) {
+        final updatedSchedules =
+            List<MonthScheduleEntity>.from(state.monthsSchedules)..add(r);
+        selectedDateTime = event.month;
+        return emit(
+          state.copyWith(
+            result: Result.loaded(data: r),
+            monthsSchedules: updatedSchedules,
+          ),
+        );
+      },
+    );
   }
 
   _loadMonthEvent(LoadMonthEvent event, Emitter emit) async {
