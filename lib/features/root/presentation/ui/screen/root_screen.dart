@@ -89,13 +89,11 @@ class _RootScreenState extends State<RootScreen>
                           controller:
                               context.read<NavBarProvider>().pageController,
                           physics: const NeverScrollableScrollPhysics(),
-                          children: [
-                            const HomeScreen(),
-                            const SubjectsScreen(),
-                            TimetableScreen(
-                                monthSchedule:
-                                    generateMonthScheduleDummyData[0]),
-                            const AnnouncementScreen(),
+                          children: const [
+                            HomeScreen(),
+                            SubjectsScreen(),
+                            TimetableScreen(),
+                            AnnouncementScreen(),
                           ],
                         ),
                       ),

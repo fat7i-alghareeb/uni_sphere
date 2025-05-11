@@ -26,4 +26,22 @@ extension WeekdayShort on int {
     ];
     return days[this % 7];
   }
+
+  String get monthName {
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
+    return monthNames[this - 1];
+  }
 }

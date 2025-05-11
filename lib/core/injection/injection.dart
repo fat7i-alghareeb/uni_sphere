@@ -6,6 +6,7 @@ import 'src/auth_injection.dart';
 import 'src/general_injection.dart';
 import 'src/home_injection.dart';
 import 'src/subjects_injection.dart';
+import 'src/timetable_injection.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -14,4 +15,5 @@ Future<void> initInjection() async {
   await authInjection();
   await homeInjection();
   await subjectsInjection();
+  await timetableInjection();
 }
