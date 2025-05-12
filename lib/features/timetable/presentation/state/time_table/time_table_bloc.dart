@@ -1,72 +1,108 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/features/timetable/domain/entities/month_schedule_entity.dart';
 import '../../../../../core/result_builder/result.dart';
-import '../../../../../shared/utils/helper/colored_print.dart';
 import '../../../domain/usecases/timetable_usecase.dart';
-
 part 'time_table_event.dart';
 part 'time_table_state.dart';
 
 class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
   final TimetableUsecase _usecase;
   static late DateTime selectedDateTime;
+
   TimeTableBloc({required TimetableUsecase usecase})
       : _usecase = usecase,
         super(TimeTableState()) {
-    on<GetTimeTableEvent>(_getTimeTable);
-    on<LoadMonthEvent>(_loadMonthEvent);
+    on<GetTimeTableEvent>(_onGetTimeTable);
+    on<LoadMonthEvent>(_onLoadMonth);
   }
 
-  _getTimeTable(GetTimeTableEvent event, Emitter emit) async {
-    emit(
-      state.copyWith(result: const Result.loading(), monthsSchedules: []),
-    );
-    final response = await _usecase.getTimeTable(month: event.month);
-    response.fold(
-      (l) => emit(
-        state.copyWith(
-          result: Result.error(
-            error: l,
-          ),
-        ),
-      ),
-      (r) {
-        final updatedSchedules =
-            List<MonthScheduleEntity>.from(state.monthsSchedules)..add(r);
-        selectedDateTime = event.month;
-        return emit(
-          state.copyWith(
-            result: Result.loaded(data: r),
+  Future<void> _onGetTimeTable(
+      GetTimeTableEvent event, Emitter<TimeTableState> emit) async {
+    try {
+      emit(state.copyWith(
+        result: const Result.loading(),
+        monthsSchedules: [],
+      ));
+
+      final response = await _usecase.getTimeTable(month: event.month);
+
+      response.fold(
+        (error) => emit(state.copyWith(
+          result: Result.error(error: error),
+        )),
+        (data) {
+          final updatedSchedules =
+              List<MonthScheduleEntity>.from(state.monthsSchedules)..add(data);
+          selectedDateTime = event.month;
+
+          emit(state.copyWith(
+            result: Result.loaded(data: data),
             monthsSchedules: updatedSchedules,
-          ),
-        );
-      },
+          ));
+        },
+      );
+    } catch (e) {
+      emit(state.copyWith(
+        result: Result.error(error: e.toString()),
+      ));
+    }
+  }
+
+  Future<void> _onLoadMonth(
+      LoadMonthEvent event, Emitter<TimeTableState> emit) async {
+    try {
+      // Check if we already have the month's data
+      if (_hasMonthData(event.month)) {
+        _emitExistingMonthData(event.month, emit);
+        return;
+      }
+
+      emit(state.copyWith(loadMonthResult: const Result.loading()));
+
+      final response = await _usecase.getTimeTable(month: event.month);
+
+      response.fold(
+        (error) => emit(state.copyWith(
+          loadMonthResult: Result.error(error: error),
+        )),
+        (data) {
+          final updatedSchedules =
+              List<MonthScheduleEntity>.from(state.monthsSchedules)..add(data);
+          selectedDateTime = event.month;
+
+          emit(state.copyWith(
+            loadMonthResult: Result.loaded(data: data),
+            monthsSchedules: updatedSchedules,
+          ));
+        },
+      );
+    } catch (e) {
+      emit(state.copyWith(
+        loadMonthResult: Result.error(error: e.toString()),
+      ));
+    }
+  }
+
+  bool _hasMonthData(DateTime month) {
+    return state.monthsSchedules.any(
+      (element) => element.month.month == month.month,
     );
   }
 
-  _loadMonthEvent(LoadMonthEvent event, Emitter emit) async {
-    emit(state.copyWith(loadMonthResult: const Result.loading()));
-    printR(event.month);
-    final response = await _usecase.getTimeTable(month: event.month);
-
-    response.fold(
-      (l) => emit(
-        state.copyWith(
-          loadMonthResult: Result.error(error: l),
-        ),
+  void _emitExistingMonthData(DateTime month, Emitter<TimeTableState> emit) {
+    final existingData = state.monthsSchedules.firstWhere(
+      (element) => element.month.month == month.month,
+      orElse: () => MonthScheduleEntity(
+        month: month,
+        daysTimeTables: [],
       ),
-      (r) {
-        final updatedSchedules =
-            List<MonthScheduleEntity>.from(state.monthsSchedules)..add(r);
-        selectedDateTime = event.month;
-        return emit(
-          state.copyWith(
-            loadMonthResult: Result.loaded(data: r),
-            monthsSchedules: updatedSchedules,
-          ),
-        );
-      },
     );
+
+    selectedDateTime = month;
+
+    emit(state.copyWith(
+      loadMonthResult: Result.loaded(data: existingData),
+    ));
   }
 
   MonthScheduleEntity get getMonthsSchedulesByDateTime {

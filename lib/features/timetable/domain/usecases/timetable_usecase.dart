@@ -23,7 +23,7 @@ class TimetableUsecase {
         generateMonthScheduleDummyData.firstWhere(
           (element) => element.month.month == month.month,
           orElse: () => MonthScheduleEntity(
-            month: DateTime.now(),
+            month: month,
             daysTimeTables: [],
           ),
         ),
