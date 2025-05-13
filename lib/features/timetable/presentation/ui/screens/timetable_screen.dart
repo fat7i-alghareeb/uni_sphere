@@ -106,23 +106,104 @@ class _TimetableBodyState extends State<TimetableBody> {
                     setState(() => selectedDayIndex = index),
               ),
               Expanded(
-                child: ListView.builder(
-                  padding: REdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: AppConstants.horizontalScreensPadding,
-                  ),
-                  itemCount: selectedDay.timetables.length,
-                  itemBuilder: (context, index) {
-                    return TimetableItem(
-                      timetable: selectedDay.timetables[index],
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: SlideTransition(
+                        position: Tween<Offset>(
+                          begin: const Offset(0.0, 0.1),
+                          end: Offset.zero,
+                        ).animate(CurvedAnimation(
+                          parent: animation,
+                          curve: Curves.easeOut,
+                        )),
+                        child: child,
+                      ),
                     );
                   },
+                  child: ListView.builder(
+                    key: ValueKey<int>(selectedDayIndex),
+                    padding: REdgeInsets.symmetric(
+                      vertical: 16,
+                      horizontal: AppConstants.horizontalScreensPadding,
+                    ),
+                    itemCount: selectedDay.timetables.length,
+                    itemBuilder: (context, index) {
+                      return AnimatedListItem(
+                        index: index,
+                        child: TimetableItem(
+                          timetable: selectedDay.timetables[index],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+class AnimatedListItem extends StatefulWidget {
+  final Widget child;
+  final int index;
+
+  const AnimatedListItem({
+    super.key,
+    required this.child,
+    required this.index,
+  });
+
+  @override
+  State<AnimatedListItem> createState() => _AnimatedListItemState();
+}
+
+class _AnimatedListItemState extends State<AnimatedListItem>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOut,
+    );
+    Future.delayed(Duration(milliseconds: widget.index * 50), () {
+      if (mounted) {
+        _controller.forward();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _animation,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0.0, 0.1),
+          end: Offset.zero,
+        ).animate(_animation),
+        child: widget.child,
+      ),
     );
   }
 }
