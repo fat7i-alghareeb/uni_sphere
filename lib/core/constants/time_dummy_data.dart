@@ -18,12 +18,14 @@ List<MonthScheduleEntity> get generateMonthScheduleDummyData {
         lecturerName: "Dr. Samer Al-Khatib",
         startTime: _time(DateTime(0), 10, 0),
         endTime: _time(DateTime(0), 12, 0),
+        lectureHall: "Lecture Hall 1",
       ),
       TimetableEntity(
         subjectName: "Elective: AI Fundamentals",
         lecturerName: "Dr. Hala Zaidan",
         startTime: _time(DateTime(0), 13, 0),
         endTime: _time(DateTime(0), 15, 0),
+        lectureHall: "Lecture Hall 2",
       ),
     ],
     DateTime.monday: [
@@ -32,12 +34,14 @@ List<MonthScheduleEntity> get generateMonthScheduleDummyData {
         lecturerName: "Dr. Ahmad Al-Masri",
         startTime: _time(DateTime(0), 8, 0),
         endTime: _time(DateTime(0), 10, 0),
+        lectureHall: "Lecture Hall 3",
       ),
       TimetableEntity(
         subjectName: "Computer Architecture",
         lecturerName: "Dr. Fatima Khalil",
         startTime: _time(DateTime(0), 10, 30),
         endTime: _time(DateTime(0), 12, 30),
+        lectureHall: "Lecture Hall 4",
       ),
     ],
     DateTime.tuesday: [
@@ -46,12 +50,14 @@ List<MonthScheduleEntity> get generateMonthScheduleDummyData {
         lecturerName: "Dr. Omar Al-Hassan",
         startTime: _time(DateTime(0), 9, 0),
         endTime: _time(DateTime(0), 11, 0),
+        lectureHall: "Lecture Hall 5",
       ),
       TimetableEntity(
         subjectName: "Database Systems",
         lecturerName: "Dr. Leila Ibrahim",
         startTime: _time(DateTime(0), 12, 0),
         endTime: _time(DateTime(0), 14, 0),
+        lectureHall: "Lecture Hall 6",
       ),
     ],
     DateTime.wednesday: [
@@ -60,12 +66,14 @@ List<MonthScheduleEntity> get generateMonthScheduleDummyData {
         lecturerName: "Dr. Youssef Hamoud",
         startTime: _time(DateTime(0), 8, 0),
         endTime: _time(DateTime(0), 10, 0),
+        lectureHall: "Lecture Hall 7",
       ),
       TimetableEntity(
         subjectName: "Lab: Data Structures",
         lecturerName: "Eng. Ali Darwish",
         startTime: _time(DateTime(0), 11, 0),
         endTime: _time(DateTime(0), 13, 0),
+        lectureHall: "Lecture Hall 8",
       ),
     ],
     DateTime.thursday: [
@@ -74,6 +82,7 @@ List<MonthScheduleEntity> get generateMonthScheduleDummyData {
         lecturerName: "Dr. Rana Saeed",
         startTime: _time(DateTime(0), 9, 0),
         endTime: _time(DateTime(0), 11, 0),
+        lectureHall: "Lecture Hall 9",
       ),
     ],
   };
@@ -102,6 +111,7 @@ List<MonthScheduleEntity> get generateMonthScheduleDummyData {
                 year, month, day, tt.startTime.hour, tt.startTime.minute),
             endTime:
                 DateTime(year, month, day, tt.endTime.hour, tt.endTime.minute),
+            lectureHall: tt.lectureHall,
           );
         }).toList();
 

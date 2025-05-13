@@ -8,6 +8,7 @@ import 'package:test/features/timetable/presentation/ui/widgets/month_selector.d
 import 'package:test/features/timetable/presentation/ui/widgets/timetable_item.dart';
 
 import '../../../domain/entities/month_schedule_entity.dart';
+import '../widgets/no_schedule_widgets.dart';
 
 class TimetableScreen extends StatefulWidget {
   const TimetableScreen({super.key});
@@ -90,7 +91,7 @@ class _TimetableBodyState extends State<TimetableBody> {
         final days = monthSchedule.daysTimeTables;
 
         if (days.isEmpty) {
-          return const Center(child: Text('No schedule available'));
+          return const NoSchedulesWidget();
         }
 
         final selectedDay = days[selectedDayIndex];
@@ -100,10 +101,13 @@ class _TimetableBodyState extends State<TimetableBody> {
             children: [
               DaySelector(
                 days: days,
+                selectedDayIndex: selectedDayIndex,
+                onDaySelected: (index) =>
+                    setState(() => selectedDayIndex = index),
               ),
               Expanded(
                 child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(
+                  padding: REdgeInsets.symmetric(
                     vertical: 16,
                     horizontal: AppConstants.horizontalScreensPadding,
                   ),

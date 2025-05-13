@@ -54,5 +54,20 @@
     "wed": "الأربعاء",
     "thu": "الخميس",
     "fri": "الجمعة",
-    "sat": "السبت"
+    "sat": "السبت",
+    "january": "يناير",
+    "february": "فبراير",
+    "march": "مارس",    
+    "april": "أبريل",
+    "may": "مايو",
+    "june": "يونيو",
+    "july": "يوليو",
+    "august": "أغسطس",
+    "september": "سبتمبر",
+    "october": "أكتوبر",
+    "november": "نوفمبر",
+    "december": "ديسمبر",
+    "noSchedulesAvailable": "لا يوجد جداول لعرضها",
+    "noScheduleForThisDay": "لا يوجد جدول لهذا اليوم",
+    "noSchedulesForThisMonth": "لا يوجد جداول لهذا الشهر"
 }

@@ -61,4 +61,19 @@ class AppStrings {
   static String get thu => _localization.tr('thu');
   static String get fri => _localization.tr('fri');
   static String get sat => _localization.tr('sat');
+  static String get january => _localization.tr('january');
+  static String get february => _localization.tr('february');
+  static String get march => _localization.tr('march');
+  static String get april => _localization.tr('april');
+  static String get may => _localization.tr('may');
+  static String get june => _localization.tr('june');
+  static String get july => _localization.tr('july');
+  static String get august => _localization.tr('august');
+  static String get september => _localization.tr('september');
+  static String get october => _localization.tr('october');
+  static String get november => _localization.tr('november');
+  static String get december => _localization.tr('december');
+  static String get noSchedulesAvailable => _localization.tr('noSchedulesAvailable');
+  static String get noScheduleForThisDay => _localization.tr('noScheduleForThisDay');
+  static String get noSchedulesForThisMonth => _localization.tr('noSchedulesForThisMonth');
 }

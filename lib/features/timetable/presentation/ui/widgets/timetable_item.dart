@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test/shared/extensions/date_time_extension.dart';
 import 'package:test/shared/imports/imports.dart';
+import 'package:test/shared/utils/helper/get_colored_svg_picture.dart';
 import 'package:test/shared/widgets/dashed_line.dart';
 
 import '../../../domain/entities/timetable_entity.dart';
 
-class TimetableItem extends StatelessWidget {
+class TimetableItem extends StatefulWidget {
   final TimetableEntity timetable;
 
   const TimetableItem({
@@ -15,53 +16,114 @@ class TimetableItem extends StatelessWidget {
   });
 
   @override
+  State<TimetableItem> createState() => _TimetableItemState();
+}
+
+class _TimetableItemState extends State<TimetableItem>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+  bool _isPressed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.98).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 80.r,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildTimeColumn(context),
-              10.horizontalSpace,
-              _buildSubjectInfo(context),
-            ],
+    return GestureDetector(
+      onTapDown: (_) {
+        setState(() => _isPressed = true);
+        _animationController.forward();
+      },
+      onTapUp: (_) {
+        setState(() => _isPressed = false);
+        _animationController.reverse();
+      },
+      onTapCancel: () {
+        setState(() => _isPressed = false);
+        _animationController.reverse();
+      },
+      child: AnimatedBuilder(
+        animation: _scaleAnimation,
+        builder: (context, child) => Transform.scale(
+          scale: _isPressed ? _scaleAnimation.value : 1.0,
+          child: Container(
+            margin: REdgeInsets.symmetric(vertical: 8),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 120.h,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      _buildTimeColumn(context),
+                      12.horizontalSpace,
+                      Expanded(
+                        child: _buildSubjectInfo(context),
+                      ),
+                    ],
+                  ),
+                ),
+                16.verticalSpace,
+                DashedLine(
+                  width: double.infinity,
+                  dashWidth: 3,
+                  gapWidth: 3,
+                  dashColor: context.greyColor.withOpacity(0.3),
+                ),
+              ],
+            ),
           ),
         ),
-        20.verticalSpace,
-        DashedLine(
-          width: double.infinity,
-          dashWidth: 3,
-          gapWidth: 3,
-          dashColor: context.greyColor,
-        ),
-        20.verticalSpace,
-      ],
+      ),
     );
   }
 
   Widget _buildTimeColumn(BuildContext context) {
-    return SizedBox(
-      width: 60.r,
+    return Container(
+      width: 70.w,
+      padding: REdgeInsets.symmetric(vertical: 8),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            timetable.startTime.formatTime,
-            textAlign: TextAlign.end,
-          ),
-          Expanded(
-            child: DashedLine(
-              isVertical: true,
-              dashHeight: 3,
-              gapHeight: 3,
-              dashColor: context.greyColor,
+            widget.timetable.startTime.formatTime,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.primaryColor,
+              fontWeight: FontWeight.w600,
             ),
           ),
+          Container(
+            height: 40.h,
+            width: 1,
+            color: context.greyColor.withOpacity(0.3),
+          ),
           Text(
-            timetable.endTime.formatTime,
-            textAlign: TextAlign.end,
+            widget.timetable.endTime.formatTime,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.primaryColor,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ],
       ),
@@ -69,25 +131,77 @@ class TimetableItem extends StatelessWidget {
   }
 
   Widget _buildSubjectInfo(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: REdgeInsets.symmetric(
-          vertical: 12,
-          horizontal: 16,
+    final theme = Theme.of(context);
+    return Container(
+      padding: REdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: theme.cardColor,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: theme.shadowColor.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+        border: Border.all(
+          color: theme.dividerColor.withOpacity(0.1),
+          width: 1,
         ),
-        margin: REdgeInsets.symmetric(vertical: 5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(timetable.subjectName),
-            Text(timetable.lecturerName),
-          ],
-        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: REdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: context.primaryColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+                child: getColoredSvgPicture(
+                  assetName: Assets.icons.lectureHallIcon,
+                  width: 20.r,
+                  height: 20.r,
+                  color: context.primaryColor,
+                ),
+              ),
+              12.horizontalSpace,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.timetable.subjectName,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    4.verticalSpace,
+                    Text(
+                      widget.timetable.lectureHall,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color:
+                            theme.textTheme.bodySmall?.color?.withOpacity(0.7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          12.verticalSpace,
+          Text(
+            widget.timetable.lecturerName,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.textTheme.bodyMedium?.color?.withOpacity(0.8),
+            ),
+          ),
+        ],
       ),
     );
   }

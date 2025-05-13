@@ -28,19 +28,19 @@ extension WeekdayShort on int {
   }
 
   String get monthName {
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+    final monthNames = [
+      AppStrings.january,
+      AppStrings.february,
+      AppStrings.march,
+      AppStrings.april,
+      AppStrings.may,
+      AppStrings.june,
+      AppStrings.july,
+      AppStrings.august,
+      AppStrings.september,
+      AppStrings.october,
+      AppStrings.november,
+      AppStrings.december
     ];
     return monthNames[this - 1];
   }
