@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import '../../features/timetable/domain/entities/day_schedule_entity.dart';
 import '../../features/timetable/domain/entities/month_schedule_entity.dart';
 import '../../features/timetable/domain/entities/timetable_entity.dart';
@@ -151,5 +150,6 @@ class DateUtils {
     }
     const daysInMonth = <int>[31, -1, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     return daysInMonth[month - 1];
+    
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test/features/timetable/presentation/ui/screens/timetable_screen.dart';
 import 'package:test/shared/extensions/string_extension.dart';
 import '../../../domain/entities/day_schedule_entity.dart';
 

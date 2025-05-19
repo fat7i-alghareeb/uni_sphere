@@ -69,5 +69,24 @@
     "december": "ديسمبر",
     "noSchedulesAvailable": "لا يوجد جداول لعرضها",
     "noScheduleForThisDay": "لا يوجد جدول لهذا اليوم",
-    "noSchedulesForThisMonth": "لا يوجد جداول لهذا الشهر"
+    "noSchedulesForThisMonth": "لا يوجد جداول لهذا الشهر",
+    "firstSemester": "الفصل الأول",
+    "secondSemester": "الفصل الثاني",
+    "thirdSemester": "الفصل الثالث",
+    "fourthSemester": "الفصل الرابع",
+    "fifthSemester": "الفصل الخامس",
+    "sixthSemester": "الفصل السادس",
+    "seventhSemester": "الفصل السابع",
+    "eighthSemester": "الفصل الثامن",
+    "ninthSemester": "الفصل التاسع",
+    "tenthSemester": "الفصل العاشر",
+    "news": "أخبار",
+    "myNews": "أخباري",
+    "allNews": "كل الأخبار",
+    "noNews": "لا يوجد أخبار",
+    "noNewsFound": "لا يوجد أخبار مطابقة للبحث",
+    "search": "بحث",
+    "searchForNews": "ابحث عن أخبار"
+    
+
 }

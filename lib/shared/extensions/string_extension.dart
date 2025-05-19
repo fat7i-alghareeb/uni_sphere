@@ -44,4 +44,57 @@ extension WeekdayShort on int {
     ];
     return monthNames[this - 1];
   }
+
+  String get semesterName {
+    final semesterNames = [
+      AppStrings.firstSemester,
+      AppStrings.secondSemester,
+      AppStrings.thirdSemester,
+      AppStrings.fourthSemester,
+      AppStrings.fifthSemester,
+      AppStrings.sixthSemester,
+      AppStrings.seventhSemester,
+      AppStrings.eighthSemester,
+      AppStrings.ninthSemester,
+    ];
+    return semesterNames[this - 1];
+  }
+
+  String get yearName {
+    final yearNames = [
+      AppStrings.firstYear,
+      AppStrings.secondYear,
+      AppStrings.thirdYear,
+      AppStrings.fourthYear,
+      AppStrings.fifthYear,
+      AppStrings.sixthYear,
+      AppStrings.seventhYear,
+      AppStrings.eighthYear,
+      AppStrings.ninthYear,
+      AppStrings.tenthYear,
+      AppStrings.eleventhYear,
+      AppStrings.twelfthYear,
+      AppStrings.thirteenthYear
+    ];
+    return yearNames[this - 1];
+  }
+
+  String get ordinalString {
+    final ordinalNames = [
+      AppStrings.first,
+      AppStrings.second,
+      AppStrings.third,
+      AppStrings.fourth,
+      AppStrings.fifth,
+      AppStrings.sixth,
+      AppStrings.seventh,
+      AppStrings.eighth,
+      AppStrings.ninth,
+      AppStrings.tenth,
+      AppStrings.eleventh,
+      AppStrings.twelfth,
+      AppStrings.thirteenth
+    ];
+    return ordinalNames[this - 1];
+  }
 }

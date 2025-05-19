@@ -69,5 +69,21 @@
     "december": "December",
     "noSchedulesAvailable": "No schedules available",
     "noScheduleForThisDay": "No schedule for this day",
-    "noSchedulesForThisMonth": "No schedules for this month"
+    "noSchedulesForThisMonth": "No schedules for this month",
+    "firstSemester": "First Semester",
+    "secondSemester": "Second Semester",
+    "thirdSemester": "Third Semester",
+    "fourthSemester": "Fourth Semester",
+    "fifthSemester": "Fifth Semester",
+    "sixthSemester": "Sixth Semester",
+    "seventhSemester": "Seventh Semester",
+    "eighthSemester": "Eighth Semester",
+    "ninthSemester": "Ninth Semester",
+    "news": "News",
+    "myNews": "My News",
+    "allNews": "All News",
+    "noNews": "No News",
+    "noNewsFound": "No News Found",
+    "search": "Search",
+    "searchForNews": "Search For News"
 }

@@ -64,6 +64,9 @@ extension ColorSchemeColors on BuildContext {
   /// Returns the shimmer color from the current theme
   Color _shimmerColor() => Theme.of(this).colorScheme.onTertiary;
 
+  /// Returns the light primary color from the current theme
+  Color _lightPrimaryColor() => Theme.of(this).cardColor;
+
   /// Whether the current theme is dark mode
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 
@@ -87,6 +90,9 @@ extension ColorSchemeColors on BuildContext {
 
   /// Surface color from the current theme
   Color get backgroundColor => _backgroundColor();
+
+  /// Light primary color from the current theme
+  Color get lightPrimaryColor => _lightPrimaryColor();
 
   /// OnSurface color from the current theme
   Color get onBackgroundColor => _onBackgroundColor();

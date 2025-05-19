@@ -76,4 +76,21 @@ class AppStrings {
   static String get noSchedulesAvailable => _localization.tr('noSchedulesAvailable');
   static String get noScheduleForThisDay => _localization.tr('noScheduleForThisDay');
   static String get noSchedulesForThisMonth => _localization.tr('noSchedulesForThisMonth');
+  static String get firstSemester => _localization.tr('firstSemester');
+  static String get secondSemester => _localization.tr('secondSemester');
+  static String get thirdSemester => _localization.tr('thirdSemester');
+  static String get fourthSemester => _localization.tr('fourthSemester');
+  static String get fifthSemester => _localization.tr('fifthSemester');
+  static String get sixthSemester => _localization.tr('sixthSemester');
+  static String get seventhSemester => _localization.tr('seventhSemester');
+  static String get eighthSemester => _localization.tr('eighthSemester');
+  static String get ninthSemester => _localization.tr('ninthSemester');
+  static String get tenthSemester => _localization.tr('tenthSemester');
+  static String get news => _localization.tr('news');
+  static String get myNews => _localization.tr('myNews');
+  static String get allNews => _localization.tr('allNews');
+  static String get noNews => _localization.tr('noNews');
+  static String get noNewsFound => _localization.tr('noNewsFound');
+  static String get search => _localization.tr('search');
+  static String get searchForNews => _localization.tr('searchForNews');
 }

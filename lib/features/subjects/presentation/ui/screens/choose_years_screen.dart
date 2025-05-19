@@ -5,7 +5,7 @@ import 'package:test/core/injection/injection.dart';
 import 'package:test/core/result_builder/result.dart';
 import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
 import 'package:test/features/subjects/presentation/ui/screens/year_subjects.dart';
-import 'package:test/shared/utils/helper/year_helper.dart';
+import 'package:test/shared/extensions/string_extension.dart';
 import 'package:test/shared/widgets/custom_scaffold_body.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
@@ -16,6 +16,7 @@ import '../../../../home/presentation/ui/widgets/decorated_container.dart';
 class _ChooseYearsScreenConstants {
   static const int maxYear = 4;
   static const double cardPadding = 12.0;
+  
   static const double circleSize = 130.0;
 }
 
@@ -130,7 +131,7 @@ class _YearCard extends StatelessWidget {
           child: Padding(
             padding: REdgeInsets.all(_ChooseYearsScreenConstants.cardPadding),
             child: Text(
-              YearHelper.getYearString(year),
+              year.yearName,
               style: context.textTheme.headlineLarge!.withColor(
                 context.primaryColor,
               ),
