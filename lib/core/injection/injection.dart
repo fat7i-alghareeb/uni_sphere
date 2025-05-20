@@ -2,6 +2,7 @@
 import 'package:get_it/get_it.dart';
 
 // 🌎 Project imports:
+import 'src/announcements_injection.dart';
 import 'src/auth_injection.dart';
 import 'src/general_injection.dart';
 import 'src/home_injection.dart';
@@ -16,4 +17,5 @@ Future<void> initInjection() async {
   await homeInjection();
   await subjectsInjection();
   await timetableInjection();
+  await announcementsInjection();
 }

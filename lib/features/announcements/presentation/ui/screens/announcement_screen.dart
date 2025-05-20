@@ -1,5 +1,9 @@
 import 'package:test/common/constant/app_strings.dart';
+import 'package:test/features/announcements/presentation/state/bloc/announcement_bloc.dart';
+import 'package:test/features/announcements/presentation/ui/widgets/all_news_widget.dart';
+import 'package:test/features/announcements/presentation/ui/widgets/my_news_widget.dart';
 
+import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
 
 class AnnouncementScreen extends StatefulWidget {
@@ -14,39 +18,42 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: REdgeInsets.all(16.0),
-          child: Container(
-            decoration: BoxDecoration(
-              color: context.lightPrimaryColor,
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: _buildSegment(
-                    context,
-                    AppStrings.allNews,
-                    0,
+    return BlocProvider.value(
+      value: getIt<AnnouncementBloc>(),
+      child: Column(
+        children: [
+          Padding(
+            padding: REdgeInsets.all(16.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: context.lightPrimaryColor,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: _buildSegment(
+                      context,
+                      AppStrings.allNews,
+                      0,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: _buildSegment(
-                    context,
-                    AppStrings.myNews,
-                    1,
+                  Expanded(
+                    child: _buildSegment(
+                      context,
+                      AppStrings.myNews,
+                      1,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        Expanded(
-          child: _selectedIndex == 0 ? _buildAllNews() : _buildMyNews(),
-        ),
-      ],
+          Expanded(
+            child: _selectedIndex == 0 ? _buildAllNews() : _buildMyNews(),
+          ),
+        ],
+      ),
     );
   }
 
@@ -81,14 +88,10 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   }
 
   Widget _buildAllNews() {
-    return const Center(
-      child: Text('All News Content'),
-    );
+    return const AllNewsWidget();
   }
 
   Widget _buildMyNews() {
-    return const Center(
-      child: Text('My News Content'),
-    );
+    return const MyNewsWidget();
   }
 }

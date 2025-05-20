@@ -1,8 +1,8 @@
 part of 'announcement_bloc.dart';
 
 class AnnouncementState {
-  Result<AnnouncementEntity> result;
-  Result<AnnouncementEntity> myAnnouncementResult;
+  Result<List<AnnouncementEntity>> result;
+  Result<List<AnnouncementEntity>> myAnnouncementResult;
 
   AnnouncementState({
     this.result = const Result.init(),
@@ -10,8 +10,8 @@ class AnnouncementState {
   });
 
   AnnouncementState copyWith({
-    Result<AnnouncementEntity>? result,
-    Result<AnnouncementEntity>? myAnnouncementResult,
+    Result<List<AnnouncementEntity>>? result,
+    Result<List<AnnouncementEntity>>? myAnnouncementResult,
   }) {
     return AnnouncementState(
       result: result ?? this.result,
