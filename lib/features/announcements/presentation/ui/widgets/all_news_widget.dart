@@ -8,7 +8,6 @@ import 'package:test/shared/widgets/custom_network_image.dart';
 
 import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
-import 'all_news_card.dart';
 
 class AllNewsWidget extends StatefulWidget {
   const AllNewsWidget({super.key});
@@ -21,7 +20,6 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late List<Animation<double>> _animations = [];
-  bool _isDisposed = false;
 
   @override
   void initState() {
@@ -63,17 +61,8 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
     }
   }
 
-  void _handleAnimationStatus(AnimationStatus status) {
-    if (status == AnimationStatus.completed) {
-      debugPrint('Animation completed successfully');
-    } else if (status == AnimationStatus.dismissed) {
-      debugPrint('Animation was dismissed');
-    }
-  }
-
   @override
   void dispose() {
-    _isDisposed = true;
     _controller.dispose();
     super.dispose();
   }
