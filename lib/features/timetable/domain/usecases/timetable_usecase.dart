@@ -1,6 +1,5 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import 'package:test/shared/utils/helper/colored_print.dart';
 import '../../../../core/constants/time_dummy_data.dart';
 import '../entities/month_schedule_entity.dart';
 import '../repositories/timetable_repository.dart';
@@ -8,6 +7,7 @@ import '../repositories/timetable_repository.dart';
 //!----------------------------  The Class  -------------------------------------!//
 
 class TimetableUsecase {
+  // ignore: unused_field
   final TimetableRepo _repo;
 
   TimetableUsecase({

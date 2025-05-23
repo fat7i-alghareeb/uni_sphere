@@ -1,7 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
 
-import '../entities/subjects_entity.dart';
+import '../entities/subject_entity.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

@@ -7,7 +7,8 @@ import '../../features/home/domain/entities/home_entity.dart';
 import '../../features/home/domain/entities/days_to_the_final.dart';
 import '../../features/home/domain/entities/statistics_entity.dart';
 import '../../features/subjects/domain/entities/materials_entity.dart';
-import '../../features/subjects/domain/entities/subjects_entity.dart';
+import '../../features/subjects/domain/entities/subject_details_entity.dart';
+import '../../features/subjects/domain/entities/subject_entity.dart';
 
 List<String> dummyImages = [
   "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
@@ -40,38 +41,6 @@ final StatisticsEntity mockedStatistics = StatisticsEntity(
   numberOfDownloadedMaterials: 13,
 );
 
-// Mocked Materials Data
-final List<MaterialEntity> mockedMaterials = [
-  MaterialEntity(
-    id: "comp401",
-    title: "Data Structures - Lecture 5",
-    fileUrl: "",
-    subjectName: "Data Structures",
-    professorName: "Dr. Ahmad Al-Masri",
-  ),
-  MaterialEntity(
-    id: "comp402",
-    title: "Algorithms Assignment 3",
-    fileUrl: "",
-    subjectName: "Algorithms",
-    professorName: "Dr. Fatima Omar",
-  ),
-  MaterialEntity(
-    id: "comp403",
-    title: "Database Systems Slides",
-    fileUrl: "",
-    subjectName: "Database Systems",
-    professorName: "Dr. Khaled Hassan",
-  ),
-  MaterialEntity(
-    id: "comp404",
-    title: "Computer Architecture Lab Manual",
-    fileUrl: "",
-    subjectName: "Computer Architecture",
-    professorName: "Dr. Ali Mahmoud",
-  ),
-];
-
 // Mocked Lecture Remaining Time
 final DaysToTheFinals mockedLectureTime = DaysToTheFinals(
   remainingTime: _generateRandomFutureDateTime().toIso8601String(),
@@ -100,7 +69,7 @@ DateTime _generateRandomFutureDateTime() {
 final HomeEntity mockedHomeData = HomeEntity(
   ads: mockedAds,
   statistics: mockedStatistics,
-  materials: mockedMaterials,
+  // materials: mockedMaterials,
   daysToTheFinals: mockedLectureTime,
 );
 
@@ -361,6 +330,170 @@ List<SubjectEntity> computerEngineeringSubjects = [
   // ),
 ];
 
+List<SubjectDetailsEntity> subjectsDetails = [
+  SubjectDetailsEntity(
+    id: "CE101",
+    title: "Introduction to Programming",
+    professorIntro:
+        "Dr. Ahmad Al-Masri is a professor with 15 years of experience in teaching programming fundamentals. He holds a PhD in Computer Science from Damascus University.",
+    professorName: "Dr. Ahmad Al-Masri",
+    subjectDescription:
+        "This course introduces students to fundamental programming concepts using Python. Topics include variables, control structures, functions, and basic algorithms.",
+    semester: "First Semester",
+    isPassed: true,
+    midTermGrade: null,
+    finalGrade: null,
+    canEnroll: true,
+    doesHaveALab: true,
+    isMultipleChoice: false,
+    materials: [
+      MaterialEntity(
+        title: "Python Basics Textbook",
+        fileUrl: "http://example.com/python101.pdf",
+        type: MaterialType.pdf,
+      ),
+      MaterialEntity(
+        title: "Lecture 1: Introduction",
+        fileUrl: "http://example.com/lecture1.mp4",
+        type: MaterialType.video,
+      ),
+      MaterialEntity(
+        title: "Lab Setup Guide",
+        fileUrl: "http://example.com/labsetup.pdf",
+        type: MaterialType.pdf,
+      ),
+    ],
+    imageUrl: dummyImages[2],
+  ),
+  SubjectDetailsEntity(
+    id: "CE102",
+    title: "Discrete Mathematics",
+    professorIntro:
+        "Dr. Fatima Khalil specializes in discrete mathematics and theoretical computer science. She has published numerous papers in combinatorial algorithms.",
+    professorName: "Dr. Fatima Khalil",
+    subjectDescription:
+        "Covers fundamental discrete structures used in computer science including sets, relations, functions, graphs, trees, and combinatorics.",
+    semester: "First Semester",
+    isPassed: true,
+    midTermGrade: null,
+    finalGrade: null,
+    canEnroll: true,
+    doesHaveALab: false,
+    isMultipleChoice: true,
+    materials: [
+      MaterialEntity(
+        title: "Discrete Math Textbook",
+        fileUrl: "http://example.com/discrete-math.pdf",
+        type: MaterialType.pdf,
+      ),
+      MaterialEntity(
+        title: "Problem Solving Techniques",
+        fileUrl: "http://example.com/problemsolving.mp4",
+        type: MaterialType.video,
+      ),
+    ],
+    imageUrl: dummyImages[3],
+  ),
+  SubjectDetailsEntity(
+    id: "CE201",
+    title: "Data Structures",
+    professorIntro:
+        "Dr. Omar Al-Hamid is an expert in algorithms and data structures with industry experience at Syrian Telecom.",
+    professorName: "Dr. Omar Al-Hamid",
+    subjectDescription:
+        "Study of fundamental data structures including arrays, linked lists, stacks, queues, trees, and graphs. Implementation and analysis in C++.",
+    semester: "First Semester",
+    isPassed: true,
+    midTermGrade: 75,
+    finalGrade: 82,
+    canEnroll: false,
+    doesHaveALab: true,
+    isMultipleChoice: false,
+    materials: [
+      MaterialEntity(
+        title: "Data Structures Handbook",
+        fileUrl: "http://example.com/ds-handbook.pdf",
+        type: MaterialType.pdf,
+      ),
+      MaterialEntity(
+        title: "Linked List Visualization",
+        fileUrl: "http://example.com/linkedlist.png",
+        type: MaterialType.image,
+      ),
+      MaterialEntity(
+        title: "Sorting Algorithms Demo",
+        fileUrl: "http://example.com/sorting-algos.mp4",
+        type: MaterialType.video,
+      ),
+    ],
+    imageUrl: dummyImages[0],
+  ),
+  SubjectDetailsEntity(
+    id: "CE202",
+    title: "Computer Organization",
+    professorIntro:
+        "Dr. Yara Suleiman has extensive experience in computer architecture and embedded systems design.",
+    professorName: "Dr. Yara Suleiman",
+    subjectDescription:
+        "Introduction to computer organization including digital logic, processor architecture, memory systems, and I/O interfaces.",
+    semester: "Second Semester",
+    isPassed: true,
+    midTermGrade: null,
+    finalGrade: null,
+    canEnroll: true,
+    doesHaveALab: true,
+    isMultipleChoice: true,
+    materials: [
+      MaterialEntity(
+        title: "Computer Architecture PDF",
+        fileUrl: "http://example.com/comp-arch.pdf",
+        type: MaterialType.pdf,
+      ),
+      MaterialEntity(
+        title: "Processor Design Lecture",
+        fileUrl: "http://example.com/processor-lecture.mp3",
+        type: MaterialType.audio,
+      ),
+      MaterialEntity(
+        title: "Memory Hierarchy Diagram",
+        fileUrl: "http://example.com/memory-hierarchy.jpg",
+        type: MaterialType.image,
+      ),
+    ],
+    imageUrl: dummyImages[1],
+  ),
+  // Continue with remaining subjects...
+  SubjectDetailsEntity(
+    id: "CE301",
+    title: "Operating Systems",
+    professorIntro:
+        "Dr. Khaled Al-Ahmad is a systems programming expert with contributions to open-source operating systems.",
+    professorName: "Dr. Khaled Al-Ahmad",
+    subjectDescription:
+        "Covers operating system concepts including processes, threads, memory management, file systems, and security.",
+    semester: "First Semester",
+    isPassed: true,
+    midTermGrade: null,
+    finalGrade: null,
+    canEnroll: true,
+    doesHaveALab: true,
+    isMultipleChoice: false,
+    materials: [
+      MaterialEntity(
+        title: "OS Concepts Slides",
+        fileUrl: "http://example.com/os-slides.pdf",
+        type: MaterialType.pdf,
+      ),
+      MaterialEntity(
+        title: "Virtual Memory Lecture",
+        fileUrl: "http://example.com/virtual-memory.mp4",
+        type: MaterialType.video,
+      ),
+    ],
+    imageUrl: dummyImages[3],
+  ),
+  // Add remaining subjects following the same pattern
+];
 final List<AnnouncementEntity> fullAnnouncements = [
   AnnouncementEntity(
     id: '124  ',
@@ -448,7 +581,7 @@ final List<AnnouncementEntity> shortAnnouncements = [
     id: '6',
     title: 'Library Maintenance',
     description:
-        'The central library will be closed tomorrow for maintenance work. The central library will be closed tomorrow for maintenance work. The central library will be closed tomorrow for maintenance work.',
+        'The central library will be closed tomorrow for maintenance work. The central library will be closed tomorrow for maintenance work. ',
     image: null,
     createdAt: '2025-5-15 04:30 pm',
   ),

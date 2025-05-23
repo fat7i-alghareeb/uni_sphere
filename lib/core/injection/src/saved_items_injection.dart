@@ -9,7 +9,7 @@ import '../injection.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 
-Future<void> saved_itemsInjection() async {
+Future<void> savedItemsInjection() async {
   getIt.registerLazySingleton<SavedItemsRemote>(
     () => SavedItemsRemote(
       getIt<Dio>(),

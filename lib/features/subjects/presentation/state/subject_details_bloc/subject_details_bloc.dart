@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/features/subjects/domain/entities/subjects_details_entity.dart';
+import 'package:test/features/subjects/domain/entities/subject_details_entity.dart';
 import 'package:test/features/subjects/domain/usecases/get_subject_details_usecase.dart';
 
 import '../../../../../core/result_builder/result.dart';
@@ -22,9 +22,9 @@ class SubjectDetailsBloc
     emit(state.copyWith(result: const Result.loading()));
     final response =
         await _getSubjectDetailsUsecase.getSubjectDetails(event.subjectId);
-    // response.fold(
-    //   (l) => emit(state.copyWith(result: Result.error(error: l))),
-    //   (r) => emit(state.copyWith(result: Result.loaded(data: r))),
-    // );
+    response.fold(
+      (l) => emit(state.copyWith(result: Result.error(error: l))),
+      (r) => emit(state.copyWith(result: Result.loaded(data: r))),
+    );
   }
 }

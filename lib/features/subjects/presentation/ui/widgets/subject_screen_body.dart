@@ -1,6 +1,8 @@
+import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
-import '../../../domain/entities/subjects_entity.dart';
+import '../../../domain/entities/subject_entity.dart';
+import '../../state/subject_details_bloc/subject_details_bloc.dart';
 import 'subject_item_card.dart';
 
 /// The body of the subjects screen that displays the list of subjects.
@@ -111,8 +113,10 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
           left: AppConstants.horizontalScreensPadding,
           bottom: 150.h,
         ),
-        itemBuilder: (context, index) =>
-            SubjectItemCard(subject: widget.subjects[index]),
+        itemBuilder: (context, index) => BlocProvider.value(
+          value: getIt<SubjectDetailsBloc>(),
+          child: SubjectItemCard(subject: widget.subjects[index]),
+        ),
         itemCount: widget.subjects.length,
       );
     }

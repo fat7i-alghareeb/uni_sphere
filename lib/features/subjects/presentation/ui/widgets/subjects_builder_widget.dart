@@ -2,7 +2,7 @@ import '../../../../../core/result_builder/result.dart';
 import '../../../../../core/result_builder/result_builder.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
-import '../../../domain/entities/subjects_entity.dart';
+import '../../../domain/entities/subject_entity.dart';
 import 'subject_screen_body.dart';
 
 class SubjectsBuilderWidget extends StatelessWidget {

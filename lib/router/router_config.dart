@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:beamer/beamer.dart';
 import '../features/root/presentation/ui/screen/root_screen.dart';
 import '../features/subjects/presentation/ui/screens/choose_years_screen.dart';
+import '../features/subjects/presentation/ui/screens/subject_details_screen.dart';
 import '../features/subjects/presentation/ui/screens/year_subjects.dart';
 import '../shared/imports/imports.dart';
 import '../shared/states/app_manager_bloc/app_manager_bloc.dart';
@@ -57,7 +58,10 @@ class BRouterConfig {
           '/root': RootScreen.pageBuilder,
           //! -------------- Subjects ---------------- !//
           "/root/choose_years_screen": ChooseYearsScreen.pageBuilder,
+          "/root/subject_details": SubjectDetailsScreen.pageBuilder,
           "/root/choose_years_screen/year_subjects": YearSubjects.pageBuilder,
+          "/root/choose_years_screen/year_subjects/subject_details":
+              SubjectDetailsScreen.pageBuilder,
         },
       ).call,
     );

@@ -1,10 +1,13 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
+import '../../../../core/constants/dummy_data.dart';
+import '../entities/subject_details_entity.dart';
 import '../repositories/subjects_repository.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 
 class GetSubjectDetailsUsecase {
+  // ignore: unused_field
   final SubjectsRepo _repo;
 
   GetSubjectDetailsUsecase({
@@ -12,7 +15,13 @@ class GetSubjectDetailsUsecase {
   }) : _repo = repo;
 
   //* Get Subject Details
-  Future<Either<String, String>> getSubjectDetails(String id) async {
-    return const Right("fathi");
+  Future<Either<String, SubjectDetailsEntity>> getSubjectDetails(
+      String id) async {
+    return Future.delayed(
+      const Duration(milliseconds: 1250),
+      () => Right(
+        subjectsDetails.firstWhere((element) => element.id == id),
+      ),
+    );
   }
 }

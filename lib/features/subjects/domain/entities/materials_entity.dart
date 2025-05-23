@@ -1,14 +1,18 @@
-class MaterialEntity {
-  final String id;
-  final String title;
-  final String fileUrl;
-  final String subjectName;
-  final String professorName;
-  MaterialEntity({
-    required this.id,
-    required this.title,
-    required this.fileUrl,
-    required this.subjectName,
-    required this.professorName,
-  });
+  class MaterialEntity {
+    final String title;
+    final String fileUrl;
+    final MaterialType type;
+    MaterialEntity({
+      required this.title,
+      required this.fileUrl,
+      required this.type,
+    });
+  }
+
+
+enum MaterialType {
+  pdf,
+  video,
+  image,
+  audio,
 }

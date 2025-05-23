@@ -1,6 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
-import 'package:test/features/subjects/domain/entities/subjects_entity.dart';
+import 'package:test/features/subjects/domain/entities/subject_entity.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/utils/helper/year_helper.dart';

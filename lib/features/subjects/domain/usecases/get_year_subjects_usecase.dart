@@ -2,12 +2,13 @@
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../core/constants/dummy_data.dart';
-import '../entities/subjects_entity.dart';
+import '../entities/subject_entity.dart';
 import '../repositories/subjects_repository.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 
 class GetYearSubjectsUsecase {
+  // ignore: unused_field
   final SubjectsRepo _repo;
 
   GetYearSubjectsUsecase({

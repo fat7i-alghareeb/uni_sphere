@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/features/subjects/domain/entities/subjects_entity.dart';
+import 'package:test/features/subjects/domain/entities/subject_entity.dart';
 import 'package:test/features/subjects/domain/usecases/get_year_subjects_usecase.dart';
 
 import '../../../../../core/result_builder/result.dart';

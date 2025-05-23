@@ -1,5 +1,3 @@
-import '../../../../../core/styles/app_text_theme.dart';
-
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_network_image.dart';
 import '../../../domain/entities/ads_entity.dart';
