@@ -448,7 +448,7 @@ final List<AnnouncementEntity> shortAnnouncements = [
     id: '6',
     title: 'Library Maintenance',
     description:
-        'The central library will be closed tomorrow for maintenance work.',
+        'The central library will be closed tomorrow for maintenance work. The central library will be closed tomorrow for maintenance work. The central library will be closed tomorrow for maintenance work.',
     image: null,
     createdAt: '2025-5-15 04:30 pm',
   ),

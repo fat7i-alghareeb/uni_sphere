@@ -1,11 +1,9 @@
 import 'package:test/core/result_builder/result_builder.dart';
 import 'package:test/features/announcements/domain/entities/announcement_entity.dart';
 import 'package:test/features/announcements/presentation/state/bloc/announcement_bloc.dart';
-import 'package:test/shared/utils/helper/colored_print.dart';
 import 'package:test/shared/widgets/custom_shimmer.dart';
 import 'package:test/core/styles/colors.dart';
 import 'package:test/shared/widgets/custom_network_image.dart';
-
 import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
 
@@ -24,7 +22,6 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
   @override
   void initState() {
     super.initState();
-    printR("initState all news");
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
