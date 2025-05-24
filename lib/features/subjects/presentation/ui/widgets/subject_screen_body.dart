@@ -113,10 +113,7 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
           left: AppConstants.horizontalScreensPadding,
           bottom: 150.h,
         ),
-        itemBuilder: (context, index) => BlocProvider.value(
-          value: getIt<SubjectDetailsBloc>(),
-          child: SubjectItemCard(subject: widget.subjects[index]),
-        ),
+        itemBuilder: (context, index) => SubjectItemCard(subject: widget.subjects[index]),
         itemCount: widget.subjects.length,
       );
     }

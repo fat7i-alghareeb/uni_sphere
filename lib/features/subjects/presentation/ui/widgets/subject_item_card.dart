@@ -1,13 +1,9 @@
 import 'package:beamer/beamer.dart';
-import 'package:test/core/result_builder/result.dart';
-
 import '../../../../../common/constant/app_strings.dart';
-import '../../../../../core/injection/injection.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_network_image.dart';
 import '../../../domain/entities/subject_entity.dart';
-import '../../state/subject_details_bloc/subject_details_bloc.dart';
 import '../screens/subject_details_screen.dart';
 
 /// A card widget that displays information about a subject.
@@ -29,43 +25,36 @@ class SubjectItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SubjectDetailsBloc, SubjectDetailsState>(
-      listenWhen: (previous, current) => previous.result != current.result,
-      listener: (context, state) {
-        if (state.result.isLoaded()) {
-          context.beamToNamed(SubjectDetailsScreen.pagePath);
-        }
-      },
-      child: GestureDetector(
-        onTap: () => getIt<SubjectDetailsBloc>().add(
-          GetSubjectDetailsEvent(subjectId: subject.id),
+    return GestureDetector(
+      onTap: () => context.beamToNamed(
+        SubjectDetailsScreen.pagePath,
+        data: subject.id,
+      ),
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        margin: REdgeInsets.symmetric(vertical: 6),
+        padding: REdgeInsets.symmetric(
+          horizontal: _containerHorizontalPadding.w,
+          vertical: _containerVerticalPadding.h,
         ),
-        child: Container(
-          clipBehavior: Clip.hardEdge,
-          margin: REdgeInsets.symmetric(vertical: 6),
-          padding: REdgeInsets.symmetric(
-            horizontal: _containerHorizontalPadding.w,
-            vertical: _containerVerticalPadding.h,
-          ),
-          decoration: BoxDecoration(
-            color: context.cardColor,
-            borderRadius: BorderRadius.circular(_borderRadius.r),
-            boxShadow: AppColors.primaryShadow(context),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: _imageSize.w,
-                height: _imageSize.h,
-                child: _buildSubjectImage(),
-              ),
-              _spacing.horizontalSpace,
-              Expanded(
-                child: _buildSubjectInfo(context),
-              )
-            ],
-          ),
+        decoration: BoxDecoration(
+          color: context.cardColor,
+          borderRadius: BorderRadius.circular(_borderRadius.r),
+          boxShadow: AppColors.primaryShadow(context),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: _imageSize.w,
+              height: _imageSize.h,
+              child: _buildSubjectImage(),
+            ),
+            _spacing.horizontalSpace,
+            Expanded(
+              child: _buildSubjectInfo(context),
+            )
+          ],
         ),
       ),
     );
@@ -127,7 +116,6 @@ class SubjectItemCard extends StatelessWidget {
               ),
             ),
           ),
-          // 5.verticalSpace,
           Flexible(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,

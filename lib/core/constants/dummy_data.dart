@@ -329,115 +329,83 @@ List<SubjectEntity> computerEngineeringSubjects = [
   //   imageUrl: "https://example.com/images/writing.jpg",
   // ),
 ];
-
-List<SubjectDetailsEntity> subjectsDetails = [
+List<SubjectDetailsEntity> computerEngineeringSubjectsDetails = [
   SubjectDetailsEntity(
     id: "CE101",
     title: "Introduction to Programming",
     professorIntro:
-        "Dr. Ahmad Al-Masri is a professor with 15 years of experience in teaching programming fundamentals. He holds a PhD in Computer Science from Damascus University.",
+        "Dr. Ahmad Al-Masri is a professor with 15 years of experience...",
     professorName: "Dr. Ahmad Al-Masri",
-    subjectDescription:
-        "This course introduces students to fundamental programming concepts using Python. Topics include variables, control structures, functions, and basic algorithms.",
+    subjectDescription: "Fundamental programming concepts using Python...",
     semester: "First Semester",
     isPassed: true,
-    midTermGrade: null,
-    finalGrade: null,
+    midTermGrade: 25, // 25/30 (83%)
+    finalGrade: 60, // 60/70 (86%) - Total: 85
     canEnroll: true,
     doesHaveALab: true,
     isMultipleChoice: false,
     materials: [
       MaterialEntity(
-        title: "Python Basics Textbook",
-        fileUrl: "http://example.com/python101.pdf",
-        type: MaterialType.pdf,
-      ),
+          title: "Python Basics Textbook",
+          fileUrl: "http://example.com/python101.pdf",
+          type: MaterialType.pdf),
       MaterialEntity(
-        title: "Lecture 1: Introduction",
-        fileUrl: "http://example.com/lecture1.mp4",
-        type: MaterialType.video,
-      ),
-      MaterialEntity(
-        title: "Lab Setup Guide",
-        fileUrl: "http://example.com/labsetup.pdf",
-        type: MaterialType.pdf,
-      ),
+          title: "Lecture 1: Introduction",
+          fileUrl: "http://example.com/lecture1.mp4",
+          type: MaterialType.video),
     ],
     imageUrl: dummyImages[2],
   ),
   SubjectDetailsEntity(
     id: "CE102",
     title: "Discrete Mathematics",
-    professorIntro:
-        "Dr. Fatima Khalil specializes in discrete mathematics and theoretical computer science. She has published numerous papers in combinatorial algorithms.",
+    professorIntro: "Dr. Fatima Khalil specializes in discrete mathematics...",
     professorName: "Dr. Fatima Khalil",
-    subjectDescription:
-        "Covers fundamental discrete structures used in computer science including sets, relations, functions, graphs, trees, and combinatorics.",
+    subjectDescription: "Fundamental discrete structures...",
     semester: "First Semester",
     isPassed: true,
-    midTermGrade: null,
-    finalGrade: null,
+    midTermGrade: 18, // 18/30 (60%)
+    finalGrade: 42, // 42/70 (60%) - Total: 60 (minimum pass)
     canEnroll: true,
     doesHaveALab: false,
     isMultipleChoice: true,
     materials: [
       MaterialEntity(
-        title: "Discrete Math Textbook",
-        fileUrl: "http://example.com/discrete-math.pdf",
-        type: MaterialType.pdf,
-      ),
-      MaterialEntity(
-        title: "Problem Solving Techniques",
-        fileUrl: "http://example.com/problemsolving.mp4",
-        type: MaterialType.video,
-      ),
+          title: "Discrete Math Textbook",
+          fileUrl: "http://example.com/discrete-math.pdf",
+          type: MaterialType.pdf),
     ],
     imageUrl: dummyImages[3],
   ),
   SubjectDetailsEntity(
     id: "CE201",
     title: "Data Structures",
-    professorIntro:
-        "Dr. Omar Al-Hamid is an expert in algorithms and data structures with industry experience at Syrian Telecom.",
+    professorIntro: "Dr. Omar Al-Hamid is an expert in algorithms...",
     professorName: "Dr. Omar Al-Hamid",
-    subjectDescription:
-        "Study of fundamental data structures including arrays, linked lists, stacks, queues, trees, and graphs. Implementation and analysis in C++.",
+    subjectDescription: "Study of fundamental data structures...",
     semester: "First Semester",
-    isPassed: true,
-    midTermGrade: 75,
-    finalGrade: 82,
+    isPassed: false, // Failed
+    midTermGrade: 12, // 12/30 (40%)
+    finalGrade: 40, // 40/70 (57%) - Total: 52
     canEnroll: false,
     doesHaveALab: true,
     isMultipleChoice: false,
     materials: [
       MaterialEntity(
-        title: "Data Structures Handbook",
-        fileUrl: "http://example.com/ds-handbook.pdf",
-        type: MaterialType.pdf,
-      ),
-      MaterialEntity(
-        title: "Linked List Visualization",
-        fileUrl: "http://example.com/linkedlist.png",
-        type: MaterialType.image,
-      ),
-      MaterialEntity(
-        title: "Sorting Algorithms Demo",
-        fileUrl: "http://example.com/sorting-algos.mp4",
-        type: MaterialType.video,
-      ),
+          title: "Data Structures Handbook",
+          fileUrl: "http://example.com/ds-handbook.pdf",
+          type: MaterialType.pdf),
     ],
     imageUrl: dummyImages[0],
   ),
   SubjectDetailsEntity(
     id: "CE202",
     title: "Computer Organization",
-    professorIntro:
-        "Dr. Yara Suleiman has extensive experience in computer architecture and embedded systems design.",
+    professorIntro: "Dr. Yara Suleiman has extensive experience...",
     professorName: "Dr. Yara Suleiman",
-    subjectDescription:
-        "Introduction to computer organization including digital logic, processor architecture, memory systems, and I/O interfaces.",
+    subjectDescription: "Introduction to computer organization...",
     semester: "Second Semester",
-    isPassed: true,
+    isPassed: false, // Failed - no grades
     midTermGrade: null,
     finalGrade: null,
     canEnroll: true,
@@ -445,54 +413,159 @@ List<SubjectDetailsEntity> subjectsDetails = [
     isMultipleChoice: true,
     materials: [
       MaterialEntity(
-        title: "Computer Architecture PDF",
-        fileUrl: "http://example.com/comp-arch.pdf",
-        type: MaterialType.pdf,
-      ),
-      MaterialEntity(
-        title: "Processor Design Lecture",
-        fileUrl: "http://example.com/processor-lecture.mp3",
-        type: MaterialType.audio,
-      ),
-      MaterialEntity(
-        title: "Memory Hierarchy Diagram",
-        fileUrl: "http://example.com/memory-hierarchy.jpg",
-        type: MaterialType.image,
-      ),
+          title: "Computer Architecture PDF",
+          fileUrl: "http://example.com/comp-arch.pdf",
+          type: MaterialType.pdf),
     ],
     imageUrl: dummyImages[1],
   ),
-  // Continue with remaining subjects...
   SubjectDetailsEntity(
     id: "CE301",
     title: "Operating Systems",
-    professorIntro:
-        "Dr. Khaled Al-Ahmad is a systems programming expert with contributions to open-source operating systems.",
+    professorIntro: "Dr. Khaled Al-Ahmad is a systems programming expert...",
     professorName: "Dr. Khaled Al-Ahmad",
-    subjectDescription:
-        "Covers operating system concepts including processes, threads, memory management, file systems, and security.",
+    subjectDescription: "Operating system concepts...",
     semester: "First Semester",
     isPassed: true,
-    midTermGrade: null,
-    finalGrade: null,
+    midTermGrade: 24, // 24/30 (80%)
+    finalGrade: 55, // 55/70 (79%) - Total: 79
     canEnroll: true,
     doesHaveALab: true,
     isMultipleChoice: false,
     materials: [
       MaterialEntity(
-        title: "OS Concepts Slides",
-        fileUrl: "http://example.com/os-slides.pdf",
-        type: MaterialType.pdf,
-      ),
-      MaterialEntity(
-        title: "Virtual Memory Lecture",
-        fileUrl: "http://example.com/virtual-memory.mp4",
-        type: MaterialType.video,
-      ),
+          title: "OS Concepts Slides",
+          fileUrl: "http://example.com/os-slides.pdf",
+          type: MaterialType.pdf),
     ],
     imageUrl: dummyImages[3],
   ),
-  // Add remaining subjects following the same pattern
+  SubjectDetailsEntity(
+    id: "CE302",
+    title: "Database Systems",
+    professorIntro: "Dr. Lina Al-Hassan is a database specialist...",
+    professorName: "Dr. Lina Al-Hassan",
+    subjectDescription: "Introduction to database systems...",
+    semester: "Second Semester",
+    isPassed: false, // Failed
+    midTermGrade: 20, // 20/30 (67%)
+    finalGrade: 38, // 38/70 (54%) - Total: 58
+    canEnroll: false,
+    doesHaveALab: true,
+    isMultipleChoice: false,
+    materials: [
+      MaterialEntity(
+          title: "Database Design Textbook",
+          fileUrl: "http://example.com/db-design.pdf",
+          type: MaterialType.pdf),
+    ],
+    imageUrl: dummyImages[3],
+  ),
+  SubjectDetailsEntity(
+    id: "CE401",
+    title: "Computer Networks",
+    professorIntro: "Dr. Ali Al-Sayed has worked as a network engineer...",
+    professorName: "Dr. Ali Al-Sayed",
+    subjectDescription: "Fundamentals of computer networking...",
+    semester: "First Semester",
+    isPassed: true,
+    midTermGrade: 22, // 22/30 (73%)
+    finalGrade: 45, // 45/70 (64%) - Total: 67
+    canEnroll: true,
+    doesHaveALab: true,
+    isMultipleChoice: true,
+    materials: [
+      MaterialEntity(
+          title: "Networking Basics",
+          fileUrl: "http://example.com/networking-basics.pdf",
+          type: MaterialType.pdf),
+    ],
+    imageUrl: dummyImages[2],
+  ),
+  SubjectDetailsEntity(
+    id: "CE402",
+    title: "Artificial Intelligence",
+    professorIntro: "Dr. Hala Ibrahim is a machine learning researcher...",
+    professorName: "Dr. Hala Ibrahim",
+    subjectDescription: "Introduction to AI concepts...",
+    semester: "Second Semester",
+    isPassed: false, // Failed - only midterm
+    midTermGrade: 15, // 15/30 (50%)
+    finalGrade: null, // Missed final exam
+    canEnroll: true,
+    doesHaveALab: true,
+    isMultipleChoice: false,
+    materials: [
+      MaterialEntity(
+          title: "AI Fundamentals",
+          fileUrl: "http://example.com/ai-fundamentals.pdf",
+          type: MaterialType.pdf),
+    ],
+    imageUrl: dummyImages[1],
+  ),
+  SubjectDetailsEntity(
+    id: "CE203",
+    title: "Algorithms Analysis",
+    professorIntro: "Dr. Mahmoud Al-Khatib is an algorithms expert...",
+    professorName: "Dr. Mahmoud Al-Khatib",
+    subjectDescription: "Analysis of algorithms...",
+    semester: "Second Semester",
+    isPassed: true,
+    midTermGrade: 10, // 10/30 (33%)
+    finalGrade: 55, // 55/70 (79%) - Total: 65 (passed despite weak midterm)
+    canEnroll: false,
+    doesHaveALab: false,
+    isMultipleChoice: false,
+    materials: [
+      MaterialEntity(
+          title: "Algorithm Design Manual",
+          fileUrl: "http://example.com/algo-manual.pdf",
+          type: MaterialType.pdf),
+    ],
+    imageUrl: dummyImages[0],
+  ),
+  SubjectDetailsEntity(
+    id: "CE303",
+    title: "Software Engineering",
+    professorIntro: "Dr. Rana Al-Hussein has industry experience...",
+    professorName: "Dr. Rana Al-Hussein",
+    subjectDescription: "Software development lifecycle...",
+    semester: "First Semester",
+    isPassed: false, // Failed
+    midTermGrade: 8, // 8/30 (27%)
+    finalGrade: 30, // 30/70 (43%) - Total: 38
+    canEnroll: true,
+    doesHaveALab: true,
+    isMultipleChoice: true,
+    materials: [
+      MaterialEntity(
+          title: "Software Engineering Principles",
+          fileUrl: "http://example.com/se-principles.pdf",
+          type: MaterialType.pdf),
+    ],
+    imageUrl: dummyImages[0],
+  ),
+  SubjectDetailsEntity(
+    id: "CE304",
+    title: "Computer Graphics",
+    professorIntro: "Dr. Wael Al-Malik is a computer graphics specialist...",
+    professorName: "Dr. Wael Al-Malik",
+    subjectDescription: "Fundamentals of computer graphics...",
+    semester: "Second Semester",
+    isPassed: true,
+    midTermGrade: 20, // 20/30 (67%)
+    finalGrade: 45, // 45/70 (64%) - Total: 65
+    canEnroll: true,
+    doesHaveALab: true,
+    isMultipleChoice: false,
+    materials: [
+      MaterialEntity(
+          title: "OpenGL Programming Guide",
+          fileUrl: "http://example.com/opengl-guide.pdf",
+          type: MaterialType.pdf),
+    ],
+    imageUrl: dummyImages[3],
+  ),
 ];
 final List<AnnouncementEntity> fullAnnouncements = [
   AnnouncementEntity(

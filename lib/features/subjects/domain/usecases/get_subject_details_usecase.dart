@@ -20,7 +20,8 @@ class GetSubjectDetailsUsecase {
     return Future.delayed(
       const Duration(milliseconds: 1250),
       () => Right(
-        subjectsDetails.firstWhere((element) => element.id == id),
+        computerEngineeringSubjectsDetails
+            .firstWhere((element) => element.id == id),
       ),
     );
   }
