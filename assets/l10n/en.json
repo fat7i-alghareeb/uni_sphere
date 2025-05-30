@@ -14,6 +14,7 @@
     "isMultipleChoice":"MultipleChoice:",
     "midTermGrade": "MidTerm Grade:",
     "finalGrade":"Final Grade:",
+    "totalGrade": "Total Grade:",
     "canEnroll": "Can Enroll:",
     "yes":"Yes",
     "no": "No",

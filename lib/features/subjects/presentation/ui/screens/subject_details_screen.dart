@@ -115,13 +115,16 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
                     ),
                   );
                 },
-                child: SubjectDetailsHeader(
-                  subjectDetails: subjectDetails,
+                child: Padding(
+                  padding: REdgeInsets.symmetric(vertical: 9),
+                  child: SubjectDetailsHeader(
+                    subjectDetails: subjectDetails,
+                  ),
                 ),
               ),
             ),
-            if (subjectDetails.midTermGrade != null ||
-                subjectDetails.finalGrade != null)
+            if ((subjectDetails.midTermGrade != null ||
+                subjectDetails.finalGrade != null))
               SliverToBoxAdapter(
                 child: AnimatedBuilder(
                   animation: _animations[1],
@@ -134,8 +137,11 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
                       ),
                     );
                   },
-                  child: SubjectDetailsGrades(
-                    subjectDetails: subjectDetails,
+                  child: Padding(
+                    padding: REdgeInsets.symmetric(vertical: 9.0),
+                    child: SubjectDetailsGrades(
+                      subjectDetails: subjectDetails,
+                    ),
                   ),
                 ),
               ),
@@ -151,8 +157,11 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
                     ),
                   );
                 },
-                child: SubjectDescriptionWithMaterials(
-                  subjectDetails: subjectDetails,
+                child: Padding(
+                  padding: REdgeInsets.symmetric(vertical: 9.0),
+                  child: SubjectDescriptionWithMaterials(
+                    subjectDetails: subjectDetails,
+                  ),
                 ),
               ),
             ),

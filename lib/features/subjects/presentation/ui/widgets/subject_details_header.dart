@@ -19,7 +19,9 @@ class SubjectDetailsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: REdgeInsets.all(AppConstants.horizontalScreensPadding),
+      padding: REdgeInsets.symmetric(
+        horizontal: AppConstants.horizontalScreensPadding,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

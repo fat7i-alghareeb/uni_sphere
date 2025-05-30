@@ -15,7 +15,9 @@ class SubjectDetailsGrades extends StatelessWidget {
     final totalGrade =
         (subjectDetails.midTermGrade ?? 0) + (subjectDetails.finalGrade ?? 0);
     return Container(
-      margin: REdgeInsets.all(AppConstants.horizontalScreensPadding),
+      margin: REdgeInsets.symmetric(
+        horizontal: AppConstants.horizontalScreensPadding,
+      ),
       padding: REdgeInsets.all(16),
       decoration: BoxDecoration(
         color: context.cardColor,
@@ -58,24 +60,8 @@ class SubjectDetailsGrades extends StatelessWidget {
               ],
               _buildGradeItem(
                 context,
-                AppStrings.theGrade,
+                AppStrings.TotalGrade,
                 totalGrade.toString(),
-              ),
-            ],
-          ),
-          16.verticalSpace,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildStatusItem(
-                context,
-                AppStrings.isPassed,
-                subjectDetails.isPassed,
-              ),
-              _buildStatusItem(
-                context,
-                AppStrings.canEnroll,
-                subjectDetails.canEnroll,
               ),
             ],
           ),
@@ -99,28 +85,6 @@ class SubjectDetailsGrades extends StatelessWidget {
           style: context.textTheme.titleLarge?.copyWith(
             color: context.primaryColor,
             fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildStatusItem(BuildContext context, String label, bool value) {
-    return Row(
-      children: [
-        Container(
-          width: 12.w,
-          height: 12.w,
-          decoration: BoxDecoration(
-            color: value ? Colors.green : Colors.red,
-            shape: BoxShape.circle,
-          ),
-        ),
-        8.horizontalSpace,
-        Text(
-          label,
-          style: context.textTheme.labelMedium?.copyWith(
-            color: context.greyColor,
           ),
         ),
       ],

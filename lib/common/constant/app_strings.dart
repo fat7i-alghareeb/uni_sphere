@@ -102,6 +102,7 @@ class AppStrings {
   static String get Passed => _localization.tr('Passed');
   static String get NotPassed => _localization.tr('NotPassed');
   static String get MidTermGrade => _localization.tr('MidTermGrade');
+  static String get TotalGrade => _localization.tr('TotalGrade');
   static String get FinalGrade => _localization.tr('FinalGrade');
   static String get AttendanceHours => _localization.tr('AttendanceHours');
   static String get AttendanceLectures => _localization.tr('AttendanceLectures');

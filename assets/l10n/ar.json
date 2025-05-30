@@ -96,6 +96,7 @@
     "Passed": "ناجح",
     "NotPassed": "غير ناجح",
     "MidTermGrade": "علامة العملي",
+    "TotalGrade": "العلامة الكلية",
     "FinalGrade": "علامة النظري",
     "AttendanceHours": "ساعات الحضور",
     "AttendanceLectures": "محاضرات قمت بحضورها",

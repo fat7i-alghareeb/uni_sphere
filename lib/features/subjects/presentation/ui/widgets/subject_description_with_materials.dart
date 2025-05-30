@@ -1,3 +1,4 @@
+import 'package:test/common/constant/app_strings.dart';
 import 'package:test/shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/subject_details_entity.dart';
@@ -12,17 +13,20 @@ class SubjectDescriptionWithMaterials extends StatelessWidget {
   final SubjectDetailsEntity subjectDetails;
 
   static const double _borderRadius = 22;
-  static const double _spacing = 16;
+  static const double _spacing = 18;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: REdgeInsets.all(AppConstants.horizontalScreensPadding),
+      padding: REdgeInsets.symmetric(
+        horizontal: AppConstants.horizontalScreensPadding,
+      ),
       child: Column(
+        spacing: _spacing.h,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildDescription(context),
-          _spacing.verticalSpace,
+          // _spacing.verticalSpace,
           _buildMaterials(context),
         ],
       ),
@@ -45,13 +49,13 @@ class SubjectDescriptionWithMaterials extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 16.h,
         children: [
           Text(
-            'Description',
+            AppStrings.Description,
             style:
                 context.textTheme.titleMedium!.withColor(context.primaryColor),
           ),
-          16.verticalSpace,
           Text(
             subjectDetails.subjectDescription,
             style: context.textTheme.bodyMedium!
@@ -71,7 +75,7 @@ class SubjectDescriptionWithMaterials extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Materials',
+          AppStrings.Materials,
           style: context.textTheme.titleMedium!.withColor(context.primaryColor),
         ),
         16.verticalSpace,
