@@ -36,7 +36,7 @@ class SubjectDetailsHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Professor',
+          AppStrings.Professor,
           style: context.textTheme.titleMedium!.withColor(context.primaryColor),
         ),
         8.verticalSpace,
