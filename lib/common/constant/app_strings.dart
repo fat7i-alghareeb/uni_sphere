@@ -1,19 +1,27 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:get_it/get_it.dart';
 import '../../shared/helper/localization_service.dart';
-// dart run generate_localization_keys.dart  
+
+// dart run generate_localization_keys.dart
 // AUTO-GENERATED FILE, DO NOT EDIT
 class AppStrings {
   static final _localization = GetIt.instance<LocalizationService>();
 
-  static String get numberOfAttendanceHours => _localization.tr('numberOfAttendanceHours');
-  static String get numberOfAttendanceLectures => _localization.tr('numberOfAttendanceLectures');
-  static String get numberOfDaysToTheFinals => _localization.tr('numberOfDaysToTheFinals');
-  static String get numberOfDownloadedMaterials => _localization.tr('numberOfDownloadedMaterials');
+  static String get numberOfAttendanceHours =>
+      _localization.tr('numberOfAttendanceHours');
+  static String get numberOfAttendanceLectures =>
+      _localization.tr('numberOfAttendanceLectures');
+  static String get numberOfDaysToTheFinals =>
+      _localization.tr('numberOfDaysToTheFinals');
+  static String get numberOfDownloadedMaterials =>
+      _localization.tr('numberOfDownloadedMaterials');
   static String get days => _localization.tr('days');
   static String get hours => _localization.tr('hours');
   static String get minutes => _localization.tr('minutes');
   static String get seconds => _localization.tr('seconds');
-  static String get theFinalsStartAfter => _localization.tr('theFinalsStartAfter');
+  static String get theFinalsStartAfter =>
+      _localization.tr('theFinalsStartAfter');
   static String get yourSubjects => _localization.tr('yourSubjects');
   static String get theYear => _localization.tr('theYear');
   static String get lab => _localization.tr('lab');
@@ -25,7 +33,8 @@ class AppStrings {
   static String get no => _localization.tr('no');
   static String get isPassed => _localization.tr('isPassed');
   static String get theGrade => _localization.tr('theGrade');
-  static String get chooseYearToShowItsSubjects => _localization.tr('chooseYearToShowItsSubjects');
+  static String get chooseYearToShowItsSubjects =>
+      _localization.tr('chooseYearToShowItsSubjects');
   static String get yearSubjects => _localization.tr('yearSubjects');
   static String get firstYear => _localization.tr('firstYear');
   static String get secondYear => _localization.tr('secondYear');
@@ -73,9 +82,12 @@ class AppStrings {
   static String get october => _localization.tr('october');
   static String get november => _localization.tr('november');
   static String get december => _localization.tr('december');
-  static String get noSchedulesAvailable => _localization.tr('noSchedulesAvailable');
-  static String get noScheduleForThisDay => _localization.tr('noScheduleForThisDay');
-  static String get noSchedulesForThisMonth => _localization.tr('noSchedulesForThisMonth');
+  static String get noSchedulesAvailable =>
+      _localization.tr('noSchedulesAvailable');
+  static String get noScheduleForThisDay =>
+      _localization.tr('noScheduleForThisDay');
+  static String get noSchedulesForThisMonth =>
+      _localization.tr('noSchedulesForThisMonth');
   static String get firstSemester => _localization.tr('firstSemester');
   static String get secondSemester => _localization.tr('secondSemester');
   static String get thirdSemester => _localization.tr('thirdSemester');
@@ -96,7 +108,8 @@ class AppStrings {
   static String get Professor => _localization.tr('Professor');
   static String get Description => _localization.tr('Description');
   static String get Materials => _localization.tr('Materials');
-  static String get SubjectInformation => _localization.tr('SubjectInformation');
+  static String get SubjectInformation =>
+      _localization.tr('SubjectInformation');
   static String get Semester => _localization.tr('Semester');
   static String get Status => _localization.tr('Status');
   static String get Passed => _localization.tr('Passed');
@@ -105,7 +118,8 @@ class AppStrings {
   static String get TotalGrade => _localization.tr('TotalGrade');
   static String get FinalGrade => _localization.tr('FinalGrade');
   static String get AttendanceHours => _localization.tr('AttendanceHours');
-  static String get AttendanceLectures => _localization.tr('AttendanceLectures');
+  static String get AttendanceLectures =>
+      _localization.tr('AttendanceLectures');
   static String get Enrollment => _localization.tr('Enrollment');
   static String get Available => _localization.tr('Available');
   static String get NotAvailable => _localization.tr('NotAvailable');

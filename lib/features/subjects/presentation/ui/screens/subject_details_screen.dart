@@ -1,6 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
 import 'package:test/core/result_builder/result_builder.dart';
+import 'package:test/features/subjects/presentation/ui/widgets/subject_details_image.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
@@ -68,6 +69,7 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
   @override
   void dispose() {
     _isDisposed = true;
+    _hasAnimated = false;
     _controller.dispose();
     super.dispose();
   }
@@ -100,90 +102,91 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
 
   Widget _buildContent(SubjectDetailsEntity subjectDetails) {
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: AnimatedBuilder(
-                animation: _animations[0],
-                builder: (context, child) {
-                  return Transform.translate(
-                    offset: Offset(0, -20 * (1 - _animations[0].value)),
-                    child: Opacity(
-                      opacity: _animations[0].value,
-                      child: child,
-                    ),
-                  );
-                },
-                child: Padding(
-                  padding: REdgeInsets.symmetric(vertical: 9),
-                  child: SubjectDetailsHeader(
-                    subjectDetails: subjectDetails,
+      body: CustomScrollView(
+        slivers: [
+          SubjectDetailsImage(
+            imageUrl: subjectDetails.imageUrl,
+            title: subjectDetails.title,
+          ),
+          SliverToBoxAdapter(
+            child: AnimatedBuilder(
+              animation: _animations[0],
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(0, -20 * (1 - _animations[0].value)),
+                  child: Opacity(
+                    opacity: _animations[0].value,
+                    child: child,
                   ),
+                );
+              },
+              child: Padding(
+                padding: REdgeInsets.symmetric(vertical: 9),
+                child: SubjectDetailsHeader(
+                  subjectDetails: subjectDetails,
                 ),
               ),
             ),
-            if ((subjectDetails.midTermGrade != null ||
-                subjectDetails.finalGrade != null))
-              SliverToBoxAdapter(
-                child: AnimatedBuilder(
-                  animation: _animations[1],
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(0, -20 * (1 - _animations[1].value)),
-                      child: Opacity(
-                        opacity: _animations[1].value,
-                        child: child,
-                      ),
-                    );
-                  },
-                  child: Padding(
-                    padding: REdgeInsets.symmetric(vertical: 9.0),
-                    child: SubjectDetailsGrades(
-                      subjectDetails: subjectDetails,
-                    ),
-                  ),
-                ),
-              ),
+          ),
+          if ((subjectDetails.midTermGrade != null ||
+              subjectDetails.finalGrade != null))
             SliverToBoxAdapter(
               child: AnimatedBuilder(
-                animation: _animations.last,
+                animation: _animations[1],
                 builder: (context, child) {
                   return Transform.translate(
-                    offset: Offset(0, -20 * (1 - _animations.last.value)),
+                    offset: Offset(0, -20 * (1 - _animations[1].value)),
                     child: Opacity(
-                      opacity: _animations.last.value,
+                      opacity: _animations[1].value,
                       child: child,
                     ),
                   );
                 },
                 child: Padding(
                   padding: REdgeInsets.symmetric(vertical: 9.0),
-                  child: SubjectDescriptionWithMaterials(
+                  child: SubjectDetailsGrades(
                     subjectDetails: subjectDetails,
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          SliverToBoxAdapter(
+            child: AnimatedBuilder(
+              animation: _animations.last,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(0, -20 * (1 - _animations.last.value)),
+                  child: Opacity(
+                    opacity: _animations.last.value,
+                    child: child,
+                  ),
+                );
+              },
+              child: Padding(
+                padding: REdgeInsets.symmetric(vertical: 9.0),
+                child: SubjectDescriptionWithMaterials(
+                  subjectDetails: subjectDetails,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildLoadingShimmer() {
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: SubjectDetailsHeader.buildHeaderShimmer(context),
-            ),
-            SliverToBoxAdapter(
-              child: SubjectDescriptionWithMaterials.buildBodyShimmer(context),
-            ),
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+          SubjectDetailsImage.buildImageShimmer(context),
+          SliverToBoxAdapter(
+            child: SubjectDetailsHeader.buildHeaderShimmer(context),
+          ),
+          SliverToBoxAdapter(
+            child: SubjectDescriptionWithMaterials.buildBodyShimmer(context),
+          ),
+        ],
       ),
     );
   }

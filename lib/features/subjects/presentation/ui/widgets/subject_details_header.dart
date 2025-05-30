@@ -1,6 +1,5 @@
 import 'package:test/common/constant/app_strings.dart';
 import 'package:test/shared/imports/imports.dart';
-import 'package:test/shared/widgets/custom_network_image.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/subject_details_entity.dart';
 
@@ -12,7 +11,6 @@ class SubjectDetailsHeader extends StatelessWidget {
 
   final SubjectDetailsEntity subjectDetails;
 
-  static const double _imageSize = 200;
   static const double _borderRadius = 22;
   static const double _spacing = 16;
 
@@ -25,49 +23,11 @@ class SubjectDetailsHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildImage(context),
-          _spacing.verticalSpace,
-          _buildTitle(context),
-          _spacing.verticalSpace,
           _buildProfessorInfo(context),
           _spacing.verticalSpace,
           _buildSubjectInfo(context),
         ],
       ),
-    );
-  }
-
-  Widget _buildImage(BuildContext context) {
-    return Center(
-      child: Container(
-        height: _imageSize.h,
-        width: _imageSize.w,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(_borderRadius.r),
-          boxShadow: [
-            BoxShadow(
-              color: context.primaryColor.withValues(alpha: 0.2),
-              blurRadius: 10,
-              offset: const Offset(0, 5),
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(_borderRadius.r),
-          child: CustomNetworkImage(
-            imageUrl: subjectDetails.imageUrl,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTitle(BuildContext context) {
-    return Text(
-      subjectDetails.title,
-      style: context.textTheme.headlineMedium!.withColor(context.primaryColor),
-      textAlign: TextAlign.center,
     );
   }
 
@@ -182,47 +142,6 @@ class SubjectDetailsHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Image shimmer
-          Center(
-            child: Container(
-              height: 200.h,
-              width: 200.w,
-              decoration: BoxDecoration(
-                color: context.cardColor,
-                borderRadius: BorderRadius.circular(22.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: context.primaryColor.withValues(alpha: 0.1),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: CustomShimmerWidget(
-                height: 200.h,
-                width: 200.w,
-                borderRadius: 22,
-              ),
-            ),
-          ),
-          16.verticalSpace,
-          // Title shimmer
-          Center(
-            child: Container(
-              height: 32.h,
-              width: 200.w,
-              decoration: BoxDecoration(
-                color: context.cardColor,
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: CustomShimmerWidget(
-                height: 32.h,
-                width: 200.w,
-                borderRadius: 8,
-              ),
-            ),
-          ),
-          16.verticalSpace,
           // Professor info shimmer
           Container(
             height: 24.h,
