@@ -86,7 +86,26 @@
     "noNews": "لا يوجد أخبار",
     "noNewsFound": "لا يوجد أخبار مطابقة للبحث",
     "search": "بحث",
-    "searchForNews": "ابحث عن أخبار"
+    "searchForNews": "ابحث عن أخبار",
+    "Professor": "الدكتور",
+    "Description": "الوصف",
+    "Materials": "الملفات",
+    "SubjectInformation": "معلومات المادة",
+    "Semester": "الفصل",
+    "Status": "الحالة",
+    "Passed": "ناجح",
+    "NotPassed": "غير ناجح",
+    "MidTermGrade": "علامة العملي",
+    "FinalGrade": "علامة النظري",
+    "AttendanceHours": "ساعات الحضور",
+    "AttendanceLectures": "محاضرات قمت بحضورها",
+    "Enrollment": "التقديم",
+    "Available": "متاح",
+    "NotAvailable": "غير متاح",
+    "Type": "النوع",
+    "MultipleChoice": "مؤتمتة",
+    "Written": "كتابي",
+    "ContainedLab": "تحتوي على مخبر"
     
 
 }

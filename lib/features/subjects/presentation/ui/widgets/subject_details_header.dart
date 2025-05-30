@@ -1,5 +1,7 @@
+import 'package:test/common/constant/app_strings.dart';
 import 'package:test/shared/imports/imports.dart';
 import 'package:test/shared/widgets/custom_network_image.dart';
+import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/subject_details_entity.dart';
 
 class SubjectDetailsHeader extends StatelessWidget {
@@ -108,37 +110,41 @@ class SubjectDetailsHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Subject Information',
+            AppStrings.SubjectInformation,
             style:
                 context.textTheme.titleMedium!.withColor(context.primaryColor),
           ),
           16.verticalSpace,
-          _buildInfoRow(context, 'Semester', subjectDetails.semester),
+          _buildInfoRow(context, AppStrings.Semester, subjectDetails.semester),
           8.verticalSpace,
           _buildInfoRow(
             context,
-            'Status',
-            subjectDetails.isPassed ? 'Passed' : 'Not Passed',
+            AppStrings.Status,
+            subjectDetails.isPassed ? AppStrings.Passed : AppStrings.NotPassed,
             color: subjectDetails.isPassed ? Colors.green : Colors.red,
           ),
           8.verticalSpace,
           _buildInfoRow(
             context,
-            'Enrollment',
-            subjectDetails.canEnroll ? 'Available' : 'Not Available',
+            AppStrings.Enrollment,
+            subjectDetails.canEnroll
+                ? AppStrings.Available
+                : AppStrings.NotAvailable,
             color: subjectDetails.canEnroll ? Colors.green : Colors.red,
           ),
           8.verticalSpace,
           _buildInfoRow(
             context,
-            'Type',
-            subjectDetails.isMultipleChoice ? 'Multiple Choice' : 'Written',
+            AppStrings.Type,
+            subjectDetails.isMultipleChoice
+                ? AppStrings.MultipleChoice
+                : AppStrings.Written,
           ),
           8.verticalSpace,
           _buildInfoRow(
             context,
-            'Lab',
-            subjectDetails.doesHaveALab ? 'Available' : 'Not Available',
+            AppStrings.ContainedLab,
+            subjectDetails.doesHaveALab ? AppStrings.yes : AppStrings.no,
           ),
         ],
       ),
@@ -165,6 +171,171 @@ class SubjectDetailsHeader extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  static Widget buildHeaderShimmer(BuildContext context) {
+    return Container(
+      padding: REdgeInsets.all(AppConstants.horizontalScreensPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Image shimmer
+          Center(
+            child: Container(
+              height: 200.h,
+              width: 200.w,
+              decoration: BoxDecoration(
+                color: context.cardColor,
+                borderRadius: BorderRadius.circular(22.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: context.primaryColor.withValues(alpha: 0.1),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: CustomShimmerWidget(
+                height: 200.h,
+                width: 200.w,
+                borderRadius: 22,
+              ),
+            ),
+          ),
+          16.verticalSpace,
+          // Title shimmer
+          Center(
+            child: Container(
+              height: 32.h,
+              width: 200.w,
+              decoration: BoxDecoration(
+                color: context.cardColor,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: CustomShimmerWidget(
+                height: 32.h,
+                width: 200.w,
+                borderRadius: 8,
+              ),
+            ),
+          ),
+          16.verticalSpace,
+          // Professor info shimmer
+          Container(
+            height: 24.h,
+            width: 100.w,
+            decoration: BoxDecoration(
+              color: context.cardColor,
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: CustomShimmerWidget(
+              height: 24.h,
+              width: 100.w,
+              borderRadius: 8,
+            ),
+          ),
+          8.verticalSpace,
+          Container(
+            height: 20.h,
+            width: 150.w,
+            decoration: BoxDecoration(
+              color: context.cardColor,
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: CustomShimmerWidget(
+              height: 20.h,
+              width: 150.w,
+              borderRadius: 8,
+            ),
+          ),
+          8.verticalSpace,
+          Container(
+            height: 16.h,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: context.cardColor,
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: CustomShimmerWidget(
+              height: 16.h,
+              width: double.infinity,
+              borderRadius: 8,
+            ),
+          ),
+          16.verticalSpace,
+          // Subject info card shimmer
+          Container(
+            padding: REdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: context.cardColor,
+              borderRadius: BorderRadius.circular(22.r),
+              boxShadow: [
+                BoxShadow(
+                  color: context.primaryColor.withValues(alpha: 0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 24.h,
+                  width: 150.w,
+                  decoration: BoxDecoration(
+                    color: context.cardColor,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: CustomShimmerWidget(
+                    height: 24.h,
+                    width: 150.w,
+                    borderRadius: 8,
+                  ),
+                ),
+                16.verticalSpace,
+                ...List.generate(
+                    5,
+                    (index) => Padding(
+                          padding: REdgeInsets.only(bottom: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                height: 16.h,
+                                width: 100.w,
+                                decoration: BoxDecoration(
+                                  color: context.cardColor,
+                                  borderRadius: BorderRadius.circular(8.r),
+                                ),
+                                child: CustomShimmerWidget(
+                                  height: 16.h,
+                                  width: 100.w,
+                                  borderRadius: 8,
+                                ),
+                              ),
+                              Container(
+                                height: 16.h,
+                                width: 80.w,
+                                decoration: BoxDecoration(
+                                  color: context.cardColor,
+                                  borderRadius: BorderRadius.circular(8.r),
+                                ),
+                                child: CustomShimmerWidget(
+                                  height: 16.h,
+                                  width: 80.w,
+                                  borderRadius: 8,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

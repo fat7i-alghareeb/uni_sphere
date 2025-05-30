@@ -84,6 +84,25 @@
     "allNews": "All News",
     "noNews": "No News",
     "noNewsFound": "No News Found",
-    "search": "Search",
-    "searchForNews": "Search For News"
+    
+    "Professor": "Professor",
+    "Description": "Description",
+    "Materials": "Materials",
+    "SubjectInformation": "Subject Information",
+    "Semester": "Semester",
+    "Status": "Status",
+    "Passed": "Passed",
+    "NotPassed": "Not Passed",
+    "MidTermGrade": "MidTerm Grade",
+    "FinalGrade": "Final Grade",
+    "AttendanceHours": "Attendance Hours",
+    "AttendanceLectures": "Attendance Lectures",
+    "Enrollment": "Enrollment",
+    "Available": "Available",
+    "NotAvailable": "Not Available",
+    "Type": "Type",
+    "MultipleChoice": "Multiple Choice",
+    "Written": "Written",
+    "ContainedLab": "Contained Lab"
+    
 }

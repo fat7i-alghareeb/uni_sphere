@@ -93,4 +93,23 @@ class AppStrings {
   static String get noNewsFound => _localization.tr('noNewsFound');
   static String get search => _localization.tr('search');
   static String get searchForNews => _localization.tr('searchForNews');
+  static String get Professor => _localization.tr('Professor');
+  static String get Description => _localization.tr('Description');
+  static String get Materials => _localization.tr('Materials');
+  static String get SubjectInformation => _localization.tr('SubjectInformation');
+  static String get Semester => _localization.tr('Semester');
+  static String get Status => _localization.tr('Status');
+  static String get Passed => _localization.tr('Passed');
+  static String get NotPassed => _localization.tr('NotPassed');
+  static String get MidTermGrade => _localization.tr('MidTermGrade');
+  static String get FinalGrade => _localization.tr('FinalGrade');
+  static String get AttendanceHours => _localization.tr('AttendanceHours');
+  static String get AttendanceLectures => _localization.tr('AttendanceLectures');
+  static String get Enrollment => _localization.tr('Enrollment');
+  static String get Available => _localization.tr('Available');
+  static String get NotAvailable => _localization.tr('NotAvailable');
+  static String get Type => _localization.tr('Type');
+  static String get MultipleChoice => _localization.tr('MultipleChoice');
+  static String get Written => _localization.tr('Written');
+  static String get ContainedLab => _localization.tr('ContainedLab');
 }
