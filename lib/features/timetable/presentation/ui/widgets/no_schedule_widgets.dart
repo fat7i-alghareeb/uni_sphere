@@ -1,4 +1,3 @@
-
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../shared/imports/imports.dart';
 
@@ -16,7 +15,7 @@ class NoSchedulesWidget extends StatelessWidget {
             Icon(
               Icons.calendar_month_outlined,
               size: 80.r,
-              color: theme.primaryColor.withOpacity(0.5),
+              color: theme.primaryColor.withValues(alpha: 0.5),
             ),
             16.verticalSpace,
             Text(

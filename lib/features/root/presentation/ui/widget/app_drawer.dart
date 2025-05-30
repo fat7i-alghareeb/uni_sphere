@@ -9,6 +9,7 @@ import '../../../../../shared/imports/imports.dart';
 class CustomEndDrawer extends StatelessWidget {
   const CustomEndDrawer({super.key});
 
+  // ignore: unused_element
   Future<String> _getAppVersion() async {
     final packageInfo = await PackageInfo.fromPlatform();
     return packageInfo.version; // Fetches the app version

@@ -179,7 +179,7 @@ class _MonthSelectorState extends State<MonthSelector>
           borderRadius: BorderRadius.circular(12),
           color: isLoading
               ? Colors.transparent
-              : Theme.of(context).primaryColor.withOpacity(0.1),
+              : Theme.of(context).primaryColor.withValues(alpha: 0.1),
         ),
         child: isLoading
             ? const LoadingProgress(size: 25)

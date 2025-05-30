@@ -21,7 +21,7 @@ class MaterialItemCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(_borderRadius.r),
         boxShadow: [
           BoxShadow(
-            color: context.primaryColor.withOpacity(0.1),
+            color: context.primaryColor.withValues(alpha: 0.1),
             blurRadius: 5,
             offset: const Offset(0, 2),
           ),
@@ -77,7 +77,7 @@ class MaterialItemCard extends StatelessWidget {
     return Container(
       padding: REdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: iconColor.withOpacity(0.1),
+        color: iconColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Icon(

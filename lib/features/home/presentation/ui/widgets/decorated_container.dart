@@ -117,7 +117,7 @@ class _DecoratedContainerState extends State<DecoratedContainer>
                   bottom: 10,
                 ),
                 decoration: BoxDecoration(
-                  color: context.primaryColor.withOpacity(0.15),
+                  color: context.primaryColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(16.r),
                 ),
                 child: Align(
@@ -160,7 +160,7 @@ class DecorativeCircle extends StatelessWidget {
         height: size,
         width: size,
         decoration: BoxDecoration(
-          color: context.primaryColor.withOpacity(0.25),
+          color: context.primaryColor.withValues(alpha: 0.25),
           shape: BoxShape.circle,
         ),
       ),

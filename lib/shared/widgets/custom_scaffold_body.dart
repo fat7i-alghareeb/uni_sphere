@@ -18,7 +18,7 @@ class CustomScaffoldBody extends StatelessWidget {
           image: AssetImage(Assets.images.patternNew.keyName),
           repeat: ImageRepeat.repeat,
           colorFilter: ColorFilter.mode(
-            context.onBackgroundColor.withOpacity(0.05),
+            context.onBackgroundColor.withValues(alpha: 0.05),
             BlendMode.srcIn,
           ),
         ),

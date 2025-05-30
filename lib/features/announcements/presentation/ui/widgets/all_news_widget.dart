@@ -329,7 +329,7 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
                                     letterSpacing: 0.4,
                                     fontWeight: FontWeight.w900,
                                     color: context.onBackgroundColor
-                                        .withOpacity(0.95),
+                                        .withValues(alpha: 0.95),
                                   ),
                                   softWrap: true,
                                   maxLines: 3,

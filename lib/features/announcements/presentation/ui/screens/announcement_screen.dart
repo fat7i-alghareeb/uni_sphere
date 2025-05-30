@@ -75,7 +75,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
             fontSize: 15.sp,
             color: isSelected
                 ? context.backgroundColor
-                : context.onBackgroundColor.withOpacity(0.5),
+                : context.onBackgroundColor.withValues(alpha: 0.5),
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
           child: Text(

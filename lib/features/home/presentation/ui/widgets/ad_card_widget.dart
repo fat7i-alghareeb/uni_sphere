@@ -41,7 +41,7 @@ class AdCardWidget extends StatelessWidget {
               child: Text(
                 ad.description,
                 style: context.textTheme.bodyMedium?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

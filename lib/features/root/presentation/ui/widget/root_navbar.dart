@@ -42,7 +42,7 @@ class RootNavbar extends StatelessWidget {
             child: Container(
               padding: REdgeInsets.symmetric(horizontal: 5, vertical: 4),
               decoration: BoxDecoration(
-                color: context.onBackgroundColor.withOpacity(0.15),
+                color: context.onBackgroundColor.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(30.r),
               ),
               child: Row(
@@ -82,7 +82,7 @@ class RootNavbar extends StatelessWidget {
               padding: REdgeInsets.all(13),
               decoration: BoxDecoration(
                 color: context.onBackgroundColor
-                    .withOpacity(isSelected ? 1 : 0.15),
+                    .withValues(alpha: isSelected ? 1 : 0.15),
                 shape: BoxShape.circle,
               ),
               child: getColoredSvgPicture(

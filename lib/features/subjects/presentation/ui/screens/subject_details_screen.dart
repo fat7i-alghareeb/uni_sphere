@@ -1,12 +1,10 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
-import 'package:test/core/result_builder/result.dart';
 import 'package:test/core/result_builder/result_builder.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
-import '../../../../../shared/widgets/custom_network_image.dart';
 import '../../../domain/entities/subject_details_entity.dart';
 import '../../state/subject_details_bloc/subject_details_bloc.dart';
 import '../widgets/subject_details_header.dart';
@@ -174,7 +172,7 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
         borderRadius: BorderRadius.circular(22.r),
         boxShadow: [
           BoxShadow(
-            color: context.primaryColor.withOpacity(0.1),
+            color: context.primaryColor.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -269,7 +267,7 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
                 borderRadius: BorderRadius.circular(22.r),
                 boxShadow: [
                   BoxShadow(
-                    color: context.primaryColor.withOpacity(0.1),
+                    color: context.primaryColor.withValues(alpha: 0.1),
                     blurRadius: 10,
                     offset: const Offset(0, 5),
                   ),
@@ -351,7 +349,7 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
               borderRadius: BorderRadius.circular(22.r),
               boxShadow: [
                 BoxShadow(
-                  color: context.primaryColor.withOpacity(0.1),
+                  color: context.primaryColor.withValues(alpha: 0.1),
                   blurRadius: 10,
                   offset: const Offset(0, 5),
                 ),
@@ -432,7 +430,7 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
               borderRadius: BorderRadius.circular(22.r),
               boxShadow: [
                 BoxShadow(
-                  color: context.primaryColor.withOpacity(0.1),
+                  color: context.primaryColor.withValues(alpha: 0.1),
                   blurRadius: 10,
                   offset: const Offset(0, 5),
                 ),
@@ -503,7 +501,7 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
                         borderRadius: BorderRadius.circular(12.r),
                         boxShadow: [
                           BoxShadow(
-                            color: context.primaryColor.withOpacity(0.1),
+                            color: context.primaryColor.withValues(alpha: 0.1),
                             blurRadius: 5,
                             offset: const Offset(0, 2),
                           ),

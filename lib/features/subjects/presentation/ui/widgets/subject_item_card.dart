@@ -141,7 +141,7 @@ class SubjectItemCard extends StatelessWidget {
   Widget _buildSubInfoContainer(BuildContext context, SubInfo info) {
     return Container(
       decoration: BoxDecoration(
-        color: info.color.withOpacity(0.15),
+        color: info.color.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(8.r),
       ),
       padding: REdgeInsets.symmetric(horizontal: 4, vertical: 2),

@@ -36,7 +36,7 @@ class SubjectDetailsBody extends StatelessWidget {
         borderRadius: BorderRadius.circular(_borderRadius.r),
         boxShadow: [
           BoxShadow(
-            color: context.primaryColor.withOpacity(0.1),
+            color: context.primaryColor.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),

@@ -2,8 +2,7 @@
 
 // 🌎 Project imports:
 
-
-import 'package:jwt_decoder/jwt_decoder.dart';
+// import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../../core/auth_data_source/local/auth_local.dart';
 import '../../core/injection/injection.dart';
@@ -13,7 +12,8 @@ import '../utils/helper/colored_print.dart';
 bool isTokenAboutToExpire(String token, {int bufferTimeInSeconds = 900}) {
   try {
     // Decode the token
-    DateTime expirationDate = JwtDecoder.getExpirationDate(token);
+    // DateTime expirationDate = JwtDecoder.getExpirationDate(token);
+    DateTime expirationDate = DateTime.now();
     printK("expirationDate:     $expirationDate");
 
     // Get the current time

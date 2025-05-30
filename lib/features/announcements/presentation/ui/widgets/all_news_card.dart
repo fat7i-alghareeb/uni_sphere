@@ -53,7 +53,8 @@ class AllNewsCard extends StatelessWidget {
                         height: 1.5,
                         letterSpacing: 0.4,
                         fontWeight: FontWeight.w900,
-                        color: context.onBackgroundColor.withOpacity(0.95),
+                        color:
+                            context.onBackgroundColor.withValues(alpha: 0.95),
                       ),
                       softWrap: true,
                       maxLines: 3,

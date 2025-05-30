@@ -22,8 +22,7 @@ class AppThemes {
       fontFamily: GoogleFonts.almarai().fontFamily,
       brightness: Brightness.light,
       scaffoldBackgroundColor: AppColors.lightBackground,
-      cardColor: colorScheme.primary.withOpacity(0.08),
-      dialogBackgroundColor: Colors.white,
+      cardColor: colorScheme.primary.withValues(alpha: 0.08),
       indicatorColor: colorScheme.primary,
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: colorScheme.primary,
@@ -42,7 +41,7 @@ class AppThemes {
       ),
       tabBarTheme: TabBarTheme(
         labelColor: colorScheme.primary,
-        unselectedLabelColor: colorScheme.primary.withOpacity(0.4),
+        unselectedLabelColor: colorScheme.primary.withValues(alpha: 0.4),
       ),
       datePickerTheme: DatePickerThemeData(
         backgroundColor: Colors.white,

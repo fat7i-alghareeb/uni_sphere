@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:beamer/beamer.dart';
-import 'package:device_preview/device_preview.dart';
+// ignore: unused_import
+import 'package:device_frame_plus/device_frame_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -83,7 +84,11 @@ class _MyAppState extends State<MyApp> {
                         LocalizationService(context),
                       );
                     }
-                    child = DevicePreview.appBuilder(context, child);
+                    // child = DeviceFrame(
+                    //   device: Devices.ios.iPhone13,
+                    //   screen: child!,
+                    //   isFrameVisible: false,
+                    // );
                   }
                   return AnnotatedRegion<SystemUiOverlayStyle>(
                     value: SystemUiOverlayStyle(

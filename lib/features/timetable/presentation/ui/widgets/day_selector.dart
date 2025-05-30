@@ -122,7 +122,7 @@ class _DaySelectorState extends State<DaySelector>
               boxShadow: isSelected
                   ? [
                       BoxShadow(
-                        color: theme.primaryColor.withOpacity(0.3),
+                        color: theme.primaryColor.withValues(alpha: 0.3),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
@@ -131,7 +131,7 @@ class _DaySelectorState extends State<DaySelector>
               border: Border.all(
                 color: isSelected
                     ? theme.primaryColor
-                    : theme.dividerColor.withOpacity(0.1),
+                    : theme.dividerColor.withValues(alpha: 0.1),
                 width: 1,
               ),
             ),
@@ -152,8 +152,9 @@ class _DaySelectorState extends State<DaySelector>
                   day.weekday.weekdayShort,
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: isSelected
-                        ? Colors.white.withOpacity(0.9)
-                        : theme.textTheme.bodySmall?.color?.withOpacity(0.7),
+                        ? Colors.white.withValues(alpha: 0.9)
+                        : theme.textTheme.bodySmall?.color
+                            ?.withValues(alpha: 0.7),
                   ),
                 ),
               ],

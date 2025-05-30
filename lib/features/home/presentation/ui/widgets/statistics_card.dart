@@ -58,25 +58,25 @@ class StatisticsCard extends StatelessWidget {
         return _CardData(
           title: AppStrings.numberOfAttendanceHours,
           icon: Assets.icons.clock,
-          color: const Color(0xFF496ce5).withOpacity(0.8),
+          color: const Color(0xFF496ce5).withValues(alpha: 0.8),
         );
       case StatisticsCardType.attendanceLectures:
         return _CardData(
           title: AppStrings.numberOfAttendanceLectures,
           icon: Assets.icons.clock,
-          color: const Color(0xFFfc7cac).withOpacity(0.8),
+          color: const Color(0xFFfc7cac).withValues(alpha: 0.8),
         );
       case StatisticsCardType.daysToTheFinals:
         return _CardData(
           title: AppStrings.numberOfDaysToTheFinals,
           icon: Assets.icons.callender,
-          color: const Color(0xFFa874f3).withOpacity(0.8),
+          color: const Color(0xFFa874f3).withValues(alpha: 0.8),
         );
       case StatisticsCardType.downloadedMaterials:
         return _CardData(
           title: AppStrings.numberOfDownloadedMaterials,
           icon: Assets.icons.downloadedFile,
-          color: const Color(0xFF1dceb2).withOpacity(0.8),
+          color: const Color(0xFF1dceb2).withValues(alpha: 0.8),
         );
     }
   }
@@ -104,7 +104,7 @@ class _StatisticsCardContent extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: AppColors.coloredShadow(color.withOpacity(0.25)),
+        boxShadow: AppColors.coloredShadow(color.withValues(alpha: 0.25)),
       ),
       child: Stack(
         clipBehavior: Clip.hardEdge,
@@ -139,7 +139,7 @@ class _StatisticsCardContent extends StatelessWidget {
         height: 180.h,
         width: 180.w,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.3),
+          color: color.withValues(alpha: 0.3),
           shape: BoxShape.circle,
         ),
       ),
@@ -155,7 +155,7 @@ class _StatisticsCardContent extends StatelessWidget {
         height: 60.h,
         width: 60.w,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.3),
+          color: color.withValues(alpha: 0.3),
           shape: BoxShape.circle,
         ),
       ),
@@ -172,7 +172,7 @@ class _StatisticsCardContent extends StatelessWidget {
         width: 34.w,
         padding: REdgeInsets.all(7.r),
         decoration: BoxDecoration(
-          color: context.backgroundColor.withOpacity(0.85),
+          color: context.backgroundColor.withValues(alpha: 0.85),
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Center(

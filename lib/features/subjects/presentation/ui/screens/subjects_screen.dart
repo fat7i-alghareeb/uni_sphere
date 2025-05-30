@@ -94,7 +94,7 @@ class _SubjectsScreenState extends State<SubjectsScreen>
       child: Divider(
         height: 1.h,
         thickness: 1.h,
-        color: context.primaryColor.withOpacity(0.5),
+        color: context.primaryColor.withValues(alpha: 0.5),
       ),
     );
   }

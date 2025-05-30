@@ -47,7 +47,7 @@ class MyNewsCard extends StatelessWidget {
                 wordSpacing: 1.8,
                 height: 1.5,
                 letterSpacing: 0.4,
-                color: context.onBackgroundColor.withOpacity(0.95),
+                color: context.onBackgroundColor.withValues(alpha: 0.95),
               ),
               softWrap: true,
             ),

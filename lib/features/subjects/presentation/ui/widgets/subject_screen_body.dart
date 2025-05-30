@@ -1,8 +1,6 @@
-import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/subject_entity.dart';
-import '../../state/subject_details_bloc/subject_details_bloc.dart';
 import 'subject_item_card.dart';
 
 /// The body of the subjects screen that displays the list of subjects.

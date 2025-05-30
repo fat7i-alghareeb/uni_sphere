@@ -14,7 +14,7 @@ extension Context on BuildContext {
   double _getHeight() => MediaQuery.of(this).size.height;
 
   /// Returns the current text theme
-  TextTheme _getStyle() => Theme.of(this).textTheme;
+  // TextTheme _getStyle() => Theme.of(this).textTheme;
 
   /// Returns the current route path
   String _route() {

@@ -59,7 +59,7 @@ class AppColors {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      warning.withOpacity(0.5),
+      warning.withValues(alpha: 0.5),
       warning,
     ],
   );
@@ -97,7 +97,7 @@ class AppColors {
           offset: const Offset(0, 2),
           blurRadius: 8,
           spreadRadius: 0,
-          color: Colors.black.withOpacity(0.17),
+          color: Colors.black.withValues(alpha: 0.17),
         ),
       ];
 

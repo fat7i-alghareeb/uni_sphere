@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test/shared/extensions/date_time_extension.dart';
 import 'package:test/shared/imports/imports.dart';
 import 'package:test/shared/utils/helper/get_colored_svg_picture.dart';
@@ -88,7 +86,7 @@ class _TimetableItemState extends State<TimetableItem>
                   width: double.infinity,
                   dashWidth: 3,
                   gapWidth: 3,
-                  dashColor: context.greyColor.withOpacity(0.3),
+                  dashColor: context.greyColor.withValues(alpha: 0.3),
                 ),
               ],
             ),
@@ -116,7 +114,7 @@ class _TimetableItemState extends State<TimetableItem>
           Container(
             height: 40.h,
             width: 1,
-            color: context.greyColor.withOpacity(0.3),
+            color: context.greyColor.withValues(alpha: 0.3),
           ),
           Text(
             widget.timetable.endTime.formatTime,
@@ -139,13 +137,13 @@ class _TimetableItemState extends State<TimetableItem>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: theme.shadowColor.withOpacity(0.05),
+            color: theme.shadowColor.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
         ],
         border: Border.all(
-          color: theme.dividerColor.withOpacity(0.1),
+          color: theme.dividerColor.withValues(alpha: 0.1),
           width: 1,
         ),
       ),
@@ -158,7 +156,7 @@ class _TimetableItemState extends State<TimetableItem>
               Container(
                 padding: REdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: context.primaryColor.withOpacity(0.1),
+                  color: context.primaryColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: getColoredSvgPicture(
@@ -185,8 +183,8 @@ class _TimetableItemState extends State<TimetableItem>
                     Text(
                       widget.timetable.lectureHall,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color:
-                            theme.textTheme.bodySmall?.color?.withOpacity(0.7),
+                        color: theme.textTheme.bodySmall?.color
+                            ?.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -198,7 +196,7 @@ class _TimetableItemState extends State<TimetableItem>
           Text(
             widget.timetable.lecturerName,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.textTheme.bodyMedium?.color?.withOpacity(0.8),
+              color: theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.8),
             ),
           ),
         ],
