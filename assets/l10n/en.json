@@ -104,6 +104,12 @@
     "Type": "Type",
     "MultipleChoice": "Multiple Choice",
     "Written": "Written",
-    "ContainedLab": "Contained Lab"
+    "ContainedLab": "Contained Lab",
+    "title": "Title",
+    "content": "Content",
+    "date": "Date",
+    "author": "Author",
+    "source": "Source",
+    "tags": "Tags"
     
 }

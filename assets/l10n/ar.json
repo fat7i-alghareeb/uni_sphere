@@ -106,7 +106,13 @@
     "Type": "النوع",
     "MultipleChoice": "مؤتمتة",
     "Written": "كتابي",
-    "ContainedLab": "تحتوي على مخبر"
+    "ContainedLab": "تحتوي على مخبر",
+    "title": "العنوان",
+    "content": "المحتوى",
+    "date": "التاريخ",
+    "author": "المؤلف",
+    "source": "المصدر",
+    "tags": "التصنيفات"
     
 
 }

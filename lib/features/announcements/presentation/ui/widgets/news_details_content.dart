@@ -1,3 +1,4 @@
+import 'package:test/common/constant/app_strings.dart';
 import 'package:test/features/announcements/domain/entities/news_entity.dart';
 import '../../../../../shared/imports/imports.dart';
 
@@ -48,7 +49,7 @@ class NewsDetailsContent extends StatelessWidget {
         spacing: 8.h,
         children: [
           Text(
-            'Title',
+            AppStrings.title,
             style: context.textTheme.titleMedium?.copyWith(
               color: context.primaryColor,
               fontWeight: FontWeight.bold,
@@ -85,7 +86,7 @@ class NewsDetailsContent extends StatelessWidget {
         spacing: 8.h,
         children: [
           Text(
-            'Description',
+            AppStrings.content,
             style: context.textTheme.titleMedium?.copyWith(
               color: context.primaryColor,
               fontWeight: FontWeight.bold,
