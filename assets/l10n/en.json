@@ -112,6 +112,8 @@
     "source": "Source",
     "tags": "Tags",
     "darkMode": "Dark Mode",
-    "lightMode": "Light Mode"
+    "lightMode": "Light Mode",
+    "selectLanguage": "Select Language",
+    "language": "Language"
     
 }

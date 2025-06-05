@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:beamer/beamer.dart';
 import '../features/root/presentation/ui/screen/root_screen.dart';
+import '../features/settings/presentation/ui/screens/language_selection_screen.dart'
+    show LanguageSelectionScreen;
 import '../features/subjects/presentation/ui/screens/choose_years_screen.dart';
 import '../features/subjects/presentation/ui/screens/subject_details_screen.dart';
 import '../features/subjects/presentation/ui/screens/year_subjects.dart';
@@ -65,6 +67,8 @@ class BRouterConfig {
               SubjectDetailsScreen.pageBuilder,
           //! -------------- Announcements ---------------- !//
           "/root/news_details": NewsDetailsScreen.pageBuilder,
+          //! -------------- Settings ---------------- !//
+          "/root/language_selection": LanguageSelectionScreen.pageBuilder,
         },
       ).call,
     );

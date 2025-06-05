@@ -121,4 +121,6 @@ class AppStrings {
   static String get tags => _localization.tr('tags');
   static String get darkMode => _localization.tr('darkMode');
   static String get lightMode => _localization.tr('lightMode');
+  static String get selectLanguage => _localization.tr('selectLanguage');
+  static String get language => _localization.tr('language');
 }

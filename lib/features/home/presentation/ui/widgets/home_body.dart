@@ -10,13 +10,16 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        key: const ValueKey('homeBody'),
         children: [
           25.verticalSpace,
           const AdsWidget(),
           28.verticalSpace,
           const DaysToTheFinalsWidget(),
           28.verticalSpace,
-          const StatisticsWidget(),
+          const StatisticsWidget(
+            key: ValueKey('statisticsWidget'),
+          ),
           28.verticalSpace,
           const MaterialsWidget(),
           100.verticalSpace,

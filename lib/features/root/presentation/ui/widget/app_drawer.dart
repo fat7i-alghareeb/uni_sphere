@@ -1,7 +1,10 @@
 // 📦 Package imports:
+import 'package:beamer/beamer.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import '../../../../../common/constant/app_strings.dart' show AppStrings;
 import '../../../../../shared/widgets/theme_switcher.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../../../features/settings/presentation/ui/screens/language_selection_screen.dart';
 
 class CustomEndDrawer extends StatelessWidget {
   const CustomEndDrawer({super.key});
@@ -56,6 +59,26 @@ class CustomEndDrawer extends StatelessWidget {
               padding: REdgeInsets.symmetric(horizontal: 16),
               child: const ThemeSwitcher(),
             ),
+            20.verticalSpace,
+            Padding(
+              padding: REdgeInsets.symmetric(horizontal: 16),
+              child: ListTile(
+                leading: Icon(Icons.language, color: context.primaryColor),
+                title: Text(
+                  AppStrings.language,
+                  style: context.textTheme.titleMedium,
+                ),
+                onTap: () {
+                  context.beamToNamed(LanguageSelectionScreen.pagePath);
+                },
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.r)),
+                tileColor: context.cardColor,
+                contentPadding:
+                    REdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              ),
+            ),
+            20.verticalSpace,
             const Spacer(),
             FutureBuilder<String>(
               future: _getAppVersion(),

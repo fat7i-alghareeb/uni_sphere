@@ -1,3 +1,6 @@
+import 'package:easy_localization/easy_localization.dart'
+    show StringTranslateExtension, tr;
+
 import '../../../../../core/result_builder/result.dart';
 import '../../../../../core/styles/colors.dart';
 
@@ -26,7 +29,7 @@ class StatisticsCard extends StatelessWidget {
         final value = _getStatisticValue(state, type);
 
         return _StatisticsCardContent(
-          title: cardData.title,
+          titleKey: cardData.titleKey,
           value: value,
           icon: cardData.icon,
           color: cardData.color,
@@ -56,25 +59,25 @@ class StatisticsCard extends StatelessWidget {
     switch (type) {
       case StatisticsCardType.attendanceHours:
         return _CardData(
-          title: AppStrings.numberOfAttendanceHours,
+          titleKey: "numberOfAttendanceHours",
           icon: Assets.icons.clock,
           color: const Color(0xFF496ce5).withValues(alpha: 0.8),
         );
       case StatisticsCardType.attendanceLectures:
         return _CardData(
-          title: AppStrings.numberOfAttendanceLectures,
+          titleKey: AppStrings.numberOfAttendanceLectures,
           icon: Assets.icons.clock,
           color: const Color(0xFFfc7cac).withValues(alpha: 0.8),
         );
       case StatisticsCardType.daysToTheFinals:
         return _CardData(
-          title: AppStrings.numberOfDaysToTheFinals,
+          titleKey: AppStrings.numberOfDaysToTheFinals,
           icon: Assets.icons.callender,
           color: const Color(0xFFa874f3).withValues(alpha: 0.8),
         );
       case StatisticsCardType.downloadedMaterials:
         return _CardData(
-          title: AppStrings.numberOfDownloadedMaterials,
+          titleKey: AppStrings.numberOfDownloadedMaterials,
           icon: Assets.icons.downloadedFile,
           color: const Color(0xFF1dceb2).withValues(alpha: 0.8),
         );
@@ -84,14 +87,14 @@ class StatisticsCard extends StatelessWidget {
 
 /// The content of a statistics card with all its visual elements.
 class _StatisticsCardContent extends StatelessWidget {
-  final String title;
+  final String titleKey;
   final String value;
   final String icon;
   final Color color;
   final bool isLoading;
-
+  @override
   const _StatisticsCardContent({
-    required this.title,
+    required this.titleKey,
     required this.value,
     required this.icon,
     required this.color,
@@ -101,6 +104,7 @@ class _StatisticsCardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: key,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
@@ -195,7 +199,7 @@ class _StatisticsCardContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            title,
+            titleKey.tr(),
             textAlign: TextAlign.start,
             style: context.textTheme.bodySmall!
                 .withColor(context.backgroundColor)
@@ -223,12 +227,12 @@ class _StatisticsCardContent extends StatelessWidget {
 
 /// Data class to hold card-specific information
 class _CardData {
-  final String title;
+  final String titleKey;
   final String icon;
   final Color color;
 
   const _CardData({
-    required this.title,
+    required this.titleKey,
     required this.icon,
     required this.color,
   });

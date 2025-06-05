@@ -22,12 +22,14 @@ class StatisticsWidget extends StatelessWidget {
                 children: [
                   const Expanded(
                     child: StatisticsCard(
+                      key: ValueKey('attendanceHours'),
                       type: StatisticsCardType.attendanceHours,
                     ),
                   ),
                   26.horizontalSpace,
                   const Expanded(
                     child: StatisticsCard(
+                      key: ValueKey('attendanceLectures'),
                       type: StatisticsCardType.attendanceLectures,
                     ),
                   ),
@@ -40,12 +42,14 @@ class StatisticsWidget extends StatelessWidget {
                 children: [
                   const Expanded(
                     child: StatisticsCard(
+                      key: ValueKey('daysToTheFinals'),
                       type: StatisticsCardType.daysToTheFinals,
                     ),
                   ),
                   26.horizontalSpace,
                   const Expanded(
                     child: StatisticsCard(
+                      key: ValueKey('downloadedMaterials'),
                       type: StatisticsCardType.downloadedMaterials,
                     ),
                   ),

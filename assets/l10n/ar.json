@@ -114,7 +114,9 @@
     "source": "المصدر",
     "tags": "التصنيفات",
     "darkMode": "الوضع الليلي",
-    "lightMode": "الوضع النهاري"
+    "lightMode": "الوضع النهاري",
+    "selectLanguage": "اختر اللغة",
+    "language": "اللغة"
     
 
 }
