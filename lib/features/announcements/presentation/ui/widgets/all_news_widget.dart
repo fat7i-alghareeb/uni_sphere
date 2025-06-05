@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:test/core/result_builder/result_builder.dart';
 import 'package:test/features/announcements/domain/entities/news_entity.dart';
 import 'package:test/features/announcements/presentation/state/bloc/announcement_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:test/core/styles/colors.dart';
 import 'package:test/shared/widgets/custom_network_image.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../screens/news_details_screen.dart' show NewsDetailsScreen;
 
 class AllNewsWidget extends StatefulWidget {
   const AllNewsWidget({super.key});
@@ -203,147 +205,161 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
           if (index >= data.length || index >= _animations.length) {
             return const SizedBox.shrink();
           }
-          return Container(
-            height: 300.h,
-            margin: REdgeInsets.only(bottom: 22.h),
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-              color: context.cardColor,
-              borderRadius: BorderRadius.circular(22.r),
-              boxShadow: AppColors.primaryShadow(context),
-            ),
-            child: Stack(
-              children: [
-                // Shimmer content
-                AnimatedBuilder(
-                  animation: _animations[index],
-                  builder: (context, child) {
-                    return Opacity(
-                      opacity: 1 - _animations[index].value,
-                      child: child,
-                    );
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          boxShadow: AppColors.primaryShadow(context),
-                        ),
-                        child: CustomShimmerWidget(
-                          height: 180.h,
-                          width: double.infinity,
-                          borderRadius: 22,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: REdgeInsets.symmetric(
-                              horizontal: 22.w, vertical: 12.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomShimmerWidget(
-                                height: 12.h,
-                                width: 100.w,
-                                borderRadius: 8,
-                              ),
-                              8.verticalSpace,
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    CustomShimmerWidget(
-                                      height: 16.h,
-                                      width: double.infinity,
-                                      borderRadius: 8,
-                                    ),
-                                    5.verticalSpace,
-                                    CustomShimmerWidget(
-                                      height: 16.h,
-                                      width: double.infinity,
-                                      borderRadius: 8,
-                                    ),
-                                    5.verticalSpace,
-                                    CustomShimmerWidget(
-                                      height: 16.h,
-                                      width: double.infinity,
-                                      borderRadius: 8,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                // Actual content
-                AnimatedBuilder(
-                  animation: _animations[index],
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(0, -20 * (1 - _animations[index].value)),
-                      child: Opacity(
-                        opacity: _animations[index].value,
+          return GestureDetector(
+            onTap: () {
+              context.beamToNamed(
+                NewsDetailsScreen.pagePath,
+                data: data[index],
+              );
+            },
+            child: Container(
+              height: 300.h,
+              margin: REdgeInsets.only(bottom: 22.h),
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                color: context.cardColor,
+                borderRadius: BorderRadius.circular(22.r),
+                boxShadow: AppColors.primaryShadow(context),
+              ),
+              child: Stack(
+                children: [
+                  // Shimmer content
+                  AnimatedBuilder(
+                    animation: _animations[index],
+                    builder: (context, child) {
+                      return Opacity(
+                        opacity: 1 - _animations[index].value,
                         child: child,
-                      ),
-                    );
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          boxShadow: AppColors.primaryShadow(context),
-                        ),
-                        child: CustomNetworkImage(
-                          imageUrl: data[index].image?[0] ?? '',
-                          height: 180.h,
-                          width: double.infinity,
-                          borderRadius: 22,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: REdgeInsets.symmetric(
-                              horizontal: 22.w, vertical: 12.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data[index].createdAt,
-                                style: context.textTheme.labelMedium?.copyWith(
-                                  color: context.greyColor,
-                                ),
-                              ),
-                              5.verticalSpace,
-                              Expanded(
-                                child: Text(
-                                  data[index].description,
-                                  style: context.textTheme.labelLarge!.copyWith(
-                                    wordSpacing: 1.8,
-                                    height: 1.5,
-                                    letterSpacing: 0.4,
-                                    fontWeight: FontWeight.w900,
-                                    color: context.onBackgroundColor
-                                        .withValues(alpha: 0.95),
-                                  ),
-                                  softWrap: true,
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
+                      );
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: AppColors.primaryShadow(context),
+                          ),
+                          child: CustomShimmerWidget(
+                            height: 180.h,
+                            width: double.infinity,
+                            borderRadius: 22,
                           ),
                         ),
-                      )
-                    ],
+                        Expanded(
+                          child: Padding(
+                            padding: REdgeInsets.symmetric(
+                                horizontal: 22.w, vertical: 12.h),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomShimmerWidget(
+                                  height: 12.h,
+                                  width: 100.w,
+                                  borderRadius: 8,
+                                ),
+                                8.verticalSpace,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      CustomShimmerWidget(
+                                        height: 16.h,
+                                        width: double.infinity,
+                                        borderRadius: 8,
+                                      ),
+                                      5.verticalSpace,
+                                      CustomShimmerWidget(
+                                        height: 16.h,
+                                        width: double.infinity,
+                                        borderRadius: 8,
+                                      ),
+                                      5.verticalSpace,
+                                      CustomShimmerWidget(
+                                        height: 16.h,
+                                        width: double.infinity,
+                                        borderRadius: 8,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  // Actual content
+                  AnimatedBuilder(
+                    animation: _animations[index],
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset: Offset(0, -20 * (1 - _animations[index].value)),
+                        child: Opacity(
+                          opacity: _animations[index].value,
+                          child: child,
+                        ),
+                      );
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: AppColors.primaryShadow(context),
+                          ),
+                          child: Hero(
+                            tag: data[index].id,
+                            child: CustomNetworkImage(
+                              imageUrl: data[index].image?[0] ?? '',
+                              height: 180.h,
+                              width: double.infinity,
+                              borderRadius: 22,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: REdgeInsets.symmetric(
+                                horizontal: 22.w, vertical: 12.h),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  data[index].createdAt,
+                                  style:
+                                      context.textTheme.labelMedium?.copyWith(
+                                    color: context.greyColor,
+                                  ),
+                                ),
+                                5.verticalSpace,
+                                Expanded(
+                                  child: Text(
+                                    data[index].description,
+                                    style:
+                                        context.textTheme.labelLarge!.copyWith(
+                                      wordSpacing: 1.8,
+                                      height: 1.5,
+                                      letterSpacing: 0.4,
+                                      fontWeight: FontWeight.w900,
+                                      color: context.onBackgroundColor
+                                          .withValues(alpha: 0.95),
+                                    ),
+                                    softWrap: true,
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

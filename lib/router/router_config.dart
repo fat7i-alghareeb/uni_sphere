@@ -4,6 +4,7 @@ import '../features/root/presentation/ui/screen/root_screen.dart';
 import '../features/subjects/presentation/ui/screens/choose_years_screen.dart';
 import '../features/subjects/presentation/ui/screens/subject_details_screen.dart';
 import '../features/subjects/presentation/ui/screens/year_subjects.dart';
+import '../features/announcements/presentation/ui/screens/news_details_screen.dart';
 import '../shared/imports/imports.dart';
 import '../shared/states/app_manager_bloc/app_manager_bloc.dart';
 import '../shared/utils/helper/colored_print.dart';
@@ -62,6 +63,8 @@ class BRouterConfig {
           "/root/choose_years_screen/year_subjects": YearSubjects.pageBuilder,
           "/root/choose_years_screen/year_subjects/subject_details":
               SubjectDetailsScreen.pageBuilder,
+          //! -------------- Announcements ---------------- !//
+          "/root/news_details": NewsDetailsScreen.pageBuilder,
         },
       ).call,
     );
