@@ -114,6 +114,11 @@
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode",
     "selectLanguage": "Select Language",
-    "language": "Language"
-    
+    "language": "Language",
+    "yourGrades": "Your Grades",
+    "passed": "Passed",
+    "failed": "Failed",
+    "finalTermGrade": "Final Term Grade",
+    "semester": "Semester",
+    "loadingGrades": "Loading Grades..."
 }

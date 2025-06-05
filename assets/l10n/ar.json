@@ -12,7 +12,7 @@
     "theYear": "السنة:",
     "lab": "المخبر:",
     "isMultipleChoice":"مؤتمتة:",
-    "midTermGrade": "علامة العملي:",
+    "midTermGrade": "علامة العملي",
     "finalGrade":"علامة النظري:",
     "canEnroll": "يمكنك التقديم:",
     "yes":"نعم",
@@ -116,7 +116,12 @@
     "darkMode": "الوضع الليلي",
     "lightMode": "الوضع النهاري",
     "selectLanguage": "اختر اللغة",
-    "language": "اللغة"
-    
-
+    "language": "اللغة",
+    "yourGrades": "علاماتك",
+    "passed": "ناجح",
+    "failed": "راسب",
+    "finalTermGrade": "علامة النظري",
+    "totalGrade": "العلامة الكلية",
+    "semester": "الفصل",
+    "loadingGrades": "جاري تحميل العلامات..."
 }

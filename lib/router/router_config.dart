@@ -7,6 +7,7 @@ import '../features/subjects/presentation/ui/screens/choose_years_screen.dart';
 import '../features/subjects/presentation/ui/screens/subject_details_screen.dart';
 import '../features/subjects/presentation/ui/screens/year_subjects.dart';
 import '../features/announcements/presentation/ui/screens/news_details_screen.dart';
+import '../features/grades/presentation/ui/screens/grades_screen.dart';
 import '../shared/imports/imports.dart';
 import '../shared/states/app_manager_bloc/app_manager_bloc.dart';
 import '../shared/utils/helper/colored_print.dart';
@@ -69,6 +70,7 @@ class BRouterConfig {
           "/root/news_details": NewsDetailsScreen.pageBuilder,
           //! -------------- Settings ---------------- !//
           "/root/language_selection": LanguageSelectionScreen.pageBuilder,
+          "/root/grades_screen": GradesScreen.pageBuilder,
         },
       ).call,
     );

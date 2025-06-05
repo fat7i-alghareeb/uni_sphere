@@ -123,4 +123,11 @@ class AppStrings {
   static String get lightMode => _localization.tr('lightMode');
   static String get selectLanguage => _localization.tr('selectLanguage');
   static String get language => _localization.tr('language');
+  static String get yourGrades => _localization.tr('yourGrades');
+  static String get passed => _localization.tr('passed');
+  static String get failed => _localization.tr('failed');
+  static String get finalTermGrade => _localization.tr('finalTermGrade');
+  static String get totalGrade => _localization.tr('totalGrade');
+  static String get semester => _localization.tr('semester');
+  static String get loadingGrades => _localization.tr('loadingGrades');
 }

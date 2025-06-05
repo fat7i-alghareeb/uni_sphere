@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart'
-    show StringTranslateExtension, tr;
+    show StringTranslateExtension;
 
 import '../../../../../core/result_builder/result.dart';
 import '../../../../../core/styles/colors.dart';
