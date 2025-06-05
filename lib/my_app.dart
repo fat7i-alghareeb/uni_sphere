@@ -53,53 +53,55 @@ class _MyAppState extends State<MyApp> {
             ChangeNotifierProvider(
               create: (context) => NavBarProvider(),
             ),
-            ChangeNotifierProvider(
-              create: (context) => ThemeProvider(),
+            ChangeNotifierProvider.value(
+              value: getIt<ThemeProvider>(),
             ),
           ],
           child: BeamerProvider(
-            routerDelegate: router.router,
-            child: Consumer<ThemeProvider>(
-              builder: (context, themeProvider, child) => MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                routerDelegate: router.router,
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                theme: !(themeProvider.isDarkMode || true)
-                    // ignore: dead_code
-                    ? AppThemes.darkThemeData()
-                    : AppThemes.lightThemeData(),
-                routeInformationParser: BeamerParser(),
-                builder: (context, child) {
-                  if (kReleaseMode) {
-                    if (!getIt.isRegistered<LocalizationService>()) {
-                      getIt.registerSingleton<LocalizationService>(
-                        LocalizationService(context),
+              routerDelegate: router.router,
+              child: Consumer<ThemeProvider>(
+                builder: (context, themeProvider, _) {
+                  return MaterialApp.router(
+                    debugShowCheckedModeBanner: false,
+                    routerDelegate: router.router,
+                    localizationsDelegates: context.localizationDelegates,
+                    supportedLocales: context.supportedLocales,
+                    locale: context.locale,
+                    theme: AppThemes.lightThemeData(),
+                    darkTheme: AppThemes.darkThemeData(),
+                    themeMode: themeProvider.isDarkMode
+                        ? ThemeMode.dark
+                        : ThemeMode.light,
+                    routeInformationParser: BeamerParser(),
+                    builder: (context, child) {
+                      if (kReleaseMode) {
+                        if (!getIt.isRegistered<LocalizationService>()) {
+                          getIt.registerSingleton<LocalizationService>(
+                            LocalizationService(context),
+                          );
+                        }
+                      } else {
+                        if (!getIt.isRegistered<LocalizationService>()) {
+                          getIt.registerSingleton<LocalizationService>(
+                            LocalizationService(context),
+                          );
+                        }
+                        // child = DeviceFrame(
+                        //   device: Devices.ios.iPhone13,
+                        //   screen: child!,
+                        //   isFrameVisible: false,
+                        // );
+                      }
+                      return AnnotatedRegion<SystemUiOverlayStyle>(
+                        value: SystemUiOverlayStyle(
+                            statusBarColor: Colors.transparent,
+                            systemNavigationBarColor: context.backgroundColor),
+                        child: child!,
                       );
-                    }
-                  } else {
-                    if (!getIt.isRegistered<LocalizationService>()) {
-                      getIt.registerSingleton<LocalizationService>(
-                        LocalizationService(context),
-                      );
-                    }
-                    // child = DeviceFrame(
-                    //   device: Devices.ios.iPhone13,
-                    //   screen: child!,
-                    //   isFrameVisible: false,
-                    // );
-                  }
-                  return AnnotatedRegion<SystemUiOverlayStyle>(
-                    value: SystemUiOverlayStyle(
-                        statusBarColor: Colors.transparent,
-                        systemNavigationBarColor: context.backgroundColor),
-                    child: child!,
+                    },
                   );
                 },
-              ),
-            ),
-          ),
+              )),
         );
       },
     );

@@ -110,6 +110,8 @@
     "date": "Date",
     "author": "Author",
     "source": "Source",
-    "tags": "Tags"
+    "tags": "Tags",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
     
 }

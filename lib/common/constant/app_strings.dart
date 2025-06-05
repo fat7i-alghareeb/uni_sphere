@@ -119,4 +119,6 @@ class AppStrings {
   static String get author => _localization.tr('author');
   static String get source => _localization.tr('source');
   static String get tags => _localization.tr('tags');
+  static String get darkMode => _localization.tr('darkMode');
+  static String get lightMode => _localization.tr('lightMode');
 }
