@@ -1,7 +1,7 @@
 import '../../../../../core/injection/injection.dart';
 import '../../../../../core/result_builder/result_builder.dart';
 import '../../../../../shared/imports/imports.dart';
-import '../../../domain/entities/announcement_entity.dart';
+import '../../../domain/entities/news_entity.dart';
 import '../../state/bloc/announcement_bloc.dart';
 import 'my_news_card.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
@@ -65,7 +65,7 @@ class _MyNewsWidgetState extends State<MyNewsWidget>
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnnouncementBloc, AnnouncementState>(
-      builder: (context, state) => ResultBuilder<List<AnnouncementEntity>>(
+      builder: (context, state) => ResultBuilder<List<NewsEntity>>(
         loading: () => _buildLoadingShimmer(),
         success: (data) {
           _initializeAnimations(data.length);
@@ -165,7 +165,7 @@ class _MyNewsWidgetState extends State<MyNewsWidget>
     }
   }
 
-  Widget _buildAnimatedNewsList(List<AnnouncementEntity> data) {
+  Widget _buildAnimatedNewsList(List<NewsEntity> data) {
     try {
       return ListView.builder(
         padding: REdgeInsets.only(

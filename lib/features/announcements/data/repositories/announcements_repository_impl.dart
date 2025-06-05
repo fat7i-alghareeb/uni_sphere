@@ -2,7 +2,7 @@
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../shared/services/exception/error_handler.dart';
-import '../../domain/entities/announcement_entity.dart';
+import '../../domain/entities/news_entity.dart';
 import '../../domain/repositories/announcements_repository.dart';
 import '../datasources/announcements_remote_data_source.dart';
 
@@ -16,7 +16,7 @@ class AnnouncementsRepoImp implements AnnouncementsRepo {
   }) : _remote = remote;
 
   @override
-  Future<Either<String, AnnouncementEntity>> getAllAnnouncements() {
+  Future<Either<String, NewsEntity>> getAllAnnouncements() {
     return throwAppException(
       () async {
         return await _remote.getAllAnnouncements();

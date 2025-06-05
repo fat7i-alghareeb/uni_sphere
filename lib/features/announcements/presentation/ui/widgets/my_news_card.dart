@@ -1,4 +1,4 @@
-import 'package:test/features/announcements/domain/entities/announcement_entity.dart';
+import 'package:test/features/announcements/domain/entities/news_entity.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../shared/imports/imports.dart';
 
@@ -8,7 +8,7 @@ class MyNewsCard extends StatelessWidget {
     required this.announcementEntity,
   });
 
-  final AnnouncementEntity announcementEntity;
+  final NewsEntity announcementEntity;
 
   @override
   Widget build(BuildContext context) {

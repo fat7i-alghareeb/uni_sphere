@@ -2,7 +2,7 @@
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../core/constants/dummy_data.dart';
-import '../entities/announcement_entity.dart';
+import '../entities/news_entity.dart';
 import '../repositories/announcements_repository.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
@@ -16,7 +16,7 @@ class GetMyAnnouncementsUsecase {
   }) : _repo = repo;
 
   //* Get All Announcements
-  Future<Either<String, List<AnnouncementEntity>>> getMyAnnouncement() =>
+  Future<Either<String, List<NewsEntity>>> getMyAnnouncement() =>
       Future.delayed(
         const Duration(milliseconds: 1200),
         () => Right(shortAnnouncements),

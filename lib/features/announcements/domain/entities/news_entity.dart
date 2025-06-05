@@ -1,11 +1,11 @@
-class AnnouncementEntity {
+class NewsEntity {
   final String id;
   final String title;
   final String description;
-  final String? image;
+  final List<String>? image;
   final String createdAt;
 
-  AnnouncementEntity({
+  NewsEntity({
     required this.id,
     required this.title,
     required this.description,

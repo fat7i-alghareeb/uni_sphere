@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import '../../features/announcements/domain/entities/announcement_entity.dart';
+import '../../features/announcements/domain/entities/news_entity.dart';
 import '../../features/grades/domain/entities/grades_entity.dart';
 import '../../features/home/domain/entities/ads_entity.dart';
 import '../../features/home/domain/entities/home_entity.dart';
@@ -567,75 +567,114 @@ List<SubjectDetailsEntity> computerEngineeringSubjectsDetails = [
     imageUrl: dummyImages[3],
   ),
 ];
-final List<AnnouncementEntity> fullAnnouncements = [
-  AnnouncementEntity(
+final List<NewsEntity> fullAnnouncements = [
+  NewsEntity(
     id: '124  ',
     title: 'Midterm Exam Schedule - Computer Engineering Department',
     description:
         'The Computer Engineering Department is announcing the official midterm exam schedule for the Spring 2025 semester. All exams will take place between May 20th and May 31st in various halls across the main campus building. First-year students should note that their Programming Fundamentals exam will be held on May 20th at 9:00 AM in Hall A. Second-year students will have their Data Structures exam on May 22nd at 11:00 AM in Hall B. Third-year students should prepare for their Computer Networks exam scheduled for May 25th at 2:00 PM in Lab 3. Final year students will take their Database Systems exam on May 28th at 10:00 AM in Hall C. Each exam will last exactly 2 hours with no extensions allowed. Students must bring their university ID cards for verification - no exceptions will be made for those who forget their IDs. Electronic devices including phones, smartwatches, and calculators are strictly prohibited in exam halls. The department has arranged special study sessions with teaching assistants every evening from 5-7 PM in the library annex building during the exam period. Students with special needs should contact the department office at least 3 days before their scheduled exams to arrange necessary accommodations. The complete exam schedule with room assignments for all courses is available on the university portal and posted on the department notice board. Good luck to all students in your exams!',
-    image: dummyImages[0],
+    image: [
+      dummyImages[0],
+      dummyImages[1],
+      dummyImages[2],
+      dummyImages[3],
+    ],
     createdAt: '2025-5-17 10:32 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '522',
     title: 'Advanced Artificial Intelligence Workshop Series',
     description:
         'The Computer Engineering Department in collaboration with the Aleppo Tech Society is proud to announce a comprehensive workshop series on Artificial Intelligence and Machine Learning applications. This three-day intensive program will run from May 27th to May 29th in Hall 4 of the central campus. Each day will focus on different aspects of AI technology: Day 1 covers fundamental machine learning concepts and Python implementations, Day 2 explores neural networks and deep learning frameworks, while Day 3 features real-world case studies and project implementations. We are honored to have Dr. Ahmed Hassan, senior AI researcher at TechCorp, as our keynote speaker for the opening session. The workshop includes hands-on coding sessions where participants will work on actual datasets to build predictive models. Limited seats are available, so interested students should register through the university portal by May 25th. There is no participation fee for Aleppo University students, but registration is mandatory. Participants who attend all three sessions will receive a certificate of completion. Bring your laptops with Python 3.8 or higher installed for the practical sessions. Coffee breaks and light refreshments will be provided during intermissions. For any questions, please contact the Computer Engineering office or visit our AI workshop information desk in the main building lobby.',
-    image: dummyImages[1],
+    image: [
+      dummyImages[1],
+      dummyImages[2],
+      dummyImages[3],
+    ],
     createdAt: '2025-5-16 09:15 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '323',
     title: 'Library Extended Hours During Examination Period',
     description:
         'To accommodate students during the upcoming examination period, the central university library will extend its operating hours from May 15th through June 5th. The library will now remain open daily from 7:00 AM until 11:00 PM, including weekends. Additional study spaces have been arranged in the adjacent Building 3, where classrooms 301-310 will be available as quiet study areas from 6:00 PM onwards. The computer lab in the engineering wing will also extend its hours until midnight exclusively for computer engineering students working on projects. Please note that the extended hours apply only to study areas - library services like book checkout and research assistance will maintain normal hours until 7:00 PM. Security personnel will be present during all extended hours, and students must show their ID cards when entering after 8:00 PM. The library café will offer discounted coffee and snacks during exam weeks. Group study rooms can be reserved in advance at the circulation desk. The library has acquired 50 additional copies of frequently referenced textbooks which will be available for 2-hour in-library use only. Noise levels must be kept to a minimum during extended hours, and any disruptive behavior will result in immediate expulsion from the premises. We wish all students success in their upcoming examinations.',
-    image: dummyImages[2],
+    image: [
+      dummyImages[2],
+      dummyImages[3],
+      dummyImages[0],
+      dummyImages[1],
+    ],
     createdAt: '2025-5-15 03:45 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '23',
     title: 'Library Extended Hours During Examination Period',
     description:
         'To accommodate students during the upcoming examination period, the central university library will extend its operating hours from May 15th through June 5th. The library will now remain open daily from 7:00 AM until 11:00 PM, including weekends. Additional study spaces have been arranged in the adjacent Building 3, where classrooms 301-310 will be available as quiet study areas from 6:00 PM onwards. The computer lab in the engineering wing will also extend its hours until midnight exclusively for computer engineering students working on projects. Please note that the extended hours apply only to study areas - library services like book checkout and research assistance will maintain normal hours until 7:00 PM. Security personnel will be present during all extended hours, and students must show their ID cards when entering after 8:00 PM. The library café will offer discounted coffee and snacks during exam weeks. Group study rooms can be reserved in advance at the circulation desk. The library has acquired 50 additional copies of frequently referenced textbooks which will be available for 2-hour in-library use only. Noise levels must be kept to a minimum during extended hours, and any disruptive behavior will result in immediate expulsion from the premises. We wish all students success in their upcoming examinations.',
-    image: dummyImages[3],
+      image: [
+      dummyImages[3],
+      dummyImages[0],
+      dummyImages[1],
+      dummyImages[2],
+    ],
     createdAt: '2025-5-15 03:45 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '13',
     title: 'Library Extended Hours During Examination Period',
     description:
         'To accommodate students during the upcoming examination period, the central university library will extend its operating hours from May 15th through June 5th. The library will now remain open daily from 7:00 AM until 11:00 PM, including weekends. Additional study spaces have been arranged in the adjacent Building 3, where classrooms 301-310 will be available as quiet study areas from 6:00 PM onwards. The computer lab in the engineering wing will also extend its hours until midnight exclusively for computer engineering students working on projects. Please note that the extended hours apply only to study areas - library services like book checkout and research assistance will maintain normal hours until 7:00 PM. Security personnel will be present during all extended hours, and students must show their ID cards when entering after 8:00 PM. The library café will offer discounted coffee and snacks during exam weeks. Group study rooms can be reserved in advance at the circulation desk. The library has acquired 50 additional copies of frequently referenced textbooks which will be available for 2-hour in-library use only. Noise levels must be kept to a minimum during extended hours, and any disruptive behavior will result in immediate expulsion from the premises. We wish all students success in their upcoming examinations.',
-    image: dummyImages[3],
+      image: [
+        dummyImages[3],
+        dummyImages[0],
+        dummyImages[1],
+        dummyImages[2],
+      ],
     createdAt: '2025-5-15 03:45 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '34',
     title: 'Library Extended Hours During Examination Period',
     description:
         'To accommodate students during the upcoming examination period, the central university library will extend its operating hours from May 15th through June 5th. The library will now remain open daily from 7:00 AM until 11:00 PM, including weekends. Additional study spaces have been arranged in the adjacent Building 3, where classrooms 301-310 will be available as quiet study areas from 6:00 PM onwards. The computer lab in the engineering wing will also extend its hours until midnight exclusively for computer engineering students working on projects. Please note that the extended hours apply only to study areas - library services like book checkout and research assistance will maintain normal hours until 7:00 PM. Security personnel will be present during all extended hours, and students must show their ID cards when entering after 8:00 PM. The library café will offer discounted coffee and snacks during exam weeks. Group study rooms can be reserved in advance at the circulation desk. The library has acquired 50 additional copies of frequently referenced textbooks which will be available for 2-hour in-library use only. Noise levels must be kept to a minimum during extended hours, and any disruptive behavior will result in immediate expulsion from the premises. We wish all students success in their upcoming examinations.',
-    image: dummyImages[1],
+    image: [
+      dummyImages[1],
+      dummyImages[2],
+      dummyImages[3],
+      dummyImages[0],
+    ],
     createdAt: '2025-5-15 03:45 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '93',
     title: 'Library Extended Hours During Examination Period',
     description:
         'To accommodate students during the upcoming examination period, the central university library will extend its operating hours from May 15th through June 5th. The library will now remain open daily from 7:00 AM until 11:00 PM, including weekends. Additional study spaces have been arranged in the adjacent Building 3, where classrooms 301-310 will be available as quiet study areas from 6:00 PM onwards. The computer lab in the engineering wing will also extend its hours until midnight exclusively for computer engineering students working on projects. Please note that the extended hours apply only to study areas - library services like book checkout and research assistance will maintain normal hours until 7:00 PM. Security personnel will be present during all extended hours, and students must show their ID cards when entering after 8:00 PM. The library café will offer discounted coffee and snacks during exam weeks. Group study rooms can be reserved in advance at the circulation desk. The library has acquired 50 additional copies of frequently referenced textbooks which will be available for 2-hour in-library use only. Noise levels must be kept to a minimum during extended hours, and any disruptive behavior will result in immediate expulsion from the premises. We wish all students success in their upcoming examinations.',
-    image: dummyImages[2],
+    image: [
+      dummyImages[2],
+      dummyImages[3],
+      dummyImages[0],
+      dummyImages[1],
+    ],
     createdAt: '2025-5-15 03:45 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '10',
     title: 'Library Extended Hours During Examination Period',
     description:
         'To accommodate students during the upcoming examination period, the central university library will extend its operating hours from May 15th through June 5th. The library will now remain open daily from 7:00 AM until 11:00 PM, including weekends. Additional study spaces have been arranged in the adjacent Building 3, where classrooms 301-310 will be available as quiet study areas from 6:00 PM onwards. The computer lab in the engineering wing will also extend its hours until midnight exclusively for computer engineering students working on projects. Please note that the extended hours apply only to study areas - library services like book checkout and research assistance will maintain normal hours until 7:00 PM. Security personnel will be present during all extended hours, and students must show their ID cards when entering after 8:00 PM. The library café will offer discounted coffee and snacks during exam weeks. Group study rooms can be reserved in advance at the circulation desk. The library has acquired 50 additional copies of frequently referenced textbooks which will be available for 2-hour in-library use only. Noise levels must be kept to a minimum during extended hours, and any disruptive behavior will result in immediate expulsion from the premises. We wish all students success in their upcoming examinations.',
-    image: dummyImages[3],
+    image: [
+      dummyImages[3],
+      dummyImages[0],
+      dummyImages[1],
+      dummyImages[2],
+    ],
     createdAt: '2025-5-15 03:45 pm',
   ),
 ];
 
-final List<AnnouncementEntity> shortAnnouncements = [
-  AnnouncementEntity(
+final List<NewsEntity> shortAnnouncements = [
+  NewsEntity(
     id: '4',
     title: 'Lecture Postponement',
     description:
@@ -643,14 +682,14 @@ final List<AnnouncementEntity> shortAnnouncements = [
     image: null,
     createdAt: '2025-5-17 08:20 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '5',
     title: 'Lab Cancellation',
     description: 'The Programming lab has been cancelled.',
     image: null,
     createdAt: '2025-5-16 11:10 am',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '6',
     title: 'Library Maintenance',
     description:
@@ -658,7 +697,7 @@ final List<AnnouncementEntity> shortAnnouncements = [
     image: null,
     createdAt: '2025-5-15 04:30 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '7',
     title: 'Student Meeting',
     description:
@@ -666,7 +705,7 @@ final List<AnnouncementEntity> shortAnnouncements = [
     image: null,
     createdAt: '2025-5-14 09:00 pm',
   ),
-  AnnouncementEntity(
+  NewsEntity(
     id: '8',
     title: 'Course Registration',
     description:

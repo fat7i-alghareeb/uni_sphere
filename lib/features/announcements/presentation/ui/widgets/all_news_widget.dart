@@ -1,5 +1,5 @@
 import 'package:test/core/result_builder/result_builder.dart';
-import 'package:test/features/announcements/domain/entities/announcement_entity.dart';
+import 'package:test/features/announcements/domain/entities/news_entity.dart';
 import 'package:test/features/announcements/presentation/state/bloc/announcement_bloc.dart';
 import 'package:test/shared/widgets/custom_shimmer.dart';
 import 'package:test/core/styles/colors.dart';
@@ -67,7 +67,7 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnnouncementBloc, AnnouncementState>(
-      builder: (context, state) => ResultBuilder<List<AnnouncementEntity>>(
+      builder: (context, state) => ResultBuilder<List<NewsEntity>>(
         loading: () => _buildLoadingShimmer(),
         success: (data) {
           _initializeAnimations(data.length);
@@ -191,7 +191,7 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
     }
   }
 
-  Widget _buildAnimatedNewsList(List<AnnouncementEntity> data) {
+  Widget _buildAnimatedNewsList(List<NewsEntity> data) {
     try {
       return ListView.builder(
         padding: REdgeInsets.only(
@@ -300,7 +300,7 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
                           boxShadow: AppColors.primaryShadow(context),
                         ),
                         child: CustomNetworkImage(
-                          imageUrl: data[index].image,
+                          imageUrl: data[index].image?[0] ?? '',
                           height: 180.h,
                           width: double.infinity,
                           borderRadius: 22,
