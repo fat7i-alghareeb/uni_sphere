@@ -1,5 +1,5 @@
 import '../../../../../shared/imports/imports.dart';
-import '../../../domain/entities/grades_entity.dart';
+import '../../../domain/entities/grade_entity.dart';
 import 'grade_section_widget.dart';
 
 class GradeYearSection extends StatefulWidget {

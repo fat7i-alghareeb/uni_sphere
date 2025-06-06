@@ -1,6 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../entities/grades_entity.dart';
+import '../entities/grade_entity.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

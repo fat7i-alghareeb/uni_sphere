@@ -1,7 +1,7 @@
 import '../../../../../shared/extensions/string_extension.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../common/constant/app_strings.dart';
-import '../../../domain/entities/grades_entity.dart';
+import '../../../domain/entities/grade_entity.dart';
 import 'grade_card_widget.dart';
 
 class GradeSectionWidget extends StatefulWidget {

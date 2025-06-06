@@ -1,7 +1,8 @@
 import 'dart:math';
 
 import '../../features/announcements/domain/entities/news_entity.dart';
-import '../../features/grades/domain/entities/grades_entity.dart';
+import '../../features/grades/domain/entities/grade_entity.dart';
+import '../../features/grades/domain/entities/grades_response_entity.dart';
 import '../../features/home/domain/entities/ads_entity.dart';
 import '../../features/home/domain/entities/home_entity.dart';
 import '../../features/home/domain/entities/days_to_the_final.dart';
@@ -714,7 +715,12 @@ final List<NewsEntity> shortAnnouncements = [
     createdAt: '2025-5-13 02:15 pm',
   ),
 ];
-
+final GradesResponseEntity mockedGradesResponse = GradesResponseEntity(
+  grades: mockedGrades,
+  numberOfPassedSubjects: 5,
+  numberOfFailedSubjects: 2,
+  averageGrade: 75.0,
+);
 final List<GradeEntity> mockedGrades = [
   GradeEntity(
     id: 'CS101',

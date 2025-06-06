@@ -2,7 +2,9 @@ import '../../../../../common/constant/app_strings.dart' show AppStrings;
 import '../../../../../core/result_builder/result.dart';
 import '../../../../../core/result_builder/result_builder.dart';
 import '../../../../../shared/imports/imports.dart';
-import '../../../domain/entities/grades_entity.dart';
+import '../../../domain/entities/grade_entity.dart';
+import '../../../domain/entities/grades_response_entity.dart'
+    show GradesResponseEntity;
 import 'grade_year_section.dart';
 
 class GradesListWidget extends StatefulWidget {
@@ -12,7 +14,7 @@ class GradesListWidget extends StatefulWidget {
     this.onRefresh,
   });
 
-  final Result<List<GradeEntity>> state;
+  final Result<GradesResponseEntity> state;
   final Future<void> Function()? onRefresh;
 
   @override
@@ -112,11 +114,11 @@ class _GradesListWidgetState extends State<GradesListWidget>
 
   @override
   Widget build(BuildContext context) {
-    return ResultBuilder<List<GradeEntity>>(
+    return ResultBuilder<GradesResponseEntity>(
       result: widget.state,
       loading: () => _buildLoadingState(),
-      success: (grades) {
-        final organizedGrades = _organizeGrades(grades);
+      success: (gradesResponse) {
+        final organizedGrades = _organizeGrades(gradesResponse.grades);
         if (_animations.length != organizedGrades.length) {
           _initializeAnimations(organizedGrades.length);
         }

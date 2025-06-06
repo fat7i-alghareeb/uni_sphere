@@ -1,7 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/constants/dummy_data.dart' show mockedGrades;
-import '../entities/grades_entity.dart';
+import '../../../../core/constants/dummy_data.dart' show mockedGradesResponse;
+import '../entities/grades_response_entity.dart' show GradesResponseEntity;
 import '../repositories/grades_repository.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
@@ -15,8 +15,8 @@ class GradesUsecase {
   }) : _repo = repo;
 
   //* Get All Grades
-  Future<Either<String, List<GradeEntity>>> getAllGrades() => Future.delayed(
+  Future<Either<String, GradesResponseEntity>> getAllGrades() => Future.delayed(
         const Duration(seconds: 2),
-        () => right(mockedGrades),
+        () => right(mockedGradesResponse),
       );
 }

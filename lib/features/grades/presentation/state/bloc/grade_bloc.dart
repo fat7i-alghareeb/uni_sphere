@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/result_builder/result.dart';
-import '../../../domain/entities/grades_entity.dart';
+import '../../../domain/entities/grades_response_entity.dart' show GradesResponseEntity;
 import '../../../domain/usecases/grades_usecase.dart';
 part 'grade_event.dart';
 part 'grade_state.dart';

@@ -1,8 +1,7 @@
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/styles/colors.dart';
-import '../../../../../shared/extensions/string_extension.dart';
 import '../../../../../shared/imports/imports.dart';
-import '../../../domain/entities/grades_entity.dart';
+import '../../../domain/entities/grade_entity.dart';
 
 class GradeCardWidget extends StatelessWidget {
   const GradeCardWidget({
@@ -21,7 +20,7 @@ class GradeCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
-            color: context.primaryColor.withOpacity(0.1),
+            color: context.primaryColor.withValues(alpha: .1),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
