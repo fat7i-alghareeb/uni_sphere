@@ -90,7 +90,6 @@ class CustomEndDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       context.beamToNamed(GradesScreen.pagePath);
-                      Navigator.pop(context); // Close the drawer
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r)),

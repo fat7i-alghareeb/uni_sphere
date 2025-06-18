@@ -130,4 +130,7 @@ class AppStrings {
   static String get totalGrade => _localization.tr('totalGrade');
   static String get semester => _localization.tr('semester');
   static String get loadingGrades => _localization.tr('loadingGrades');
+  static String get passedSubjects => _localization.tr('passedSubjects');
+  static String get failedSubjects => _localization.tr('failedSubjects');
+  static String get averageGrade => _localization.tr('averageGrade');
 }

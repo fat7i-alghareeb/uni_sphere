@@ -1,4 +1,4 @@
-class SubjectEntity {
+   class SubjectEntity {
   final String id;
   final String title;
   final String professorName;

@@ -123,5 +123,8 @@
     "finalTermGrade": "علامة النظري",
     "totalGrade": "العلامة الكلية",
     "semester": "الفصل",
-    "loadingGrades": "جاري تحميل العلامات..."
+    "loadingGrades": "جاري تحميل العلامات...",
+    "passedSubjects": "المواد الناجحة",
+    "failedSubjects": "المواد الراسبة",
+    "averageGrade": "المعدل العام"
 }

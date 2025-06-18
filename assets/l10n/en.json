@@ -118,7 +118,10 @@
     "yourGrades": "Your Grades",
     "passed": "Passed",
     "failed": "Failed",
-    "finalTermGrade": "Final Term Grade",
+    "finalTermGrade": "Final Grade",
     "semester": "Semester",
-    "loadingGrades": "Loading Grades..."
+    "loadingGrades": "Loading Grades...",
+    "passedSubjects": "Passed Subjects",
+    "failedSubjects": "Failed Subjects",
+    "averageGrade": "Average"
 }

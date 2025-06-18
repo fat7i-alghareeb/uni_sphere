@@ -18,13 +18,7 @@ class GradeCardWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.cardColor,
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: context.primaryColor.withValues(alpha: .1),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        boxShadow: AppColors.primaryShadow(context),
       ),
       child: Material(
         color: Colors.transparent,
@@ -34,7 +28,7 @@ class GradeCardWidget extends StatelessWidget {
             // Handle tap if needed
           },
           child: Padding(
-            padding: REdgeInsets.all(16.0),
+            padding: REdgeInsets.symmetric(horizontal: 12, vertical: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -50,33 +44,40 @@ class GradeCardWidget extends StatelessWidget {
                 ),
                 16.verticalSpace,
                 // Grades Grid
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildGradeItem(
-                        context,
-                        AppStrings.midTermGrade,
-                        grade.midTermGrade.toString(),
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: _buildGradeItem(
+                          context,
+                          AppStrings.midTermGrade,
+                          grade.midTermGrade.toString(),
+                        ),
                       ),
-                    ),
-                    16.horizontalSpace,
-                    Expanded(
-                      child: _buildGradeItem(
-                        context,
-                        AppStrings.finalTermGrade,
-                        grade.finalTermGrade.toString(),
+                      6.horizontalSpace,
+                      Expanded(
+                        child: _buildGradeItem(
+                          context,
+                          AppStrings.finalTermGrade,
+                          grade.finalTermGrade != null
+                              ? grade.finalTermGrade.toString()
+                              : '--',
+                        ),
                       ),
-                    ),
-                    16.horizontalSpace,
-                    Expanded(
-                      child: _buildGradeItem(
-                        context,
-                        AppStrings.totalGrade,
-                        grade.totalGrade.toString(),
-                        isTotal: true,
+                      6.horizontalSpace,
+                      Expanded(
+                        child: _buildGradeItem(
+                          context,
+                          AppStrings.totalGrade,
+                          grade.finalTermGrade != null
+                              ? grade.totalGrade.toString()
+                              : "--",
+                          isTotal: true,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 16.verticalSpace,
                 // Pass/Fail Status
@@ -87,8 +88,8 @@ class GradeCardWidget extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: grade.isPassed
-                        ? context.primaryColor.withOpacity(0.1)
-                        : AppColors.danger.withOpacity(0.1),
+                        ? const Color(0xFF1dceb2).withValues(alpha: 0.1)
+                        : AppColors.danger.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8.r),
                   ),
                   child: Row(
@@ -100,7 +101,7 @@ class GradeCardWidget extends StatelessWidget {
                             : Icons.cancel_outlined,
                         size: 16.r,
                         color: grade.isPassed
-                            ? context.primaryColor
+                            ? const Color(0xFF1dceb2)
                             : AppColors.danger,
                       ),
                       8.horizontalSpace,
@@ -108,7 +109,7 @@ class GradeCardWidget extends StatelessWidget {
                         grade.isPassed ? AppStrings.passed : AppStrings.failed,
                         style: context.textTheme.labelMedium!.copyWith(
                           color: grade.isPassed
-                              ? context.primaryColor
+                              ? const Color(0xFF1dceb2)
                               : AppColors.danger,
                           fontWeight: FontWeight.w600,
                         ),
@@ -134,7 +135,7 @@ class GradeCardWidget extends StatelessWidget {
       padding: REdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: isTotal
-            ? context.primaryColor.withOpacity(0.1)
+            ? context.primaryColor.withValues(alpha: 0.15)
             : context.backgroundColor,
         borderRadius: BorderRadius.circular(12.r),
       ),

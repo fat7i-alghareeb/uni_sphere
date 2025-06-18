@@ -1,12 +1,12 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
-import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
+import '../../../../../core/result_builder/result.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
-import '../../../../home/presentation/ui/widgets/decorated_container.dart';
 import '../../state/bloc/grade_bloc.dart';
 import '../widgets/grades_list_widget.dart';
+import '../widgets/grades_statistics_widget.dart';
 
 //!---------------------------- The Widget -------------------------------------!//
 class GradesScreen extends StatefulWidget {
@@ -26,14 +26,33 @@ class GradesScreen extends StatefulWidget {
   State<GradesScreen> createState() => _GradesScreenState();
 }
 
-class _GradesScreenState extends State<GradesScreen> {
+class _GradesScreenState extends State<GradesScreen>
+    with SingleTickerProviderStateMixin {
   late final GradeBloc _gradeBloc;
+  late final AnimationController _headerController;
+  late final Animation<double> _headerAnimation;
 
   @override
   void initState() {
     super.initState();
     _gradeBloc = getIt<GradeBloc>();
     _gradeBloc.add(GetGradesEvent());
+
+    _headerController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+    _headerAnimation = CurvedAnimation(
+      parent: _headerController,
+      curve: Curves.easeOut,
+    );
+    _headerController.forward();
+  }
+
+  @override
+  void dispose() {
+    _headerController.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,8 +63,26 @@ class _GradesScreenState extends State<GradesScreen> {
         child: Column(
           children: [
             40.verticalSpace,
-            _buildHeader(context),
-            _buildDivider(context),
+            BlocBuilder<GradeBloc, GradeState>(
+              builder: (context, state) {
+                if (state.result.isLoaded()) {
+                  final gradesResponse = state.result.getDataWhenSuccess();
+                  if (gradesResponse != null) {
+                    return Column(
+                      children: [
+                        GradesStatisticsWidget(
+                          gradesResponse: gradesResponse,
+                          animation: _headerAnimation,
+                        ),
+                        16.verticalSpace,
+                        _buildDivider(context),
+                      ],
+                    );
+                  }
+                }
+                return const SizedBox.shrink();
+              },
+            ),
             Expanded(
               child: BlocBuilder<GradeBloc, GradeState>(
                 builder: (context, state) {
@@ -59,26 +96,6 @@ class _GradesScreenState extends State<GradesScreen> {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHeader(BuildContext context) {
-    return Padding(
-      padding: REdgeInsets.symmetric(
-        horizontal: AppConstants.horizontalScreensPadding,
-        vertical: 15,
-      ),
-      child: DecoratedContainer(
-        circleSize: 120,
-        child: Padding(
-          padding: REdgeInsets.all(12.0),
-          child: Text(
-            AppStrings.yourGrades,
-            style: context.textTheme.headlineLarge!
-                .withColor(context.primaryColor),
-          ),
         ),
       ),
     );

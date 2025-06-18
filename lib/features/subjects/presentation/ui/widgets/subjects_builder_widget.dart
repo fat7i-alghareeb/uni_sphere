@@ -10,7 +10,7 @@ class SubjectsBuilderWidget extends StatelessWidget {
     super.key,
     required this.state,
     this.onRefresh,
-    this.fullInfo = false,
+    this.fullInfo = true,
   });
   final Result<List<SubjectEntity>> state;
   final bool fullInfo;

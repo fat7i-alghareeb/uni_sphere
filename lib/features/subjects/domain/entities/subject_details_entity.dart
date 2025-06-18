@@ -1,4 +1,4 @@
-import 'materials_entity.dart';
+  import 'materials_entity.dart';
 
 class SubjectDetailsEntity {
   final String id;

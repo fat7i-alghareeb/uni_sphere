@@ -4,7 +4,7 @@ class GradeEntity {
   final int subjectYear;
   final int subjectSemester;
   final int midTermGrade;
-  final int finalTermGrade;
+  final int? finalTermGrade;
   final bool isPassed;
   GradeEntity({
     required this.id,
@@ -15,5 +15,5 @@ class GradeEntity {
     required this.finalTermGrade,
     required this.isPassed,
   });
-  int get totalGrade => midTermGrade + finalTermGrade;
+  int get totalGrade => midTermGrade + (finalTermGrade ?? 0);
 }
