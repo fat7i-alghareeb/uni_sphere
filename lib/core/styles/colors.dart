@@ -1,5 +1,6 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:test/shared/extensions/context_extension.dart';
 import '../../shared/extensions/string_extension.dart';
 
 /// A comprehensive color system for the application.
@@ -46,14 +47,14 @@ class AppColors {
   static const Color green = Color(0xff28C76F);
 
   // Gradients
-  static final LinearGradient primaryGradient = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      lightPrimary,
-      "#B1E5D3".toColor(),
-    ],
-  );
+  static LinearGradient primaryGradient(BuildContext context) => LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          context.primaryColor,
+          Color.fromARGB(255, 138, 136, 206),
+        ],
+      );
 
   static final LinearGradient secondaryGradient = LinearGradient(
     begin: Alignment.topCenter,
@@ -110,6 +111,32 @@ class AppColors {
     ),
   ];
 
+  static List<BoxShadow> secondaryShadow(BuildContext context) => [
+        BoxShadow(
+          offset: const Offset(0, 2),
+          blurRadius: 8,
+          spreadRadius: 0,
+          color: Colors.black.withValues(alpha: 0.17),
+        ),
+      ];
+
+  static List<BoxShadow> successShadow(BuildContext context) => [
+        BoxShadow(
+          offset: const Offset(0, 2),
+          blurRadius: 8,
+          spreadRadius: 0,
+          color: Colors.black.withValues(alpha: 0.17),
+        ),
+      ];
+
+  static List<BoxShadow> dangerShadow() => [
+        BoxShadow(
+          offset: const Offset(0, 2),
+          blurRadius: 8,
+          spreadRadius: 0,
+          color: Colors.black.withValues(alpha: 0.17),
+        ),
+      ];
   static const List<BoxShadow> blueShadow = [
     BoxShadow(
       offset: Offset(0, 4),

@@ -133,5 +133,8 @@
     "validEmail": "Invalid email",
     "minValue": "The value is less than the required value",
     "passwordMinLength": "The password length is less than the required length",
-    "mustMatch": "The values do not match"
+    "mustMatch": "The values do not match",
+    "login": "Login",
+    "register": "Register",
+    "welcomeToUniSphere": "Welcome to UniSphere"
 }

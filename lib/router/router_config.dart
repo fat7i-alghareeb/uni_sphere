@@ -1,5 +1,10 @@
 import 'dart:async';
 import 'package:beamer/beamer.dart';
+import '../features/access/presentation/ui/screens/check_one_time_code_screen.dart'
+    show CheckOneTimeCodeScreen;
+import '../features/access/presentation/ui/screens/choose_access_method_screen.dart'
+    show ChooseAccessMethodScreen;
+import '../features/access/presentation/ui/screens/register_screen.dart';
 import '../features/root/presentation/ui/screen/root_screen.dart';
 import '../features/settings/presentation/ui/screens/language_selection_screen.dart'
     show LanguageSelectionScreen;
@@ -37,7 +42,7 @@ class BRouterConfig {
 
   BRouterConfig({required this.appManagerBloc}) {
     router = BeamerDelegate(
-      initialPath: RootScreen.pagePath,
+      initialPath: ChooseAccessMethodScreen.pagePath,
       updateListenable: RefreshStream(appManagerBloc.stream),
       routeListener: (routerInfo, routerDelegate) {
         printG("route: ${routerInfo.uri}");
@@ -59,6 +64,15 @@ class BRouterConfig {
       },
       locationBuilder: RoutesLocationBuilder(
         routes: {
+          //! -------------- Access ---------------- !//
+          '/choose_access_method': ChooseAccessMethodScreen.pageBuilder,
+          '/choose_access_method/check_one_time_code':
+              CheckOneTimeCodeScreen.pageBuilder,
+          '/choose_access_method/check_one_time_code/register':
+              RegisterScreen.pageBuilder,
+
+          //! -------------- Access ---------------- !//
+
           '/root': RootScreen.pageBuilder,
           //! -------------- Subjects ---------------- !//
           "/root/choose_years_screen": ChooseYearsScreen.pageBuilder,
