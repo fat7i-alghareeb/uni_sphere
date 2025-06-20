@@ -123,5 +123,15 @@
     "loadingGrades": "Loading Grades...",
     "passedSubjects": "Passed Subjects",
     "failedSubjects": "Failed Subjects",
-    "averageGrade": "Average"
+    "averageGrade": "Average",
+    "faculties": "Faculties",
+    "majors": "Majors",
+    "selectFaculty": "Select Faculty",
+    "selectMajor": "Select Major",
+    "loading": "Loading...",
+    "thisFieldRequired": "This field is required",
+    "validEmail": "Invalid email",
+    "minValue": "The value is less than the required value",
+    "passwordMinLength": "The password length is less than the required length",
+    "mustMatch": "The values do not match"
 }

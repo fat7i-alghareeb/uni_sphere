@@ -133,4 +133,14 @@ class AppStrings {
   static String get passedSubjects => _localization.tr('passedSubjects');
   static String get failedSubjects => _localization.tr('failedSubjects');
   static String get averageGrade => _localization.tr('averageGrade');
+  static String get faculties => _localization.tr('faculties');
+  static String get majors => _localization.tr('majors');
+  static String get selectFaculty => _localization.tr('selectFaculty');
+  static String get selectMajor => _localization.tr('selectMajor');
+  static String get loading => _localization.tr('loading');
+  static String get thisFieldRequired => _localization.tr('thisFieldRequired');
+  static String get validEmail => _localization.tr('validEmail');
+  static String get minValue => _localization.tr('minValue');
+  static String get passwordMinLength => _localization.tr('passwordMinLength');
+  static String get mustMatch => _localization.tr('mustMatch');
 }

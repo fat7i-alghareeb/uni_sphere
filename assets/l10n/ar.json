@@ -126,5 +126,15 @@
     "loadingGrades": "جاري تحميل العلامات...",
     "passedSubjects": "المواد الناجحة",
     "failedSubjects": "المواد الراسبة",
-    "averageGrade": "المعدل العام"
+    "averageGrade": "المعدل العام",
+    "faculties": "الكليات",
+    "majors": "التخصصات",
+    "selectFaculty": "اختر الكلية",
+    "selectMajor": "اختر التخصص",
+    "loading": "جاري التحميل...",
+    "thisFieldRequired": "هذا الحقل مطلوب",
+    "validEmail": "البريد الإلكتروني غير صالح",
+    "minValue": "القيمة المطلوبة أقل من القيمة المطلوبة",
+    "passwordMinLength": "طول كلمة المرور أقل من الطول المطلوب",
+    "mustMatch": "القيمتان غير متطابقتان"
 }
