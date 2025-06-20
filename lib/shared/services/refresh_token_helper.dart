@@ -6,6 +6,7 @@
 
 import '../../core/auth_data_source/local/auth_local.dart';
 import '../../core/injection/injection.dart';
+import '../../core/models/auth_token_dio.dart' show AuthTokenModel;
 import '../entities/user.dart';
 import '../utils/helper/colored_print.dart';
 
@@ -38,15 +39,21 @@ bool isTokenAboutToExpire(String token, {int bufferTimeInSeconds = 900}) {
 }
 
 Future<void> updateStorageToken(
-  User user,
-  String accessToken,
+  AuthTokenModel token,
 ) async {
+  final user = getIt<AuthLocal>().getUser()!;
   User user2 = User(
     id: user.id,
-    accessToken: accessToken,
-    refreshToken: user.refreshToken,
-    fullName: user.fullName,
+    accessToken: token.accessToken,
+    refreshToken: token.refreshToken ?? user.refreshToken,
+    firstName: user.firstName,
     deviceToken: user.deviceToken,
+    lastName: user.lastName,
+    fatherName: user.fatherName,
+    enrollmentStatusName: user.enrollmentStatusName,
+    majorName: user.majorName,
+    studentNumber: user.studentNumber,
+    year: user.year,
   );
   await getIt<AuthLocal>().setUser(user2);
 }

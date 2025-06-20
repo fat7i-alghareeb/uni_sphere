@@ -56,6 +56,7 @@ class _DaysToTheFinalsBodyState extends State<DaysToTheFinalsBody> {
 
     return DecoratedContainer(
       child: Column(
+        key: ValueKey(AppStrings.numberOfDaysToTheFinals),
         children: [
           Text(
             AppStrings.numberOfDaysToTheFinals,

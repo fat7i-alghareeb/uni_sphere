@@ -7,7 +7,6 @@ class LocalizationService {
   LocalizationService(this.context);
 
   String tr(String key) {
-    return context.tr(key);
+    return key.tr();
   }
 }
-

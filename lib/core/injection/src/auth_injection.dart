@@ -13,7 +13,10 @@ import '../injection.dart';
 
 Future<void> authInjection() async {
   getIt.registerSingleton<AuthLocal>(
-      AuthLocal(local: getIt<StorageService<SharedStorage>>()));
+    AuthLocal(
+      local: getIt<StorageService<SecureStorage>>(),
+    ),
+  );
 
   getIt.registerSingleton<AuthRemote>(AuthRemote(getIt<Dio>()));
 

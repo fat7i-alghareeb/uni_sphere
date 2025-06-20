@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import '../../common/constant/app_strings.dart' show AppStrings;
 import '../states/theme_provider/theme_provider.dart';

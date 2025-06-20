@@ -3,8 +3,13 @@ import 'package:dio_refresh_bot/dio_refresh_bot.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../shared/entities/login_param.dart';
+import 'package:test/features/access/data/models/simple_user.dart'
+    show SimpleUser;
+import 'package:test/features/access/data/params/check_one_time_param.dart'
+    show CheckOneTimeParam;
+import '../../../features/access/data/params/login_param.dart';
+import '../../../features/access/data/params/register_param.dart'
+    show RegisterParam;
 import '../../../shared/entities/user.dart';
 import '../../../shared/services/exception/error_handler.dart';
 import '../../auth_data_source/local/auth_local.dart';
@@ -40,9 +45,32 @@ class AuthRepoImp implements AuthRepository {
   }
 
   _saveUser(User user) {
-    reactiveTokenStorage.write(AuthTokenModel(
-        accessToken: user.accessToken, refreshToken: user.refreshToken));
+    reactiveTokenStorage.write(
+      AuthTokenModel(
+        accessToken: user.accessToken,
+        refreshToken: user.refreshToken,
+      ),
+    );
     storageService.setUser(user);
+  }
+
+  @override
+  Future<Either<String, SimpleUser>> checkOneTimeCode(
+      {required CheckOneTimeParam checkOneTimeParam}) {
+    return throwAppException(() async {
+      final response =
+          await remote.checkOneTimeCode(checkOneTimeParam: checkOneTimeParam);
+      return response;
+    });
+  }
+
+  @override
+  Future<Either<String, User>> register(
+      {required RegisterParam registerParam}) {
+    return throwAppException(() async {
+      final response = await remote.register(registerParam: registerParam);
+      return response;
+    });
   }
 
   @override
@@ -50,49 +78,7 @@ class AuthRepoImp implements AuthRepository {
     await storageService.removeUser();
     await reactiveTokenStorage.delete();
     await getIt<FlutterSecureStorage>().deleteAll();
-    await getIt<ReactiveTokenStorage>().loadToken();
+    // await getIt<ReactiveTokenStorage>().loadToken();
     return await getIt<SharedPreferences>().clear();
-  }
-
-  @override
-  Future<Either<String, void>> confirmForgetPassword(
-      {required String email, required String code}) {
-    return throwAppException(() async {
-      final response = await remote.confirmForgetPassword(
-        email: email,
-        code: code,
-      );
-      return response;
-    });
-  }
-
-  @override
-  Future<Either<String, void>> forgetPassword({required String email}) {
-    return throwAppException(() async {
-      final response = await remote.forgetPassword(
-        email: email,
-      );
-      return response;
-    });
-  }
-
-  @override
-  Future<Either<String, User>> resetPassword({
-    required String email,
-    required String code,
-    required String newPassword,
-  }) async {
-    // final String deviceToken =
-    //     await FirebaseNotificationImplService().getToken() ?? "";
-    return throwAppException(() async {
-      final response = await remote.resetPassword(
-        email: email,
-        code: code,
-        newPassword: newPassword,
-        deviceToken: "",
-      );
-      _saveUser(response);
-      return response;
-    });
   }
 }

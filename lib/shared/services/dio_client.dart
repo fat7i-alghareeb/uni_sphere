@@ -64,18 +64,16 @@ class DioClient with DioMixin implements Dio {
         tokenStorage: getIt<ReactiveTokenStorage>(),
         tokenDio: tokenDio,
         refreshToken: (token, tokenDio) async {
-          final user = getIt<AuthLocal>().getUser();
-          final response = await tokenDio.post(AppUrl.refreshToken, data: {
-            'id': user?.id,
-            'refreshToken': token.refreshToken,
-          });
-          final authTokenModel = AuthTokenModel.fromMap(response.data);
-          final authTokenModel2 = AuthTokenModel(
-            accessToken: authTokenModel.accessToken,
-            refreshToken: authTokenModel.refreshToken ?? token.refreshToken,
+          //  final
+          final response = await tokenDio.post(
+            AppUrl.refreshToken,
+            data: {
+              'refreshToken': token.refreshToken,
+            },
           );
-          await updateStorageToken(user!, token.accessToken);
-          return authTokenModel2;
+          final authTokenModel = AuthTokenModel.fromMap(response.data);
+          await updateStorageToken(token);
+          return authTokenModel;
         },
       ),
       LocalizationInterceptor(),

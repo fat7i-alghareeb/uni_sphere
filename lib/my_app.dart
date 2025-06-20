@@ -7,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+
 import 'core/styles/themes.dart';
 import 'core/injection/injection.dart';
 import 'core/styles/style.dart';
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
               child: Consumer<ThemeProvider>(
                 builder: (context, themeProvider, _) {
                   return MaterialApp.router(
+                    title: "UniSphere",
                     debugShowCheckedModeBanner: false,
                     routerDelegate: router.router,
                     localizationsDelegates: context.localizationDelegates,

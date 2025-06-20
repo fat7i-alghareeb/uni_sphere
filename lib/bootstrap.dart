@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:test/core/auth_data_source/local/reactive_token_storage.dart'
+    show ReactiveTokenStorage;
 
 import 'core/injection/injection.dart';
 import 'shared/imports/imports.dart';
@@ -9,6 +11,7 @@ bootstrap(Widget mainApp) async {
 
   try {
     await initInjection();
+    await getIt<ReactiveTokenStorage>().loadToken();
     // Initialize theme provider
     final themeProvider = getIt<ThemeProvider>();
     themeProvider.loadTheme();

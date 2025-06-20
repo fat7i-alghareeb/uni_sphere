@@ -3,16 +3,24 @@ class AppUrl {
 
   static String getSubjectById = '';
 
-  static const baseUrlDevelopment = 'http://194.32.76.82:8799/';
+  static const baseUrlDevelopment = 'https://194.168.1.125:5001/';
 
-  static const _mobile = "Mobile";
-
-  //************** Student ***************/
-  static const _student = "$_mobile/Student";
-  static const login = '$_student/LogIn';
-  static const resetPassword = '$_student/ResetPassword';
-  static const refreshToken = '$_student/RefreshToken';
-  static const createAccount = '$_student/Create';
+  static const _api = "Mobile";
+  static const _auth = "Auth";
+  //! ************** Auth *************** //
+  static const _student = "$_api/Student";
+  static const login = '$_student/Login';
+  static const register = '$_student/Register';
+  static const checkOneTimeCode = '$_student/CheckOneTimeCode';
+  // static const resetPassword = '$_student/ResetPassword';
+  static const refreshToken = '$_auth/RefreshToken';
+  // static const createAccount = '$_student/Create';
+  //! ************** End Auth ***************//
+  //! ************** Info ***************//
+  static const _info = "$_api/Info";
+  static const getFaculties = '$_info/GetFaculties';
+  static const getMajors = '$_info/GetMajors';
+  //! ************** Ent Info ***************//
 
   static const getProfile = '';
   static const modifyProfile = '';

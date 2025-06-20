@@ -14,7 +14,6 @@ class AuthTokenModel extends AuthToken
     return {
       'accessToken': accessToken,
       'refreshToken': refreshToken,
-      'tokenType': refreshToken,
     };
   }
 
