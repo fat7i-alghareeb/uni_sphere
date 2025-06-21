@@ -5,10 +5,12 @@ import 'package:test/core/result_builder/result.dart';
 import 'package:test/features/subjects/domain/entities/subject_entity.dart';
 import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
 
+import '../../../../../common/constant/app_strings.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/utils/helper/year_helper.dart';
 import '../../../../../shared/widgets/custom_scaffold_body.dart';
+import '../../../../../shared/widgets/failed_widget.dart';
 import '../widgets/subject_screen_body.dart';
 
 /// Data class to hold the navigation data for YearSubjects screen
@@ -77,6 +79,31 @@ class _YearSubjectsState extends State<YearSubjects> {
       return Scaffold(
         body: BlocBuilder<SubjectsBloc, SubjectsState>(
           builder: (context, state) {
+            // Handle error state manually
+            if (state.yearResult.isError()) {
+              return CustomScaffoldBody(
+                title:
+                    YearHelper.getYearSubjectsName(state.selectedYear, context),
+                child: FailedWidget(
+                  error: state.yearResult.getError(),
+                  onPressed: _handleRetry,
+                  retryText: AppStrings.tryAgain,
+                ),
+              );
+            }
+
+            // Handle loading state
+            if (state.yearResult.isLoading()) {
+              return CustomScaffoldBody(
+                title:
+                    YearHelper.getYearSubjectsName(state.selectedYear, context),
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+
+            // Handle success state
             return CustomScaffoldBody(
               title:
                   YearHelper.getYearSubjectsName(state.selectedYear, context),
@@ -93,8 +120,6 @@ class _YearSubjectsState extends State<YearSubjects> {
                     debugPrint('Error in refresh: $e');
                   }
                 },
-                onError:
-                    _handleRetry, // Pass the retry callback to use custom FailedWidget
               ),
             );
           },
@@ -102,9 +127,9 @@ class _YearSubjectsState extends State<YearSubjects> {
       );
     } catch (e) {
       debugPrint('Error building YearSubjects: $e');
-      return const Scaffold(
+      return Scaffold(
         body: Center(
-          child: Text('Something went wrong'),
+          child: Text(AppStrings.somethingWentWrong),
         ),
       );
     }

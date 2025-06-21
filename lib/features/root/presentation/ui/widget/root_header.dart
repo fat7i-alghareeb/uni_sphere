@@ -7,7 +7,7 @@ import '../../../../../shared/utils/helper/get_colored_svg_picture.dart';
 class RootHeader extends StatelessWidget {
   const RootHeader({
     super.key,
-    this.userName = "Fathi Alghareeb",
+    required this.userName,
     this.unreadNotifications = 10,
     required this.scaffoldKey,
   });

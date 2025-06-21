@@ -2,6 +2,7 @@ import 'package:beamer/beamer.dart';
 import '../../../domain/entities/news_entity.dart';
 import '../widgets/news_details_image.dart';
 import '../widgets/news_details_content.dart';
+import '../../../../../common/constant/app_strings.dart';
 import '../../../../../router/router_config.dart' show BeamerBuilder;
 import '../../../../../shared/imports/imports.dart';
 
@@ -20,9 +21,9 @@ class NewsDetailsScreen extends StatefulWidget {
       return BeamPage(
         key: const ValueKey('news_details_error'),
         type: BeamPageType.fadeTransition,
-        child: const Scaffold(
+        child: Scaffold(
           body: Center(
-            child: Text('News not found'),
+            child: Text(AppStrings.newsNotFound),
           ),
         ),
       );

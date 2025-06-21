@@ -2,6 +2,7 @@
 import 'package:lottie/lottie.dart';
 
 // 🌎 Project imports:
+import '../../common/constant/app_strings.dart';
 import '../../core/styles/colors.dart';
 import '../imports/imports.dart';
 
@@ -61,7 +62,7 @@ class CustomErrorWidget extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: context.secondaryColor,
                     ),
-                    child: const Text("try again test test test "),
+                    child: Text(AppStrings.tryAgainTest),
                   ),
                 ),
               ],

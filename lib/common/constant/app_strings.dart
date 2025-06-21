@@ -183,4 +183,23 @@ class AppStrings {
   static String get retry => _localization.tr('retry');
   static String get errorLoadingSchedules =>
       _localization.tr('errorLoadingSchedules');
+  static String get noSubjectsAvailable =>
+      _localization.tr('noSubjectsAvailable');
+  static String get noYearsAvailable => _localization.tr('noYearsAvailable');
+  static String get tryAgain => _localization.tr('tryAgain');
+  static String get somethingWentWrong =>
+      _localization.tr('somethingWentWrong');
+  static String get subjectDetails => _localization.tr('subjectDetails');
+  static String get failedToSelectYear =>
+      _localization.tr('failedToSelectYear');
+  static String get newsNotFound => _localization.tr('newsNotFound');
+  static String get tryAgainTest => _localization.tr('tryAgainTest');
+  static String get pleaseTryAgainLater =>
+      _localization.tr('pleaseTryAgainLater');
+  static String get noInternetConnection =>
+      _localization.tr('noInternetConnection');
+  static String get insufficientPermissions =>
+      _localization.tr('insufficientPermissions');
+  static String get settings => _localization.tr('settings');
+  static String get version => _localization.tr('version');
 }

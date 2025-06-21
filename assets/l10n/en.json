@@ -155,5 +155,18 @@
     "enterConfirmPassword": "Enter Confirm Password",
     "createAccount": "Create Account",
     "retry": "Retry",
-    "errorLoadingSchedules": "Error loading schedules"
+    "errorLoadingSchedules": "Error loading schedules",
+    "noSubjectsAvailable": "No subjects available",
+    "noYearsAvailable": "No years available",
+    "tryAgain": "Try Again",
+    "somethingWentWrong": "Something went wrong",
+    "subjectDetails": "Subject Details",
+    "failedToSelectYear": "Failed to select year. Please try again.",
+    "newsNotFound": "News not found",
+    "tryAgainTest": "Try Again",
+    "pleaseTryAgainLater": "Please try again later",
+    "noInternetConnection": "No internet connection",
+    "insufficientPermissions": "You don't have sufficient permissions",
+    "settings": "Settings",
+    "version": "Version"
 }

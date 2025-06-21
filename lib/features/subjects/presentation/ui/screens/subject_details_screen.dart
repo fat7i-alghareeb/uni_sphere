@@ -1,10 +1,14 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
+import 'package:test/core/result_builder/result.dart';
 import 'package:test/core/result_builder/result_builder.dart';
 import 'package:test/features/subjects/presentation/ui/widgets/subject_details_image.dart';
+import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/widgets/custom_scaffold_body.dart';
+import '../../../../../shared/widgets/failed_widget.dart';
 import '../../../domain/entities/subject_details_entity.dart';
 import '../../state/subject_details_bloc/subject_details_bloc.dart';
 import '../widgets/subject_details_header.dart';
@@ -79,15 +83,20 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
   }
 
   void _handleAnimationStatus(AnimationStatus status) {
-    if (status == AnimationStatus.forward) {
-      setState(() {
-        _isAnimating = true;
-      });
-    } else if (status == AnimationStatus.completed) {
-      setState(() {
-        _isAnimating = false;
-      });
-    }
+    // Use Future.microtask to avoid setState during build
+    Future.microtask(() {
+      if (!_isDisposed) {
+        if (status == AnimationStatus.forward) {
+          setState(() {
+            _isAnimating = true;
+          });
+        } else if (status == AnimationStatus.completed) {
+          setState(() {
+            _isAnimating = false;
+          });
+        }
+      }
+    });
   }
 
   @override
@@ -119,6 +128,11 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
       value: getIt<SubjectDetailsBloc>(),
       child: BlocBuilder<SubjectDetailsBloc, SubjectDetailsState>(
         builder: (context, state) {
+          // Handle error state manually
+          if (state.result.isError()) {
+            return _buildErrorState(state.result.getError());
+          }
+
           return ResultBuilder<SubjectDetailsEntity>(
             result: state.result,
             loading: () {
@@ -137,8 +151,6 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
               }
               return _buildContent(subjectDetails);
             },
-            onError:
-                _handleRetry, // Pass the retry callback to use custom FailedWidget
           );
         },
       ),
@@ -224,9 +236,27 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
       );
     } catch (e) {
       debugPrint('Error building content: $e');
-      return const Scaffold(
+      return _buildErrorState(AppStrings.somethingWentWrong);
+    }
+  }
+
+  Widget _buildErrorState(String error) {
+    try {
+      return Scaffold(
+        body: CustomScaffoldBody(
+          title: AppStrings.subjectDetails,
+          child: FailedWidget(
+            error: error,
+            onPressed: _handleRetry,
+            retryText: AppStrings.tryAgain,
+          ),
+        ),
+      );
+    } catch (e) {
+      debugPrint('Error building error state: $e');
+      return Scaffold(
         body: Center(
-          child: Text('Something went wrong'),
+          child: Text(AppStrings.somethingWentWrong),
         ),
       );
     }

@@ -1,3 +1,4 @@
+import '../../../../../common/constant/app_strings.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/subject_entity.dart';
@@ -10,13 +11,11 @@ class SubjectsScreenBody extends StatefulWidget {
     required this.subjects,
     this.fullInfo = false,
     this.onRefresh,
-    this.onError,
   });
 
   final List<SubjectEntity> subjects;
   final bool fullInfo;
   final Future<void> Function()? onRefresh;
-  final void Function()? onError;
 
   @override
   State<SubjectsScreenBody> createState() => _SubjectsScreenBodyState();
@@ -63,7 +62,7 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
       _controller.addStatusListener(_handleAnimationStatus);
 
       // Start animation with a small delay to ensure proper initialization
-      Future.delayed(const Duration(milliseconds: 50), () {
+      Future.microtask(() {
         if (!_isDisposed) {
           _controller.forward();
         }
@@ -119,7 +118,7 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
               ),
               16.verticalSpace,
               Text(
-                "No subjects available",
+                AppStrings.noSubjectsAvailable,
                 style: context.textTheme.titleMedium!.copyWith(
                   color: context.onBackgroundColor.withValues(alpha: 0.7),
                 ),

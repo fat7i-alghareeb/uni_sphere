@@ -37,7 +37,7 @@ class CustomEndDrawer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Settings',
+                    AppStrings.settings,
                     style: context.textTheme.headlineMedium?.copyWith(
                       color: context.textColor,
                       fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class CustomEndDrawer extends StatelessWidget {
                 return Padding(
                   padding: REdgeInsets.all(16),
                   child: Text(
-                    'Version ${snapshot.data ?? "1.0.0"}',
+                    '${AppStrings.version} ${snapshot.data ?? "1.0.0"}',
                     style: context.textTheme.bodySmall?.copyWith(
                       color: context.textColor.withValues(alpha: .6),
                     ),

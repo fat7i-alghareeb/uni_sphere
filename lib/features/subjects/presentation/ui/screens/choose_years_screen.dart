@@ -7,8 +7,10 @@ import 'package:test/core/result_builder/result.dart';
 import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
 import 'package:test/features/subjects/presentation/ui/screens/year_subjects.dart';
 import 'package:test/shared/extensions/string_extension.dart';
+import 'package:test/shared/utils/helper/show_error_overlay.dart';
 import 'package:test/shared/widgets/custom_scaffold_body.dart';
 
+import '../../../../../common/constant/app_strings.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../home/presentation/ui/widgets/decorated_container.dart';
@@ -59,9 +61,9 @@ class _ChooseYearsScreenState extends State<ChooseYearsScreen> {
       );
     } catch (e) {
       debugPrint('Error building ChooseYearsScreen: $e');
-      return const Scaffold(
+      return Scaffold(
         body: Center(
-          child: Text('Something went wrong'),
+          child: Text(AppStrings.somethingWentWrong),
         ),
       );
     }
@@ -88,9 +90,9 @@ class _ChooseYearsView extends StatelessWidget {
       );
     } catch (e) {
       debugPrint('Error building ChooseYearsView: $e');
-      return const Scaffold(
+      return Scaffold(
         body: Center(
-          child: Text('Something went wrong'),
+          child: Text(AppStrings.somethingWentWrong),
         ),
       );
     }
@@ -111,6 +113,9 @@ class _ChooseYearsView extends StatelessWidget {
         context.beamToNamed(
           YearSubjects.pagePath,
         );
+      } else if (state.yearResult.isError()) {
+        // Show error overlay when year subjects fetching fails
+        showErrorOverlay(context, state.yearResult.getError());
       }
     } catch (e) {
       debugPrint('Error handling year result: $e');
@@ -138,7 +143,7 @@ class _YearsListView extends StatelessWidget {
               ),
               16.verticalSpace,
               Text(
-                "No years available",
+                AppStrings.noYearsAvailable,
                 style: context.textTheme.titleMedium!.copyWith(
                   color: context.onBackgroundColor.withValues(alpha: 0.7),
                 ),
@@ -163,8 +168,8 @@ class _YearsListView extends StatelessWidget {
       );
     } catch (e) {
       debugPrint('Error building YearsListView: $e');
-      return const Center(
-        child: Text('Something went wrong'),
+      return Center(
+        child: Text(AppStrings.somethingWentWrong),
       );
     }
   }
@@ -218,6 +223,8 @@ class _YearCard extends StatelessWidget {
         ..add(GetYearSubjectsEvent(year));
     } catch (e) {
       debugPrint('Error handling year selection: $e');
+      // Show error overlay if there's an error during year selection
+      showErrorOverlay(context, AppStrings.failedToSelectYear);
     }
   }
 }

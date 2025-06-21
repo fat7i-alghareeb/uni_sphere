@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
+import '../../../../../core/result_builder/result.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/widgets/failed_widget.dart';
 import '../../../../home/presentation/ui/widgets/decorated_container.dart';
 import '../../state/subjects_bloc/subjects_bloc.dart';
 import '../widgets/subjects_builder_widget.dart';
@@ -67,6 +69,17 @@ class _SubjectsScreenState extends State<SubjectsScreen>
           Expanded(
             child: BlocBuilder<SubjectsBloc, SubjectsState>(
               builder: (context, state) {
+                // Handle error state manually
+                if (state.result.isError()) {
+                  return Center(
+                    child: FailedWidget(
+                      error: state.result.getError(),
+                      onPressed: _handleRetry,
+                      retryText: AppStrings.tryAgain,
+                    ),
+                  );
+                }
+
                 return SubjectsBuilderWidget(
                   state: state.result,
                   onRefresh: () async {
@@ -76,8 +89,6 @@ class _SubjectsScreenState extends State<SubjectsScreen>
                       debugPrint('Error in refresh: $e');
                     }
                   },
-                  onError:
-                      _handleRetry, // Pass the retry callback to use custom FailedWidget
                 );
               },
             ),

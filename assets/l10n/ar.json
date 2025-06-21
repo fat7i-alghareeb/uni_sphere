@@ -156,5 +156,18 @@
     "enterConfirmPassword": "أدخل تأكيد كلمة المرور",
     "createAccount": "إنشاء حساب",
     "retry": "إعادة المحاولة",
-    "errorLoadingSchedules": "خطأ في تحميل الجداول"
+    "errorLoadingSchedules": "خطأ في تحميل الجداول",
+    "noSubjectsAvailable": "لا توجد مواد متاحة",
+    "noYearsAvailable": "لا توجد سنوات متاحة",
+    "tryAgain": "إعادة المحاولة",
+    "somethingWentWrong": "حدث خطأ ما",
+    "subjectDetails": "تفاصيل المادة",
+    "failedToSelectYear": "فشل في اختيار السنة. يرجى المحاولة مرة أخرى.",
+    "newsNotFound": "لم يتم العثور على الخبر",
+    "tryAgainTest": "إعادة المحاولة",
+    "pleaseTryAgainLater": "الرجاء المحاولة لاحقاً",
+    "noInternetConnection": "لا يوجد إتصال في الانترنت",
+    "insufficientPermissions": "ليس لديك الصلاحيات الكافية",
+    "settings": "الإعدادات",
+    "version": "الإصدار"
 }
