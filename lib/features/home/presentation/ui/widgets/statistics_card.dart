@@ -65,19 +65,19 @@ class StatisticsCard extends StatelessWidget {
         );
       case StatisticsCardType.attendanceLectures:
         return _CardData(
-          titleKey: AppStrings.numberOfAttendanceLectures,
+          titleKey: "numberOfAttendanceLectures",
           icon: Assets.icons.clock,
           color: const Color(0xFFfc7cac).withValues(alpha: 0.8),
         );
       case StatisticsCardType.daysToTheFinals:
         return _CardData(
-          titleKey: AppStrings.numberOfDaysToTheFinals,
+          titleKey: "numberOfDaysToTheFinals",
           icon: Assets.icons.callender,
           color: const Color(0xFFa874f3).withValues(alpha: 0.8),
         );
       case StatisticsCardType.downloadedMaterials:
         return _CardData(
-          titleKey: AppStrings.numberOfDownloadedMaterials,
+          titleKey: "numberOfDownloadedMaterials",
           icon: Assets.icons.downloadedFile,
           color: const Color(0xFF1dceb2).withValues(alpha: 0.8),
         );
