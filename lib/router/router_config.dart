@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'package:beamer/beamer.dart';
+import 'package:dio_refresh_bot/dio_refresh_bot.dart' show Status;
+import 'package:test/features/access/presentation/ui/screens/login_screen.dart'
+    show LoginScreen;
 import '../features/access/presentation/ui/screens/check_one_time_code_screen.dart'
     show CheckOneTimeCodeScreen;
 import '../features/access/presentation/ui/screens/choose_access_method_screen.dart'
@@ -49,29 +52,33 @@ class BRouterConfig {
         printC(appManagerBloc.state.status);
 
         // final bool isUpdateAvailable = appManagerBloc.state.expired == true;
-        // final bool isInUpdate = routerInfo.location == UpdateAvailable.routePath;
+        // final bool isInUpdate =
+        //     routerInfo.uri.path == UpdateAvailable.routePath;
         // if (isInUpdate && isUpdateAvailable) {
-        //   return null;
+        //   return;
         // }
         // if (isUpdateAvailable) {
         //   routerDelegate.beamToNamed(UpdateAvailable.routePath);
         // }
-        // if (appManagerBloc.state.status == Status.authenticated && !routerInfo.location!.contains(RootScreen.pagePath)) {
-        //   routerDelegate.beamToNamed(RootScreen.pagePath);
-        // } else if (appManagerBloc.state.status == Status.unauthenticated && !routerInfo.location!.contains(LoginScreen.pagePath)) {
-        //   routerDelegate.beamToNamed(LoginScreen.pagePath);
-        // }
+        if (appManagerBloc.state.status == Status.authenticated &&
+            !routerInfo.uri.path.contains(RootScreen.pagePath)) {
+          routerDelegate.beamToNamed(RootScreen.pagePath);
+        } else if (appManagerBloc.state.status == Status.unauthenticated &&
+            !routerInfo.uri.path.contains(ChooseAccessMethodScreen.pagePath)) {
+          routerDelegate.beamToNamed(ChooseAccessMethodScreen.pagePath);
+        }
       },
       locationBuilder: RoutesLocationBuilder(
         routes: {
           //! -------------- Access ---------------- !//
           '/choose_access_method': ChooseAccessMethodScreen.pageBuilder,
+          '/choose_access_method/login': LoginScreen.pageBuilder,
           '/choose_access_method/check_one_time_code':
               CheckOneTimeCodeScreen.pageBuilder,
           '/choose_access_method/check_one_time_code/register':
               RegisterScreen.pageBuilder,
 
-          //! -------------- Access ---------------- !//
+          //! -------------- End Access ---------------- !//
 
           '/root': RootScreen.pageBuilder,
           //! -------------- Subjects ---------------- !//

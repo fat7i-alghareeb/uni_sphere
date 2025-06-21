@@ -11,13 +11,34 @@ class LoginForm {
         Validators.required,
       ],
     ),
+    AuthInputKeys.password: FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
+    AuthInputKeys.major: FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
+    AuthInputKeys.majorId: FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
+    AuthInputKeys.faculty: FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
+    AuthInputKeys.facultyId: FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
   });
 
-  static String getStudentNumber() {
-    return formGroup.control(AuthInputKeys.studentNumber).value ?? '';
-  }
-
-  static String getPassword() {
-    return formGroup.control(AuthInputKeys.password).value ?? '';
+  static void clearForm() {
+    formGroup.reset();
   }
 }

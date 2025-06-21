@@ -15,12 +15,13 @@ class PasswordField extends StatelessWidget {
     required this.hintText,
     this.isOldPassword = false,
     this.withTitle = false,
+    this.readOnly = false,
   });
   final bool isConfirmPassword;
   final bool isOldPassword;
   final bool withTitle;
   final String hintText;
-
+  final bool readOnly;
   @override
   Widget build(BuildContext context) {
     return CustomReactiveField(
@@ -52,6 +53,7 @@ class PasswordField extends StatelessWidget {
       ),
       title: withTitle ? hintText : null,
       hintText: hintText,
+      readOnly: readOnly,
     );
   }
 }
