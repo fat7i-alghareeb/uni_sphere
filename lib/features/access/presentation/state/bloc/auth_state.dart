@@ -6,9 +6,9 @@ class AuthState {
   Result<SimpleUser> checkOneTimeResult;
 
   AuthState({
-    this.loginResult = const Result.loading(),
-    this.registerResult = const Result.loading(),
-    this.checkOneTimeResult = const Result.loading(),
+    this.loginResult = const Result.init(),
+    this.registerResult = const Result.init(),
+    this.checkOneTimeResult = const Result.init(),
   });
 
   AuthState copyWith({

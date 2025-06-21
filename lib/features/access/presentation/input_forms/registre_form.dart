@@ -7,7 +7,12 @@ import 'auth_input_keys.dart';
 class RegisterForm {
   static FormGroup formGroup = FormGroup(
     {
-      AuthInputKeys.studentNumber: FormControl<String>(
+      AuthInputKeys.userName: FormControl<String>(
+        validators: [
+          Validators.required,
+        ],
+      ),
+      AuthInputKeys.studentId: FormControl<String>(
         validators: [
           Validators.required,
         ],
@@ -15,6 +20,7 @@ class RegisterForm {
       AuthInputKeys.password: FormControl<String>(
         validators: [
           Validators.required,
+          Validators.minLength(6),
         ],
       ),
       AuthInputKeys.confirmPassword: FormControl<String>(
@@ -31,15 +37,7 @@ class RegisterForm {
     ],
   );
 
-  static String getStudentNumber() {
-    return formGroup.control(AuthInputKeys.studentNumber).value ?? '';
-  }
-
-  static String getPassword() {
-    return formGroup.control(AuthInputKeys.password).value ?? '';
-  }
-
-  static String getConfirmPassword() {
-    return formGroup.control(AuthInputKeys.confirmPassword).value ?? '';
+  static void clearForm() {
+    formGroup.reset();
   }
 }

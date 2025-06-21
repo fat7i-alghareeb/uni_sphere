@@ -1,8 +1,11 @@
 // 📦 Package imports:
 import 'package:dio/dio.dart';
+import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart'
+    show AuthBloc;
 
 // 🌎 Project imports:
 
+import '../../../features/access/data/usecases/auth_usecases.dart';
 import '../../../shared/utils/storage_service/storage_service.dart';
 import '../../auth_data_source/local/auth_local.dart';
 import '../../auth_data_source/local/reactive_token_storage.dart';
@@ -14,7 +17,7 @@ import '../injection.dart';
 Future<void> authInjection() async {
   getIt.registerSingleton<AuthLocal>(
     AuthLocal(
-      local: getIt<StorageService<SecureStorage>>(),
+      local: getIt<StorageService<SharedStorage>>(),
     ),
   );
 
@@ -25,7 +28,12 @@ Future<void> authInjection() async {
     reactiveTokenStorage: getIt<ReactiveTokenStorage>(),
     storageService: getIt<AuthLocal>(),
   ));
-
+  getIt.registerSingleton<AuthUsecases>(AuthUsecases(
+    remote: getIt<AuthRepository>(),
+  ));
+  getIt.registerSingleton<AuthBloc>(AuthBloc(
+    useCase: getIt<AuthUsecases>(),
+  ));
   // getIt.registerSingleton<AuthFacade>(
   //   AuthFacade(
   //     remote: getIt<AuthRepository>(),

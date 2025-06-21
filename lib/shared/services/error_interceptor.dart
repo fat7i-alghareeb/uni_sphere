@@ -5,6 +5,7 @@ import 'dart:io';
 
 // 📦 Package imports:
 import 'package:dio/dio.dart';
+import 'package:test/shared/utils/helper/colored_print.dart';
 
 // 🌎 Project imports:
 import 'exception/app_exception.dart';
@@ -12,6 +13,7 @@ import 'exception/app_exception.dart';
 class ErrorInterceptor extends Interceptor {
   @override
   Future onError(DioException err, ErrorInterceptorHandler handler) async {
+    printR(err.response?.data);
     if (err.error is SocketException) {
       err =
           err.copyWith(error: AppException.known("لا يوجد إتصال في الانترنت"));

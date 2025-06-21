@@ -1,11 +1,12 @@
 // 📦 Package imports:
+import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:dio_refresh_bot/dio_refresh_bot.dart';
 import 'package:flutter/foundation.dart';
 
 // 🌎 Project imports:
 
-import '../../core/auth_data_source/local/auth_local.dart';
 import '../../core/auth_data_source/local/reactive_token_storage.dart';
 import '../../core/constants/app_url.dart';
 import '../../core/injection/injection.dart';
@@ -24,10 +25,18 @@ class DioClient with DioMixin implements Dio {
       receiveTimeout: const Duration(seconds: 30),
       sendTimeout: const Duration(seconds: 30),
     );
-    httpClientAdapter = HttpClientAdapter();
+    httpClientAdapter = IOHttpClientAdapter(
+      createHttpClient: () {
+        final client = HttpClient();
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
+        return client;
+      },
+    );
     options
       ..baseUrl = baseUrl
       ..headers = {
+        "accept": "application/json",
         'Content-Type': 'application/json; charset=UTF-8',
         "Transfer-Encoding": "chunked",
       };
@@ -46,15 +55,13 @@ class DioClient with DioMixin implements Dio {
       ..interceptors.addAll([
         logInterceptor,
       ]);
+    tokenDio.httpClientAdapter = httpClientAdapter;
     this.interceptors.addAll([
       RefreshTokenInterceptor<AuthTokenModel>(
         debugLog: true,
         tokenProtocol: TokenProtocol(
           shouldRefresh: (response, token) {
-            final user = getIt<AuthLocal>().getUser();
-            String accessToken = user?.accessToken ?? '';
-            return (isTokenAboutToExpire(accessToken) ||
-                response?.statusCode == 401);
+            return (response?.statusCode == 401);
           },
         ),
         onRevoked: (dioError) {

@@ -12,7 +12,7 @@ final class RegisterEvent extends AuthEvent {
   RegisterEvent({required this.registerParam});
 }
 
-final class CheckOneTimeEvent extends AuthEvent {
+final class CheckOneTimeCodeEvent extends AuthEvent {
   CheckOneTimeParam checkOneTimeParam;
-  CheckOneTimeEvent({required this.checkOneTimeParam});
+  CheckOneTimeCodeEvent({required this.checkOneTimeParam});
 }

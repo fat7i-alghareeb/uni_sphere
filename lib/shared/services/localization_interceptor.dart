@@ -14,7 +14,7 @@ class LocalizationInterceptor extends Interceptor {
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     options.headers.addAll({
-      'lang': getIt<SharedPreferences>().getString(kLanguage) ?? 'ar',
+      'lang': getIt<SharedPreferences>().getString(kLanguage) ?? 'en',
     });
     handler.next(options);
   }

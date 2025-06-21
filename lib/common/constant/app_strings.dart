@@ -159,4 +159,22 @@ class AppStrings {
   static String get register => _localization.tr('register');
   static String get welcomeToUniSphere =>
       _localization.tr('welcomeToUniSphere');
+  static String get checkOneTimeCode => _localization.tr('checkOneTimeCode');
+  static String get checkYourAccessCode =>
+      _localization.tr('checkYourAccessCode');
+  static String get enterOneTimeCode => _localization.tr('enterOneTimeCode');
+  static String get collageNumber => _localization.tr('collageNumber');
+  static String get enterCollageNumber =>
+      _localization.tr('enterCollageNumber');
+  static String get oneTimeCode => _localization.tr('oneTimeCode');
+  static String get userName => _localization.tr('userName');
+  static String get enterUserName => _localization.tr('enterUserName');
+  static String get studentId => _localization.tr('studentId');
+  static String get enterStudentId => _localization.tr('enterStudentId');
+  static String get password => _localization.tr('password');
+  static String get enterPassword => _localization.tr('enterPassword');
+  static String get confirmPassword => _localization.tr('confirmPassword');
+  static String get enterConfirmPassword =>
+      _localization.tr('enterConfirmPassword');
+  static String get createAccount => _localization.tr('createAccount');
 }

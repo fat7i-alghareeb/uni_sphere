@@ -6,6 +6,9 @@ class AuthInputKeys {
   static const String facultyId = 'facultyId';
   static const String studentNumber = 'studentNumber';
 
+  static const String userName = 'userName';
+  static const String studentId = 'studentId';
   static const String password = 'password';
   static const String confirmPassword = 'confirmPassword';
+  static const String oldPassword = 'oldPassword';
 }

@@ -1,8 +1,11 @@
-import 'package:beamer/beamer.dart' show BeamPage, BeamPageType;
+import 'package:beamer/beamer.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test/core/injection/injection.dart';
+import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart';
+import 'package:test/features/access/presentation/ui/widgets/register_body.dart';
 import 'package:test/router/router_config.dart';
 import 'package:test/shared/imports/imports.dart';
-
-import '../../../../../shared/widgets/custom_scaffold_body.dart' show CustomScaffoldBody;
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -16,10 +19,23 @@ class RegisterScreen extends StatelessWidget {
   };
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScaffoldBody(
-        child: const Center(
-          child: Text('Register'),
+    return KeyedSubtree(
+      key: ValueKey(context.locale),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        
+        body: GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: getIt<AuthBloc>(),
+              ),
+            ],
+            child: RegisterBody(),
+          ),
         ),
       ),
     );

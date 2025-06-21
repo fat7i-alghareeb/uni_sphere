@@ -32,22 +32,17 @@ class CheckOneTimeCodeForm {
           Validators.required,
         ],
       ),
+      AuthInputKeys.studentNumber: FormControl<String>(
+        validators: [
+          Validators.required,
+        ],
+      ),
     },
   );
 
-  static String getOneTimeCode() {
-    return formGroup.control(AuthInputKeys.oneTimeCode).value ?? '';
-  }
 
-  static String getFacultyId() {
-    return formGroup.control(AuthInputKeys.facultyId).value ?? '';
-  }
 
-  static String getMajorId() {
-    return formGroup.control(AuthInputKeys.majorId).value ?? '';
-  }
-
-  static String getFaculty() {
-    return formGroup.control(AuthInputKeys.faculty).value ?? '';
+  static void clearForm() {
+    formGroup.reset();
   }
 }

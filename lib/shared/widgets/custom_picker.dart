@@ -3,7 +3,8 @@ import 'package:reactive_forms/reactive_forms.dart';
 import 'package:test/common/constant/app_strings.dart';
 import 'package:test/core/styles/colors.dart' show AppColors;
 import 'package:test/shared/entities/drop_down_data.dart' show DropDownData;
-import 'package:test/shared/widgets/custom_reative_field.dart' show CustomReactiveField;
+import 'package:test/shared/widgets/custom_reative_field.dart'
+    show CustomReactiveField;
 import 'package:test/shared/widgets/loading_progress.dart' show LoadingProgress;
 
 // 🌎 Project imports:
@@ -50,7 +51,7 @@ class CustomPickerField extends StatelessWidget {
   // Optional icon to display at the start of the dropdown
   final Widget? leadingIcon;
 
-  final String title;
+  final String? title;
 
   final bool isLoading;
 
@@ -79,7 +80,7 @@ class CustomPickerField extends StatelessWidget {
     this.trailingIcon = const Icon(Icons.arrow_drop_down),
     this.leadingIcon,
     this.isError,
-    required this.title,
+    this.title,
     required this.isLoading,
     required this.readOnly,
     this.formGroup,
@@ -94,26 +95,30 @@ class CustomPickerField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: REdgeInsets.only(right: 3),
-          child: Row(
-            children: [
-              Text(
-                title,
-                style: context.textTheme.titleMedium?.copyWith(
-                  color: Colors.black,
-                  fontSize: 13.sp,
-                ),
-              ),
-              if (isItemRequired)
+        if (title != null)
+          Padding(
+            padding: REdgeInsets.only(
+              right: context.isEnglish ? 0 : 5,
+              left: context.isEnglish ? 5 : 0,
+            ),
+            child: Row(
+              children: [
                 Text(
-                  "*",
-                  style: context.textTheme.titleMedium
-                      ?.copyWith(color: AppColors.danger),
+                  title!,
+                  style: context.textTheme.bodyLarge?.copyWith(
+                    color: Colors.black,
+                    fontSize: 15.sp,
+                  ),
                 ),
-            ],
+                if (isItemRequired)
+                  Text(
+                    "*",
+                    style: context.textTheme.titleMedium
+                        ?.copyWith(color: AppColors.danger),
+                  ),
+              ],
+            ),
           ),
-        ),
         SizedBox(height: 4.h),
         isLoading
             ? Container(
@@ -146,9 +151,13 @@ class CustomPickerField extends StatelessWidget {
             : readOnly
                 ? ReactiveForm(
                     formGroup: formGroup!,
-                    child: CustomReactiveField(
-                      controller: controller!,
-                      readOnly: true,
+                    child: IgnorePointer(
+                      ignoring: readOnly,
+                      child: CustomReactiveField(
+                        controller: controller!,
+                        readOnly: true,
+                        hintText: hintText,
+                      ),
                     ),
                   )
                 : CustomDropDownMenuMain(

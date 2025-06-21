@@ -1,10 +1,10 @@
-import 'package:beamer/beamer.dart' show BeamPage, BeamPageType;
+import 'package:test/core/auth_data_source/local/auth_local.dart';
+import 'package:test/core/injection/injection.dart';
 import 'package:test/router/router_config.dart' show BeamerBuilder;
 import 'package:test/shared/imports/imports.dart';
+import 'package:test/shared/utils/helper/colored_print.dart';
 import '../../../../../common/constant/app_strings.dart' show AppStrings;
 import 'package:beamer/beamer.dart';
-import 'dart:ui' as ui;
-import 'dart:ui';
 
 import '../../../../../shared/widgets/custom_scaffold_body.dart'
     show CustomScaffoldBody;
@@ -75,6 +75,8 @@ class _ChooseMethodBodyState extends State<ChooseMethodBody>
 
   @override
   Widget build(BuildContext context) {
+    final user = getIt<AuthLocal>().getUser();
+    printR(user);
     return Padding(
       padding: REdgeInsets.symmetric(
         horizontal: AppConstants.horizontalScreensPadding,
@@ -120,8 +122,7 @@ class _ChooseMethodBodyState extends State<ChooseMethodBody>
                 child: ChooseMethodButton(
                   title: AppStrings.register,
                   onTap: () {
-                    Beamer.of(context)
-                        .beamToNamed(CheckOneTimeCodeScreen.pagePath);
+                    context.beamToNamed(CheckOneTimeCodeScreen.pagePath);
                   },
                 ),
               ),

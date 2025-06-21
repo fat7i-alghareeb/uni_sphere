@@ -10,19 +10,21 @@ class InfoRemote {
 
   const InfoRemote(Dio dio) : _dio = dio;
 
-  Future<List<Faculty>> getFaculties() {
+  Future<List<Faculty>> getFaculties() async {
     return throwDioException(() async {
       final response = await _dio.get(AppUrl.getFaculties);
-      return response.data.map((e) => Faculty.fromMap(e)).toList();
+      List<dynamic> data = response.data["factories"];
+      return data.map((e) => Faculty.fromMap(e)).toList();
     });
   }
 
-  Future<List<Major>> getMajors({required String facultyId}) {
+  Future<List<Major>> getMajors({required String facultyId}) async {
     return throwDioException(() async {
       final response = await _dio.get(AppUrl.getMajors, queryParameters: {
         'facultyId': facultyId,
       });
-      return response.data.map((e) => Major.fromMap(e)).toList();
+      List<dynamic> data = response.data["majors"];
+      return data.map((e) => Major.fromMap(e)).toList();
     });
   }
 }

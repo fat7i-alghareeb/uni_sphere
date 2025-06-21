@@ -13,12 +13,13 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthUsecases _useCase;
+  static bool isCheckingOneTimeCode = false;
   AuthBloc({required AuthUsecases useCase})
       : _useCase = useCase,
         super(AuthState()) {
     on<LoginEvent>(_login);
     on<RegisterEvent>(_register);
-    on<CheckOneTimeEvent>(_checkOneTime);
+    on<CheckOneTimeCodeEvent>(_checkOneTime);
   }
 
   _login(LoginEvent event, Emitter emit) async {
@@ -56,7 +57,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  _checkOneTime(CheckOneTimeEvent event, Emitter emit) async {
+  _checkOneTime(CheckOneTimeCodeEvent event, Emitter emit) async {
     emit(state.copyWith(checkOneTimeResult: const Result.loading()));
     final response = await _useCase.checkOneTimeCode(
         checkOneTimeParam: event.checkOneTimeParam);

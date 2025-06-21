@@ -94,7 +94,7 @@ class _CustomDropDownMenuMainState extends State<CustomDropDownMenuMain> {
         constraints: BoxConstraints(
           maxHeight: widget.maxHeight ?? (widget.isError == true ? 67.h : 47.h),
         ),
-        fillColor: context.primaryColor.withValues(alpha: 0.08),
+        fillColor: context.primaryColor.withValues(alpha: 0.1),
         hintStyle: widget.hintTextStyle ??
             TextStyle(
               color: context.greyColor,
@@ -106,11 +106,13 @@ class _CustomDropDownMenuMainState extends State<CustomDropDownMenuMain> {
           borderRadius: BorderRadius.circular(12.r),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.greyColor.withValues(alpha: 0.15)),
+          borderSide:
+              BorderSide(color: context.greyColor.withValues(alpha: 0.15)),
           borderRadius: BorderRadius.circular(12.r),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.greyColor.withValues(alpha: 0.15)),
+          borderSide:
+              BorderSide(color: context.greyColor.withValues(alpha: 0.15)),
           borderRadius: BorderRadius.circular(12.r),
         ),
       ),

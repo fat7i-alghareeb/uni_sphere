@@ -5,8 +5,8 @@ class InfoState {
   final Result<List<Major>> majors;
 
   InfoState({
-    this.faculties = const Result.loading(),
-    this.majors = const Result.loading(),
+    this.faculties = const Result.init(),
+    this.majors = const Result.init(),
   });
 
   InfoState copyWith({

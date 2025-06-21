@@ -136,5 +136,22 @@
     "mustMatch": "The values do not match",
     "login": "Login",
     "register": "Register",
-    "welcomeToUniSphere": "Welcome to UniSphere"
+    "welcomeToUniSphere": "Welcome to UniSphere",
+    "checkAccessCode": "Check Access Code",
+    "enterAccessCode": "Enter Access Code",
+    "collageNumber": "Collage Number",
+    "enterCollageNumber": "Enter Collage Number",
+    "oneTimeCode": "Access Code",
+    "checkYourAccessCode": "Check Your Access Code",
+    "checkOneTimeCode": "Check Access Code",
+    "enterOneTimeCode": "Enter Access Code",
+    "userName": "User Name",
+    "enterUserName": "Enter User Name",
+    "studentId": "Student ID",
+    "enterStudentId": "Enter Student ID",
+    "password": "Password",
+    "enterPassword": "Enter Password",
+    "confirmPassword": "Confirm Password",
+    "enterConfirmPassword": "Enter Confirm Password",
+    "createAccount": "Create Account"
 }

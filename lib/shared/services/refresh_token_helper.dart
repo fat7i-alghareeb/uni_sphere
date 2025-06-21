@@ -5,6 +5,8 @@
 // import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../../core/auth_data_source/local/auth_local.dart';
+import '../../core/auth_data_source/local/reactive_token_storage.dart'
+    show ReactiveTokenStorage;
 import '../../core/injection/injection.dart';
 import '../../core/models/auth_token_dio.dart' show AuthTokenModel;
 import '../entities/user.dart';
@@ -41,13 +43,13 @@ bool isTokenAboutToExpire(String token, {int bufferTimeInSeconds = 900}) {
 Future<void> updateStorageToken(
   AuthTokenModel token,
 ) async {
-  final user = getIt<AuthLocal>().getUser()!;
+  final reactiveTokenStorage = getIt<ReactiveTokenStorage>();
+  await reactiveTokenStorage.write(token);
+  final user = getIt<AuthLocal>().getUser();
+  if (user == null) return;
   User user2 = User(
-    id: user.id,
-    accessToken: token.accessToken,
-    refreshToken: token.refreshToken ?? user.refreshToken,
+    studentId: user.studentId,
     firstName: user.firstName,
-    deviceToken: user.deviceToken,
     lastName: user.lastName,
     fatherName: user.fatherName,
     enrollmentStatusName: user.enrollmentStatusName,

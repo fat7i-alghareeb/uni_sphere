@@ -36,19 +36,31 @@ class AuthRepoImp implements AuthRepository {
       reactiveTokenStorage.authenticationStatus;
 
   @override
-  Future<Either<String, User>> login({required LoginParam loginParam}) {
+  Future<Either<String, FullUser>> login({required LoginParam loginParam}) {
     return throwAppException(() async {
       final response = await remote.login(loginParam: loginParam);
-      _saveUser(response);
+      final user = User(
+        studentId: response.studentId,
+        firstName: response.firstName,
+        lastName: response.lastName,
+        year: response.year,
+        majorName: response.majorName,
+        studentNumber: response.studentNumber,
+        enrollmentStatusName: response.enrollmentStatusName,
+        fatherName: response.fatherName,
+      );
+      _saveUser(user,
+          refreshToken: response.refreshToken,
+          accessToken: response.accessToken);
       return response;
     });
   }
 
-  _saveUser(User user) {
+  _saveUser(User user, {required String? refreshToken, String? accessToken}) {
     reactiveTokenStorage.write(
       AuthTokenModel(
-        accessToken: user.accessToken,
-        refreshToken: user.refreshToken,
+        accessToken: accessToken ?? '',
+        refreshToken: refreshToken ?? '',
       ),
     );
     storageService.setUser(user);
@@ -65,10 +77,25 @@ class AuthRepoImp implements AuthRepository {
   }
 
   @override
-  Future<Either<String, User>> register(
+  Future<Either<String, FullUser>> register(
       {required RegisterParam registerParam}) {
     return throwAppException(() async {
       final response = await remote.register(registerParam: registerParam);
+      final user = User(
+        studentId: response.studentId,
+        firstName: response.firstName,
+        lastName: response.lastName,
+        year: response.year,
+        majorName: response.majorName,
+        studentNumber: response.studentNumber,
+        enrollmentStatusName: response.enrollmentStatusName,
+        fatherName: response.fatherName,
+      );
+      _saveUser(
+        user,
+        refreshToken: response.refreshToken,
+        accessToken: response.accessToken,
+      );
       return response;
     });
   }

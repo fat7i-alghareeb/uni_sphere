@@ -7,7 +7,7 @@ class SimpleUser {
   final String studentId;
 
   SimpleUser({
-    required this.fullName, 
+    required this.fullName,
     required this.year,
     required this.studentNumber,
     required this.majorName,
@@ -15,14 +15,14 @@ class SimpleUser {
     required this.studentId,
   });
 
-  factory SimpleUser.fromJson(Map<String, dynamic> json) {  
+  factory SimpleUser.fromJson(Map<String, dynamic> json) {
     return SimpleUser(
-      fullName: json['FullName'],
-      year: json['Year'],
-      studentNumber: json['StudentNumber'],
-      majorName: json['MajorName'],
-      majorId: json['MajorId'],
-      studentId: json['StudentId'],
+      fullName: json['fullName'],
+      year: json['year'],
+      studentNumber: json['studentNumber'],
+      majorName: json['majorName'],
+      majorId: json['majorId'],
+      studentId: json['studentId'],
     );
   }
 }

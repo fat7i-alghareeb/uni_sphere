@@ -18,13 +18,13 @@ class AuthRemote {
 
   const AuthRemote(Dio dio) : _dio = dio;
 
-  Future<User> login({required LoginParam loginParam}) {
+  Future<FullUser> login({required LoginParam loginParam}) {
     return throwDioException(() async {
       final response = await _dio.post(
         AppUrl.login,
         data: loginParam.toJson(),
       );
-      return User.fromMap(response.data);
+      return FullUser.fromMap(response.data);
     });
   }
 
@@ -39,13 +39,13 @@ class AuthRemote {
     });
   }
 
-  Future<User> register({required RegisterParam registerParam}) {
+  Future<FullUser> register({required RegisterParam registerParam}) {
     return throwDioException(() async {
       final response = await _dio.post(
         AppUrl.register,
         data: registerParam.toJson(),
       );
-      return User.fromMap(response.data);
+      return FullUser.fromMap(response.data);
     });
   }
   // Future<void> forgetPassword({required String email}) {

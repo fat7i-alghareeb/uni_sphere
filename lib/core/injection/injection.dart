@@ -1,6 +1,8 @@
 // 📦 Package imports:
 import 'package:get_it/get_it.dart';
-import 'package:test/core/injection/src/grades_injection.dart' show gradesInjection;
+import 'package:test/core/injection/src/grades_injection.dart'
+    show gradesInjection;
+import 'package:test/core/injection/src/info_injection.dart' show infoInjection;
 
 // 🌎 Project imports:
 import 'src/announcements_injection.dart';
@@ -20,4 +22,5 @@ Future<void> initInjection() async {
   await timetableInjection();
   await announcementsInjection();
   await gradesInjection();
+  await infoInjection();
 }
