@@ -36,6 +36,8 @@ class _GradesScreenState extends State<GradesScreen>
   void initState() {
     super.initState();
     _gradeBloc = getIt<GradeBloc>();
+
+    // Trigger the BLoC's initial state by dispatching the GetGradesEvent
     _gradeBloc.add(GetGradesEvent());
 
     _headerController = AnimationController(
@@ -53,6 +55,11 @@ class _GradesScreenState extends State<GradesScreen>
   void dispose() {
     _headerController.dispose();
     super.dispose();
+  }
+
+  /// Handles retry when an error occurs
+  void _handleRetry() {
+    _gradeBloc.add(GetGradesEvent());
   }
 
   @override
@@ -91,6 +98,8 @@ class _GradesScreenState extends State<GradesScreen>
                     onRefresh: () async {
                       _gradeBloc.add(GetGradesEvent());
                     },
+                    onError:
+                        _handleRetry, // Pass the retry callback to use custom FailedWidget
                   );
                 },
               ),

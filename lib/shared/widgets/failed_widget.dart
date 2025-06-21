@@ -11,9 +11,10 @@ import 'spacing.dart';
 /// to ensure it never crashes, even if animations fail.
 ///
 /// Features:
-/// - Smooth fade-in animation for the entire widget
-/// - Elastic scale animation for the error icon
-/// - Shake animation for the retry button on press
+/// - Smooth fade-in animation for the entire widget (600ms)
+/// - Subtle scale animation for the error icon (500ms)
+/// - Gentle shake animation for the retry button on press (400ms)
+/// - Compact error icon design (140x140 with 56px icon)
 /// - Gradient backgrounds and shadows following app design system
 /// - Responsive design using ScreenUtil
 /// - Comprehensive try-catch error handling
@@ -70,9 +71,9 @@ class _FailedWidgetState extends State<FailedWidget>
 
   void _initializeAnimations() {
     try {
-      // Fade animation for smooth appearance
+      // Fade animation for smooth appearance - made more subtle
       _fadeController = AnimationController(
-        duration: const Duration(milliseconds: 800),
+        duration: const Duration(milliseconds: 600), // Reduced from 800ms
         vsync: this,
       );
       _fadeAnimation = Tween<double>(
@@ -80,25 +81,26 @@ class _FailedWidgetState extends State<FailedWidget>
         end: 1.0,
       ).animate(CurvedAnimation(
         parent: _fadeController,
-        curve: Curves.easeInOut,
+        curve: Curves.easeOut, // Changed from easeInOut for smoother feel
       ));
 
-      // Scale animation for the error icon
+      // Scale animation for the error icon - made more subtle
       _scaleController = AnimationController(
-        duration: const Duration(milliseconds: 600),
+        duration: const Duration(milliseconds: 500), // Reduced from 600ms
         vsync: this,
       );
       _scaleAnimation = Tween<double>(
-        begin: 0.5,
+        begin: 0.8, // Changed from 0.5 to 0.8 for less dramatic effect
         end: 1.0,
       ).animate(CurvedAnimation(
         parent: _scaleController,
-        curve: Curves.elasticOut,
+        curve:
+            Curves.easeOutBack, // Changed from elasticOut for more refined feel
       ));
 
-      // Shake animation for the retry button
+      // Shake animation for the retry button - made more subtle
       _shakeController = AnimationController(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 400), // Reduced from 500ms
         vsync: this,
       );
       _shakeAnimation = Tween<double>(
@@ -109,9 +111,10 @@ class _FailedWidgetState extends State<FailedWidget>
         curve: Curves.easeInOut,
       ));
 
-      // Start animations
+      // Start animations with better timing
       _fadeController.forward();
-      Future.delayed(const Duration(milliseconds: 200), () {
+      Future.delayed(const Duration(milliseconds: 150), () {
+        // Reduced delay
         if (mounted) {
           _scaleController.forward();
         }
@@ -173,8 +176,8 @@ class _FailedWidgetState extends State<FailedWidget>
                       ScaleTransition(
                         scale: _scaleAnimation,
                         child: Container(
-                          width: 200.r,
-                          height: 200.r,
+                          width: 140.r,
+                          height: 140.r,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             gradient: AppColors.dangerGradient,
@@ -183,7 +186,7 @@ class _FailedWidgetState extends State<FailedWidget>
                           child: Center(
                             child: Icon(
                               Icons.error_outline,
-                              size: 80.r,
+                              size: 56.r,
                               color: Colors.white,
                             ),
                           ),
@@ -193,8 +196,8 @@ class _FailedWidgetState extends State<FailedWidget>
                     ] else ...[
                       // Fallback static icon
                       Container(
-                        width: 200.r,
-                        height: 200.r,
+                        width: 140.r,
+                        height: 140.r,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: AppColors.dangerGradient,
@@ -203,7 +206,7 @@ class _FailedWidgetState extends State<FailedWidget>
                         child: Center(
                           child: Icon(
                             Icons.error_outline,
-                            size: 80.r,
+                            size: 56.r,
                             color: Colors.white,
                           ),
                         ),
@@ -233,7 +236,7 @@ class _FailedWidgetState extends State<FailedWidget>
                         return Transform.translate(
                           offset: Offset(
                             _shakeAnimation.value *
-                                4 *
+                                2 *
                                 (_shakeAnimation.value - 0.5),
                             0,
                           ),
@@ -299,7 +302,7 @@ class _FailedWidgetState extends State<FailedWidget>
           children: [
             Icon(
               Icons.error_outline,
-              size: 80.r,
+              size: 56.r,
               color: context.primaryColor,
             ),
             verticalSpace(16),

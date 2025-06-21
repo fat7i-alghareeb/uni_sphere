@@ -26,39 +26,52 @@ class SubjectItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => context.beamToNamed(
+    try {
+      return GestureDetector(
+        onTap: () => _handleTap(context),
+        child: Container(
+          clipBehavior: Clip.hardEdge,
+          margin: REdgeInsets.symmetric(vertical: 6),
+          padding: REdgeInsets.symmetric(
+            horizontal: _containerHorizontalPadding.w,
+            vertical: _containerVerticalPadding.h,
+          ),
+          decoration: BoxDecoration(
+            color: context.cardColor,
+            borderRadius: BorderRadius.circular(_borderRadius.r),
+            boxShadow: AppColors.primaryShadow(context),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: _imageSize.w,
+                height: _imageSize.h,
+                child: _buildSubjectImage(),
+              ),
+              _spacing.horizontalSpace,
+              Expanded(
+                child: _buildSubjectInfo(context),
+              )
+            ],
+          ),
+        ),
+      );
+    } catch (e) {
+      debugPrint('Error building SubjectItemCard: $e');
+      return const SizedBox.shrink();
+    }
+  }
+
+  void _handleTap(BuildContext context) {
+    try {
+      context.beamToNamed(
         SubjectDetailsScreen.pagePath,
         data: subject.id,
-      ),
-      child: Container(
-        clipBehavior: Clip.hardEdge,
-        margin: REdgeInsets.symmetric(vertical: 6),
-        padding: REdgeInsets.symmetric(
-          horizontal: _containerHorizontalPadding.w,
-          vertical: _containerVerticalPadding.h,
-        ),
-        decoration: BoxDecoration(
-          color: context.cardColor,
-          borderRadius: BorderRadius.circular(_borderRadius.r),
-          boxShadow: AppColors.primaryShadow(context),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: _imageSize.w,
-              height: _imageSize.h,
-              child: _buildSubjectImage(),
-            ),
-            _spacing.horizontalSpace,
-            Expanded(
-              child: _buildSubjectInfo(context),
-            )
-          ],
-        ),
-      ),
-    );
+      );
+    } catch (e) {
+      debugPrint('Error handling tap: $e');
+    }
   }
 
   Widget _buildSubjectImage() {

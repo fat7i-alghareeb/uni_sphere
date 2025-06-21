@@ -7,15 +7,26 @@ import '../../../domain/entities/grades_response_entity.dart'
     show GradesResponseEntity;
 import 'grade_year_section.dart';
 
+/// A widget that displays a list of grades organized by year and semester.
+/// Uses ResultBuilder to handle different states (loading, success, error)
+/// and provides refresh functionality.
 class GradesListWidget extends StatefulWidget {
   const GradesListWidget({
     super.key,
     required this.state,
     this.onRefresh,
+    this.onError,
   });
 
+  /// The result state containing grades data
   final Result<GradesResponseEntity> state;
+
+  /// Callback function for refresh functionality
   final Future<void> Function()? onRefresh;
+
+  /// Callback function to handle error retry. When provided, uses custom FailedWidget
+  /// instead of showOverlay for error display.
+  final void Function()? onError;
 
   @override
   State<GradesListWidget> createState() => _GradesListWidgetState();
@@ -124,6 +135,7 @@ class _GradesListWidgetState extends State<GradesListWidget>
         }
         return _buildGradesList(organizedGrades);
       },
+      onError: widget.onError,
     );
   }
 

@@ -10,11 +10,14 @@ class SubjectsScreenBody extends StatefulWidget {
     required this.subjects,
     this.fullInfo = false,
     this.onRefresh,
+    this.onError,
   });
 
   final List<SubjectEntity> subjects;
   final bool fullInfo;
   final Future<void> Function()? onRefresh;
+  final void Function()? onError;
+
   @override
   State<SubjectsScreenBody> createState() => _SubjectsScreenBodyState();
 }
@@ -28,7 +31,11 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
   @override
   void initState() {
     super.initState();
-    _initializeAnimations();
+    try {
+      _initializeAnimations();
+    } catch (e) {
+      debugPrint('Error initializing SubjectsScreenBody: $e');
+    }
   }
 
   void _initializeAnimations() {
@@ -72,11 +79,15 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
   }
 
   void _handleAnimationStatus(AnimationStatus status) {
-    if (status == AnimationStatus.completed) {
-      // Clean up any resources if needed after animation completes
-      debugPrint('Animation completed successfully');
-    } else if (status == AnimationStatus.dismissed) {
-      debugPrint('Animation was dismissed');
+    try {
+      if (status == AnimationStatus.completed) {
+        // Clean up any resources if needed after animation completes
+        debugPrint('Animation completed successfully');
+      } else if (status == AnimationStatus.dismissed) {
+        debugPrint('Animation was dismissed');
+      }
+    } catch (e) {
+      debugPrint('Error handling animation status: $e');
     }
   }
 
@@ -95,6 +106,29 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
   @override
   Widget build(BuildContext context) {
     try {
+      // If subjects list is empty, show a simple message instead of error state
+      if (widget.subjects.isEmpty) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.school_outlined,
+                size: 64.r,
+                color: context.primaryColor.withValues(alpha: 0.5),
+              ),
+              16.verticalSpace,
+              Text(
+                "No subjects available",
+                style: context.textTheme.titleMedium!.copyWith(
+                  color: context.onBackgroundColor.withValues(alpha: 0.7),
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+
       return Stack(
         children: [
           _buildShimmerList(),

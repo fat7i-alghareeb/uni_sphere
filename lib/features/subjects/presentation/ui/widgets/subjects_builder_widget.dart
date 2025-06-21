@@ -10,11 +10,13 @@ class SubjectsBuilderWidget extends StatelessWidget {
     super.key,
     required this.state,
     this.onRefresh,
+    this.onError,
     this.fullInfo = true,
   });
   final Result<List<SubjectEntity>> state;
   final bool fullInfo;
   final Future<void> Function()? onRefresh;
+  final void Function()? onError;
   @override
   Widget build(BuildContext context) {
     return ResultBuilder<List<SubjectEntity>>(
@@ -25,6 +27,7 @@ class SubjectsBuilderWidget extends StatelessWidget {
         onRefresh: onRefresh,
       ),
       loading: () => _buildLoadingShimmer(),
+      onError: onError,
     );
   }
 

@@ -36,42 +36,81 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
   late final List<Animation<double>> _animations;
   bool _isDisposed = false;
   bool _hasAnimated = false;
+  bool _isAnimating = false;
 
   @override
   void initState() {
     super.initState();
-    _initializeAnimations();
-    getIt<SubjectDetailsBloc>()
-        .add(GetSubjectDetailsEvent(subjectId: widget.subjectId));
+    try {
+      _initializeAnimations();
+      getIt<SubjectDetailsBloc>()
+          .add(GetSubjectDetailsEvent(subjectId: widget.subjectId));
+    } catch (e) {
+      debugPrint('Error initializing SubjectDetailsScreen: $e');
+    }
   }
 
   void _initializeAnimations() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    );
+    try {
+      _controller = AnimationController(
+        vsync: this,
+        duration: const Duration(milliseconds: 800),
+      );
 
-    _animations = List.generate(
-      3, // Header, Grades (if available), and Body
-      (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-          parent: _controller,
-          curve: Interval(
-            index * (0.5 / 3),
-            (index * (0.5 / 3)) + 0.5,
-            curve: Curves.easeOut,
+      _animations = List.generate(
+        3, // Header, Grades (if available), and Body
+        (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: Interval(
+              index * (0.5 / 3),
+              (index * (0.5 / 3)) + 0.5,
+              curve: Curves.easeOut,
+            ),
           ),
         ),
-      ),
-    );
+      );
+
+      // Add status listener to track animation state
+      _controller.addStatusListener(_handleAnimationStatus);
+    } catch (e) {
+      debugPrint('Error initializing animations: $e');
+    }
+  }
+
+  void _handleAnimationStatus(AnimationStatus status) {
+    if (status == AnimationStatus.forward) {
+      setState(() {
+        _isAnimating = true;
+      });
+    } else if (status == AnimationStatus.completed) {
+      setState(() {
+        _isAnimating = false;
+      });
+    }
   }
 
   @override
   void dispose() {
     _isDisposed = true;
     _hasAnimated = false;
-    _controller.dispose();
+    try {
+      _controller.removeStatusListener(_handleAnimationStatus);
+      _controller.dispose();
+    } catch (e) {
+      debugPrint('Error disposing animation controller: $e');
+    }
     super.dispose();
+  }
+
+  /// Handles retry when an error occurs
+  void _handleRetry() {
+    try {
+      getIt<SubjectDetailsBloc>()
+          .add(GetSubjectDetailsEvent(subjectId: widget.subjectId));
+    } catch (e) {
+      debugPrint('Error in retry: $e');
+    }
   }
 
   @override
@@ -88,12 +127,18 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
             },
             success: (subjectDetails) {
               if (!_isDisposed && !_hasAnimated) {
-                _controller.reset();
-                _controller.forward();
-                _hasAnimated = true;
+                try {
+                  _controller.reset();
+                  _controller.forward();
+                  _hasAnimated = true;
+                } catch (e) {
+                  debugPrint('Error starting animation: $e');
+                }
               }
               return _buildContent(subjectDetails);
             },
+            onError:
+                _handleRetry, // Pass the retry callback to use custom FailedWidget
           );
         },
       ),
@@ -101,93 +146,114 @@ class _SubjectDetailsScreenState extends State<SubjectDetailsScreen>
   }
 
   Widget _buildContent(SubjectDetailsEntity subjectDetails) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SubjectDetailsImage(
-            imageUrl: subjectDetails.imageUrl,
-            title: subjectDetails.title,
-          ),
-          SliverToBoxAdapter(
-            child: AnimatedBuilder(
-              animation: _animations[0],
-              builder: (context, child) {
-                return Transform.translate(
-                  offset: Offset(0, -20 * (1 - _animations[0].value)),
-                  child: Opacity(
-                    opacity: _animations[0].value,
-                    child: child,
-                  ),
-                );
-              },
-              child: Padding(
-                padding: REdgeInsets.symmetric(vertical: 9),
-                child: SubjectDetailsHeader(
-                  subjectDetails: subjectDetails,
-                ),
+    try {
+      return AbsorbPointer(
+        absorbing: _isAnimating, // Block touch interactions during animation
+        child: Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              SubjectDetailsImage(
+                imageUrl: subjectDetails.imageUrl,
+                title: subjectDetails.title,
               ),
-            ),
-          ),
-          if ((subjectDetails.midTermGrade != null ||
-              subjectDetails.finalGrade != null))
-            SliverToBoxAdapter(
-              child: AnimatedBuilder(
-                animation: _animations[1],
-                builder: (context, child) {
-                  return Transform.translate(
-                    offset: Offset(0, -20 * (1 - _animations[1].value)),
-                    child: Opacity(
-                      opacity: _animations[1].value,
-                      child: child,
+              SliverToBoxAdapter(
+                child: AnimatedBuilder(
+                  animation: _animations[0],
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: Offset(0, -20 * (1 - _animations[0].value)),
+                      child: Opacity(
+                        opacity: _animations[0].value,
+                        child: child,
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: REdgeInsets.symmetric(vertical: 9),
+                    child: SubjectDetailsHeader(
+                      subjectDetails: subjectDetails,
                     ),
-                  );
-                },
-                child: Padding(
-                  padding: REdgeInsets.symmetric(vertical: 9.0),
-                  child: SubjectDetailsGrades(
-                    subjectDetails: subjectDetails,
                   ),
                 ),
               ),
-            ),
-          SliverToBoxAdapter(
-            child: AnimatedBuilder(
-              animation: _animations.last,
-              builder: (context, child) {
-                return Transform.translate(
-                  offset: Offset(0, -20 * (1 - _animations.last.value)),
-                  child: Opacity(
-                    opacity: _animations.last.value,
-                    child: child,
+              if ((subjectDetails.midTermGrade != null ||
+                  subjectDetails.finalGrade != null))
+                SliverToBoxAdapter(
+                  child: AnimatedBuilder(
+                    animation: _animations[1],
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset: Offset(0, -20 * (1 - _animations[1].value)),
+                        child: Opacity(
+                          opacity: _animations[1].value,
+                          child: child,
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: REdgeInsets.symmetric(vertical: 9.0),
+                      child: SubjectDetailsGrades(
+                        subjectDetails: subjectDetails,
+                      ),
+                    ),
                   ),
-                );
-              },
-              child: Padding(
-                padding: REdgeInsets.symmetric(vertical: 9.0),
-                child: SubjectDescriptionWithMaterials(
-                  subjectDetails: subjectDetails,
+                ),
+              SliverToBoxAdapter(
+                child: AnimatedBuilder(
+                  animation: _animations.last,
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: Offset(0, -20 * (1 - _animations.last.value)),
+                      child: Opacity(
+                        opacity: _animations.last.value,
+                        child: child,
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: REdgeInsets.symmetric(vertical: 9.0),
+                    child: SubjectDescriptionWithMaterials(
+                      subjectDetails: subjectDetails,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-    );
+        ),
+      );
+    } catch (e) {
+      debugPrint('Error building content: $e');
+      return const Scaffold(
+        body: Center(
+          child: Text('Something went wrong'),
+        ),
+      );
+    }
   }
 
   Widget _buildLoadingShimmer() {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SubjectDetailsImage.buildImageShimmer(context),
-          SliverToBoxAdapter(
-            child: SubjectDetailsHeader.buildHeaderShimmer(context),
-          ),
-          SliverToBoxAdapter(
-            child: SubjectDescriptionWithMaterials.buildBodyShimmer(context),
-          ),
-        ],
-      ),
-    );
+    try {
+      return Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SubjectDetailsImage.buildImageShimmer(context),
+            SliverToBoxAdapter(
+              child: SubjectDetailsHeader.buildHeaderShimmer(context),
+            ),
+            SliverToBoxAdapter(
+              child: SubjectDescriptionWithMaterials.buildBodyShimmer(context),
+            ),
+          ],
+        ),
+      );
+    } catch (e) {
+      debugPrint('Error building loading shimmer: $e');
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
   }
 }

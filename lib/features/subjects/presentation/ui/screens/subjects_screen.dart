@@ -1,5 +1,6 @@
 import 'package:beamer/beamer.dart';
 import '../../../../../shared/utils/helper/colored_print.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
@@ -24,8 +25,12 @@ class _SubjectsScreenState extends State<SubjectsScreen>
   @override
   void initState() {
     super.initState();
-    _subjectsBloc = getIt<SubjectsBloc>();
-    _subjectsBloc.add(GetSubjectsEvent());
+    try {
+      _subjectsBloc = getIt<SubjectsBloc>();
+      _subjectsBloc.add(GetSubjectsEvent());
+    } catch (e) {
+      debugPrint('Error initializing SubjectsScreen: $e');
+    }
   }
 
   @override
@@ -33,8 +38,21 @@ class _SubjectsScreenState extends State<SubjectsScreen>
 
   @override
   void dispose() {
-    printR("disposing");
+    try {
+      printR("disposing");
+    } catch (e) {
+      debugPrint('Error in dispose: $e');
+    }
     super.dispose();
+  }
+
+  /// Handles retry when an error occurs
+  void _handleRetry() {
+    try {
+      _subjectsBloc.add(GetSubjectsEvent());
+    } catch (e) {
+      debugPrint('Error in retry: $e');
+    }
   }
 
   @override
@@ -52,10 +70,14 @@ class _SubjectsScreenState extends State<SubjectsScreen>
                 return SubjectsBuilderWidget(
                   state: state.result,
                   onRefresh: () async {
-                    _subjectsBloc.add(
-                      GetSubjectsEvent(),
-                    );
+                    try {
+                      _subjectsBloc.add(GetSubjectsEvent());
+                    } catch (e) {
+                      debugPrint('Error in refresh: $e');
+                    }
                   },
+                  onError:
+                      _handleRetry, // Pass the retry callback to use custom FailedWidget
                 );
               },
             ),
@@ -66,36 +88,46 @@ class _SubjectsScreenState extends State<SubjectsScreen>
   }
 
   Widget _buildHeader(BuildContext context) {
-    return Padding(
-      padding: REdgeInsets.symmetric(
-        horizontal: AppConstants.horizontalScreensPadding,
-        vertical: 15,
-      ),
-      child: DecoratedContainer(
-        onTap: () => context.beamToNamed(ChooseYearsScreen.pagePath),
-        circleSize: 120,
-        child: Padding(
-          padding: REdgeInsets.all(12.0),
-          child: Text(
-            AppStrings.yourSubjects,
-            style: context.textTheme.headlineLarge!
-                .withColor(context.primaryColor),
+    try {
+      return Padding(
+        padding: REdgeInsets.symmetric(
+          horizontal: AppConstants.horizontalScreensPadding,
+          vertical: 15,
+        ),
+        child: DecoratedContainer(
+          onTap: () => context.beamToNamed(ChooseYearsScreen.pagePath),
+          circleSize: 120,
+          child: Padding(
+            padding: REdgeInsets.all(12.0),
+            child: Text(
+              AppStrings.yourSubjects,
+              style: context.textTheme.headlineLarge!
+                  .withColor(context.primaryColor),
+            ),
           ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      debugPrint('Error building header: $e');
+      return const SizedBox.shrink();
+    }
   }
 
   Widget _buildDivider(BuildContext context) {
-    return Padding(
-      padding: REdgeInsets.symmetric(
-        horizontal: AppConstants.horizontalScreensPadding,
-      ),
-      child: Divider(
-        height: 1.h,
-        thickness: 1.h,
-        color: context.primaryColor.withValues(alpha: 0.5),
-      ),
-    );
+    try {
+      return Padding(
+        padding: REdgeInsets.symmetric(
+          horizontal: AppConstants.horizontalScreensPadding,
+        ),
+        child: Divider(
+          height: 1.h,
+          thickness: 1.h,
+          color: context.primaryColor.withValues(alpha: 0.5),
+        ),
+      );
+    } catch (e) {
+      debugPrint('Error building divider: $e');
+      return const SizedBox.shrink();
+    }
   }
 }

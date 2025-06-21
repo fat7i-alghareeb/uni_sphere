@@ -3,8 +3,7 @@ import 'package:beamer/beamer.dart';
 import 'package:test/core/injection/injection.dart' show getIt;
 import 'package:test/core/result_builder/result.dart';
 import 'package:test/features/subjects/domain/entities/subject_entity.dart';
-import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart'
-    show SubjectsBloc, SubjectsState;
+import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
 
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
@@ -24,7 +23,7 @@ class YearSubjectsData {
 }
 
 //!---------------------------- The Widget -------------------------------------!//
-class YearSubjects extends StatelessWidget {
+class YearSubjects extends StatefulWidget {
   const YearSubjects({
     super.key,
   });
@@ -44,20 +43,70 @@ class YearSubjects extends StatelessWidget {
   };
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<SubjectsBloc, SubjectsState>(
-        builder: (context, state) {
+  State<YearSubjects> createState() => _YearSubjectsState();
+}
 
-          return CustomScaffoldBody(
-            title: YearHelper.getYearSubjectsName(state.selectedYear, context),
-            child: SubjectsScreenBody(
-              subjects: state.yearResult.getDataWhenSuccess() ?? [],
-              fullInfo: false,
-            ),
-          );
-        },
-      ),
-    );
+class _YearSubjectsState extends State<YearSubjects> {
+  late final SubjectsBloc _subjectsBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    try {
+      _subjectsBloc = getIt<SubjectsBloc>();
+    } catch (e) {
+      debugPrint('Error initializing YearSubjects: $e');
+    }
+  }
+
+  /// Handles retry when an error occurs
+  void _handleRetry() {
+    try {
+      if (_subjectsBloc.state.selectedYear > 0) {
+        _subjectsBloc
+            .add(GetYearSubjectsEvent(_subjectsBloc.state.selectedYear));
+      }
+    } catch (e) {
+      debugPrint('Error in retry: $e');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    try {
+      return Scaffold(
+        body: BlocBuilder<SubjectsBloc, SubjectsState>(
+          builder: (context, state) {
+            return CustomScaffoldBody(
+              title:
+                  YearHelper.getYearSubjectsName(state.selectedYear, context),
+              child: SubjectsScreenBody(
+                subjects: state.yearResult.getDataWhenSuccess() ?? [],
+                fullInfo: false,
+                onRefresh: () async {
+                  try {
+                    if (state.selectedYear > 0) {
+                      _subjectsBloc
+                          .add(GetYearSubjectsEvent(state.selectedYear));
+                    }
+                  } catch (e) {
+                    debugPrint('Error in refresh: $e');
+                  }
+                },
+                onError:
+                    _handleRetry, // Pass the retry callback to use custom FailedWidget
+              ),
+            );
+          },
+        ),
+      );
+    } catch (e) {
+      debugPrint('Error building YearSubjects: $e');
+      return const Scaffold(
+        body: Center(
+          child: Text('Something went wrong'),
+        ),
+      );
+    }
   }
 }
