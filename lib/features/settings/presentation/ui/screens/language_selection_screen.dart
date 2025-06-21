@@ -1,5 +1,6 @@
 import 'package:beamer/beamer.dart' show BeamPage, BeamPageType;
 import 'package:easy_localization/easy_localization.dart';
+
 import '../../../../../common/constant/app_strings.dart' show AppStrings;
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';

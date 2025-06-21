@@ -1,4 +1,4 @@
-import 'package:test/features/announcements/domain/entities/news_entity.dart';
+import '../../../domain/entities/news_entity.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../shared/imports/imports.dart';
 

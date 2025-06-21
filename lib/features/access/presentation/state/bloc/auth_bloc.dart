@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/core/result_builder/result.dart' show Result;
-import 'package:test/features/access/data/params/login_param.dart';
-import 'package:test/features/access/data/usecases/auth_usecases.dart';
-import 'package:test/shared/entities/user.dart';
+import '../../../../../core/result_builder/result.dart' show Result;
+import '../../../data/params/login_param.dart';
+import '../../../data/usecases/auth_usecases.dart';
+import '../../../../../shared/entities/user.dart';
 
 import '../../../data/models/simple_user.dart' show SimpleUser;
 import '../../../data/params/check_one_time_param.dart' show CheckOneTimeParam;

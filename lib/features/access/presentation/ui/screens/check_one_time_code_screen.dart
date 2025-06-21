@@ -1,7 +1,7 @@
 import 'package:beamer/beamer.dart' show BeamPage, BeamPageType;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show MultiBlocProvider;
-import 'package:test/core/injection/injection.dart' show getIt;
+import '../../../../../core/injection/injection.dart' show getIt;
 import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart'
     show AuthBloc;
 import 'package:test/features/access/presentation/ui/widgets/check_one_time_code_body.dart';

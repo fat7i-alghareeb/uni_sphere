@@ -1,10 +1,10 @@
-import 'package:test/core/injection/injection.dart';
-import 'package:test/core/result_builder/result.dart';
-import 'package:test/features/timetable/presentation/state/time_table/time_table_bloc.dart';
+import '../../../../../core/injection/injection.dart';
+import '../../../../../core/result_builder/result.dart';
+import '../../state/time_table/time_table_bloc.dart';
 import '../../../../../shared/imports/imports.dart';
-import 'package:test/features/timetable/presentation/ui/widgets/day_selector.dart';
-import 'package:test/features/timetable/presentation/ui/widgets/month_selector.dart';
-import 'package:test/features/timetable/presentation/ui/widgets/timetable_item.dart';
+import '../widgets/day_selector.dart';
+import '../widgets/month_selector.dart';
+import '../widgets/timetable_item.dart';
 import '../widgets/no_schedule_widgets.dart';
 
 class TimetableScreen extends StatefulWidget {

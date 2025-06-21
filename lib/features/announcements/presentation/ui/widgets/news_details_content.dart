@@ -1,5 +1,5 @@
-import 'package:test/common/constant/app_strings.dart';
-import 'package:test/features/announcements/domain/entities/news_entity.dart';
+import '../../../../../common/constant/app_strings.dart';
+import '../../../domain/entities/news_entity.dart';
 import '../../../../../shared/imports/imports.dart';
 
 class NewsDetailsContent extends StatelessWidget {

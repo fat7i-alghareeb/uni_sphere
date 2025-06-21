@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
+
 import '../entities/search_entity.dart';
 import '../repositories/search_repository.dart';
 

@@ -1,4 +1,4 @@
-import 'package:test/features/timetable/domain/entities/day_schedule_entity.dart';
+import 'day_schedule_entity.dart';
 
 class MonthScheduleEntity {
   final DateTime month;

@@ -2,8 +2,8 @@
 
 import 'package:flutter/services.dart';
 import 'package:test/core/styles/colors.dart' show AppColors;
-import 'package:test/shared/widgets/loading_progress.dart' show LoadingProgress;
 import 'package:test/shared/imports/imports.dart';
+import 'package:test/shared/widgets/loading_progress.dart' show LoadingProgress;
 
 class AuthButton extends StatefulWidget {
   final bool isLoading;

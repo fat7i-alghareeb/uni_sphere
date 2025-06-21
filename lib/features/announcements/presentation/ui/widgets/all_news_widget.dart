@@ -1,10 +1,10 @@
 import 'package:beamer/beamer.dart';
-import 'package:test/core/result_builder/result_builder.dart';
-import 'package:test/features/announcements/domain/entities/news_entity.dart';
-import 'package:test/features/announcements/presentation/state/bloc/announcement_bloc.dart';
-import 'package:test/shared/widgets/custom_shimmer.dart';
-import 'package:test/core/styles/colors.dart';
-import 'package:test/shared/widgets/custom_network_image.dart';
+import '../../../../../core/result_builder/result_builder.dart';
+import '../../../domain/entities/news_entity.dart';
+import '../../state/bloc/announcement_bloc.dart';
+import '../../../../../shared/widgets/custom_shimmer.dart';
+import '../../../../../core/styles/colors.dart';
+import '../../../../../shared/widgets/custom_network_image.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../screens/news_details_screen.dart' show NewsDetailsScreen;

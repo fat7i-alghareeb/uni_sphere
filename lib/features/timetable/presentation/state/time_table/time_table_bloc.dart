@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/features/timetable/domain/entities/month_schedule_entity.dart';
-import 'package:test/shared/utils/helper/colored_print.dart' show printW;
+import '../../../domain/entities/month_schedule_entity.dart';
+import '../../../../../shared/utils/helper/colored_print.dart' show printW;
 import '../../../../../core/result_builder/result.dart';
 import '../../../domain/usecases/timetable_usecase.dart';
 part 'time_table_event.dart';

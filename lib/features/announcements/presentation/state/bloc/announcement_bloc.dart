@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/features/announcements/domain/entities/news_entity.dart';
+import '../../../domain/entities/news_entity.dart';
 
 import '../../../../../core/result_builder/result.dart';
 import '../../../domain/usecases/announcements_usecase.dart';

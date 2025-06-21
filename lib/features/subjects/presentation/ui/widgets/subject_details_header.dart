@@ -1,5 +1,5 @@
-import 'package:test/common/constant/app_strings.dart';
-import 'package:test/shared/imports/imports.dart';
+import '../../../../../common/constant/app_strings.dart';
+import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/subject_details_entity.dart';
 

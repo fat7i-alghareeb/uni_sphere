@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/features/subjects/domain/entities/subject_details_entity.dart';
-import 'package:test/features/subjects/domain/usecases/get_subject_details_usecase.dart';
+import '../../../domain/entities/subject_details_entity.dart';
+import '../../../domain/usecases/get_subject_details_usecase.dart';
 
 import '../../../../../core/result_builder/result.dart';
 

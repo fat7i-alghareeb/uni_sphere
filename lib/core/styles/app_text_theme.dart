@@ -1,5 +1,6 @@
-import '../../shared/imports/imports.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../shared/imports/imports.dart';
 
 /// A collection of text styles used throughout the app.
 /// Follows Material Design 3 text style guidelines with customizations.

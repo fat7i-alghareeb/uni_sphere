@@ -1,5 +1,5 @@
 import 'package:beamer/beamer.dart';
-import 'package:test/shared/extensions/string_extension.dart';
+import '../../../../../shared/extensions/string_extension.dart';
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../shared/imports/imports.dart';

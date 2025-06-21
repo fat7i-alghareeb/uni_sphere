@@ -1,7 +1,7 @@
-import 'package:test/shared/extensions/date_time_extension.dart';
-import 'package:test/shared/imports/imports.dart';
-import 'package:test/shared/utils/helper/get_colored_svg_picture.dart';
-import 'package:test/shared/widgets/dashed_line.dart';
+import '../../../../../shared/extensions/date_time_extension.dart';
+import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/utils/helper/get_colored_svg_picture.dart';
+import '../../../../../shared/widgets/dashed_line.dart';
 
 import '../../../domain/entities/timetable_entity.dart';
 

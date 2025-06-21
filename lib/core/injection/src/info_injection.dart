@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:test/core/injection/injection.dart' show getIt;
-import 'package:test/shared/repo/info_repo.dart';
+import '../injection.dart' show getIt;
+import '../../../shared/repo/info_repo.dart';
 
 import '../../../shared/remote/info_remote.dart';
 import '../../../shared/states/bloc/info_bloc.dart';

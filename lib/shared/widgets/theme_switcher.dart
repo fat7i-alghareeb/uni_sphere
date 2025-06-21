@@ -1,7 +1,8 @@
 import 'package:provider/provider.dart';
+
 import '../../common/constant/app_strings.dart' show AppStrings;
-import '../states/theme_provider/theme_provider.dart';
 import '../imports/imports.dart';
+import '../states/theme_provider/theme_provider.dart';
 
 class ThemeSwitcher extends StatelessWidget {
   const ThemeSwitcher({super.key});

@@ -1,20 +1,20 @@
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:test/common/constant/app_strings.dart';
-import 'package:test/core/injection/injection.dart';
-import 'package:test/core/result_builder/result.dart';
-import 'package:test/features/access/data/params/login_param.dart';
-import 'package:test/features/access/presentation/input_forms/auth_input_keys.dart';
-import 'package:test/features/access/presentation/input_forms/login_form.dart';
-import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart';
-import 'package:test/features/access/presentation/ui/widgets/major_selector.dart';
-import 'package:test/shared/extensions/form_extension.dart';
-import 'package:test/shared/imports/imports.dart';
-import 'package:test/shared/states/bloc/info_bloc.dart';
-import 'package:test/shared/utils/helper/show_error_overlay.dart';
-import 'package:test/shared/widgets/auth_button.dart';
-import 'package:test/shared/widgets/custom_reative_field.dart';
-import 'package:test/shared/widgets/custom_scaffold_body.dart';
-import 'package:test/shared/widgets/passwrod_field.dart';
+import '../../../../../common/constant/app_strings.dart';
+import '../../../../../core/injection/injection.dart';
+import '../../../../../core/result_builder/result.dart';
+import '../../../data/params/login_param.dart';
+import '../../input_forms/auth_input_keys.dart';
+import '../../input_forms/login_form.dart';
+import '../../state/bloc/auth_bloc.dart';
+import 'major_selector.dart';
+import '../../../../../shared/extensions/form_extension.dart';
+import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/states/bloc/info_bloc.dart';
+import '../../../../../shared/utils/helper/show_error_overlay.dart';
+import '../../../../../shared/widgets/auth_button.dart';
+import '../../../../../shared/widgets/custom_reative_field.dart';
+import '../../../../../shared/widgets/custom_scaffold_body.dart';
+import '../../../../../shared/widgets/passwrod_field.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:test/shared/entities/faculty.dart' show Faculty;
-import 'package:test/shared/entities/major.dart' show Major;
+import '../entities/faculty.dart' show Faculty;
+import '../entities/major.dart' show Major;
 
 import '../../core/constants/app_url.dart' show AppUrl;
 import '../services/exception/error_handler.dart' show throwDioException;

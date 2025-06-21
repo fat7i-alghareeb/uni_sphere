@@ -1,9 +1,10 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../../domain/entities/home_entity.dart';
-import '../datasources/home_remote_data_source.dart';
-import '../../domain/repositories/home_repository.dart';
+
 import '../../../../shared/services/exception/error_handler.dart';
+import '../../domain/entities/home_entity.dart';
+import '../../domain/repositories/home_repository.dart';
+import '../datasources/home_remote_data_source.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

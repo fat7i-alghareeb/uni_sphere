@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart' show Either;
-import 'package:test/shared/entities/faculty.dart' show Faculty;
-import 'package:test/shared/remote/info_remote.dart' show InfoRemote;
+import '../entities/faculty.dart' show Faculty;
+import '../remote/info_remote.dart' show InfoRemote;
 import 'package:test/shared/services/exception/error_handler.dart'
     show throwAppException;
 

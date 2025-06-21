@@ -1,6 +1,6 @@
 import '../../../../../core/injection/injection.dart';
-import '../../../../../shared/utils/helper/colored_print.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/utils/helper/colored_print.dart';
 import '../../state/bloc/home_bloc.dart';
 import '../widgets/home_body.dart';
 

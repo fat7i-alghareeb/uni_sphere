@@ -1,4 +1,4 @@
-import 'package:test/features/timetable/data/models/item_model.dart';
+import 'item_model.dart';
 
 class DayScheduleModel {
   final String day;

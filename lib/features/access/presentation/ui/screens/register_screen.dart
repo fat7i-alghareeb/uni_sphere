@@ -1,11 +1,11 @@
 import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test/core/injection/injection.dart';
-import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart';
-import 'package:test/features/access/presentation/ui/widgets/register_body.dart';
-import 'package:test/router/router_config.dart';
-import 'package:test/shared/imports/imports.dart';
+import '../../../../../core/injection/injection.dart';
+import '../../state/bloc/auth_bloc.dart';
+import '../widgets/register_body.dart';
+import '../../../../../router/router_config.dart';
+import '../../../../../shared/imports/imports.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

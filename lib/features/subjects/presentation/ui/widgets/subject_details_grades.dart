@@ -1,6 +1,6 @@
-import 'package:test/shared/imports/imports.dart';
-import '../../../domain/entities/subject_details_entity.dart';
 import '../../../../../common/constant/app_strings.dart';
+import '../../../../../shared/imports/imports.dart';
+import '../../../domain/entities/subject_details_entity.dart';
 
 class SubjectDetailsGrades extends StatelessWidget {
   const SubjectDetailsGrades({

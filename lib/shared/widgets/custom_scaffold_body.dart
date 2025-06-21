@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test/shared/widgets/custom_page_header.dart';
+import 'custom_page_header.dart';
 import '../../core/constants/app_constants.dart';
 import '../extensions/context_extension.dart';
 

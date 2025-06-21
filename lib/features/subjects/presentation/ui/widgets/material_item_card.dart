@@ -1,4 +1,4 @@
-import 'package:test/shared/imports/imports.dart';
+import '../../../../../shared/imports/imports.dart';
 import '../../../domain/entities/materials_entity.dart' as materials;
 
 class MaterialItemCard extends StatelessWidget {

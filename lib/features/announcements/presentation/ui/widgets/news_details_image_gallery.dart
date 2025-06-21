@@ -1,4 +1,4 @@
-import 'package:test/shared/imports/imports.dart';
+import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_network_image.dart';
 
 class NewsDetailsImageGallery extends StatelessWidget {

@@ -1,12 +1,12 @@
 
 import 'package:reactive_forms/reactive_forms.dart' show ReactiveFormConsumer;
-import 'package:test/common/constant/app_strings.dart';
-import 'package:test/core/injection/injection.dart';
-import 'package:test/core/result_builder/result.dart';
-import 'package:test/features/access/presentation/input_forms/auth_input_keys.dart';
-import 'package:test/shared/entities/drop_down_data.dart';
-import 'package:test/shared/extensions/form_extension.dart';
-import 'package:test/shared/widgets/custom_picker.dart' show CustomPickerField;
+import '../../../../../common/constant/app_strings.dart';
+import '../../../../../core/injection/injection.dart';
+import '../../../../../core/result_builder/result.dart';
+import '../../input_forms/auth_input_keys.dart';
+import '../../../../../shared/entities/drop_down_data.dart';
+import '../../../../../shared/extensions/form_extension.dart';
+import '../../../../../shared/widgets/custom_picker.dart' show CustomPickerField;
 
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/states/bloc/info_bloc.dart';

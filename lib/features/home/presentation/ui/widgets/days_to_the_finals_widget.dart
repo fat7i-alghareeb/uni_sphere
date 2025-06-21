@@ -1,6 +1,6 @@
 import '../../../../../core/result_builder/result_builder.dart';
-import '../../../domain/entities/home_entity.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../domain/entities/home_entity.dart';
 import '../../state/bloc/home_bloc.dart';
 import 'days_to_the_finals_content.dart';
 

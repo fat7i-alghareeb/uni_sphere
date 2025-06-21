@@ -1,5 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_icon.dart';
 import '../../../../../shared/widgets/custom_network_image.dart';

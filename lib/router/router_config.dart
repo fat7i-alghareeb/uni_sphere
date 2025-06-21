@@ -1,21 +1,23 @@
 import 'dart:async';
+
 import 'package:beamer/beamer.dart';
 import 'package:dio_refresh_bot/dio_refresh_bot.dart' show Status;
 import 'package:test/features/access/presentation/ui/screens/login_screen.dart'
     show LoginScreen;
+
 import '../features/access/presentation/ui/screens/check_one_time_code_screen.dart'
     show CheckOneTimeCodeScreen;
 import '../features/access/presentation/ui/screens/choose_access_method_screen.dart'
     show ChooseAccessMethodScreen;
 import '../features/access/presentation/ui/screens/register_screen.dart';
+import '../features/announcements/presentation/ui/screens/news_details_screen.dart';
+import '../features/grades/presentation/ui/screens/grades_screen.dart';
 import '../features/root/presentation/ui/screen/root_screen.dart';
 import '../features/settings/presentation/ui/screens/language_selection_screen.dart'
     show LanguageSelectionScreen;
 import '../features/subjects/presentation/ui/screens/choose_years_screen.dart';
 import '../features/subjects/presentation/ui/screens/subject_details_screen.dart';
 import '../features/subjects/presentation/ui/screens/year_subjects.dart';
-import '../features/announcements/presentation/ui/screens/news_details_screen.dart';
-import '../features/grades/presentation/ui/screens/grades_screen.dart';
 import '../shared/imports/imports.dart';
 import '../shared/states/app_manager_bloc/app_manager_bloc.dart';
 import '../shared/utils/helper/colored_print.dart';

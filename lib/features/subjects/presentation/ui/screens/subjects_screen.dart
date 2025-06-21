@@ -1,5 +1,5 @@
 import 'package:beamer/beamer.dart';
-import 'package:test/shared/utils/helper/colored_print.dart';
+import '../../../../../shared/utils/helper/colored_print.dart';
 
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';

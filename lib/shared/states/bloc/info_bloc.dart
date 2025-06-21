@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart' show Bloc, Emitter;
-import 'package:test/core/result_builder/result.dart';
-import 'package:test/shared/entities/faculty.dart' show Faculty;
-import 'package:test/shared/entities/major.dart' show Major;
-import 'package:test/shared/repo/info_repo.dart' show InfoRepo;
+import '../../../core/result_builder/result.dart';
+import '../../entities/faculty.dart' show Faculty;
+import '../../entities/major.dart' show Major;
+import '../../repo/info_repo.dart' show InfoRepo;
 
 part 'info_event.dart';
 part 'info_state.dart';

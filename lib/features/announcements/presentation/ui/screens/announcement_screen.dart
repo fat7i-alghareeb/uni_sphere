@@ -1,7 +1,7 @@
-import 'package:test/common/constant/app_strings.dart';
-import 'package:test/features/announcements/presentation/state/bloc/announcement_bloc.dart';
-import 'package:test/features/announcements/presentation/ui/widgets/all_news_widget.dart';
-import 'package:test/features/announcements/presentation/ui/widgets/my_news_widget.dart';
+import '../../../../../common/constant/app_strings.dart';
+import '../../state/bloc/announcement_bloc.dart';
+import '../widgets/all_news_widget.dart';
+import '../widgets/my_news_widget.dart';
 
 import '../../../../../core/injection/injection.dart';
 import '../../../../../shared/imports/imports.dart';

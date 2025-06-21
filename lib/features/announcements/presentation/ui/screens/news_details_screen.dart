@@ -1,7 +1,7 @@
 import 'package:beamer/beamer.dart';
-import 'package:test/features/announcements/domain/entities/news_entity.dart';
-import 'package:test/features/announcements/presentation/ui/widgets/news_details_image.dart';
-import 'package:test/features/announcements/presentation/ui/widgets/news_details_content.dart';
+import '../../../domain/entities/news_entity.dart';
+import '../widgets/news_details_image.dart';
+import '../widgets/news_details_content.dart';
 import '../../../../../router/router_config.dart' show BeamerBuilder;
 import '../../../../../shared/imports/imports.dart';
 

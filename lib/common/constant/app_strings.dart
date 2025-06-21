@@ -1,4 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:get_it/get_it.dart';
+
 import '../../shared/helper/localization_service.dart';
 
 // dart run generate_localization_keys.dart

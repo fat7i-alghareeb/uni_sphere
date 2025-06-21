@@ -1,5 +1,5 @@
-import 'package:test/shared/extensions/string_extension.dart';
-import 'package:test/shared/imports/imports.dart';
+import '../../extensions/string_extension.dart';
+import '../../imports/imports.dart';
 
 import '../../../common/constant/app_strings.dart';
 
