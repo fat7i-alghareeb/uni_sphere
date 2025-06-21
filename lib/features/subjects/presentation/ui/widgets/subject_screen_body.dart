@@ -111,8 +111,10 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
           left: AppConstants.horizontalScreensPadding,
           bottom: 150.h,
         ),
-        itemBuilder: (context, index) =>
-            SubjectItemCard(subject: widget.subjects[index]),
+        itemBuilder: (context, index) => SubjectItemCard(
+          subject: widget.subjects[index],
+          //haveFullInfo: false,
+        ),
         itemCount: widget.subjects.length,
       );
     }
@@ -179,7 +181,7 @@ class _SubjectsScreenBodyState extends State<SubjectsScreenBody>
               },
               child: SubjectItemCard(
                 subject: widget.subjects[index],
-                haveFullInfo: widget.fullInfo,
+                //   haveFullInfo: widget.fullInfo,
               ),
             );
           },

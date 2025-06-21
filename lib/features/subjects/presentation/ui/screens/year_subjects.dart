@@ -1,6 +1,11 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
+import 'package:test/core/injection/injection.dart' show getIt;
+import 'package:test/core/result_builder/result.dart';
 import 'package:test/features/subjects/domain/entities/subject_entity.dart';
+import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart'
+    show SubjectsBloc, SubjectsState;
+import 'package:test/shared/utils/helper/colored_print.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/utils/helper/year_helper.dart';
@@ -22,22 +27,17 @@ class YearSubjectsData {
 class YearSubjects extends StatelessWidget {
   const YearSubjects({
     super.key,
-    required this.subjects,
-    required this.year,
   });
 
-  final List<SubjectEntity> subjects;
-  final int year;
   static const String pagePath = 'year_subjects';
 
   static BeamerBuilder pageBuilder = (context, state, data) {
     String id = DateTime.now().millisecondsSinceEpoch.toString();
-    final yearSubjectsData = data as YearSubjectsData;
     return BeamPage(
       key: ValueKey('year_subjects:$id'),
-      child: YearSubjects(
-        subjects: yearSubjectsData.subjects,
-        year: yearSubjectsData.year,
+      child: BlocProvider.value(
+        value: getIt<SubjectsBloc>(),
+        child: YearSubjects(),
       ),
       type: BeamPageType.fadeTransition,
     );
@@ -46,11 +46,17 @@ class YearSubjects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScaffoldBody(
-        title: YearHelper.getYearSubjectsName(year, context),
-        child: SubjectsScreenBody(
-          subjects: subjects,
-        ),
+      body: BlocBuilder<SubjectsBloc, SubjectsState>(
+        builder: (context, state) {
+
+          return CustomScaffoldBody(
+            title: YearHelper.getYearSubjectsName(state.selectedYear, context),
+            child: SubjectsScreenBody(
+              subjects: state.yearResult.getDataWhenSuccess() ?? [],
+              fullInfo: false,
+            ),
+          );
+        },
       ),
     );
   }

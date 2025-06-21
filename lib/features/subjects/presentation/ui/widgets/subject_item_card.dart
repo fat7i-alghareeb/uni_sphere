@@ -1,4 +1,5 @@
 import 'package:beamer/beamer.dart';
+import 'package:test/shared/extensions/string_extension.dart';
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../shared/imports/imports.dart';
@@ -162,7 +163,7 @@ class SubjectItemCard extends StatelessWidget {
         color: const Color(0xFF496ce5),
       ),
       SubInfo(
-        title: subject.semester,
+        title: subject.semester.semesterName,
         color: const Color(0xFFfc7cac),
       ),
       SubInfo(

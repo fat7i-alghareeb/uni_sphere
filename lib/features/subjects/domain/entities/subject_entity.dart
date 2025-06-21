@@ -1,13 +1,13 @@
-   class SubjectEntity {
+class SubjectEntity {
   final String id;
   final String title;
   final String professorName;
   final int year;
-  final String semester;
-  final bool isPassed; 
-  final bool canEnroll; 
-  final int? midTermGrade;
-  final int? finalGrade;
+  final int semester;
+  final bool isPassed;
+  final bool canEnroll;
+  final double? midTermGrade;
+  final double? finalGrade;
   final bool isMultipleChoice;
   final bool doesHaveALab;
   final String imageUrl;
@@ -27,6 +27,6 @@
   });
 
   get totalGrade {
-    return (midTermGrade ?? 0) + (finalGrade ?? 0);
+    return (midTermGrade ?? 0.0) + (finalGrade ?? 0.0);
   }
 }

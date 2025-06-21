@@ -3,8 +3,6 @@ import 'package:easy_localization/easy_localization.dart'
 
 import '../../../../../core/result_builder/result.dart';
 import '../../../../../core/styles/colors.dart';
-
-import '../../../../../common/constant/app_strings.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/utils/helper/get_colored_svg_picture.dart';
 import '../../../../../shared/widgets/dot_loading_indicator.dart';

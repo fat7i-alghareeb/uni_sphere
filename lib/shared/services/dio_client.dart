@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_refresh_bot/dio_refresh_bot.dart';
 import 'package:flutter/foundation.dart';
+import 'package:test/core/repo/auth_repo/repo_imp.dart';
+import 'package:test/shared/utils/helper/colored_print.dart' show printR;
 
 // 🌎 Project imports:
 
@@ -61,6 +63,8 @@ class DioClient with DioMixin implements Dio {
         debugLog: true,
         tokenProtocol: TokenProtocol(
           shouldRefresh: (response, token) {
+            printR("shouldRefresh");
+            printR(response?.statusCode);
             return (response?.statusCode == 401);
           },
         ),
@@ -72,15 +76,23 @@ class DioClient with DioMixin implements Dio {
         tokenDio: tokenDio,
         refreshToken: (token, tokenDio) async {
           //  final
-          final response = await tokenDio.post(
-            AppUrl.refreshToken,
-            data: {
-              'refreshToken': token.refreshToken,
-            },
-          );
-          final authTokenModel = AuthTokenModel.fromMap(response.data);
-          await updateStorageToken(token);
-          return authTokenModel;
+          try {
+            final response = await tokenDio.post(
+              AppUrl.refreshToken,
+              data: {
+                'refreshToken': token.refreshToken,
+              },
+            );
+            final authTokenModel = AuthTokenModel.fromMap(response.data);
+            await updateStorageToken(token);
+            return authTokenModel;
+          } catch (e) {
+            getIt<AuthRepoImp>().logout();
+            return AuthTokenModel(
+              accessToken: '',
+              refreshToken: '',
+            );
+          }
         },
       ),
       LocalizationInterceptor(),

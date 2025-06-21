@@ -41,9 +41,12 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
 
   @override
   Widget build(BuildContext context) {
-    final errorImage = Image.asset(
-      Assets.images.test.keyName,
-      fit: BoxFit.fill,
+    final errorImage = ClipRRect(
+      borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
+      child: Image.asset(
+        Assets.images.test.keyName,
+        fit: BoxFit.fill,
+      ),
     );
 
     if (widget.imageUrl == null || widget.imageUrl!.isEmpty) {

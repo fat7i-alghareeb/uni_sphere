@@ -40,8 +40,8 @@ class _SubjectsScreenState extends State<SubjectsScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return BlocProvider(
-      create: (context) => _subjectsBloc,
+    return BlocProvider.value(
+      value: _subjectsBloc,
       child: Column(
         children: [
           _buildHeader(context),

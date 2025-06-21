@@ -33,7 +33,7 @@ class SubjectsBloc extends Bloc<SubjectsEvent, SubjectsState> {
 
   void _getSubjects(GetSubjectsEvent event, Emitter emit) async {
     emit(state.copyWith(result: const Result.loading()));
-    final response = await _usecase.getAllSubjects();
+    final response = await _usecase.getMySubjects();
     response.fold(
       (l) => emit(state.copyWith(result: Result.error(error: l))),
       (r) => emit(state.copyWith(result: Result.loaded(data: r))),

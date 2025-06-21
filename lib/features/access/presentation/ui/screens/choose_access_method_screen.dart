@@ -77,8 +77,6 @@ class _ChooseMethodBodyState extends State<ChooseMethodBody>
 
   @override
   Widget build(BuildContext context) {
-    final user = getIt<AuthLocal>().getUser();
-    printR(user);
     return Padding(
       padding: REdgeInsets.symmetric(
         horizontal: AppConstants.horizontalScreensPadding,

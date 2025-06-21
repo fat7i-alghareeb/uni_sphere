@@ -1,7 +1,5 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-
-import '../../../../core/constants/dummy_data.dart';
 import '../entities/subject_entity.dart';
 import '../repositories/subjects_repository.dart';
 
@@ -17,9 +15,6 @@ class GetYearSubjectsUsecase {
 
   //* Get All Subjects
   Future<Either<String, List<SubjectEntity>>> getYearSubjects(int year) async {
-    return Future.delayed(
-      const Duration(milliseconds: 1250),
-      () => Right(computerEngineeringSubjects),
-    );
+    return _repo.getMajorSubjectByYear(year);
   }
 }

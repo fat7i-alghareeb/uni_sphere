@@ -48,6 +48,7 @@ class AuthRepoImp implements AuthRepository {
         studentNumber: response.studentNumber,
         enrollmentStatusName: response.enrollmentStatusName,
         fatherName: response.fatherName,
+        numberOfMajorYears: response.numberOfMajorYears,
       );
       _saveUser(user,
           refreshToken: response.refreshToken,
@@ -90,6 +91,7 @@ class AuthRepoImp implements AuthRepository {
         studentNumber: response.studentNumber,
         enrollmentStatusName: response.enrollmentStatusName,
         fatherName: response.fatherName,
+        numberOfMajorYears: response.numberOfMajorYears,
       );
       _saveUser(
         user,

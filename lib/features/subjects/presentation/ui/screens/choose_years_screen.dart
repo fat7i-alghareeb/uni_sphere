@@ -1,6 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test/core/auth_data_source/local/auth_local.dart';
 import 'package:test/core/injection/injection.dart';
 import 'package:test/core/result_builder/result.dart';
 import 'package:test/features/subjects/presentation/state/subjects_bloc/subjects_bloc.dart';
@@ -14,9 +15,9 @@ import '../../../../home/presentation/ui/widgets/decorated_container.dart';
 
 /// Constants for the ChooseYearsScreen
 class _ChooseYearsScreenConstants {
-  static const int maxYear = 4;
+  static int maxYear = getIt<AuthLocal>().getUser()?.numberOfMajorYears ?? 0;
   static const double cardPadding = 12.0;
-  
+
   static const double circleSize = 130.0;
 }
 
@@ -43,8 +44,8 @@ class ChooseYearsScreen extends StatefulWidget {
 class _ChooseYearsScreenState extends State<ChooseYearsScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<SubjectsBloc>(),
+    return BlocProvider.value(
+      value: getIt<SubjectsBloc>(),
       child: const _ChooseYearsView(),
     );
   }
@@ -58,7 +59,7 @@ class _ChooseYearsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScaffoldBody(
-        title: "Computer Engineering",
+        title: getIt<AuthLocal>().getUser()?.majorName ?? "",
         child: BlocConsumer<SubjectsBloc, SubjectsState>(
           listenWhen: (previous, current) =>
               previous.yearResult != current.yearResult,
@@ -71,14 +72,8 @@ class _ChooseYearsView extends StatelessWidget {
 
   void _handleYearResult(BuildContext context, SubjectsState state) {
     if (state.yearResult.isLoaded()) {
-      final subjects = state.yearResult.getDataWhenSuccess() ?? [];
-      final selectedYear = state.selectedYear;
       context.beamToNamed(
         YearSubjects.pagePath,
-        data: YearSubjectsData(
-          subjects: subjects,
-          year: selectedYear,
-        ),
       );
     }
   }
@@ -121,7 +116,7 @@ class _YearCard extends StatelessWidget {
           previous.yearResult != current.yearResult,
       builder: (context, state) {
         final isLoading = state.yearResult.isLoading() &&
-            context.read<SubjectsBloc>().state.selectedYear == year;
+            getIt<SubjectsBloc>().state.selectedYear == year;
 
         return DecoratedContainer(
           onTap: () => _handleYearSelection(context),

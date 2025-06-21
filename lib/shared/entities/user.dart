@@ -1,4 +1,3 @@
-import 'package:test/shared/utils/helper/colored_print.dart' show printR;
 
 class User {
   final String studentId;
@@ -9,7 +8,7 @@ class User {
   final String majorName;
   final String studentNumber;
   final int year;
-
+  final int numberOfMajorYears;
   User({
     required this.firstName,
     required this.studentId,
@@ -19,6 +18,7 @@ class User {
     required this.majorName,
     required this.studentNumber,
     required this.year,
+    required this.numberOfMajorYears,
   });
 
   Map<String, dynamic> toMap() {
@@ -32,11 +32,11 @@ class User {
       'studentNumber': studentNumber,
       'year': year,
       'fullName': '$firstName $lastName',
+      'numberOfMajorYears': numberOfMajorYears,
     };
   }
 
   factory User.fromMap(Map<String, dynamic> map) {
-    printR(map);
     return User(
       studentId: map['studentId'] as String? ?? map['id'] as String? ?? '',
       firstName: map['firstName'] as String,
@@ -46,6 +46,7 @@ class User {
       majorName: map['majorName'] as String,
       studentNumber: map['studentNumber'] as String,
       year: map['year'] as int,
+      numberOfMajorYears: map['numberOfMajorYears'] as int,
     );
   }
 }
@@ -67,6 +68,7 @@ class FullUser extends User {
     required this.refreshToken,
     required this.accessToken,
     required this.deviceToken,
+    required super.numberOfMajorYears,
   });
 
   factory FullUser.fromMap(Map<String, dynamic> map) {
@@ -82,6 +84,7 @@ class FullUser extends User {
       refreshToken: map['refreshToken'] as String,
       accessToken: map['accessToken'] as String,
       deviceToken: map['deviceToken'] as String? ?? '',
+      numberOfMajorYears: map['numberOfMajorYears'] as int? ?? 0,
     );
   }
 }

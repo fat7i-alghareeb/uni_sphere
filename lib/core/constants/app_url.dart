@@ -1,7 +1,5 @@
 class AppUrl {
-  static String getAllSubjects = '';
 
-  static String getSubjectById = '';
 
   static const baseUrlDevelopment = 'https://192.168.1.43:5001/';
 
@@ -20,6 +18,12 @@ class AppUrl {
   static const getFaculties = '$_info/GetFaculties';
   static const getMajors = '$_info/GetMajors';
   //! ************** Ent Info ***************//
+  //! ************** Subject ***************//
+  static const _subject = "Subject";
+  static const getMySubjectsByYear = '$_subject/GetMyMajorSubjects';
+  static const getMySubjects = '$_subject/MySubjects';
+  static String getSubjectById(String id) => '$_subject/$id';
+  //! ************** End Subject ***************//
 
   static const getProfile = '';
   static const modifyProfile = '';

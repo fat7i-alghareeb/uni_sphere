@@ -8,8 +8,8 @@ class SubjectDetailsEntity {
   final String subjectDescription;
   final String semester;
   final bool isPassed;
-  final int? midTermGrade;
-  final int? finalGrade;
+  final double? midTermGrade;
+  final double? finalGrade;
   final bool canEnroll;
   final bool doesHaveALab;
   final bool isMultipleChoice;
