@@ -1,7 +1,5 @@
 class AppUrl {
-
-
-  static const baseUrlDevelopment = 'https://192.168.1.43:5001/';
+  static const baseUrlDevelopment = 'https://192.168.1.125:5001/';
 
   static const _auth = "Auth";
   //! ************** Auth *************** //
@@ -24,6 +22,12 @@ class AppUrl {
   static const getMySubjects = '$_subject/MySubjects';
   static String getSubjectById(String id) => '$_subject/$id';
   //! ************** End Subject ***************//
+  //! ************** Schedule ***************//
+  static const _schedule = "Schedule";
+  static const getMySchedule = '$_schedule/GetMySchedule';
+  static const getScheduleByMonth = '$_schedule/GetScheduleByMonth';
+
+  //! ************** End Schedule ***************//
 
   static const getProfile = '';
   static const modifyProfile = '';

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/features/timetable/domain/entities/month_schedule_entity.dart';
+import 'package:test/shared/utils/helper/colored_print.dart' show printW;
 import '../../../../../core/result_builder/result.dart';
 import '../../../domain/usecases/timetable_usecase.dart';
 part 'time_table_event.dart';
@@ -19,12 +20,16 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
   Future<void> _onGetTimeTable(
       GetTimeTableEvent event, Emitter<TimeTableState> emit) async {
     try {
+      // Update selected date time immediately
+      selectedDateTime = event.month;
+
       emit(state.copyWith(
         result: const Result.loading(),
         monthsSchedules: [],
       ));
 
-      final response = await _usecase.getTimeTable(month: event.month);
+      final response = await _usecase.getMonthTimetable(
+          month: event.month.month, year: event.month.year);
 
       response.fold(
         (error) => emit(state.copyWith(
@@ -33,7 +38,6 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
         (data) {
           final updatedSchedules =
               List<MonthScheduleEntity>.from(state.monthsSchedules)..add(data);
-          selectedDateTime = event.month;
 
           emit(state.copyWith(
             result: Result.loaded(data: data),
@@ -51,6 +55,9 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
   Future<void> _onLoadMonth(
       LoadMonthEvent event, Emitter<TimeTableState> emit) async {
     try {
+      // Update selected date time immediately for navigation
+      selectedDateTime = event.month;
+
       // Check if we already have the month's data
       if (_hasMonthData(event.month)) {
         _emitExistingMonthData(event.month, emit);
@@ -59,16 +66,19 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
 
       emit(state.copyWith(loadMonthResult: const Result.loading()));
 
-      final response = await _usecase.getTimeTable(month: event.month);
+      final response = await _usecase.getMonthTimetable(
+          month: event.month.month, year: event.month.year);
 
       response.fold(
-        (error) => emit(state.copyWith(
-          loadMonthResult: Result.error(error: error),
-        )),
+        (error) {
+          printW(error);
+          emit(state.copyWith(
+            loadMonthResult: Result.error(error: error),
+          ));
+        },
         (data) {
           final updatedSchedules =
               List<MonthScheduleEntity>.from(state.monthsSchedules)..add(data);
-          selectedDateTime = event.month;
 
           emit(state.copyWith(
             loadMonthResult: Result.loaded(data: data),
@@ -97,8 +107,6 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
         daysTimeTables: [],
       ),
     );
-
-    selectedDateTime = month;
 
     emit(state.copyWith(
       loadMonthResult: Result.loaded(data: existingData),

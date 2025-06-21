@@ -177,4 +177,7 @@ class AppStrings {
   static String get enterConfirmPassword =>
       _localization.tr('enterConfirmPassword');
   static String get createAccount => _localization.tr('createAccount');
+  static String get retry => _localization.tr('retry');
+  static String get errorLoadingSchedules =>
+      _localization.tr('errorLoadingSchedules');
 }

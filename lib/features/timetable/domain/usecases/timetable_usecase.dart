@@ -1,6 +1,5 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/constants/time_dummy_data.dart';
 import '../entities/month_schedule_entity.dart';
 import '../repositories/timetable_repository.dart';
 
@@ -15,21 +14,13 @@ class TimetableUsecase {
   }) : _repo = repo;
 
   //* Get All Timetable
-  Future<Either<String, MonthScheduleEntity>> getTimeTable(
-      {required DateTime month}) {
-    return Future.delayed(
-      const Duration(milliseconds: 1250),
-      () => Right(
-        generateMonthScheduleDummyData.firstWhere(
-          (element) => element.month.month == month.month,
-          orElse: () => MonthScheduleEntity(
-            month: month,
-            daysTimeTables: [],
-          ),
-        ),
-      ),
-    );
+  Future<Either<String, MonthScheduleEntity>> getMonthTimetable(
+      {required int month, required int year}) {
+    return _repo.getMonthTimetable(month: month, year: year);
+  }
 
-// return _repo.getAllTimetable();
+  //* Get All Timetable
+  Future<Either<String, MonthScheduleEntity>> getAllTimetables() {
+    return _repo.getAllTimetables();
   }
 }

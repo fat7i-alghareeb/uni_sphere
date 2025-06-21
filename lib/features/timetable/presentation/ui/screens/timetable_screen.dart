@@ -1,13 +1,10 @@
 import 'package:test/core/injection/injection.dart';
 import 'package:test/core/result_builder/result.dart';
-import 'package:test/core/result_builder/result_builder.dart';
 import 'package:test/features/timetable/presentation/state/time_table/time_table_bloc.dart';
 import '../../../../../shared/imports/imports.dart';
 import 'package:test/features/timetable/presentation/ui/widgets/day_selector.dart';
 import 'package:test/features/timetable/presentation/ui/widgets/month_selector.dart';
 import 'package:test/features/timetable/presentation/ui/widgets/timetable_item.dart';
-
-import '../../../domain/entities/month_schedule_entity.dart';
 import '../widgets/no_schedule_widgets.dart';
 
 class TimetableScreen extends StatefulWidget {
@@ -39,10 +36,9 @@ class _TimetableScreenState extends State<TimetableScreen> {
       value: getIt<TimeTableBloc>(),
       child: BlocBuilder<TimeTableBloc, TimeTableState>(
         builder: (context, state) {
-          return ResultBuilder<MonthScheduleEntity>(
-            result: state.result,
-            success: (data) => const TimetableBody(),
-          );
+          // Show TimetableBody for both initial load and month navigation
+          // This allows proper error handling in both cases
+          return const TimetableBody();
         },
       ),
     );
@@ -63,7 +59,7 @@ class _TimetableBodyState extends State<TimetableBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<TimeTableBloc, TimeTableState>(
       listener: (context, state) {
-        if (state.loadMonthResult.isLoaded()) {
+        if (state.loadMonthResult.isLoaded() || state.result.isLoaded()) {
           setState(() {
             selectedDayIndex = 0; // Reset to first day when month changes
           });
@@ -84,23 +80,66 @@ class _TimetableBodyState extends State<TimetableBody> {
     return BlocBuilder<TimeTableBloc, TimeTableState>(
       buildWhen: (previous, current) =>
           current.loadMonthResult.getDataWhenSuccess()?.month.month !=
-          previous.loadMonthResult.getDataWhenSuccess()?.month.month,
+              previous.loadMonthResult.getDataWhenSuccess()?.month.month ||
+          current.loadMonthResult.isError() !=
+              previous.loadMonthResult.isError() ||
+          current.result.getDataWhenSuccess()?.month.month !=
+              previous.result.getDataWhenSuccess()?.month.month ||
+          current.result.isError() != previous.result.isError(),
       builder: (context, state) {
-        final monthSchedule =
-            getIt<TimeTableBloc>().getMonthsSchedulesByDateTime;
-        final days = monthSchedule.daysTimeTables;
-
-        if (days.isEmpty) {
-          return const NoSchedulesWidget();
+        // Check for error state in both result and loadMonthResult
+        if (state.loadMonthResult.isError()) {
+          return NoSchedulesWidget(
+            isError: true,
+            errorMessage: state.loadMonthResult.getError(),
+            onRetry: () => _retryCurrentMonth(),
+          );
         }
 
-        final selectedDay = days[selectedDayIndex];
+        if (state.result.isError()) {
+          return NoSchedulesWidget(
+            isError: true,
+            errorMessage: state.result.getError(),
+            onRetry: () => _retryCurrentMonth(),
+          );
+        }
+
+        // Check if we have data from either result or loadMonthResult
+        final monthData = state.loadMonthResult.getDataWhenSuccess() ??
+            state.result.getDataWhenSuccess();
+
+        if (monthData == null) {
+          return NoSchedulesWidget(
+            isError: false,
+            onRetry: () => _retryCurrentMonth(),
+          );
+        }
+
+        final days = monthData.daysTimeTables;
+
+        // Filter out days with empty schedules
+        final daysWithSchedules =
+            days.where((day) => day.timetables.isNotEmpty).toList();
+
+        if (daysWithSchedules.isEmpty) {
+          return NoSchedulesWidget(
+            isError: false,
+            onRetry: () => _retryCurrentMonth(),
+          );
+        }
+
+        // Ensure selectedDayIndex is within bounds
+        if (selectedDayIndex >= daysWithSchedules.length) {
+          selectedDayIndex = 0;
+        }
+
+        final selectedDay = daysWithSchedules[selectedDayIndex];
 
         return Expanded(
           child: Column(
             children: [
               DaySelector(
-                days: days,
+                days: daysWithSchedules,
                 selectedDayIndex: selectedDayIndex,
                 onDaySelected: (index) =>
                     setState(() => selectedDayIndex = index),
@@ -147,6 +186,28 @@ class _TimetableBodyState extends State<TimetableBody> {
         );
       },
     );
+  }
+
+  void _retryCurrentMonth() {
+    // Check which state has an error and retry accordingly
+    final bloc = getIt<TimeTableBloc>();
+    final currentState = bloc.state;
+
+    if (currentState.result.isError()) {
+      // Retry initial load
+      bloc.add(
+        GetTimeTableEvent(
+          month: TimeTableBloc.selectedDateTime,
+        ),
+      );
+    } else {
+      // Retry month navigation
+      bloc.add(
+        LoadMonthEvent(
+          month: TimeTableBloc.selectedDateTime,
+        ),
+      );
+    }
   }
 }
 

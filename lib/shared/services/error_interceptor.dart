@@ -19,6 +19,7 @@ class ErrorInterceptor extends Interceptor {
           err.copyWith(error: AppException.known("لا يوجد إتصال في الانترنت"));
       handler.reject(err);
     } else if (err.response.toString().isNotEmpty &&
+        err.response?.data is Map &&
         err.response?.data?["message"] != null) {
       if (err.response?.data?["message"]
               .toLowerCase()

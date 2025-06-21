@@ -153,5 +153,7 @@
     "enterPassword": "Enter Password",
     "confirmPassword": "Confirm Password",
     "enterConfirmPassword": "Enter Confirm Password",
-    "createAccount": "Create Account"
+    "createAccount": "Create Account",
+    "retry": "Retry",
+    "errorLoadingSchedules": "Error loading schedules"
 }

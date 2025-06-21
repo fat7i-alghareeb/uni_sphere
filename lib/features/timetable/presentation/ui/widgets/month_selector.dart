@@ -9,6 +9,8 @@ import 'package:test/features/timetable/presentation/state/time_table/time_table
 import 'package:test/shared/extensions/string_extension.dart';
 import 'package:test/shared/widgets/loading_progress.dart';
 
+import '../../../../../shared/utils/helper/show_error_overlay.dart';
+
 class MonthSelector extends StatefulWidget {
   const MonthSelector({super.key});
 
@@ -100,6 +102,9 @@ class _MonthSelectorState extends State<MonthSelector>
       TimeTableBloc.selectedDateTime.month + offset,
     );
 
+    // Update the selected date time immediately for navigation
+    TimeTableBloc.selectedDateTime = selectedMonth;
+
     getIt<TimeTableBloc>().add(
       LoadMonthEvent(
         month: selectedMonth,
@@ -124,6 +129,18 @@ class _MonthSelectorState extends State<MonthSelector>
             _animateMonthChange(_pendingAnimationOffset!);
             _pendingAnimationOffset = null;
           }
+        }
+        if (state.loadMonthResult.isError()) {
+          showErrorOverlay(
+              context,
+              state.loadMonthResult.maybeWhen(
+                orElse: () => "لا يوجد بيانات لهذا الشهر",
+                error: (error) => error,
+              ));
+          setState(() {
+            isLeftLoading = false;
+            isRightLoading = false;
+          });
         }
       },
       child: Container(

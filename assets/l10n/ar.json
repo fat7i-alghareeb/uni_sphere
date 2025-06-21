@@ -154,5 +154,7 @@
     "enterPassword": "أدخل كلمة المرور",
     "confirmPassword": "تأكيد كلمة المرور",
     "enterConfirmPassword": "أدخل تأكيد كلمة المرور",
-    "createAccount": "إنشاء حساب"
+    "createAccount": "إنشاء حساب",
+    "retry": "إعادة المحاولة",
+    "errorLoadingSchedules": "خطأ في تحميل الجداول"
 }

@@ -1,10 +1,7 @@
-import 'package:test/core/auth_data_source/local/auth_local.dart';
-import 'package:test/core/injection/injection.dart';
 import 'package:test/features/access/presentation/ui/screens/login_screen.dart'
     show LoginScreen;
 import 'package:test/router/router_config.dart' show BeamerBuilder;
 import 'package:test/shared/imports/imports.dart';
-import 'package:test/shared/utils/helper/colored_print.dart';
 import '../../../../../common/constant/app_strings.dart' show AppStrings;
 import 'package:beamer/beamer.dart';
 

@@ -8,5 +8,7 @@ abstract class TimetableRepo {
   TimetableRepo();
 
   //* Get All Timetable
-  Future<Either<String, MonthScheduleEntity>> getAllTimetable();
+  Future<Either<String, MonthScheduleEntity>> getMonthTimetable(
+      {required int month, required int year});
+  Future<Either<String, MonthScheduleEntity>> getAllTimetables();
 }
