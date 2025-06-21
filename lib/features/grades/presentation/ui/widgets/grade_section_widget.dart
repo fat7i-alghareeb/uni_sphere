@@ -158,7 +158,7 @@ class _SemesterSectionState extends State<_SemesterSection>
                       bottom: 8.h,
                     ),
                     child: GradeCardWidget(
-                      key: ValueKey('grade_${grade.id}'),
+                      key: ValueKey('grade_${grade.subjectName}_${grade.subjectYear}_${grade.subjectSemester}'),
                       grade: grade,
                     ),
                   )),

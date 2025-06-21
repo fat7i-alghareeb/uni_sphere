@@ -723,7 +723,6 @@ final GradesResponseEntity mockedGradesResponse = GradesResponseEntity(
 );
 final List<GradeEntity> mockedGrades = [
   GradeEntity(
-    id: 'CS101',
     subjectName: 'Programming Fundamentals',
     subjectYear: 1,
     subjectSemester: 1,
@@ -732,7 +731,6 @@ final List<GradeEntity> mockedGrades = [
     isPassed: true, // Total: 80 (Pass)
   ),
   GradeEntity(
-    id: 'CS102',
     subjectName: 'Discrete Mathematics',
     subjectYear: 1,
     subjectSemester: 2,
@@ -741,7 +739,6 @@ final List<GradeEntity> mockedGrades = [
     isPassed: false, // Total: 57 (Pass)
   ),
   GradeEntity(
-    id: 'CS201',
     subjectName: 'Data Structures',
     subjectYear: 2,
     subjectSemester: 1,
@@ -750,7 +747,6 @@ final List<GradeEntity> mockedGrades = [
     isPassed: false, // Total: 53 ()
   ),
   GradeEntity(
-    id: 'CS202',
     subjectName: 'Computer Organization',
     subjectYear: 2,
     subjectSemester: 2,
@@ -759,7 +755,6 @@ final List<GradeEntity> mockedGrades = [
     isPassed: true, // Total: 73 (Good)
   ),
   GradeEntity(
-    id: 'MATH301',
     subjectName: 'Advanced Calculus',
     subjectYear: 3,
     subjectSemester: 1,
@@ -768,7 +763,6 @@ final List<GradeEntity> mockedGrades = [
     isPassed: false, // Total: 57 (Fail)
   ),
   GradeEntity(
-    id: 'CS302',
     subjectName: 'Operating Systems',
     subjectYear: 3,
     subjectSemester: 1,
@@ -777,7 +771,6 @@ final List<GradeEntity> mockedGrades = [
     isPassed: true, // Total: 83 (Very Good)
   ),
   GradeEntity(
-    id: 'CS401',
     subjectName: 'Artificial Intelligence',
     subjectYear: 4,
     subjectSemester: 2,
@@ -786,7 +779,6 @@ final List<GradeEntity> mockedGrades = [
     isPassed: true, // Total: 89 (Excellent)
   ),
   GradeEntity(
-    id: 'CS402',
     subjectName: 'Computer Networks',
     subjectYear: 4,
     subjectSemester: 2,
@@ -794,8 +786,7 @@ final List<GradeEntity> mockedGrades = [
     finalTermGrade: 59,
     isPassed: true, // Total: 78 (Good)
   ),
-  GradeEntity(
-    id: 'CS403',
+  GradeEntity(  
     subjectName: 'Database Systems',
     subjectYear: 4,
     subjectSemester: 2,

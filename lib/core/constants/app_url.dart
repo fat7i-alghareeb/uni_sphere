@@ -26,14 +26,16 @@ class AppUrl {
   static const _schedule = "Schedule";
   static const getMySchedule = '$_schedule/GetMySchedule';
   static const getScheduleByMonth = '$_schedule/GetScheduleByMonth';
-
   //! ************** End Schedule ***************//
-
-  static const getProfile = '';
-  static const modifyProfile = '';
-  static const getMyProfile = '';
-  static const getAllNotification = '';
-
+  //! ************** Announcement ***************//
+  static const _announcement = "Announcement";
+  static const getAnnouncements = '$_announcement/GetAnnouncements';
+  static const getMyAnnouncements = '$_announcement/GetMyAnnouncements';
+  //! ************** End Announcement ***************//
+  //! ************** Grades ***************//
+  static const _grades = "Grades";
+  static const getMyGrades = '$_grades/GetMyGrades';
+  //! ************** End Grades ***************//
   static const contactUs = '';
 
   static const forgetPassword = '';

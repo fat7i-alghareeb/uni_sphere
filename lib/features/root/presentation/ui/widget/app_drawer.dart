@@ -83,7 +83,7 @@ class CustomEndDrawer extends StatelessWidget {
                   12.verticalSpace,
                   ListTile(
                     leading:
-                        Icon(Icons.grade_rounded, color: context.primaryColor),
+                        Icon(Icons.school_rounded, color: context.primaryColor),
                     title: Text(
                       AppStrings.yourGrades,
                       style: context.textTheme.titleMedium,

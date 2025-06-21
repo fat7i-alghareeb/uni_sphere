@@ -53,11 +53,16 @@ void showErrorOverlay(BuildContext context, String error) {
     ),
   );
 
-  // Insert the overlay
-  Overlay.of(context).insert(overlayEntry);
+  // Schedule the overlay insertion after the current build phase is complete
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    // Insert the overlay
+    if (overlayEntry != null) {
+      Overlay.of(context).insert(overlayEntry);
 
-  // Remove the overlay after 3 seconds
-  Future.delayed(const Duration(seconds: 3), () {
-    overlayEntry?.remove();
+      // Remove the overlay after 3 seconds
+      Future.delayed(const Duration(seconds: 3), () {
+        overlayEntry?.remove();
+      });
+    }
   });
 }
