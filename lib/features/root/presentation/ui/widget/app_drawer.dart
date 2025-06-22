@@ -6,6 +6,7 @@ import '../../../../../shared/widgets/theme_switcher.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../features/settings/presentation/ui/screens/language_selection_screen.dart';
 import '../../../../../features/grades/presentation/ui/screens/grades_screen.dart';
+import '../screen/student_screen.dart';
 
 class CustomEndDrawer extends StatelessWidget {
   const CustomEndDrawer({super.key});
@@ -73,6 +74,23 @@ class CustomEndDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       context.beamToNamed(LanguageSelectionScreen.pagePath);
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.r)),
+                    tileColor: context.cardColor,
+                    contentPadding:
+                        REdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  ),
+                  12.verticalSpace,
+                  ListTile(
+                    leading:
+                        Icon(Icons.person_outline, color: context.primaryColor),
+                    title: Text(
+                      AppStrings.studentProfile,
+                      style: context.textTheme.titleMedium,
+                    ),
+                    onTap: () {
+                      context.beamToNamed('/root/${StudentScreen.pagePath}');
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r)),

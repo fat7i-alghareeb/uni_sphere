@@ -168,5 +168,18 @@
     "noInternetConnection": "No internet connection",
     "insufficientPermissions": "You don't have sufficient permissions",
     "settings": "Settings",
-    "version": "Version"
+    "version": "Version",
+    "studentProfile": "Student Profile",
+    "noUserDataAvailable": "No user data available",
+    "personalInformation": "Personal Information",
+    "academicInformation": "Academic Information",
+    "enrollmentStatus": "Enrollment Status",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "fatherName": "Father's Name",
+    "major": "Major",
+    "currentYear": "Current Year",
+    "majorDuration": "Major Duration",
+    "status": "Status",
+    "year": "Year"
 }

@@ -4,6 +4,8 @@ import 'package:beamer/beamer.dart';
 import 'package:dio_refresh_bot/dio_refresh_bot.dart' show Status;
 import 'package:test/features/access/presentation/ui/screens/login_screen.dart'
     show LoginScreen;
+import 'package:test/features/root/presentation/ui/screen/student_screen.dart'
+    show StudentScreen;
 
 import '../features/access/presentation/ui/screens/check_one_time_code_screen.dart'
     show CheckOneTimeCodeScreen;
@@ -95,6 +97,7 @@ class BRouterConfig {
           //! -------------- Settings ---------------- !//
           "/root/language_selection": LanguageSelectionScreen.pageBuilder,
           "/root/grades_screen": GradesScreen.pageBuilder,
+          "/root/student": StudentScreen.pageBuilder,
         },
       ).call,
     );

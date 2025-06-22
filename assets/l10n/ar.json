@@ -169,5 +169,18 @@
     "noInternetConnection": "لا يوجد إتصال في الانترنت",
     "insufficientPermissions": "ليس لديك الصلاحيات الكافية",
     "settings": "الإعدادات",
-    "version": "الإصدار"
+    "version": "الإصدار",
+    "studentProfile": "الملف الشخصي للطالب",
+    "noUserDataAvailable": "لا توجد بيانات مستخدم متاحة",
+    "personalInformation": "المعلومات الشخصية",
+    "academicInformation": "المعلومات الأكاديمية",
+    "enrollmentStatus": "حالة التسجيل",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "fatherName": "اسم الأب",
+    "major": "التخصص",
+    "currentYear": "السنة الحالية",
+    "majorDuration": "مدة التخصص",
+    "status": "الحالة",
+    "year": "السنة"
 }

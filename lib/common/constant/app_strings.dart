@@ -202,4 +202,20 @@ class AppStrings {
       _localization.tr('insufficientPermissions');
   static String get settings => _localization.tr('settings');
   static String get version => _localization.tr('version');
+  static String get studentProfile => _localization.tr('studentProfile');
+  static String get noUserDataAvailable =>
+      _localization.tr('noUserDataAvailable');
+  static String get personalInformation =>
+      _localization.tr('personalInformation');
+  static String get academicInformation =>
+      _localization.tr('academicInformation');
+  static String get enrollmentStatus => _localization.tr('enrollmentStatus');
+  static String get firstName => _localization.tr('firstName');
+  static String get lastName => _localization.tr('lastName');
+  static String get fatherName => _localization.tr('fatherName');
+  static String get major => _localization.tr('major');
+  static String get currentYear => _localization.tr('currentYear');
+  static String get majorDuration => _localization.tr('majorDuration');
+  static String get status => _localization.tr('status');
+  static String get year => _localization.tr('year');
 }
