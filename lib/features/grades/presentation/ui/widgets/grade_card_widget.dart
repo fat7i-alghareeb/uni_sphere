@@ -146,7 +146,7 @@ class GradeCardWidget extends StatelessWidget {
           Text(
             label,
             style: context.textTheme.labelSmall!.copyWith(
-              color: context.onBackgroundColor.withOpacity(0.7),
+              color: context.onBackgroundColor.withValues(alpha: 0.7),
             ),
           ),
           4.verticalSpace,

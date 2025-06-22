@@ -9,6 +9,7 @@ class User {
   final String studentNumber;
   final int year;
   final int numberOfMajorYears;
+  final String image;
   User({
     required this.firstName,
     required this.studentId,
@@ -19,6 +20,7 @@ class User {
     required this.studentNumber,
     required this.year,
     required this.numberOfMajorYears,
+    required this.image,
   });
 
   Map<String, dynamic> toMap() {
@@ -33,6 +35,7 @@ class User {
       'year': year,
       'fullName': '$firstName $lastName',
       'numberOfMajorYears': numberOfMajorYears,
+      'image': image,
     };
   }
 
@@ -47,6 +50,7 @@ class User {
       studentNumber: map['studentNumber'] as String,
       year: map['year'] as int,
       numberOfMajorYears: map['numberOfMajorYears'] as int,
+      image: map['image'] as String? ?? '',
     );
   }
 }
@@ -69,6 +73,7 @@ class FullUser extends User {
     required this.accessToken,
     required this.deviceToken,
     required super.numberOfMajorYears,
+    required super.image,
   });
 
   factory FullUser.fromMap(Map<String, dynamic> map) {
@@ -85,6 +90,7 @@ class FullUser extends User {
       accessToken: map['accessToken'] as String,
       deviceToken: map['deviceToken'] as String? ?? '',
       numberOfMajorYears: map['numberOfMajorYears'] as int? ?? 0,
+      image: map['image'] as String? ?? '',
     );
   }
 }

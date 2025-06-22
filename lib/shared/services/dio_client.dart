@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_refresh_bot/dio_refresh_bot.dart';
 import 'package:flutter/foundation.dart';
-import 'package:test/core/repo/auth_repo/repo_imp.dart';
 import 'package:test/shared/utils/helper/colored_print.dart' show printR;
 
 // 🌎 Project imports:

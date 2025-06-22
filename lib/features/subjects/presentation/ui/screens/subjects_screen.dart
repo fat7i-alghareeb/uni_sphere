@@ -1,7 +1,5 @@
 import 'package:beamer/beamer.dart';
 import '../../../../../shared/utils/helper/colored_print.dart';
-import 'package:flutter/foundation.dart';
-
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../core/result_builder/result.dart';

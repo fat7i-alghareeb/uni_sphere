@@ -19,7 +19,7 @@ class AnnouncementsRepoImp implements AnnouncementsRepo {
   Future<Either<String, NewsEntity>> getAllAnnouncements() {
     return throwAppException(
       () async {
-        return await _remote.getAllAnnouncements();
+        return await _remote.getStudentAnnouncements();
       },
     );
   }

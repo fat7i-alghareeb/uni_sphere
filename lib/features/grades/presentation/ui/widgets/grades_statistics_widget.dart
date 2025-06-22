@@ -82,7 +82,7 @@ class GradesStatisticsWidget extends StatelessWidget {
               width: double.infinity,
               padding: REdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: context.primaryColor.withOpacity(0.1),
+                color: context.primaryColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: Row(
@@ -94,7 +94,7 @@ class GradesStatisticsWidget extends StatelessWidget {
                         Text(
                           AppStrings.averageGrade,
                           style: context.textTheme.titleSmall!.copyWith(
-                            color: context.onBackgroundColor.withOpacity(0.7),
+                            color: context.onBackgroundColor.withValues(alpha: 0.7),
                           ),
                         ),
                         4.verticalSpace,

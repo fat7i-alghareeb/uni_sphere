@@ -15,6 +15,7 @@ class AppUrl {
   static const _info = "Info";
   static const getFaculties = '$_info/GetFaculties';
   static const getMajors = '$_info/GetMajors';
+  static const getHomePageInfo = '$_info/GetHomePageInfo';
   //! ************** Ent Info ***************//
   //! ************** Subject ***************//
   static const _subject = "Subject";
@@ -28,9 +29,11 @@ class AppUrl {
   static const getScheduleByMonth = '$_schedule/GetScheduleByMonth';
   //! ************** End Schedule ***************//
   //! ************** Announcement ***************//
-  static const _announcement = "Announcement";
-  static const getAnnouncements = '$_announcement/GetAnnouncements';
-  static const getMyAnnouncements = '$_announcement/GetMyAnnouncements';
+  static const _announcement = "Announcements";
+  static const getStudentAnnouncements =
+      '$_announcement/GetStudentAnnouncements';
+  static const getFacultyAnnouncements =
+      '$_announcement/GetFacultyAnnouncements';
   //! ************** End Announcement ***************//
   //! ************** Grades ***************//
   static const _grades = "Grades";

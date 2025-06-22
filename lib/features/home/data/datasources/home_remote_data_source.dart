@@ -1,6 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:dio/dio.dart';
 
+import '../../../../core/constants/app_url.dart' show AppUrl;
 import '../../../../shared/services/exception/error_handler.dart';
 import '../models/home_model.dart';
 
@@ -16,9 +17,9 @@ class HomeRemote {
     return throwDioException(
       () async {
         final response = await _dio.get(
-          "random/url",
+          AppUrl.getHomePageInfo,
         );
-        return response.data;
+        return HomeModel.fromJson(response.data);
       },
     );
   }

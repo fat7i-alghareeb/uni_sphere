@@ -19,7 +19,8 @@ class DaysToTheFinalsWidget extends StatelessWidget {
             loading: () => const DaysToTheFinalsLoadingBody(),
             success: (data) {
               return DaysToTheFinalsBody(
-                targetDate: DateTime.parse(data.daysToTheFinals.remainingTime),
+                targetDate: DateTime.now().add(const Duration(days: 10)),
+                // targetDate: DateTime.parse(data.daysToTheFinals.remainingTime),
               );
             },
             result: state.result,
