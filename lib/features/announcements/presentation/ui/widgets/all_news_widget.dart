@@ -1,4 +1,5 @@
 import 'package:beamer/beamer.dart';
+import '../../../../../core/constants/dummy_data.dart' show dummyImages;
 import '../../../../../core/result_builder/result_builder.dart';
 import '../../../domain/entities/news_entity.dart';
 import '../../state/bloc/announcement_bloc.dart';
@@ -312,7 +313,9 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
                           child: Hero(
                             tag: data[index].id,
                             child: CustomNetworkImage(
-                              imageUrl: data[index].image?[0] ?? '',
+                              imageUrl: data[index].image?.isNotEmpty ?? false
+                                  ? data[index].image![0]
+                                  : dummyImages[0],
                               height: 180.h,
                               width: double.infinity,
                               borderRadius: 22,

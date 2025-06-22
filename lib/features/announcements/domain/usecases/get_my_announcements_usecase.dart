@@ -1,7 +1,5 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
-
-import '../../../../core/constants/dummy_data.dart';
 import '../entities/news_entity.dart';
 import '../repositories/announcements_repository.dart';
 
@@ -17,9 +15,5 @@ class GetMyAnnouncementsUsecase {
 
   //* Get All Announcements
   Future<Either<String, List<NewsEntity>>> getMyAnnouncement() =>
-      Future.delayed(
-        const Duration(milliseconds: 1200),
-        () => Right(shortAnnouncements),
-      );
-  // _repo.getAllAnnouncements();
+      _repo.getStudentAnnouncements();
 }

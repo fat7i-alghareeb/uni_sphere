@@ -23,7 +23,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
 
   _getAnnouncement(GetAnnouncementEvent event, Emitter emit) async {
     emit(state.copyWith(result: const Result.loading()));
-    final response = await _usecase.getAllAnnouncements();
+    final response = await _usecase.getFacultyAnnouncements();
     response.fold(
       (l) => emit(
         state.copyWith(

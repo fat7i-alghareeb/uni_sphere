@@ -9,5 +9,6 @@ abstract class AnnouncementsRepo {
   AnnouncementsRepo();
 
   //* Get All Announcements
-  Future<Either<String, NewsEntity>> getAllAnnouncements();
+  Future<Either<String, List<NewsEntity>>> getStudentAnnouncements();
+  Future<Either<String, List<NewsEntity>>> getFacultyAnnouncements();
 }
