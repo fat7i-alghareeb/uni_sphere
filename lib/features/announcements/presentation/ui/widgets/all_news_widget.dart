@@ -71,6 +71,11 @@ class _AllNewsWidgetState extends State<AllNewsWidget>
   Widget build(BuildContext context) {
     return BlocBuilder<AnnouncementBloc, AnnouncementState>(
       builder: (context, state) => ResultBuilder<List<NewsEntity>>(
+        onError: () {
+          getIt<AnnouncementBloc>().add(
+            GetAnnouncementEvent(),
+          );
+        },
         loading: () => _buildLoadingShimmer(),
         success: (data) {
           _initializeAnimations(data.length);

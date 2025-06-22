@@ -52,55 +52,10 @@ class RootHeader extends StatelessWidget {
             ),
           ),
           // Right Side: Icons
-          Row(
-            children: [
-              // Notification Icon
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  _buildIcon(
-                    context: context,
-                    icon: Assets.icons.notification,
-                    onTap: () {},
-                  ),
-                  if (unreadNotifications > 0)
-                    Positioned(
-                      right: -4.r,
-                      top: -4.r,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        ),
-                        constraints: BoxConstraints(
-                          minWidth: 8.r,
-                          minHeight: 8.r,
-                          maxWidth: 15.r,
-                          maxHeight: 15.r,
-                        ),
-                        child: Center(
-                          child: FittedBox(
-                            child: Text(
-                              unreadNotifications.toString(),
-                              style: context.textTheme.labelSmall?.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-              // Drawer Icon
-              16.horizontalSpace,
-              _buildIcon(
-                context: context,
-                icon: Assets.icons.drawer,
-                onTap: () => scaffoldKey.currentState?.openEndDrawer(),
-              ),
-            ],
+          _buildIcon(
+            context: context,
+            icon: Assets.icons.drawer,
+            onTap: () => scaffoldKey.currentState?.openEndDrawer(),
           ),
         ],
       ),

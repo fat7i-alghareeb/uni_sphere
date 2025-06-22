@@ -14,11 +14,10 @@ class NavBarProvider extends ChangeNotifier {
 
   void changeSelected(int index) {
     selectedIndex = index;
-    pageController.animateToPage(
+    pageController.jumpToPage(
       index,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.easeInOut,
-      
+      // duration: const Duration(milliseconds: 100),
+      // curve: Curves.easeInOut,
     );
     notifyListeners();
   }
