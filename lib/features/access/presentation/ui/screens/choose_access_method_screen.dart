@@ -12,7 +12,7 @@ import 'check_one_time_code_screen.dart' show CheckOneTimeCodeScreen;
 
 class ChooseAccessMethodScreen extends StatelessWidget {
   const ChooseAccessMethodScreen({super.key});
-  static const String pagePath = 'choose_access_method';
+  static const String pagePath = '/choose_access_method';
   static BeamerBuilder pageBuilder = (context, state, data) {
     return const BeamPage(
       key: ValueKey("choose_access_method"),

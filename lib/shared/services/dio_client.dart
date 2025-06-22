@@ -41,6 +41,7 @@ class DioClient with DioMixin implements Dio {
         "accept": "application/json",
         'Content-Type': 'application/json; charset=UTF-8',
         "Transfer-Encoding": "chunked",
+        "lang": 'en',
       };
     if (interceptors.isNotEmpty) {
       this.interceptors.addAll(interceptors);
@@ -82,12 +83,17 @@ class DioClient with DioMixin implements Dio {
               data: {
                 'refreshToken': token.refreshToken,
               },
+              options: Options(
+                headers: {
+                  'lang': 'en',
+                },
+              ),
             );
             final authTokenModel = AuthTokenModel.fromMap(response.data);
             await updateStorageToken(token);
             return authTokenModel;
           } catch (e) {
-            getIt<AuthRepoImp>().logout();
+            // getIt<AuthRepoImp>().logout();
             return AuthTokenModel(
               accessToken: '',
               refreshToken: '',

@@ -1,7 +1,10 @@
 import 'package:beamer/beamer.dart' show BeamPage, BeamPageType;
 import 'package:easy_localization/easy_localization.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../common/constant/app_strings.dart' show AppStrings;
+import '../../../../../core/constants/key_constants.dart';
+import '../../../../../core/injection/injection.dart';
 import '../../../../../router/router_config.dart';
 import '../../../../../shared/imports/imports.dart';
 
@@ -83,7 +86,11 @@ class LanguageSelectionScreen extends StatelessWidget {
               ),
               onTap: () async {
                 if (!isSelected) {
-                  await context.setLocale(lang['locale'] as Locale);
+                  final locale = lang['locale'] as Locale;
+                  await context.setLocale(locale);
+                  // Also save to SharedPreferences for API calls
+                  await getIt<SharedPreferences>()
+                      .setString(kLanguage, locale.languageCode);
                 }
               },
               shape: RoundedRectangleBorder(

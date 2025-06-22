@@ -64,10 +64,11 @@ class BRouterConfig {
         // }
         if (appManagerBloc.state.status == Status.authenticated &&
             !routerInfo.uri.path.contains(RootScreen.pagePath)) {
-          routerDelegate.beamToNamed(RootScreen.pagePath);
+          routerDelegate.beamToReplacementNamed(RootScreen.pagePath);
         } else if (appManagerBloc.state.status == Status.unauthenticated &&
             !routerInfo.uri.path.contains(ChooseAccessMethodScreen.pagePath)) {
-          routerDelegate.beamToNamed(ChooseAccessMethodScreen.pagePath);
+          routerDelegate
+              .beamToReplacementNamed(ChooseAccessMethodScreen.pagePath);
         }
       },
       locationBuilder: RoutesLocationBuilder(
