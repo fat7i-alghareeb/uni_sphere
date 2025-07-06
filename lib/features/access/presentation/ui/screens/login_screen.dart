@@ -7,8 +7,8 @@ import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart'
     show AuthBloc;
 import 'package:test/features/access/presentation/ui/widgets/login_body.dart';
 import 'package:test/router/router_config.dart';
-import 'package:test/shared/states/bloc/info_bloc.dart';
 import 'package:test/shared/imports/imports.dart';
+import 'package:test/shared/states/bloc/info_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

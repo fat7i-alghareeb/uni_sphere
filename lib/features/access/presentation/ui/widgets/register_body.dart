@@ -1,5 +1,6 @@
 import 'package:reactive_forms/reactive_forms.dart'
     show ReactiveForm, ReactiveFormConsumer;
+import 'package:easy_localization/easy_localization.dart';
 import 'package:test/common/constant/app_strings.dart';
 import 'package:test/core/injection/injection.dart' show getIt;
 import 'package:test/core/result_builder/result.dart';
@@ -102,6 +103,11 @@ class _RegisterBodyState extends State<RegisterBody>
     _animationController.forward();
 
     RegisterForm.clearForm();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _prefillUserData();
   }
 
@@ -111,8 +117,10 @@ class _RegisterBodyState extends State<RegisterBody>
     final simpleUser = authBloc.state.checkOneTimeResult.getDataWhenSuccess();
 
     if (simpleUser != null) {
-      RegisterForm.formGroup
-          .setValue(AuthInputKeys.userName, simpleUser.fullName);
+      // Use the localized full name based on current locale
+      final currentLanguage = context.locale.languageCode;
+      RegisterForm.formGroup.setValue(
+          AuthInputKeys.userName, simpleUser.getFullName(currentLanguage));
       RegisterForm.formGroup
           .setValue(AuthInputKeys.studentId, simpleUser.studentId);
     }

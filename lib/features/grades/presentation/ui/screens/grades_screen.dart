@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
+
 import '../../../../../core/injection/injection.dart';
 import '../../../../../core/result_builder/result.dart';
 import '../../../../../router/router_config.dart';

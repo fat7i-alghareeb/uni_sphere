@@ -1,7 +1,6 @@
+import '../../../common/constant/app_strings.dart';
 import '../../extensions/string_extension.dart';
 import '../../imports/imports.dart';
-
-import '../../../common/constant/app_strings.dart';
 
 class YearHelper {
   static String getYearSubjectsName(int year, BuildContext context) {

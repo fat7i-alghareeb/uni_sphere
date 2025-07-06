@@ -3,6 +3,7 @@ import 'package:beamer/beamer.dart';
 import 'package:test/core/result_builder/result.dart';
 import 'package:test/core/result_builder/result_builder.dart';
 import 'package:test/features/subjects/presentation/ui/widgets/subject_details_image.dart';
+
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../router/router_config.dart';
@@ -11,9 +12,9 @@ import '../../../../../shared/widgets/custom_scaffold_body.dart';
 import '../../../../../shared/widgets/failed_widget.dart';
 import '../../../domain/entities/subject_details_entity.dart';
 import '../../state/subject_details_bloc/subject_details_bloc.dart';
-import '../widgets/subject_details_header.dart';
 import '../widgets/subject_description_with_materials.dart';
 import '../widgets/subject_details_grades.dart';
+import '../widgets/subject_details_header.dart';
 
 //!---------------------------- The Widget -------------------------------------!//
 class SubjectDetailsScreen extends StatefulWidget {

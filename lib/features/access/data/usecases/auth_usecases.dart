@@ -1,9 +1,9 @@
 import 'package:fpdart/fpdart.dart' show Either;
-import '../../../../core/repo/auth_repo/auth_repo.dart';
-import '../params/check_one_time_param.dart';
-import '../../../../shared/entities/user.dart' show User;
 
+import '../../../../core/repo/auth_repo/auth_repo.dart';
+import '../../../../shared/entities/user.dart' show User;
 import '../models/simple_user.dart' show SimpleUser;
+import '../params/check_one_time_param.dart';
 import '../params/login_param.dart' show LoginParam;
 import '../params/register_param.dart' show RegisterParam;
 

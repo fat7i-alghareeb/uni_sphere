@@ -1,5 +1,5 @@
-import 'package:test/features/grades/data/models/grades_model.dart';
-import 'package:test/features/grades/domain/entities/grade_entity.dart' show GradeEntity;
+import '../models/grades_model.dart';
+import '../../domain/entities/grade_entity.dart' show GradeEntity;
 
 import '../../domain/entities/grades_response_entity.dart' show GradesResponseEntity;
 

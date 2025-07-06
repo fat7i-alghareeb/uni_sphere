@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart'
     show StringTranslateExtension;
+
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../shared/imports/imports.dart';

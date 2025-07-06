@@ -181,5 +181,6 @@
     "currentYear": "Current Year",
     "majorDuration": "Major Duration",
     "status": "Status",
-    "year": "Year"
+    "year": "Year",
+    "logout": "Logout"
 }

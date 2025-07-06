@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'custom_page_header.dart';
-import '../../core/constants/app_constants.dart';
-import '../extensions/context_extension.dart';
 
+import '../../core/constants/app_constants.dart';
 import '../../gen/assets.gen.dart';
+import '../extensions/context_extension.dart';
+import 'custom_page_header.dart';
 
 class CustomScaffoldBody extends StatelessWidget {
   const CustomScaffoldBody({super.key, required this.child, this.title});

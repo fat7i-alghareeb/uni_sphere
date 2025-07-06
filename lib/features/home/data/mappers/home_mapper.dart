@@ -1,9 +1,9 @@
-import 'package:test/features/home/data/models/home_model.dart';
+import '../models/home_model.dart';
 
 import '../../domain/entities/ads_entity.dart' show AdsEntity;
 import '../../domain/entities/home_entity.dart';
 import '../../domain/entities/statistics_entity.dart';
-import 'package:test/features/home/domain/entities/days_to_the_final.dart';
+import '../../domain/entities/days_to_the_final.dart';
 
 extension HomeMapper on HomeModel {
   HomeEntity toEntity() {

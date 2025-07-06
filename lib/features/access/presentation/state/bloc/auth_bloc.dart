@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/result_builder/result.dart' show Result;
-import '../../../data/params/login_param.dart';
-import '../../../data/usecases/auth_usecases.dart';
-import '../../../../../shared/entities/user.dart';
 
+import '../../../../../core/result_builder/result.dart' show Result;
+import '../../../../../shared/entities/user.dart';
 import '../../../data/models/simple_user.dart' show SimpleUser;
 import '../../../data/params/check_one_time_param.dart' show CheckOneTimeParam;
+import '../../../data/params/login_param.dart';
 import '../../../data/params/register_param.dart';
+import '../../../data/usecases/auth_usecases.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

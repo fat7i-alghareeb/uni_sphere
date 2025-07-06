@@ -1,6 +1,6 @@
-import 'package:test/core/result_builder/result.dart';
-import 'package:test/features/home/presentation/state/bloc/home_bloc.dart';
-import 'package:test/shared/widgets/failed_widget.dart';
+import '../../../../../core/result_builder/result.dart';
+import '../../state/bloc/home_bloc.dart';
+import '../../../../../shared/widgets/failed_widget.dart';
 
 import '../../../../../core/injection/injection.dart' show getIt;
 import '../../../../../shared/imports/imports.dart';

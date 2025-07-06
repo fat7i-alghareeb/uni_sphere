@@ -57,7 +57,9 @@ Future<void> updateStorageToken(
     studentNumber: user.studentNumber,
     year: user.year,
     numberOfMajorYears: user.numberOfMajorYears,
-    image: user.image,
+    studentImageUrl: user.studentImageUrl,
+    majorId: user.majorId,
+    role: user.role,
   );
   await getIt<AuthLocal>().setUser(user2);
 }

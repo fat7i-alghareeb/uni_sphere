@@ -1,5 +1,6 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:beamer/beamer.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/core/auth_data_source/local/auth_local.dart';
 import 'package:test/core/injection/injection.dart';
@@ -79,7 +80,7 @@ class _ChooseYearsView extends StatelessWidget {
     try {
       return Scaffold(
         body: CustomScaffoldBody(
-          title: _getMajorName(),
+          title: _getMajorName(context),
           child: BlocConsumer<SubjectsBloc, SubjectsState>(
             listenWhen: (previous, current) =>
                 previous.yearResult != current.yearResult,
@@ -98,9 +99,12 @@ class _ChooseYearsView extends StatelessWidget {
     }
   }
 
-  String _getMajorName() {
+  String _getMajorName(BuildContext context) {
     try {
-      return getIt<AuthLocal>().getUser()?.majorName ?? "";
+      return getIt<AuthLocal>()
+              .getUser()
+              ?.getMajorName(context.locale.languageCode) ??
+          "";
     } catch (e) {
       debugPrint('Error getting major name: $e');
       return "";

@@ -1,12 +1,13 @@
 import 'package:beamer/beamer.dart' show BeamPage, BeamPageType;
-import 'package:test/common/constant/app_strings.dart';
-import 'package:test/core/auth_data_source/local/auth_local.dart';
-import 'package:test/core/injection/injection.dart' show getIt;
-import 'package:test/shared/entities/user.dart' show User;
-import 'package:test/shared/imports/imports.dart';
-import 'package:test/shared/widgets/custom_network_image.dart';
-import 'package:test/shared/widgets/custom_scaffold_body.dart';
-import 'package:test/shared/widgets/spacing.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../../common/constant/app_strings.dart';
+import '../../../../../core/auth_data_source/local/auth_local.dart';
+import '../../../../../core/injection/injection.dart' show getIt;
+import '../../../../../shared/entities/user.dart' show User;
+import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/widgets/custom_network_image.dart';
+import '../../../../../shared/widgets/custom_scaffold_body.dart';
+import '../../../../../shared/widgets/spacing.dart';
 
 import '../../../../../router/router_config.dart' show BeamerBuilder;
 
@@ -203,9 +204,9 @@ class _StudentScreenState extends State<StudentScreen>
                 ],
               ),
               child: ClipOval(
-                child: user!.image.isNotEmpty
+                child: user!.studentImageUrl.isNotEmpty
                     ? CustomNetworkImage(
-                        imageUrl: user!.image,
+                        imageUrl: user!.studentImageUrl,
                         fit: BoxFit.cover,
                         width: 120,
                         height: 120,
@@ -223,7 +224,7 @@ class _StudentScreenState extends State<StudentScreen>
             verticalSpace(16),
             // Full Name
             Text(
-              '${user!.firstName} ${user!.lastName}',
+              '${user!.getFirstName(context.locale.languageCode)} ${user!.getLastName(context.locale.languageCode)}',
               style: context.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: context.onBackgroundColor,
@@ -261,9 +262,12 @@ class _StudentScreenState extends State<StudentScreen>
       title: AppStrings.personalInformation,
       icon: Icons.person_outline,
       children: [
-        _buildInfoRow(context, AppStrings.firstName, user!.firstName),
-        _buildInfoRow(context, AppStrings.lastName, user!.lastName),
-        _buildInfoRow(context, AppStrings.fatherName, user!.fatherName),
+        _buildInfoRow(context, AppStrings.firstName,
+            user!.getFirstName(context.locale.languageCode)),
+        _buildInfoRow(context, AppStrings.lastName,
+            user!.getLastName(context.locale.languageCode)),
+        _buildInfoRow(context, AppStrings.fatherName,
+            user!.getFatherName(context.locale.languageCode)),
         // Student ID removed for privacy
       ],
     );
@@ -275,7 +279,8 @@ class _StudentScreenState extends State<StudentScreen>
       title: AppStrings.academicInformation,
       icon: Icons.school_outlined,
       children: [
-        _buildInfoRow(context, AppStrings.major, user!.majorName),
+        _buildInfoRow(context, AppStrings.major,
+            user!.getMajorName(context.locale.languageCode)),
         _buildInfoRow(context, AppStrings.currentYear,
             '${AppStrings.year} ${user!.year}'),
         _buildInfoRow(
@@ -296,8 +301,9 @@ class _StudentScreenState extends State<StudentScreen>
         _buildInfoRow(
           context,
           AppStrings.status,
-          user!.enrollmentStatusName,
-          valueColor: _getStatusColor(context, user!.enrollmentStatusName),
+          user!.getEnrollmentStatusName(context.locale.languageCode),
+          valueColor: _getStatusColor(context,
+              user!.getEnrollmentStatusName(context.locale.languageCode)),
         ),
       ],
     );

@@ -8,14 +8,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'core/styles/themes.dart';
 import 'core/injection/injection.dart';
+import 'core/repo/auth_repo/auth_repo.dart';
 import 'core/styles/style.dart';
+import 'core/styles/themes.dart';
 import 'features/root/presentation/state/provider/nav_bar_provider.dart';
 import 'router/router_config.dart';
 import 'shared/helper/localization_service.dart';
 import 'shared/imports/imports.dart';
-import 'core/repo/auth_repo/auth_repo.dart';
 import 'shared/states/app_manager_bloc/app_manager_bloc.dart';
 import 'shared/states/theme_provider/theme_provider.dart';
 

@@ -1,16 +1,16 @@
-
 import 'package:reactive_forms/reactive_forms.dart' show ReactiveFormConsumer;
+
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../core/result_builder/result.dart';
-import '../../input_forms/auth_input_keys.dart';
 import '../../../../../shared/entities/drop_down_data.dart';
 import '../../../../../shared/extensions/form_extension.dart';
-import '../../../../../shared/widgets/custom_picker.dart' show CustomPickerField;
-
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/states/bloc/info_bloc.dart';
 import '../../../../../shared/utils/helper/show_error_overlay.dart';
+import '../../../../../shared/widgets/custom_picker.dart'
+    show CustomPickerField;
+import '../../input_forms/auth_input_keys.dart';
 import '../../input_forms/check_one_time_code_from.dart';
 
 class MajorSelector extends StatelessWidget {

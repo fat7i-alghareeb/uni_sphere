@@ -1,13 +1,14 @@
 import 'package:beamer/beamer.dart';
+
 import '../../../../../core/constants/dummy_data.dart' show dummyImages;
+import '../../../../../core/injection/injection.dart';
 import '../../../../../core/result_builder/result_builder.dart';
+import '../../../../../core/styles/colors.dart';
+import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/widgets/custom_network_image.dart';
+import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/news_entity.dart';
 import '../../state/bloc/announcement_bloc.dart';
-import '../../../../../shared/widgets/custom_shimmer.dart';
-import '../../../../../core/styles/colors.dart';
-import '../../../../../shared/widgets/custom_network_image.dart';
-import '../../../../../core/injection/injection.dart';
-import '../../../../../shared/imports/imports.dart';
 import '../screens/news_details_screen.dart' show NewsDetailsScreen;
 
 class AllNewsWidget extends StatefulWidget {

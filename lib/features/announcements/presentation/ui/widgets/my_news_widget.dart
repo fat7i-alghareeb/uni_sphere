@@ -1,11 +1,11 @@
 import '../../../../../core/injection/injection.dart';
 import '../../../../../core/result_builder/result_builder.dart';
+import '../../../../../core/styles/colors.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/widgets/custom_shimmer.dart';
 import '../../../domain/entities/news_entity.dart';
 import '../../state/bloc/announcement_bloc.dart';
 import 'my_news_card.dart';
-import '../../../../../shared/widgets/custom_shimmer.dart';
-import '../../../../../core/styles/colors.dart';
 
 class MyNewsWidget extends StatefulWidget {
   const MyNewsWidget({super.key});

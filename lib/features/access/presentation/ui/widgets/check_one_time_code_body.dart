@@ -115,166 +115,162 @@ class _CheckOneTimeCodeBodyState extends State<CheckOneTimeCodeBody>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-      child: FadeTransition(
-        opacity: _fadeController,
-        child: ReactiveForm(
-          key: ValueKey("check_one_time_code_form"),
-          formGroup: CheckOneTimeCodeForm.formGroup,
+    return FadeTransition(
+      opacity: _fadeController,
+      child: ReactiveForm(
+        key: ValueKey("check_one_time_code_form"),
+        formGroup: CheckOneTimeCodeForm.formGroup,
+        child: CustomScaffoldBody(
           child: Padding(
-            padding: REdgeInsets.symmetric(
-              horizontal: AppConstants.horizontalScreensPadding,
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+              left: AppConstants.horizontalScreensPadding,
+              right: AppConstants.horizontalScreensPadding,
             ),
-            child: CustomScaffoldBody(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    75.verticalSpace,
-                    AnimatedBuilder(
-                      animation: _logoAnimation,
-                      builder: (context, child) {
-                        return Transform.scale(
-                          scale: _logoAnimation.value,
-                          child: Transform.translate(
-                            offset: Offset(0, 20 * (1 - _logoAnimation.value)),
-                            child: Container(
-                              width: 150.r,
-                              height: 150.r,
-                              decoration: BoxDecoration(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  75.verticalSpace,
+                  AnimatedBuilder(
+                    animation: _logoAnimation,
+                    builder: (context, child) {
+                      return Transform.scale(
+                        scale: _logoAnimation.value,
+                        child: Transform.translate(
+                          offset: Offset(0, 20 * (1 - _logoAnimation.value)),
+                          child: Container(
+                            width: 150.r,
+                            height: 150.r,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context)
+                                  .primaryColor
+                                  .withValues(alpha: 0.1),
+                              shape: BoxShape.circle,
+                              border: Border.all(
                                 color: Theme.of(context)
                                     .primaryColor
-                                    .withValues(alpha: 0.1),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withValues(alpha: 0.3),
-                                  width: 2,
-                                ),
-                              ),
-                              child: Icon(
-                                Icons.school,
-                                size: 80.r,
-                                color: Theme.of(context).primaryColor,
+                                    .withValues(alpha: 0.3),
+                                width: 2,
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                    16.verticalSpace,
-                    AnimatedBuilder(
-                      animation: _titleAnimation,
-                      builder: (context, child) {
-                        return Transform.translate(
-                          offset: Offset(0, 30 * (1 - _titleAnimation.value)),
-                          child: Opacity(
-                            opacity: _titleAnimation.value.clamp(0.0, 1.0),
-                            child: Text(
-                              AppStrings.checkOneTimeCode,
-                              style: context.textTheme.titleLarge,
-                              textAlign: TextAlign.center,
+                            child: Icon(
+                              Icons.school,
+                              size: 80.r,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
-                        );
-                      },
-                    ),
-                    30.verticalSpace,
-                    AnimatedBuilder(
-                      animation: _majorSelectorAnimation,
-                      builder: (context, child) {
-                        return Transform.translate(
-                          offset: Offset(
-                              50 * (1 - _majorSelectorAnimation.value), 0),
-                          child: Opacity(
-                            opacity:
-                                _majorSelectorAnimation.value.clamp(0.0, 1.0),
-                            child: MajorSelector(),
+                        ),
+                      );
+                    },
+                  ),
+                  16.verticalSpace,
+                  AnimatedBuilder(
+                    animation: _titleAnimation,
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset: Offset(0, 30 * (1 - _titleAnimation.value)),
+                        child: Opacity(
+                          opacity: _titleAnimation.value.clamp(0.0, 1.0),
+                          child: Text(
+                            AppStrings.checkOneTimeCode,
+                            style: context.textTheme.titleLarge,
+                            textAlign: TextAlign.center,
                           ),
-                        );
-                      },
-                    ),
-                    10.verticalSpace,
-                    AnimatedBuilder(
-                      animation: _studentInfoAnimation,
-                      builder: (context, child) {
-                        return Transform.translate(
-                          offset: Offset(
-                              -50 * (1 - _studentInfoAnimation.value), 0),
-                          child: Opacity(
-                            opacity:
-                                _studentInfoAnimation.value.clamp(0.0, 1.0),
-                            child: _studentInfo(),
-                          ),
-                        );
-                      },
-                    ),
-                    50.verticalSpace,
-                    AnimatedBuilder(
-                      animation: _buttonAnimation,
-                      builder: (context, child) {
-                        return Transform.scale(
-                          scale: _buttonAnimation.value,
-                          child: Opacity(
-                            opacity: _buttonAnimation.value.clamp(0.0, 1.0),
-                            child: BlocConsumer<AuthBloc, AuthState>(
-                              listener: (context, state) {
-                                if (state.checkOneTimeResult.isError()) {
-                                  showErrorOverlay(
-                                    context,
-                                    state.checkOneTimeResult.getError(),
-                                  );
-                                }
-                                if (state.checkOneTimeResult.isLoaded() &&
-                                    !AuthBloc.isCheckingOneTimeCode) {
-                                  AuthBloc.isCheckingOneTimeCode = true;
-                                  context.beamToNamed(RegisterScreen.pagePath);
-                                }
-                              },
-                              builder: (context, state) {
-                                return AuthButton.primary(
-                                  height: 50.h,
-                                  isLoading:
-                                      state.checkOneTimeResult.isLoading(),
-                                  title: AppStrings.checkYourAccessCode,
-                                  onPressed: () {
-                                    if (CheckOneTimeCodeForm.formGroup
-                                        .isFormValid()) {
-                                      getIt<AuthBloc>().add(
-                                        CheckOneTimeCodeEvent(
-                                          checkOneTimeParam: CheckOneTimeParam(
-                                            studentNumber: CheckOneTimeCodeForm
-                                                .formGroup
-                                                .getValue(
-                                              AuthInputKeys.studentNumber,
-                                            ),
-                                            code: CheckOneTimeCodeForm.formGroup
-                                                .getValue(
-                                              AuthInputKeys.oneTimeCode,
-                                            ),
-                                            majorId: CheckOneTimeCodeForm
-                                                .formGroup
-                                                .getValue(
-                                              AuthInputKeys.majorId,
-                                            ),
+                        ),
+                      );
+                    },
+                  ),
+                  30.verticalSpace,
+                  AnimatedBuilder(
+                    animation: _majorSelectorAnimation,
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset:
+                            Offset(50 * (1 - _majorSelectorAnimation.value), 0),
+                        child: Opacity(
+                          opacity:
+                              _majorSelectorAnimation.value.clamp(0.0, 1.0),
+                          child: MajorSelector(),
+                        ),
+                      );
+                    },
+                  ),
+                  10.verticalSpace,
+                  AnimatedBuilder(
+                    animation: _studentInfoAnimation,
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset:
+                            Offset(-50 * (1 - _studentInfoAnimation.value), 0),
+                        child: Opacity(
+                          opacity: _studentInfoAnimation.value.clamp(0.0, 1.0),
+                          child: _studentInfo(),
+                        ),
+                      );
+                    },
+                  ),
+                  50.verticalSpace,
+                  AnimatedBuilder(
+                    animation: _buttonAnimation,
+                    builder: (context, child) {
+                      return Transform.scale(
+                        scale: _buttonAnimation.value,
+                        child: Opacity(
+                          opacity: _buttonAnimation.value.clamp(0.0, 1.0),
+                          child: BlocConsumer<AuthBloc, AuthState>(
+                            listener: (context, state) {
+                              if (state.checkOneTimeResult.isError()) {
+                                showErrorOverlay(
+                                  context,
+                                  state.checkOneTimeResult.getError(),
+                                );
+                              }
+                              if (state.checkOneTimeResult.isLoaded() &&
+                                  !AuthBloc.isCheckingOneTimeCode) {
+                                AuthBloc.isCheckingOneTimeCode = true;
+                                context.beamToNamed(RegisterScreen.pagePath);
+                              }
+                            },
+                            builder: (context, state) {
+                              return AuthButton.primary(
+                                height: 50.h,
+                                isLoading: state.checkOneTimeResult.isLoading(),
+                                title: AppStrings.checkYourAccessCode,
+                                onPressed: () {
+                                  if (CheckOneTimeCodeForm.formGroup
+                                      .isFormValid()) {
+                                    getIt<AuthBloc>().add(
+                                      CheckOneTimeCodeEvent(
+                                        checkOneTimeParam: CheckOneTimeParam(
+                                          studentNumber: CheckOneTimeCodeForm
+                                              .formGroup
+                                              .getValue(
+                                            AuthInputKeys.studentNumber,
+                                          ),
+                                          code: CheckOneTimeCodeForm.formGroup
+                                              .getValue(
+                                            AuthInputKeys.oneTimeCode,
+                                          ),
+                                          majorId: CheckOneTimeCodeForm
+                                              .formGroup
+                                              .getValue(
+                                            AuthInputKeys.majorId,
                                           ),
                                         ),
-                                      );
-                                    }
-                                  },
-                                  context: context,
-                                );
-                              },
-                            ),
+                                      ),
+                                    );
+                                  }
+                                },
+                                context: context,
+                              );
+                            },
                           ),
-                        );
-                      },
-                    ),
-                    30.verticalSpace,
-                  ],
-                ),
+                        ),
+                      );
+                    },
+                  ),
+                  30.verticalSpace,
+                ],
               ),
             ),
           ),

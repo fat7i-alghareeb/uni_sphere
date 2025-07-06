@@ -1,10 +1,11 @@
 import 'package:beamer/beamer.dart';
-import '../../../domain/entities/news_entity.dart';
-import '../widgets/news_details_image.dart';
-import '../widgets/news_details_content.dart';
+
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../router/router_config.dart' show BeamerBuilder;
 import '../../../../../shared/imports/imports.dart';
+import '../../../domain/entities/news_entity.dart';
+import '../widgets/news_details_content.dart';
+import '../widgets/news_details_image.dart';
 
 class NewsDetailsScreen extends StatefulWidget {
   const NewsDetailsScreen({

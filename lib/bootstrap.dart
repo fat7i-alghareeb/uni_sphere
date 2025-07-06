@@ -21,7 +21,7 @@ bootstrap(Widget mainApp) async {
     // Initialize language in SharedPreferences if not already set
     final sharedPreferences = getIt<SharedPreferences>();
     if (sharedPreferences.getString(kLanguage) == null) {
-      await sharedPreferences.setString(kLanguage, 'en');
+      await sharedPreferences.setString(kLanguage, 'ar');
     }
 
     // await FirebaseNotificationImplService.initFirebase(DefaultFirebaseOptions.currentPlatform);

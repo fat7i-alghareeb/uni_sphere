@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+
 import '../../../../../core/result_builder/result_builder.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../domain/entities/ads_entity.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../domain/entities/news_entity.dart';
 
 import '../../../../../core/result_builder/result.dart';
+import '../../../domain/entities/news_entity.dart';
 import '../../../domain/usecases/announcements_usecase.dart';
 import '../../../domain/usecases/get_my_announcements_usecase.dart';
 

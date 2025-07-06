@@ -1,7 +1,8 @@
 import 'package:beamer/beamer.dart';
-import '../../../../../shared/extensions/string_extension.dart';
+
 import '../../../../../common/constant/app_strings.dart';
 import '../../../../../core/styles/colors.dart';
+import '../../../../../shared/extensions/string_extension.dart';
 import '../../../../../shared/imports/imports.dart';
 import '../../../../../shared/widgets/custom_network_image.dart';
 import '../../../domain/entities/subject_entity.dart';

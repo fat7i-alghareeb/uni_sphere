@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import '../entities/faculty.dart' show Faculty;
-import '../entities/major.dart' show Major;
 
 import '../../core/constants/app_url.dart' show AppUrl;
+import '../entities/faculty.dart' show Faculty;
+import '../entities/major.dart' show Major;
 import '../services/exception/error_handler.dart' show throwDioException;
 
 class InfoRemote {

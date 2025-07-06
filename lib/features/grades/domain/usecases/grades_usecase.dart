@@ -1,6 +1,7 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
 import 'package:test/features/grades/domain/entities/grades_response_entity.dart' show GradesResponseEntity;
+
 import '../repositories/grades_repository.dart';
 
 //!----------------------------  The Class  -------------------------------------!//

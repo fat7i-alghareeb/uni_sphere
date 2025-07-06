@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart' show Bloc, Emitter;
+
 import '../../../core/result_builder/result.dart';
 import '../../entities/faculty.dart' show Faculty;
 import '../../entities/major.dart' show Major;

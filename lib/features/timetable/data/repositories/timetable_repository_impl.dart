@@ -1,10 +1,11 @@
 //!----------------------------  Imports  -------------------------------------!//
 import 'package:fpdart/fpdart.dart';
 import 'package:test/features/timetable/data/mappers/schedule_mappers.dart';
-import '../../domain/entities/month_schedule_entity.dart';
-import '../datasources/timetable_remote_data_source.dart';
-import '../../domain/repositories/timetable_repository.dart';
+
 import '../../../../shared/services/exception/error_handler.dart';
+import '../../domain/entities/month_schedule_entity.dart';
+import '../../domain/repositories/timetable_repository.dart';
+import '../datasources/timetable_remote_data_source.dart';
 
 //!----------------------------  The Class  -------------------------------------!//
 

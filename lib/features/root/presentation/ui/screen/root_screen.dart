@@ -1,6 +1,9 @@
 // 🌎 Project imports:
 import 'dart:developer';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
+
 import '../../../../../core/auth_data_source/local/auth_local.dart';
 import '../../../../../core/injection/injection.dart';
 import '../../../../../router/router_config.dart';
@@ -44,7 +47,9 @@ class _RootScreenState extends State<RootScreen>
     try {
       final user = getIt<AuthLocal>().getUser();
       if (user != null) {
-        return '${user.firstName} ${user.lastName}';
+        // Use the localized name based on current locale
+        final currentLanguage = context.locale.languageCode;
+        return '${user.getFirstName(currentLanguage)} ${user.getLastName(currentLanguage)}';
       }
       return '';
     } catch (e) {

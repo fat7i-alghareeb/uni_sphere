@@ -1,11 +1,16 @@
 // 📦 Package imports:
 import 'package:beamer/beamer.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:test/core/injection/injection.dart';
+import 'package:test/core/repo/auth_repo/auth_repo.dart';
+import 'package:test/core/repo/auth_repo/repo_imp.dart';
+import 'package:test/features/access/data/usecases/auth_usecases.dart';
+
 import '../../../../../common/constant/app_strings.dart' show AppStrings;
-import '../../../../../shared/widgets/theme_switcher.dart';
-import '../../../../../shared/imports/imports.dart';
-import '../../../../../features/settings/presentation/ui/screens/language_selection_screen.dart';
 import '../../../../../features/grades/presentation/ui/screens/grades_screen.dart';
+import '../../../../../features/settings/presentation/ui/screens/language_selection_screen.dart';
+import '../../../../../shared/imports/imports.dart';
+import '../../../../../shared/widgets/theme_switcher.dart';
 import '../screen/student_screen.dart';
 
 class CustomEndDrawer extends StatelessWidget {
@@ -90,7 +95,7 @@ class CustomEndDrawer extends StatelessWidget {
                       style: context.textTheme.titleMedium,
                     ),
                     onTap: () {
-                      context.beamToNamed('/root/${StudentScreen.pagePath}');
+                      context.beamToNamed(StudentScreen.pagePath);
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r)),
@@ -108,6 +113,23 @@ class CustomEndDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       context.beamToNamed(GradesScreen.pagePath);
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.r)),
+                    tileColor: context.cardColor,
+                    contentPadding:
+                        REdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  ),
+                  12.verticalSpace,
+                  ListTile(
+                    leading:
+                        Icon(Icons.logout_rounded, color: context.primaryColor),
+                    title: Text(
+                      AppStrings.logout,
+                      style: context.textTheme.titleMedium,
+                    ),
+                    onTap: () {
+                      getIt<AuthRepository>().logout();
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r)),

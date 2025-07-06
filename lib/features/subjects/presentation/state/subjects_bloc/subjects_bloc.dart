@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../domain/entities/subject_entity.dart';
-import '../../../domain/usecases/get_year_subjects_usecase.dart';
 
 import '../../../../../core/result_builder/result.dart';
+import '../../../domain/entities/subject_entity.dart';
+import '../../../domain/usecases/get_year_subjects_usecase.dart';
 import '../../../domain/usecases/subjects_usecase.dart';
 
 part 'subjects_event.dart';

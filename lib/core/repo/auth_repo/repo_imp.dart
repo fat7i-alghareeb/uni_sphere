@@ -7,6 +7,7 @@ import 'package:test/features/access/data/models/simple_user.dart'
     show SimpleUser;
 import 'package:test/features/access/data/params/check_one_time_param.dart'
     show CheckOneTimeParam;
+
 import '../../../features/access/data/params/login_param.dart';
 import '../../../features/access/data/params/register_param.dart'
     show RegisterParam;
@@ -49,7 +50,9 @@ class AuthRepoImp implements AuthRepository {
         enrollmentStatusName: response.enrollmentStatusName,
         fatherName: response.fatherName,
         numberOfMajorYears: response.numberOfMajorYears,
-        image: response.image,
+        studentImageUrl: response.studentImageUrl,
+        majorId: response.majorId,
+        role: response.role,
       );
       _saveUser(user,
           refreshToken: response.refreshToken,
@@ -93,7 +96,9 @@ class AuthRepoImp implements AuthRepository {
         enrollmentStatusName: response.enrollmentStatusName,
         fatherName: response.fatherName,
         numberOfMajorYears: response.numberOfMajorYears,
-        image: response.image,
+        studentImageUrl: response.studentImageUrl,
+        majorId: response.majorId,
+        role: response.role,
       );
       _saveUser(
         user,

@@ -1,6 +1,6 @@
 import '../../../../../common/constant/app_strings.dart';
-import '../../../domain/entities/news_entity.dart';
 import '../../../../../shared/imports/imports.dart';
+import '../../../domain/entities/news_entity.dart';
 
 class NewsDetailsContent extends StatelessWidget {
   const NewsDetailsContent({

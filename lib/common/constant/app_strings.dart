@@ -218,4 +218,5 @@ class AppStrings {
   static String get majorDuration => _localization.tr('majorDuration');
   static String get status => _localization.tr('status');
   static String get year => _localization.tr('year');
+  static String get logout => _localization.tr('logout');
 }
