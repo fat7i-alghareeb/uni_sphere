@@ -5,6 +5,8 @@ import 'package:test/shared/imports/imports.dart';
 import '../../../../../common/constant/app_strings.dart' show AppStrings;
 import 'package:beamer/beamer.dart';
 
+import '../../../../../shared/utils/helper/get_colored_svg_picture.dart'
+    show getColoredSvgPicture;
 import '../../../../../shared/widgets/custom_scaffold_body.dart'
     show CustomScaffoldBody;
 import '../../../../../shared/widgets/auth_button.dart' show AuthButton;
@@ -82,9 +84,12 @@ class _ChooseMethodBodyState extends State<ChooseMethodBody>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            FadeTransition(
-              opacity: _fadeAnimation,
-              child: const FlutterLogo(size: 120),
+            getColoredSvgPicture(
+              assetName: Assets.images.logoSvg,
+              width: 250.w,
+              height: 250.h,
+              color: context.onBackgroundColor,
+              // color: context.theme.colorScheme.primary,
             ),
             30.verticalSpace,
             FadeTransition(

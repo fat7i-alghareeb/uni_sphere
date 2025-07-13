@@ -1,6 +1,7 @@
 {
-    "cSpell.words": [
-        "callender"
-    ],
-    "editor.tabCompletion": "on"
+  "cSpell.words": [
+    "callender"
+  ],
+  "editor.tabCompletion": "on",
+  "dart.flutterSdkPath": ".fvm/versions/3.29.3"
 }

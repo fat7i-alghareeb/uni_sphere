@@ -17,10 +17,10 @@ class RootNavbar extends StatelessWidget {
 
   /// List of navigation items with their respective icons
   late final List<NavItem> _navItems = [
-    NavItem(iconPath: Assets.icons.home, index: 0),
-    NavItem(iconPath: Assets.icons.subjects, index: 1),
-    NavItem(iconPath: Assets.icons.timeTable, index: 2),
-    NavItem(iconPath: Assets.icons.announcement, index: 3),
+    // NavItem(iconPath: Assets.icons.home, index: 0),
+    NavItem(iconPath: Assets.icons.subjects, index: 0),
+    NavItem(iconPath: Assets.icons.timeTable, index: 1),
+    NavItem(iconPath: Assets.icons.announcement, index: 2),
   ];
 
   @override

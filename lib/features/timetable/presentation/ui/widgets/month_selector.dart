@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:test/shared/extensions/context_extension.dart';
 
 import '../../../../../core/injection/injection.dart';
 import '../../../../../core/result_builder/result.dart';
@@ -151,7 +152,9 @@ class _MonthSelectorState extends State<MonthSelector>
           children: [
             _buildMonthNavigationButton(
               isLoading: isLeftLoading,
-              icon: FontAwesomeIcons.chevronLeft,
+              icon: context.isEnglish
+                  ? FontAwesomeIcons.chevronLeft
+                  : FontAwesomeIcons.chevronRight,
               onTap: () => _changeMonth(-1),
             ),
             AnimatedBuilder(
@@ -172,7 +175,9 @@ class _MonthSelectorState extends State<MonthSelector>
             ),
             _buildMonthNavigationButton(
               isLoading: isRightLoading,
-              icon: FontAwesomeIcons.chevronRight,
+              icon: context.isEnglish
+                  ? FontAwesomeIcons.chevronRight
+                  : FontAwesomeIcons.chevronLeft,
               onTap: () => _changeMonth(1),
             ),
           ],

@@ -111,7 +111,7 @@ class _RootScreenState extends State<RootScreen>
                               context.read<NavBarProvider>().pageController,
                           physics: const NeverScrollableScrollPhysics(),
                           children: const [
-                            HomeScreen(),
+                            // HomeScreen(),
                             SubjectsScreen(),
                             TimetableScreen(),
                             AnnouncementScreen(),

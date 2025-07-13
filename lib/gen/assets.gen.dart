@@ -44,17 +44,17 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
-        announcement,
-        callender,
-        clock,
-        downloadedFile,
-        drawer,
-        home,
-        lectureHallIcon,
-        notification,
-        subjects,
-        timeTable
-      ];
+    announcement,
+    callender,
+    clock,
+    downloadedFile,
+    drawer,
+    home,
+    lectureHallIcon,
+    notification,
+    subjects,
+    timeTable,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -65,6 +65,12 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/avatar-girl.svg
   String get avatarGirl => 'assets/images/avatar-girl.svg';
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/logoSvg.svg
+  String get logoSvg => 'assets/images/logoSvg.svg';
 
   /// File path: assets/images/pattern1.png
   AssetGenImage get pattern1 =>
@@ -100,18 +106,20 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        avatarBoy,
-        avatarGirl,
-        pattern1,
-        pattern1White,
-        pattern2,
-        pattern2White,
-        patternNew,
-        svgPattern1,
-        svgPattern2,
-        test,
-        test2
-      ];
+    avatarBoy,
+    avatarGirl,
+    logo,
+    logoSvg,
+    pattern1,
+    pattern1White,
+    pattern2,
+    pattern2White,
+    patternNew,
+    svgPattern1,
+    svgPattern2,
+    test,
+    test2,
+  ];
 }
 
 class $AssetsL10nGen {
@@ -136,11 +144,7 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
 
@@ -200,15 +204,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
