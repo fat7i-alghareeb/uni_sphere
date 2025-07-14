@@ -1,4 +1,4 @@
-  import 'materials_entity.dart';
+import 'materials_entity.dart';
 
 class SubjectDetailsEntity {
   final String id;
@@ -15,6 +15,7 @@ class SubjectDetailsEntity {
   final bool isMultipleChoice;
   final List<MaterialEntity> materials;
   final String imageUrl;
+
   SubjectDetailsEntity({
     required this.id,
     required this.title,

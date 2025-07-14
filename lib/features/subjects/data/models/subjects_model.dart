@@ -1,3 +1,5 @@
+import 'materials_model.dart';
+
 class SubjectsModel {
   final List<Subject> subjects;
 
@@ -7,7 +9,9 @@ class SubjectsModel {
 
   factory SubjectsModel.fromMap(Map<String, dynamic> map) {
     return SubjectsModel(
-      subjects: (map['subjects'] as List<dynamic>).map((e) => Subject.fromMap(e as Map<String, dynamic>)).toList(),
+      subjects: (map['subjects'] as List<dynamic>)
+          .map((e) => Subject.fromMap(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 }
@@ -76,6 +80,7 @@ class SubjectById {
   final bool doesHaveALab;
   final int semester;
   final String imageUrl;
+  final List<MaterialsModel> materials;
 
   SubjectById({
     required this.id,
@@ -91,6 +96,7 @@ class SubjectById {
     required this.isMultipleChoice,
     required this.doesHaveALab,
     required this.imageUrl,
+    required this.materials,
   });
 
   factory SubjectById.fromMap(Map<String, dynamic> map) {
@@ -108,6 +114,10 @@ class SubjectById {
       isMultipleChoice: map['isMultipleChoice'] as bool,
       doesHaveALab: map['doesHaveALab'] as bool,
       imageUrl: map['imageUrl'] as String? ?? "",
+      materials: (map['materials'] as List<dynamic>?)
+              ?.map((e) => MaterialsModel.fromMap(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
   }
 }

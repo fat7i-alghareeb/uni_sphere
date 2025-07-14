@@ -1,18 +1,20 @@
-  class MaterialEntity {
-    final String title;
-    final String fileUrl;
-    final MaterialType type;
-    MaterialEntity({
-      required this.title,
-      required this.fileUrl,
-      required this.type,
-    });
-  }
+class MaterialEntity {
+  final String url;
+  final MaterialUrlType type;
 
+  MaterialEntity({
+    required this.url,
+    required this.type,
+  });
+}
 
-enum MaterialType {
+enum MaterialUrlType {
   pdf,
-  video,
   image,
-  audio,
+  document,
+  excel,
+  word,
+  powerpoint,
+  link,
+  other,
 }

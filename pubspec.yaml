@@ -42,6 +42,8 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   device_frame_plus: ^1.4.0
   easy_localization_loader: ^2.0.2
+  url_launcher: ^6.2.5
+  open_file: ^3.5.10
 #!---------------------------dev_dependencies-------------------------------------!# 
 
 dev_dependencies:

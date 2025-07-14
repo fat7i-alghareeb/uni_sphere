@@ -1,9 +1,13 @@
 import 'package:test/features/subjects/data/models/subjects_model.dart'
     show Subject, SubjectById;
+import 'package:test/features/subjects/data/models/materials_model.dart'
+    show MaterialsModel;
 
 import '../../domain/entities/subject_details_entity.dart'
     show SubjectDetailsEntity;
 import '../../domain/entities/subject_entity.dart' show SubjectEntity;
+import '../../domain/entities/materials_entity.dart'
+    show MaterialEntity, MaterialUrlType;
 
 extension SubjectMapper on Subject {
   SubjectEntity toEntity() {
@@ -24,6 +28,15 @@ extension SubjectMapper on Subject {
   }
 }
 
+extension MaterialsModelMapper on MaterialsModel {
+  MaterialEntity toEntity() {
+    return MaterialEntity(
+      url: url,
+      type: type,
+    );
+  }
+}
+
 extension SubjectByIdMapper on SubjectById {
   SubjectDetailsEntity toEntity() {
     return SubjectDetailsEntity(
@@ -39,7 +52,7 @@ extension SubjectByIdMapper on SubjectById {
       finalGrade: finalGrade,
       doesHaveALab: doesHaveALab,
       isMultipleChoice: isMultipleChoice,
-      materials: [],
+      materials: materials.map((material) => material.toEntity()).toList(),
       imageUrl: imageUrl,
     );
   }
