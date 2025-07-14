@@ -1,0 +1,2 @@
+C:/Users/Fat7i/graduationProject/uni_sphere/android/app/.cxx/RelWithDebInfo/622w1g6r/x86/CMakeFiles/edit_cache.dir
+C:/Users/Fat7i/graduationProject/uni_sphere/android/app/.cxx/RelWithDebInfo/622w1g6r/x86/CMakeFiles/rebuild_cache.dir
