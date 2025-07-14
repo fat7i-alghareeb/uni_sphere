@@ -15,6 +15,7 @@ import '../../../../../shared/widgets/auth_button.dart';
 import '../../../../../shared/widgets/custom_reative_field.dart';
 import '../../../../../shared/widgets/custom_scaffold_body.dart';
 import '../../../../../shared/widgets/passwrod_field.dart';
+import 'package:beamer/beamer.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({
@@ -222,7 +223,9 @@ class _LoginBodyState extends State<LoginBody> with TickerProviderStateMixin {
                                 }
                                 if (state.loginResult.isLoaded()) {
                                   // Navigate to home or dashboard after successful login
-                                  // You can add navigation logic here
+                                  // TODO: Replace '/home' with your actual home/dashboard route
+                                  context.beamToNamed('/home');
+                                  getIt<AuthBloc>().add(ResetLoginStateEvent());
                                 }
                               },
                               builder: (context, state) {

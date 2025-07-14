@@ -7,12 +7,10 @@ import '../../features/home/domain/entities/ads_entity.dart';
 import '../../features/home/domain/entities/days_to_the_final.dart';
 import '../../features/home/domain/entities/home_entity.dart';
 import '../../features/home/domain/entities/statistics_entity.dart';
-import '../../features/subjects/domain/entities/materials_entity.dart';
-import '../../features/subjects/domain/entities/subject_details_entity.dart';
 import '../../features/subjects/domain/entities/subject_entity.dart';
 
 List<String> dummyImages = [
-  "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+  "https://img.freepik.com/free-vector/hand-drawn-science-education-background_23-2148499325.jpg?semt=ais_hybrid&w=740",
   "https://cdn.pixabay.com/photo/2019/02/04/07/36/new-year-3974099_1280.jpg",
   "https://cdn.pixabay.com/photo/2024/11/01/07/36/new-years-day-9165860_1280.jpg",
   "https://cdn.pixabay.com/photo/2018/12/31/14/17/heart-3905176_1280.jpg"

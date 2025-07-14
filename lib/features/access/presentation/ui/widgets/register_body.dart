@@ -10,8 +10,7 @@ import 'package:test/features/access/presentation/input_forms/auth_input_keys.da
     show AuthInputKeys;
 import 'package:test/features/access/presentation/input_forms/registre_form.dart'
     show RegisterForm;
-import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart'
-    show AuthBloc, AuthState, RegisterEvent;
+import 'package:test/features/access/presentation/state/bloc/auth_bloc.dart';
 import 'package:test/shared/extensions/form_extension.dart';
 import 'package:test/shared/imports/imports.dart';
 import 'package:test/shared/utils/helper/show_error_overlay.dart';
@@ -20,6 +19,7 @@ import 'package:test/shared/widgets/custom_reative_field.dart';
 import 'package:test/shared/widgets/custom_scaffold_body.dart'
     show CustomScaffoldBody;
 import 'package:test/shared/widgets/passwrod_field.dart';
+import 'package:beamer/beamer.dart';
 
 class RegisterBody extends StatefulWidget {
   const RegisterBody({
@@ -247,7 +247,10 @@ class _RegisterBodyState extends State<RegisterBody>
                                 }
                                 if (state.registerResult.isLoaded()) {
                                   // Navigate to home or dashboard after successful registration
-                                  // You can add navigation logic here
+                                  // TODO: Replace '/home' with your actual home/dashboard route
+                                  context.beamToNamed('/home');
+                                  getIt<AuthBloc>()
+                                      .add(ResetRegisterStateEvent());
                                 }
                               },
                               builder: (context, state) {

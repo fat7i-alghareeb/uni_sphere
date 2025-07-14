@@ -114,6 +114,12 @@ class _CheckOneTimeCodeBodyState extends State<CheckOneTimeCodeBody>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    AuthBloc.isCheckingOneTimeCode = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _fadeController,
@@ -229,6 +235,8 @@ class _CheckOneTimeCodeBodyState extends State<CheckOneTimeCodeBody>
                                   !AuthBloc.isCheckingOneTimeCode) {
                                 AuthBloc.isCheckingOneTimeCode = true;
                                 context.beamToNamed(RegisterScreen.pagePath);
+                                getIt<AuthBloc>()
+                                    .add(ResetCheckOneTimeCodeStateEvent());
                               }
                             },
                             builder: (context, state) {

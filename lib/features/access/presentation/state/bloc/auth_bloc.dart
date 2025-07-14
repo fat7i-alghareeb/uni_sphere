@@ -20,6 +20,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginEvent>(_login);
     on<RegisterEvent>(_register);
     on<CheckOneTimeCodeEvent>(_checkOneTime);
+    on<ResetLoginStateEvent>((event, emit) {
+      emit(state.copyWith(loginResult: const Result.init()));
+    });
+    on<ResetRegisterStateEvent>((event, emit) {
+      emit(state.copyWith(registerResult: const Result.init()));
+    });
+    on<ResetCheckOneTimeCodeStateEvent>((event, emit) {
+      emit(state.copyWith(checkOneTimeResult: const Result.init()));
+    });
   }
 
   _login(LoginEvent event, Emitter emit) async {

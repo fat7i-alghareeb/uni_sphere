@@ -16,3 +16,9 @@ final class CheckOneTimeCodeEvent extends AuthEvent {
   CheckOneTimeParam checkOneTimeParam;
   CheckOneTimeCodeEvent({required this.checkOneTimeParam});
 }
+
+final class ResetLoginStateEvent extends AuthEvent {}
+
+final class ResetRegisterStateEvent extends AuthEvent {}
+
+final class ResetCheckOneTimeCodeStateEvent extends AuthEvent {}
